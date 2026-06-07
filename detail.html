@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="二二八事件網｜詳細介紹：依首頁時間軸大標題，撰寫各階段的背景、事件發展、後續影響，以及白色恐怖、平反調查與轉型正義的脈絡。"
+    />
+    <title>二二八事件網｜詳細介紹</title>
+    <style>
+      :root {
+        --bg: #f3e4c6;
+        --panel: rgba(255, 255, 255, 0.58);
+        --panel-2: rgba(255, 255, 255, 0.38);
+        --text: rgba(15, 15, 15, 0.92);
+        --muted: rgba(15, 15, 15, 0.74);
+        --muted-2: rgba(15, 15, 15, 0.62);
+        --line: rgba(15, 15, 15, 0.28);
+        --accent: #111;
+        --accent-2: #111;
+        --danger: #b4001e;
+        --shadow: none;
+        --radius: 0px;
+        --radius-sm: 0px;
+        --max: 1100px;
+        --font-body: ui-serif, "Noto Serif TC", "Songti TC", "PMingLiU", "Times New Roman", serif;
+        --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--bg);
+        background-image:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 45%),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.18) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 6px
+          );
+        color: var(--text);
+      }
+
+      a {
+        color: color-mix(in srgb, var(--accent), white 10%);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--bg);
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 0;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: 0.04em;
+        font-family: var(--font-display);
+      }
+
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav a {
+        display: inline-flex;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 2px solid transparent;
+        font-family: var(--font-display);
+        font-size: 13px;
+        color: var(--text);
+      }
+
+      .nav a[aria-current="page"] {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .nav a[aria-disabled="true"] {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      main {
+        padding: 22px 0 46px;
+      }
+
+      .card {
+        border-radius: var(--radius);
+        background: var(--panel);
+        border: 2px solid var(--accent);
+        box-shadow: var(--shadow);
+      }
+
+      .page-hero {
+        padding: 18px 16px 14px;
+        margin: 0 0 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.08), transparent 55%),
+          radial-gradient(circle at 70% 20%, rgba(0, 0, 0, 0.06), transparent 55%);
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        opacity: 0.8;
+      }
+
+      .page-hero > * {
+        position: relative;
+      }
+
+      .page-hero .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .page-hero .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      .page-hero h2 {
+        margin: 10px 0 8px;
+        font-family: var(--font-display);
+        letter-spacing: -0.01em;
+        font-weight: 900;
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1.1;
+      }
+
+      .page-hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .toc {
+        position: sticky;
+        top: 86px;
+        padding: 14px 14px 12px;
+      }
+
+      .toc h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .toc ol {
+        margin: 0;
+        padding: 0 0 0 16px;
+        display: grid;
+        gap: 8px;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .toc a {
+        color: var(--text);
+      }
+
+      .toc small {
+        display: block;
+        color: var(--muted-2);
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+
+      .section {
+        padding: 16px 16px 18px;
+      }
+
+      .section + .section {
+        margin-top: 14px;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 6px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--accent);
+        margin-bottom: 12px;
+      }
+
+      /* Collapsible timepoint sections */
+      details.section > .section-head {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding-right: 46px;
+        margin-bottom: 0;
+      }
+
+      details.section[open] > .section-head {
+        margin-bottom: 12px;
+      }
+
+      details.section > .section-head::-webkit-details-marker {
+        display: none;
+      }
+
+      details.section > .section-head::marker {
+        content: "";
+      }
+
+      details.section > .section-head::after {
+        content: "▾";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.28);
+        color: var(--text);
+        transform: rotate(-90deg);
+        transition: transform 160ms ease;
+      }
+
+      details.section[open] > .section-head::after {
+        transform: rotate(0deg);
+      }
+
+      details.section > .section-head:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 4px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        details.section > .section-head::after {
+          transition: none;
+        }
+      }
+
+      .section-summary {
+        display: block;
+        margin: 2px 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 13px;
+        max-width: 78ch;
+      }
+
+      .section-head .meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        font-family: var(--font-display);
+        color: var(--muted-2);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.28);
+        color: var(--text);
+        letter-spacing: 0.04em;
+        text-transform: none;
+      }
+
+      .section-head h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(18px, 2.5vw, 24px);
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+      }
+
+      .section-body {
+        display: grid;
+        gap: 12px;
+        line-height: 1.9;
+        color: var(--text);
+      }
+
+      .section-body p {
+        margin: 0;
+      }
+
+      .section-body .subhead {
+        margin-top: 4px;
+        font-family: var(--font-display);
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        font-size: 14px;
+      }
+
+      footer {
+        border-top: 2px solid var(--accent);
+        padding: 18px 0 40px;
+      }
+
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .small {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .tips-dialog {
+        width: min(720px, calc(100vw - 28px));
+        padding: 0;
+        border: 2px solid var(--accent);
+        background: #fff7e6;
+        border-radius: 0;
+      }
+
+      .tips-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      .tips-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .tips-head h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+      }
+
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--accent);
+        background: transparent;
+        color: var(--text);
+        border-radius: 999px;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .icon-btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .tips-body {
+        padding: 14px 16px 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .meta dt {
+        font-weight: 800;
+        font-family: var(--font-display);
+        margin-top: 10px;
+      }
+
+      .meta dt:first-child {
+        margin-top: 0;
+      }
+
+      .meta dd {
+        margin: 6px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .kbd {
+        display: inline-block;
+        padding: 2px 6px;
+        border: 2px solid var(--accent);
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .tips-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 16px 16px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: #111;
+        color: #fff;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+
+      .btn.secondary {
+        background: transparent;
+        color: var(--text);
+      }
+
+      @media (max-width: 980px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+        .toc {
+          position: relative;
+          top: 0;
+        }
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Section search ──────────────────────────────────────────────── */
+      .filters {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+        max-width: 600px;
+      }
+      .filters label {
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.04em;
+      }
+      .filters input[type="search"] {
+        width: 100%;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        outline: none;
+      }
+      .filters input[type="search"]:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 3px;
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted-2);
+        margin: 0;
+        font-family: var(--font-display);
+      }
+      details.section[data-filtered="empty"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">
+          <svg aria-hidden="true" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 48"><g transform="translate(-488.29012,-254.49786)"><path fill="var(--accent)" fill-rule="evenodd" d="M 511.97791,260.45543 L 510.51184,259.46572 L 509.50097,259.50277 L 508.89409,259.45865 L 508.27134,259.21343 L 507.69796,258.75651 L 507.42099,258.38779 L 507.33454,258.30488 L 507.2869,258.27489 L 507.18282,258.21491 L 507.00464,258.14433 L 506.81586,258.0826 L 506.73648,258.08787 L 506.30071,258.1849 L 506.23898,258.20432 L 505.92141,258.37897 L 505.88437,258.42307 L 505.58623,258.78297 L 505.51566,258.87823 L 505.2175,259.48688 L 505.18927,259.5398 L 505.20868,259.61393 L 505.23691,259.6633 L 505.82438,260.06378 L 505.80322,260.12905 L 505.51741,259.9403 L 505.41509,259.8856 L 505.27396,259.8609 L 505.20868,259.87854 L 505.15046,259.90853 L 505.05696,259.9791 L 505.02345,260.0285 L 504.94759,260.11318 L 504.70765,260.28783 L 504.41833,260.41485 L 504.07078,260.56305 L 503.51858,260.69889 L 503.22397,260.81886 L 501.94845,261.76624 L 501.90082,261.80857 L 501.458,262.34842 L 501.3945,262.44721 L 501.07517,263.32932 L 501.01166,263.45633 L 500.78408,264.07203 L 500.67646,264.566 L 500.53356,265.75684 L 500.45771,265.7639 L 500.42066,265.80624 L 499.43271,267.05705 L 498.95461,267.70629 L 498.92991,267.76273 L 498.7482,268.56015 L 498.68998,268.83183 L 498.65647,269.05059 L 498.6106,269.2323 L 498.48533,269.444 L 498.19071,269.92387 L 498.05487,270.15851 L 497.99666,270.26788 L 497.89609,270.49018 L 497.79024,270.78303 L 497.55736,271.67042 L 497.5362,271.73746 L 497.34919,272.69012 L 497.33862,272.90007 L 496.94342,273.48402 L 496.89049,273.60222 L 496.45123,274.79305 L 496.08956,275.99624 L 495.88667,276.69308 L 495.84609,276.81128 L 495.53913,277.57341 L 495.3627,277.7269 L 495.15807,278.16972 L 495.13512,278.22792 L 494.5794,280.11739 L 494.5547,280.255 L 494.56529,280.32734 L 494.69938,280.85305 L 494.90226,281.47758 L 494.9199,281.5358 L 494.98516,281.71046 L 495.10515,282.01919 L 495.37682,282.79896 L 495.39093,282.86777 L 495.51444,283.62285 L 495.49502,283.67754 L 495.45444,283.71635 L 495.338,283.77103 L 495.17571,284.15917 L 495.10515,284.41498 L 495.00106,284.8966 L 494.8511,285.75222 L 494.84404,285.81926 L 494.85991,285.88983 L 494.8952,285.94099 L 494.94636,285.96922 L 495.00106,285.99039 L 495.16688,285.99039 L 495.22863,286.00804 L 495.28332,286.04157 L 495.30978,286.08743 L 495.43681,286.43674 L 495.44032,286.5073 L 495.40328,286.55317 L 495.32389,286.63433 L 495.11749,286.66432 L 495.00106,286.72431 L 494.97282,286.77545 L 494.94988,286.91306 L 494.99223,287.03303 L 495.01692,287.09302 L 495.05574,287.13182 L 495.16335,287.18477 L 495.67496,287.36119 L 495.96607,287.20417 L 496.40183,287.9663 L 496.5306,288.4885 L 496.63822,288.78664 L 497.11103,289.84694 L 497.20982,289.99513 L 497.52385,290.38324 L 497.86257,290.88074 L 497.88197,290.94778 L 497.88197,291.03246 L 497.77612,291.24945 L 497.81671,291.38001 L 497.88551,291.48057 L 498.00372,291.60583 L 498.12367,291.72579 L 498.17837,291.75225 L 498.23128,291.78048 L 498.52591,291.88456 L 498.75878,292.14391 L 498.88932,292.33797 L 499.01635,292.54085 L 499.06576,292.65376 L 499.05694,292.71197 L 498.96872,292.66258 L 498.7482,292.47734 L 498.7182,292.42088 L 498.65293,292.33797 L 498.68998,292.42088 L 498.76232,292.53204 L 499.034,292.73492 L 499.20512,292.85488 L 499.25452,292.88664 L 499.64088,293.06834 L 499.69381,293.09306 L 499.74144,293.10363 L 499.82083,293.09833 L 500.07664,293.00659 L 500.15251,293.08423 L 500.23718,293.16539 L 500.43478,293.29592 L 500.81407,293.48293 L 500.88464,293.50411 L 500.96403,293.49529 L 501.15986,293.54291 L 501.75968,293.92046 L 502.01019,294.0757 L 502.05077,294.11982 L 502.52534,294.63143 L 502.67,294.81315 L 502.80231,295.00544 L 503.49036,296.03572 L 503.53975,296.14511 L 503.79909,296.77845 L 503.83438,296.9037 L 503.86613,297.50883 L 504.21368,298.73846 L 504.23309,298.7967 L 504.32482,298.86902 L 504.38128,298.89019 L 504.44303,298.91313 L 504.51536,298.90077 L 505.63386,298.712 L 506.03609,297.37122 L 506.0502,297.30593 L 505.95847,296.6232 L 505.63386,295.06718 L 505.47861,294.58026 L 505.42921,294.38796 L 505.3851,294.09688 L 505.38333,294.01572 L 505.40098,293.79697 L 505.85791,291.38883 L 505.95141,290.9813 L 506.30778,290.12214 L 506.43833,289.8434 L 506.86349,289.13597 L 507.1493,288.92602 L 507.2675,288.8819 L 507.36452,288.82017 L 507.44392,288.72137 L 507.72266,288.34558 L 508.43716,286.56728 L 509.1005,284.19974 L 509.65975,281.21648 L 509.73208,280.31145 L 509.73208,280.14915 L 509.72149,280.0574 L 509.8097,279.28293 L 509.79912,276.68075 L 510.01965,274.24437 L 510.00553,273.24232 L 509.95083,272.64074 L 509.86616,272.56134 L 509.7709,272.40786 L 509.74795,272.35316 L 509.73561,272.11501 L 509.75148,272.04972 L 510.10785,270.79185 L 510.2384,270.5237 L 510.81001,269.43695 L 510.88234,269.34698 L 511.07287,269.20231 L 510.89821,268.96768 L 510.86822,268.91475 L 510.85764,268.83535 L 510.87881,267.88094 L 510.89468,267.72568 L 511.01466,267.44165 L 511.07463,267.34285 L 511.19812,267.22464 L 511.3428,267.10821 L 511.42217,267.02882 L 511.44159,266.33549 L 511.37984,265.97914 L 511.28104,265.65452 L 511.18402,265.49926 L 511.00583,265.43223 L 510.92114,265.34754 L 510.88939,265.30344 L 510.83471,265.18701 L 510.43599,263.95206 L 510.39541,263.81799 L 510.39365,263.41576 L 510.38483,262.87414 L 510.39365,262.72242 L 510.406,262.6589 L 510.47304,262.47191 L 510.87174,261.6498 L 510.9035,261.59509 L 511.18402,261.2158 L 511.50156,260.96175 L 511.71681,260.81886 L 511.81031,260.77653 L 511.94968,260.66538 L 511.99378,260.62478 L 512.02554,260.57539 L 512.01848,260.49425 L 511.97791,260.45543 z"/></g></svg>
+          <div>
+            <h1>二二八事件網</h1>
+            <p>詳細介紹｜依時間軸分段閱讀</p>
+          </div>
+        </div>
+        <nav aria-label="網站導覽">
+          <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="#" aria-current="page">詳細介紹</a></li>
+            <li><a href="people.html">重要人物</a></li>
+            <li><a href="documents.html">相關文件</a></li>
+            <li><a href="videos.html">延伸閱讀</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="card page-hero" aria-label="詳細介紹導讀">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> Longform / Feature</div>
+        <h2>詳細介紹</h2>
+        <p>
+          本頁內容依照首頁時間軸的大標題逐段撰寫，每段以「時間點＋事件主題」作為章節，採用長文形式補充背景脈絡、事件推進、
+          行動者與社會氛圍、以及其後延伸到白色恐怖、平反調查與轉型正義的發展。為方便閱讀，左側提供章節目錄，可快速跳轉。
+        </p>
+        <div class="filters" aria-label="快速搜尋">
+          <label for="detailSearch">快速搜尋（輸入關鍵字或人名）</label>
+          <input id="detailSearch" type="search" placeholder="例如：陳儀、清鄉、白色恐怖、轉型正義…" autocomplete="off" />
+          <p class="hint">提示：搜尋會自動展開包含關鍵字的章節，並隱藏不相符的章節。</p>
+        </div>
+      </section>
+
+      <div class="detail-grid">
+        <aside class="card toc" aria-label="章節目錄">
+          <h3>目錄</h3>
+          <ol>
+            <li><a href="#sec-prelude">1945-1947｜背景</a></li>
+            <li><a href="#sec-19470227">1947/02/27｜導火線</a></li>
+            <li><a href="#sec-19470228">1947/02/28｜擴大</a></li>
+            <li><a href="#sec-19470303">1947/03/03｜協商</a></li>
+            <li><a href="#sec-19470310">1947/03/10｜鎮壓</a></li>
+            <li><a href="#sec-19470314">1947/03/14-03/16｜清剿</a></li>
+            <li><a href="#sec-19470516">1947/05/16｜處置</a></li>
+            <li><a href="#sec-1949">1949-1992｜白色恐怖</a></li>
+            <li><a href="#sec-1980s">1980年代後期｜平反運動</a></li>
+            <li><a href="#sec-199202">1992/02｜平反調查</a></li>
+            <li><a href="#sec-2017">2017-2018｜轉型正義</a></li>
+          </ol>
+          <small class="small">
+            提醒：本頁每個章節為長文段落（字數較多），建議以目錄分段閱讀；若只想快速瀏覽，可回到首頁查看只保留大標題的時間軸。
+          </small>
+        </aside>
+
+        <article aria-label="詳細介紹正文">
+          <details class="card section" id="sec-prelude" data-search="戰後接收 施政失序 行政長官公署 陳儀 柯遠芬 蔣渭川 王添燈 通貨膨脹 通膨 專賣制度 米荒 糧食 語言 族群 背景 1945 1946 1947">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1945-1947</span>
+                <span class="pill">背景</span>
+                <span class="pill">戰後接收</span>
+                <a class="pill" href="people.html#p-sec-prelude-u9673u5100">陳儀</a>
+                <a class="pill" href="people.html#p-sec-prelude-u67efu9060u82ac">柯遠芬</a>
+                <a class="pill" href="people.html#p-sec-prelude-u8523u6e2du5ddd">蔣渭川</a>
+                <a class="pill" href="people.html#p-sec-prelude-u738bu6dfbu71c8">王添燈</a>
+              </div>
+              <h3>戰後接收與施政失序，社會不滿累積</h3>
+              <span class="section-summary">戰後接收、通膨與施政失序交織，專賣緝私與溝通落差加深不信任，在街頭生計衝突中累積爆點。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                1945年8月，日本宣布無條件投降，臺灣長達五十年的日本殖民統治宣告終結。同年10月25日，中華民國政府代表陳儀在臺北公會堂接受日本駐臺軍隊投降，臺灣正式回歸中華民國版圖。對多數臺灣民眾而言，這是一個充滿期待的時刻：人們期望終結殖民壓迫，迎來同胞治理的新局面，渴望政治地位的提升、語言文化的解放，以及生活的改善。然而接下來的一年多時間，這份期待逐漸被失落與憤怒所取代。
+              </p>
+              <p class="subhead">行政長官公署的集權體制</p>
+              <p>
+                國民政府在制度設計上，選擇為臺灣設立有別於其他省份的「臺灣省行政長官公署」。行政長官陳儀集行政、立法、司法與軍事大權於一身，同時兼任臺灣省警備總司令，形成高度集中的一元統治。此一體制在設計上即排除了地方民意的實質參與。臺灣本省人雖在日治時期已具備相當行政與專業能力，卻大多被排除在政府要職之外，重要職缺幾乎清一色由自大陸來臺的外省籍官員出任。省參議會與縣市參議會雖名義上存在，但在制度上並無實質影響政策的空間，本省籍精英的政治訴求幾乎無從被正式回應。
+              </p>
+              <p class="subhead">通貨膨脹與經濟惡化</p>
+              <p>
+                戰後臺灣的經濟面臨多重打擊。日治末期的戰爭動員已嚴重消耗物資，接收過程又帶來進一步的混亂。國民政府延續並強化統制經濟框架，由公營事業壟斷糖、樟腦、菸、酒等重要物資的生產與銷售，民間商業活動受到嚴格管制。
+              </p>
+              <p>
+                通貨膨脹是衝擊民眾生活最直接的問題。政府以遠低於市場的匯率收兌臺幣與中國法幣，實質上將臺灣的物資財富轉移至大陸。加以中國大陸內戰持續消耗、法幣不斷貶值，連帶拉動臺灣物價飆漲。1945年至1947年間，各類民生物資的價格往往以數倍乃至數十倍計漲，薪資購買力大幅萎縮，尋常百姓日常開銷愈來愈難以維持。
+              </p>
+              <p class="subhead">米荒與糧食管制的失策</p>
+              <p>
+                糧食問題是民怨的另一核心。行政長官公署延續日治時期的糧食管制，但執行嚴重失當：政府以遠低於市場行情的價格強制向農民徵購稻米，農民為求生計寧可滯納或轉入黑市，官方收購量遠不如預期。1946年底，公署宣布停止徵購配給，卻同時封存官方糧倉，市面米糧供給急劇減少，米價在短期內暴漲，爆發嚴重米荒。糧食短缺的直接受害者是城市中的勞工與低收入家庭，積累的憤怒自然轉向施政者。
+              </p>
+              <p class="subhead">專賣制度與緝私衝突</p>
+              <p>
+                臺灣省專賣局接收並延續日治時期的公賣制度，繼續由政府壟斷菸、酒、樟腦等物資，並大力取締私菸、私酒。然而在物資匱乏、物價高漲的環境下，許多底層民眾正是靠販售這類商品維持生計。對他們而言，專賣制度既奪走生存空間，查緝人員的粗暴執法更形同雪上加霜。專賣局查緝員素質參差不齊，強搶財物、打人傷人的事件時有發生，卻鮮少受到法律追究，令民眾普遍感到「有法律也沒有公道」。
+              </p>
+              <p class="subhead">軍紀敗壞與社會治安惡化</p>
+              <p>
+                隨接收部隊來臺的軍事人員，軍紀問題十分嚴重。士兵在街頭搶劫、闖入民宅、騷擾婦女、恐嚇商販的事件屢見不鮮；官員貪腐受賄、私吞日本人留下的公產，在各地流傳。原本對「祖國」回歸抱有熱切期待的臺灣民眾，在現實中看到的是比日治末期更糟糕的社會秩序，幻滅感與憤怒迅速蔓延。
+              </p>
+              <p class="subhead">語言隔閡與族群歧視</p>
+              <p>
+                語言障礙加劇了官民間的隔閡。大多數來臺官員不懂臺語與日語，而大多數臺灣人在戰後初期尚不通北京話，溝通不暢導致行政效率低落、申訴無門。部分官方論述將在日治時期受日語教育的臺灣人貶稱為「奴化」，要求進行去日本化的「再中國化」，此種論調令許多臺灣知識分子深感屈辱，加深了族群間的相互猜疑。公務員職缺、公營企業要職、警察與軍隊指揮層級，亦幾乎清一色由外省籍人士把持，本省籍精英在新體制中僅處於陪襯位置，長期的排擠感不斷發酵。
+              </p>
+              <p class="subhead">積怨到達臨界點</p>
+              <p>
+                到1947年初，物價飛漲、失業惡化、官員貪腐、執法粗暴、族群歧視、申訴無門等矛盾，已在臺灣社會深層積累成巨大壓力。這並非一夕形成，而是接收以來長達一年多的系統性失序所逐步堆疊的結果。民間對新政府的期待與幻滅之間的落差，愈來愈難以壓抑。社會的情緒底線一再被突破，任何一件具象的衝突事件，都可能成為引爆全島憤慨的導火線。1947年2月27日夜間，臺北圓環的一次緝菸行動，正是這根導火線的落點。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470227" data-search="圓環緝菸事件 林江邁 傅學通 陳文溪 天馬茶房 私菸 查緝員 導火線 2月27日 1947 槍擊 群眾 衝突 永樂町">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/02/27</span>
+                <span class="pill">導火線</span>
+                <span class="pill">緝私衝突</span>
+                <a class="pill" href="people.html#p-sec-19470227-u694au5b50u624d">楊子才</a>
+                <a class="pill" href="people.html#p-sec-19470227-u5085u5b78u901a">傅學通</a>
+                <a class="pill" href="people.html#p-sec-19470227-u6797u6c5fu9081">林江邁</a>
+                <a class="pill" href="people.html#p-sec-19470227-u9673u6587u6eaa">陳文溪</a>
+              </div>
+              <h3>臺北緝私衝突引發抗議與群眾聚集</h3>
+              <span class="section-summary">緝私衝突與槍響引爆民怨，街頭聚集從個案轉為對治理不公、申訴無門的集體抗議，對話機制迅速失效。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                1947年2月27日傍晚，一起發生在臺北圓環附近的取締私菸行動，成為二二八事件的直接導火線。這個事件本身在規模上並不特殊，但它精準地落在一個積怨已深的社會的最脆弱的裂縫上：執法者的暴力、庶民的生計、申訴無門的無力感，以及群眾的憤怒——全部在同一個夜晚、同一條街道上匯聚。
+              </p>
+              <p class="subhead">圓環緝菸事件的經過</p>
+              <p>
+                當日上午，臺北分局接獲密報，專賣局派出傅學通等六名查緝員前往淡水港追查走私，但收獲甚微。傍晚查緝員回到臺北，轉往太平町圓環一帶繼續緝查。附近私菸攤販聞訊四散，查緝員最終在天馬茶房廊下攔下一名逃避不及的販菸婦女——四十歲的寡婦林江邁。
+              </p>
+              <p>
+                查緝員依規定沒收林江邁的全部香菸及現款。林江邁一家三口生計全賴此攤，她跪地哀求至少歸還合法部分，圍觀路人也紛紛幫忙求情。查緝員葉得根不耐煩，隨手以配備手槍的槍托猛擊林江邁頭部，導致她頭破血流、昏倒在地。目睹此景的路人群情激憤，立即包圍查緝員。查緝員倉皇棄車逃竄，傅學通在永樂町遭群眾追及抱住，情急之下向人群開槍示警，子彈擊中正在自家門口圍觀的市民陳文溪胸口，翌日不治身亡。
+              </p>
+              <p class="subhead">群眾的憤怒與包圍警察局</p>
+              <p>
+                陳文溪中彈的消息迅速傳開，憤怒的民眾將查緝員遺留的貨車及緝獲的香菸拖至圓環焚燒洩憤。隨後大批群眾轉往查緝員躲藏的永樂町派出所，再轉往警察總局，要求交出兇手、就地槍斃。警察局始終不肯交人，群眾徹夜包圍。翌日又轉往憲兵隊，持續到深夜，始終沒有得到正式回應。
+              </p>
+              <p>
+                這場包圍本身已具有深刻的象徵意義：人民帶著受傷的婦女、死去的路人，向政府機關要求公道，卻連最基本的正式回應都求不到。對那個時代已深感不滿的臺灣民眾來說，這不只是一起打人的事件，而是長期以來執法任意、申訴無門、官員豁免於法律之上的縮影。
+              </p>
+              <p class="subhead">消息傳播與全市的憤怒</p>
+              <p>
+                當晚的衝突透過口耳相傳，迅速在整個臺北蔓延。無論是親眼目睹者、從旁聽說者，還是第二天才輾轉得知的人，都在各自的理解框架下重述這件事。林江邁被打傷、陳文溪中彈身亡、查緝員逃入官署受保護、警察局不肯交人——這些事實在一夜之間化為一個簡單清晰的訊息：「官府打死人，卻毫無代價。」
+              </p>
+              <p>
+                這個訊息之所以有如此強大的穿透力，是因為它並非全然陌生。許多臺北市民曾親身遭遇過查緝員的粗暴、官員的傲慢、或物價飛漲帶來的生活困窘。林江邁的遭遇不只是她一個人的悲劇，而是所有在艱難時代中掙扎求生、卻得不到公平對待的人的集體傷口。憤怒的群眾走向警察局，走向憲兵隊，不只是為林江邁討公道，更是為自己長期積壓的委屈找到一個出口。
+              </p>
+              <p class="subhead">政府的應對與危機的升高</p>
+              <p>
+                面對持續聚集的群眾，當局的應對方式是保護加害者、拒絕交涉。警察局以「保護人身安全」為由拒不交出查緝員，轉而將其藏匿於憲兵隊。陳儀在事發後既未公開說明，也未承諾調查，更未對林江邁或陳文溪家屬給予正式撫卹。事後行政長官公署僅給林江邁五十七元醫藥補助，而她的醫療費用高達八百元。
+              </p>
+              <p>
+                這種回應方式——或者說回應的缺席——進一步激化了群眾的憤怒。政府的沉默被解讀為傲慢，被解讀為「你們沒有資格被回應」。正是在這種氛圍下，第二天（2月28日）一早，臺北各地商家紛紛拉下鐵捲門，工人罷工，學生罷課，民眾走上街頭，事件迅速從一個街頭衝突演變成席捲全島的社會危機。
+              </p>
+              <p>
+                2月27日的緝菸事件之所以成為「導火線」，不在於它本身多麼嚴重，而在於它精準地點燃了一個早已高度易燃的社會。在接收以來長達一年多積累的制度性失序、經濟苦難與族群怨憤之上，這一刀雖小，卻劃破了那層勉強維持表面平靜的薄膜。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470228" data-search="罷市 請願 公署開槍 廣播電台 戒嚴 陳儀 周延壽 王添燈 2月28日 1947 機槍 長官公署 全島 擴大 密電 請兵">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/02/28</span>
+                <span class="pill">擴大</span>
+                <span class="pill">罷市請願</span>
+                <a class="pill" href="people.html#p-sec-19470228-u9673u5100">陳儀</a>
+                <a class="pill" href="people.html#p-sec-19470228-u5468u5ef6u58fd">周延壽</a>
+                <a class="pill" href="people.html#p-sec-19470228-u738bu6dfbu71c8">王添燈</a>
+              </div>
+              <h3>罷市與請願使情勢升高，衝突擴大</h3>
+              <span class="section-summary">罷市、請願與消息傳播加速連鎖反應，群眾在公共空間互相確認，期待與恐懼並存，局勢向全島擴散升高。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                2月27日夜間的圓環緝菸事件，讓臺北各地民眾徹夜難眠。翌日清晨，整個城市以一種沉默而有力的方式做出回應：商家拉下鐵捲門，工人拒絕上工，學生罷課，市場停市。這場2月28日的全市罷市，標誌著事件性質的根本轉變——從個別的衝突投訴，升級為全城性的政治抗議。
+              </p>
+              <p class="subhead">罷市與請願的早晨</p>
+              <p>
+                當天上午，臺北市幾乎全面停市。民眾自發聚集，在各主要街頭討論昨夜的事，憤怒情緒在人群之間快速蔓延。臺北市參議會議長周延壽等人透過廣播呼籲民眾冷靜，表示將代表交涉。然而民間的憤怒已不止於昨夜一事，而是對整個行政體系長期積累的不滿的集體爆發。
+              </p>
+              <p>
+                午後，數百名民眾手持旗幟走向位於中山南路的臺灣省行政長官公署，要求陳儀接見，懲辦昨夜打人開槍的查緝員，並要求廢除專賣局。群眾手無寸鐵，只是走到公署門前。
+              </p>
+              <p class="subhead">長官公署開槍與戒嚴宣布</p>
+              <p>
+                公署的反應是開槍。駐守公署二樓的衛兵以機槍對廣場掃射，現場群眾四散奔逃，當場至少兩人中彈死亡，多人受傷。這一刻，是二二八事件從個人遭遇轉為官民對立的決定性節點：手無寸鐵的請願群眾遭到國家武力的直接射殺。
+              </p>
+              <p>
+                下午三時，陳儀宣布全市戒嚴。臺北城陷入驚恐與憤怒交織的氛圍之中。傍晚，陳儀透過廣播稱「戒嚴是為了保護人民」，承諾成立調查委員會。但就在同一時間，他已以「暴民作亂」為由，秘密向南京發出請求派兵增援的電報。
+              </p>
+              <p class="subhead">廣播電台與消息擴散全島</p>
+              <p>
+                2月28日下午，憤怒的民眾衝入臺灣廣播電台，向全島播出臺北發生的事情：請願群眾遭到機槍掃射，民眾死傷，長官公署拒絕對話。這是許多臺灣各地民眾第一次聽到臺北真實情況的管道。廣播聲傳遍南部、中部、東部，各地積累的怨氣迅速找到了共鳴點。
+              </p>
+              <p>
+                消息傳開後，全島各地接連出現自發性抗議：基隆、新竹、臺中、嘉義、臺南、高雄等地相繼爆發罷工、罷市與示威。各地民眾佔領官署、武裝自衛、驅逐外省籍官員的事件陸續出現。事件在短短數日內從臺北的個別衝突，演變為牽動全島的政治危機。
+              </p>
+              <p class="subhead">社會秩序的重組與陳儀的兩面手法</p>
+              <p>
+                在混亂中，臺灣社會也開始嘗試自我組織。省參議員、市參議員、地方仕紳與各界代表聚集，試圖扮演斡旋者的角色，在官民之間建立溝通管道。3月1日，「緝菸血案調查委員會」在中山堂成立，隨後擴大改組為「二二八事件處理委員會」，以制度化方式匯集民間訴求，向陳儀進行交涉。
+              </p>
+              <p>
+                陳儀在公開場合持續表示願意接受協商，在廣播中稱「十二萬分的誠意」，3月2日宣布解除戒嚴，表示願意設立官民共同調查委員會。然而這些都只是拖延戰術。陳儀在向南京請兵的密電中，措辭緊迫，指臺灣出現「武裝暴動」，要求立即調遣兩個師的正規軍來台鎮壓，援軍預計數日內可抵。他的「誠意」是為等待軍隊抵達而設計的時間緩衝。
+              </p>
+              <p>
+                2月28日的臺灣，是一個社會對長期積壓的不公集體提出質詢的日子。罷市是告訴政府「我們不願意在這樣的統治下繼續正常運作」；請願是告訴政府「我們願意透過對話解決，但你必須正視我們」；廣播是告訴全島「你不是一個人，臺北發生的事也是你的事」。這三件事同時發生，迅速把一個城市的抗議變成一場全島性的政治運動。而陳儀選擇以槍聲回應請願，再以謊言換取時間等待援軍，從根本上封閉了和平解決的可能。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470303" data-search="處理委員會 三十二條 三十二條處理大綱 王添燈 蔣渭川 陳儀 請兵密電 改革 協商 訴求 3月 1947 周延壽 廣播">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/03</span>
+                <span class="pill">協商</span>
+                <span class="pill">處理委員會</span>
+                <a class="pill" href="people.html#p-sec-19470303-u9673u5100">陳儀</a>
+                <a class="pill" href="people.html#p-sec-19470303-u8523u6e2du5ddd">蔣渭川</a>
+                <a class="pill" href="people.html#p-sec-19470303-u738bu6dfbu71c8">王添燈</a>
+              </div>
+              <h3>成立處理委員會，提出改革與善後訴求</h3>
+              <span class="section-summary">處理委員會提出改革與善後訴求，協商在期待、猜疑與時間壓力下反覆拉扯，成果難落地，衝突持續醞釀。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                2月28日之後，事件迅速從街頭衝突蔓延為全島性的政治對抗。在局勢動盪中，臺灣社會各界試圖以制度化方式尋找出路——「二二八事件處理委員會」就是在這個背景下應運而生的協商機制。它代表臺灣社會在危機時刻嘗試以政治談判取代街頭衝突的努力，也成為一面映照出那個時代權力結構的鏡子。
+              </p>
+              <p class="subhead">處理委員會的成立</p>
+              <p>
+                3月1日，周延壽、王添燈、黃朝琴等省參議員與各界代表，先在臺北中山堂召開會議，成立「緝菸血案調查委員會」，隨後於3月3日擴大改組為「二二八事件處理委員會」（簡稱處委會）。委員會廣納省參議員、市參議員、國大代表及各界人士，以制度化的形式匯集民間訴求，並代表民間與陳儀進行交涉。周延壽擔任首任主席。
+              </p>
+              <p>
+                處委會初期提出五項請求：查明此次傷亡真相、撫卹死傷者、釋放被捕民眾、不追究示威者、由官民雙方共同組成調查委員會。陳儀表面上點頭接受，稱「很好，我們來做」。但與此同時，他已在3月2日向南京發出急電，以「武裝暴動」為由請求派遣援軍。
+              </p>
+              <p class="subhead">三十二條處理大綱</p>
+              <p>
+                隨著協商進入實質階段，處委會在3月7日提出了最重要的政治文件——《三十二條處理大綱》，由台灣省參議員、處委會宣傳負責人王添燈主導起草。大綱涵蓋政治、軍事、行政、司法各面向的改革訴求，核心包括：各縣市長由民選產生、臺籍官員占各機關職位過半、廢除專賣制度、撤廢行政長官公署改制省政府、保障集會結社自由、以及廢除軍事法庭等。
+              </p>
+              <p>
+                這份大綱是當時臺灣社會改革訴求的最完整表述，反映出民間不只要求懲辦個別官員，更要求結構性的制度改革。同日下午，王添燈等人將大綱正式呈交陳儀，卻遭陳儀斷然拒絕。當晚，王添燈透過臺灣廣播電台向全島宣讀三十二條全文及陳儀拒絕的情形，讓全島民眾知道談判的真實樣貌。
+              </p>
+              <p class="subhead">陳儀的兩面手法</p>
+              <p>
+                處委會與陳儀交涉的整個過程，是一場不對等的騙局。陳儀在公開場合持續展現「願意溝通」的姿態，多次接見代表，說「會認真研究」，甚至在3月6日廣播中宣稱處委會是「合法組織」。然而他在3月2日已向南京急電請兵，3月6日再度發電，確認整編第二十一師已從上海出發，憲兵第四團從福州啟程，援軍最遲數日內抵台。陳儀所做的一切協商，都只是為了爭取時間，等待軍隊登陸。
+              </p>
+              <p>
+                陳儀請兵的密電在事後被公開，成為他兩面手法的確鑿證據。這份密電也揭示了他從事件初期便已決定以武力平息，而非透過政治手段解決問題。處委會的所有代表，在毫不知情的情況下，被陳儀利用為拖延時間的工具。
+              </p>
+              <p class="subhead">委員會內部的分歧</p>
+              <p>
+                處委會內部並非鐵板一塊。以王添燈為代表的強硬派主張把三十二條訴求廣播全島、向全臺人民公開，藉社會壓力迫使政府讓步；而以蔣渭川為代表的溫和派則擔心激怒陳儀加速鎮壓，希望保留私下談判空間，主張另提較溫和的九項省政改革綱要。兩種路線的分歧，折射出當時社會在面對絕境時的不同判斷：公開透明的訴求能動員更廣泛的民意，卻也更容易被當成「挑釁」的理由；溫和委婉的路線看似保留空間，卻可能讓所有訴求都在陳儀的虛應故事中被逐一消化。
+              </p>
+              <p>
+                最終，王添燈選擇廣播，讓三十二條與陳儀拒絕的事實傳遍全島。3月8日，援軍在基隆登陸，陳儀立即宣布處委會為「叛亂組織」，通令解散，並將所有出面交涉的代表列為「奸匪首謀」。那些在前幾天以為自己在進行合法談判的民間代表，才猛然意識到：他們從一開始就走進了一個被設計好的陷阱。王添燈於3月11日凌晨遭憲兵帶離住所，此後下落不明，據說疑遭汽油焚身，享年46歲。
+              </p>
+              <p>
+                處委會的歷史意義，不在於它成功或失敗，而在於它呈現了一個社會曾經試圖以政治方式解決政治危機的努力。那些站出來的人，面對的是一個從未打算真正協商的權力。他們的訴求被拒絕，他們的生命也在隨後的清鄉中被奪走或摧毀。但他們所留下的三十二條大綱，在幾十年後成為研究臺灣民主運動的重要文獻，也成為後來轉型正義工程的重要參照。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470310" data-search="軍隊進駐 鎮壓 劉雨卿 整編二十一師 彭孟緝 高雄 基隆 謝雪紅 二七部隊 烏牛欄 蔣中正 3月8日 1947 援軍登陸">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/10</span>
+                <span class="pill">鎮壓</span>
+                <span class="pill">軍隊進駐</span>
+                <a class="pill" href="people.html#p-sec-19470310-u8523u4e2du6b63">蔣中正</a>
+                <a class="pill" href="people.html#p-sec-19470310-u5289u96e8u537f">劉雨卿</a>
+                <a class="pill" href="people.html#p-sec-19470310-u8b1du96eau7d05">謝雪紅</a>
+              </div>
+              <h3>軍隊進駐與全面鎮壓，逮捕與傷亡增加</h3>
+              <span class="section-summary">軍隊進駐後鎮壓升高，逮捕、傷亡與恐懼擴散，公共空間不再安全，社會互信迅速崩解，報復循環成形。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                1947年3月8日，整編第二十一師主力部隊由基隆港登陸，憲兵第四團亦同日從福州抵台。隨著援軍踏上臺灣土地，陳儀立即翻臉：宣布處理委員會為「非法組織」，通令解散，並向全島廣播稱「臺灣發生武裝叛亂」，命令軍隊全面鎮壓。那些相信還在協商的民間代表，頓時成為被追緝的對象。
+              </p>
+              <p class="subhead">基隆與北部的鎮壓</p>
+              <p>
+                整編第二十一師師長劉雨卿率部自基隆登陸，部隊上岸後隨即向基隆港口周邊展開掃蕩。碼頭工人、在場民眾皆遭波及，士兵對港口一帶大規模開槍射擊，造成嚴重傷亡。部分受難者被捕後遭以鐵絲穿掌、多人串成一列投入海中，基隆港一帶出現大量浮屍。隨後部隊向南挺進，自桃園、新竹一路掃蕩，各地出現無差別逮捕、路邊就地槍決的情形。
+              </p>
+              <p>
+                在臺北，軍隊進入後立即實施宵禁，對各路口展開封鎖。部隊在街頭隨意開槍，外出市民不分身份遭到射殺。處委會成員的名單已落入軍方手中，許多代表在毫無預警的情況下被帶走，從此音訊全無。
+              </p>
+              <p class="subhead">高雄的屠殺</p>
+              <p>
+                在南部，高雄要塞司令彭孟緝從3月6日便已搶先展開鎮壓，未等援軍登陸即自行行動。當日，高雄二二八處理委員會代表前往要塞司令部談判，包括高雄市長黃仲圖、市議長彭清靠等人被彭孟緝當場逮捕。隨即，彭孟緝下令武裝部隊兵分三路進攻高雄車站、高雄一中及市政府，對市區展開大規模屠殺。傷亡人數至今難以確切統計，但高雄在此役中喪失大批本省人士。彭孟緝因此役「功績」，事後被蔣介石記大功二次、兩個月後升任臺灣警備總司令。
+              </p>
+              <p class="subhead">中部的武裝抵抗：二七部隊</p>
+              <p>
+                臺灣並非沒有武裝抵抗。3月6日，臺灣共產黨創黨人謝雪紅在臺中糾集青年學生約四百餘人，組成「二七部隊」，成為二二八期間最具組織規模的武裝抵抗力量。二七部隊一度佔領臺中市區，控制部分官署。援軍登陸後，二七部隊向南投、埔里一帶轉進。3月14日至16日，警備隊長黃金島率三十餘名學生軍在南投烏牛欄吊橋浴血抵抗，彈盡後各自撤散。謝雪紅率部分核心黨員輾轉逃往香港。二七部隊雖終究不敵正規軍，卻留下臺灣人曾以武裝捍衛家園的歷史記錄。
+              </p>
+              <p class="subhead">全面控制的確立</p>
+              <p>
+                3月8日至3月中旬，軍隊迅速控制全島各主要城市。各地抵抗零星且力量懸殊，在正規軍面前無法形成有效阻擋。嘉義、臺南、屏東等地相繼宣告「平定」。軍事機器的展開伴隨著系統性的逮捕——知識分子、地方仕紳、參議員、記者、醫師、律師、教師，凡是曾在處委會或各地協商中出現過的人，都在軍方的搜查名單之上。許多人在家門前就被帶走，再未回家。
+              </p>
+              <p>
+                陳儀在3月10日廣播中宣稱「暴動已全面平息，秩序恢復」，但實際上清鄉行動才正要展開。軍隊帶來的「秩序」，建立在恐懼與沉默之上：人們不敢出門，不敢說話，不敢詢問被帶走的親人下落。那種籠罩全島的恐懼，在接下來的數十年間一直存在，並以更制度化的形式延續為白色恐怖。
+              </p>
+              <p>
+                這場鎮壓最深遠的後果，不只是那些在槍口下倒下的生命，而是它所傳遞給整個臺灣社會的訊息：發聲是危險的，抵抗是無效的，國家暴力沒有邊界。這個訊息在接下來的幾十年裡成為許多家庭不說卻都知道的生存法則，也成為後來民主化運動所必須費力突破的厚重恐懼之牆。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470314" data-search="清鄉 柯遠芬 陳澄波 湯德章 嘉義 台南 槍決 傷亡 菁英斷層 18000 28000 逮捕 搜捕 受難者 3月 1947">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/14-03/16</span>
+                <span class="pill">清剿</span>
+                <span class="pill">全臺擴大</span>
+                <a class="pill" href="people.html#p-sec-19470314-u67efu9060u82ac">柯遠芬</a>
+                <a class="pill" href="people.html#p-sec-19470314-u5f6du5b5fu7ddd">彭孟緝</a>
+                <a class="pill" href="people.html#p-sec-19470314-u9673u6f84u6ce2">陳澄波</a>
+                <a class="pill" href="people.html#p-sec-19470314-u6e6fu5fb7u7ae0">湯德章</a>
+              </div>
+              <h3>全臺清剿與擴大逮捕，事件進入高壓控制</h3>
+              <span class="section-summary">清剿擴大至全臺，搜捕與噤聲交織，檔案封存、證言中斷與告密氛圍，使高壓成為日常，歷史被迫碎片拼接。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                軍隊登陸之後，鎮壓行動並未隨著各地抵抗瓦解而停止，反而進入一個更系統化的階段——「清鄉」。清鄉是軍事鎮壓的延伸，是國家機器以「肅清叛亂分子」為名，對臺灣社會展開的大規模搜捕行動。這個階段所造成的傷亡與創傷，在許多地區比軍隊登陸時還要深重。
+              </p>
+              <p class="subhead">清鄉制度的建立</p>
+              <p>
+                3月9日起，陳儀正式頒布清鄉命令，由臺灣省警備總司令部參謀長柯遠芬主導執行，在全臺各地依序展開。清鄉以高雄地區（3月7日起）為最早，隨後擴及屏東、基隆、宜蘭、臺北等地，持續至5月間才大體完成。
+              </p>
+              <p>
+                清鄉的邏輯以「預防性清除」為核心：不只針對事件中有具體行動的人，更要清除「可能的威脅」。清查對象涵蓋地方仕紳、知識分子、參議員、律師、醫師、教師、記者，乃至曾在處委會出現或被認為有「影響力」的任何人。名單來源混雜，包括軍方情報、官員舉報，乃至鄰里間的告密，導致大量無辜者遭到牽連。
+              </p>
+              <p class="subhead">柯遠芬與「寧可枉殺九十九個」</p>
+              <p>
+                在清鄉會議中，柯遠芬明確表示清查的基準：「寧可枉殺九十九個，只要殺死一個真的就可以。」這句話後來被白崇禧在回憶錄中記載，成為清鄉暴行最廣為人知的歷史佐證。以這種邏輯執行的清查，必然造成大規模錯殺——被告密、被誤認、被仇家藉機陷害的平民，在缺乏任何正式調查程序的情況下遭到逮捕，繼而失蹤或被就地處決。
+              </p>
+              <p>
+                柯遠芬本人也被記錄以悔過書勒索林家花園主人鉅款的行為。白崇禧巡台後，建議將其撤職處分，理由是「處事操切、濫用職權、賦性剛愎、不知悛改」。然而柯遠芬最終逃過一切追究，事後甚至撰文為自身行為辯護。
+              </p>
+              <p class="subhead">受難的菁英：陳澄波與湯德章</p>
+              <p>
+                清鄉期間最令人扼腕的事件之一，是嘉義出身的西畫大師陳澄波的遭難。陳澄波是1926年以《嘉義街外》入選日本帝展的第一位臺灣人畫家，同時也是嘉義市二二八處理委員會委員。他以和平使者身分前往嘉義機場與國軍協商，甫抵達即遭拘押，在嚴刑逼供後，於3月25日被五花大綁推上軍車遊街，在嘉義火車站前廣場公開槍決，未經任何審判程序，享年52歲。其妻張捷秘密保存其畫作，使作品得以流傳後世。
+              </p>
+              <p>
+                在臺南，律師湯德章是日台混血，長期為無力負擔訴訟的臺灣人義務辯護。二二八期間，他擔任處委會臺南分會治安組組長，在軍隊進城前夕，將手中一份臺南各界人士與成功大學學生的聯絡名單付之一炬，以防落入軍方手中。這一選擇救了許多人，卻讓自己無處可逃。他隨後被捕，在未經正式審判的情況下，於3月13日被押至臺南民生綠園（今湯德章紀念公園）公開槍決，享年40歲。
+              </p>
+              <p class="subhead">菁英的消失與社會的創傷</p>
+              <p>
+                陳澄波與湯德章只是清鄉中喪失生命的數千名受害者的縮影。醫師、律師、教師、參議員、記者、商人——這些構成戰後臺灣地方社會骨幹的知識精英，在清鄉中大批消失。根據研究，事件前後全臺地方精英約有八成從政治場域消失，形成臺灣歷史上空前的菁英斷層。這個斷層不只是個人的喪失，更是臺灣本土公民社會的基礎性破壞，影響延續數十年。
+              </p>
+              <p>
+                依行政院《二二八事件研究報告》引述人口學者陳寬政的推估，事件直接與間接造成的死亡人數約在18,000至28,000人之間。這個數字涵蓋鎮壓期間的直接殺害、清鄉中的逮捕處決，以及後續追緝中的失蹤者。龐大的死亡數字背後，是一個個被奪走的生命、被摧毀的家庭，以及在沉默中被迫繼承創傷的下一代。
+              </p>
+              <p>
+                清鄉結束後，留下的不只是死亡，更是一種彌漫全島的恐懼。人們學會了不問、不說、不記。許多家庭把親人的遭遇埋藏在最深的角落，孩子在長大後只感受到「家裡有什麼不能說的事」。這種沉默，成為臺灣社會在此後數十年間最沉重的集體記憶，也成為後來平反運動必須首先突破的心理禁錮。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470516" data-search="陳儀撤職 魏道明 台灣省政府 省政府主席 戒嚴解除 收束 善後 人事 5月16日 1947 行政長官公署廢除">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/05/16</span>
+                <span class="pill">處置</span>
+                <span class="pill">政治處分</span>
+                <a class="pill" href="people.html#p-sec-19470516-u9b4fu9053u660e">魏道明</a>
+                <a class="pill" href="people.html#p-sec-19470516-u9673u5100">陳儀</a>
+                <a class="pill" href="people.html#p-sec-19470516-u8523u6e2du5ddd">蔣渭川</a>
+              </div>
+              <h3>陳儀撤職，事件進入長期收束與控制</h3>
+              <span class="section-summary">撤換官員象徵回應，但事件並未終結；政治收束與社會創傷並行，監控體制逐步固定延續多年，記憶被壓抑。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                隨著鎮壓行動在1947年3月下旬逐步收束，國民政府開始進行政治善後。這個階段的核心動作是撤換陳儀、廢除行政長官公署、改組為省政府，並任命魏道明接任主席。這些人事異動在形式上回應了民間「撤換陳儀」的訴求，卻無法彌補事件已造成的深重傷害，也沒有觸及制度性改革的根本問題。
+              </p>
+              <p class="subhead">陳儀的撤職與離台</p>
+              <p>
+                1947年3月22日，中國國民黨第六屆中央執行委員會三全大會通過，將行政長官陳儀撤職查辦。4月22日，行政院議決撤銷臺灣省行政長官公署，改組為臺灣省政府，並任命前駐美大使魏道明為首任省政府主席。
+              </p>
+              <p>
+                陳儀離台後，先調任浙江省主席，不久因局勢動盪去職。1948年，他與湯恩伯接觸，被認為有意向中共輸誠，事後被以「通共」罪名逮捕。1950年6月18日，陳儀在臺北馬場町被蔣中正下令槍決，享年73歲。那個命令軍隊鎮壓臺灣人民的人，最後死在自己效忠的政權手中。這一諷刺性的結局，在許多臺灣人的歷史記憶中留下了複雜而難以消化的印記。
+              </p>
+              <p class="subhead">魏道明就職與表面的緩和</p>
+              <p>
+                1947年5月16日，魏道明在臺北宣誓就職。他隨即宣布解除戒嚴令、結束清鄉工作、廢除新聞圖書及郵電檢查、撤銷交通及通訊機構的軍事管制，並調整臺幣與法幣的兌換比率。這些措施在形式上鬆動了部分管制，讓臺灣社會從最緊繃的恐怖狀態中稍微喘息。
+              </p>
+              <p>
+                然而，這些調整並未觸及更根本的問題：沒有公開調查真相，沒有追究施暴者的責任，沒有對死難者及家屬給予正式的承認與撫卹，更沒有對導致事件爆發的制度性缺失進行改革。許多在清鄉中被捕的人仍在獄中，許多家庭不知道親人下落。「解除戒嚴」只是換了一種管理形式，監控與壓迫並未消失。
+              </p>
+              <p class="subhead">官方敘事的建立與記憶的壓制</p>
+              <p>
+                隨著秩序表面恢復，國民政府開始建立關於二二八事件的官方敘事：事件被定性為「奸匪煽動的武裝暴亂」，鎮壓被描繪為「必要的恢復秩序」，受難者被污名化為「叛亂分子」或其同情者。這套敘事在接下來的教育體系、媒體管控與公開紀念中被系統性地強化，使二二八事件在公共領域幾乎成為禁忌。
+              </p>
+              <p>
+                對受難者家屬而言，這是雙重的傷害：親人不只喪命，還在官方敘事中被貼上「罪犯」的標籤。許多家庭選擇深埋這段記憶，以避免在政治高壓下招來新的迫害。孩子在長大後問起父親、祖父為何不在，往往只得到含糊的回答，或感受到一種無法名狀的家庭陰影。這種代際沉默，讓創傷在私人領域中繼續滋長，卻無法在公共空間中被理解與修復。
+              </p>
+              <p class="subhead">內戰、撤退與高壓政治的延續</p>
+              <p>
+                1947年下半年起，中國大陸的國共內戰形勢急轉直下。1949年，國民政府撤退來台，隨即宣布全台戒嚴，並頒布《懲治叛亂條例》，以「防共反共」為名進一步壓縮政治空間。二二八事件的記憶，在這個新的政治環境中被納入更大的管控框架，成為警示臺灣人「不得挑戰政權」的隱形威嚇。
+              </p>
+              <p>
+                從陳儀撤職到戒嚴令的頒布，只有短短兩年。對臺灣社會而言，這兩年是一個機會的窗口——也是一個被徹底關閉的窗口。換人而不換制度，表面緩和卻持續壓制，使二二八事件的真正收束被無限延後。修復工作的缺席，讓恐懼化為社會的日常底色，並在接下來的數十年間一直存在，直到平反運動在1980年代開始突破這道沉默之牆。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-1949" data-search="戒嚴 白色恐怖 蔣中正 蔣經國 雷震 政治犯 懲治叛亂條例 情治 江炳興 彭明敏 1949 1987 解嚴 泰源事件 台灣自救運動宣言">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1949-1992</span>
+                <span class="pill">戒嚴時期</span>
+                <span class="pill">白色恐怖</span>
+                <a class="pill" href="people.html#p-sec-1949-u8523u4e2du6b63">蔣中正</a>
+                <a class="pill" href="people.html#p-sec-1949-u8523u7d93u570b">蔣經國</a>
+                <a class="pill" href="people.html#p-sec-1949-u96f7u9707">雷震</a>
+                <a class="pill" href="people.html#p-sec-1949-u6c5fu70b3u8208">江炳興</a>
+                <a class="pill" href="people.html#p-sec-1949-u5f6du660eu654f">彭明敏</a>
+              </div>
+              <h3>戒嚴體制下的白色恐怖延伸（長期政治迫害與肅清）</h3>
+              <span class="section-summary">戒嚴體制延續到解嚴後仍餘波盪漾，政治迫害、肅清與自我審查跨越數十年，創傷在沉默中累積並代際傳遞。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                1949年，中華民國政府在國共內戰中節節敗退，最終撤退台灣。這個歷史轉折對臺灣社會的意義，遠不只是政治中心的轉移——它同時帶來了長達數十年的戒嚴統治與政治迫害，俗稱「白色恐怖」。二二八事件的恐懼記憶，在此時成為白色恐怖得以順利運作的社會土壤。
+              </p>
+              <p class="subhead">戒嚴令的頒布與法律體系的構建</p>
+              <p>
+                1949年5月19日，臺灣省政府主席兼警備總司令陳誠奉蔣中正命令，宣布自翌日起在臺灣省全境實施戒嚴。同年5月24日，立法院三讀通過《懲治叛亂條例》，確立了以「叛亂罪」大規模起訴政治異見人士的法律基礎。這兩項措施共同構成白色恐怖的制度框架：戒嚴令暫停憲法對基本權利的保障，《懲治叛亂條例》則讓任何與政府意見不符的言論或行動都可能以「叛亂」罪名定罪。
+              </p>
+              <p>
+                1950年，《戡亂時期檢肅匪諜條例》頒布，進一步擴大了情報機關的逮捕與審訊權限。三項法律合力打造了一個讓任何政治異見都難以生存的體制環境，並由臺灣警備總司令部、調查局、保密局等情治機構分工執行。
+              </p>
+              <p class="subhead">蔣中正與政治迫害的規模</p>
+              <p>
+                在蔣中正主政期間，政治案件的審判幾乎都由軍事法庭進行，被告缺乏正常的司法保障。據後來陸續解密的史料顯示，蔣中正對大量政治犯死刑案件親筆批示「照準」，確認執行。二二八事件紀念基金會的補償紀錄顯示，補償範圍內的死刑執行達809人；但實際受政治迫害、被逮捕、監禁、處決或失蹤的人數，遠高於此。
+              </p>
+              <p>
+                政治迫害的對象十分廣泛：被認為有左傾思想者、主張台灣獨立者、曾在二二八中出現者、與中共有任何接觸的人、以及任何被認為對政府不忠誠的人。在軍中、在學校、在職場、在社區，無所不在的監控網絡讓人隨時可能因一句話、一封信、一次聚會被牽連入獄。
+              </p>
+              <p class="subhead">雷震案與異見的代價</p>
+              <p>
+                1960年的雷震案是白色恐怖時期最著名的政治案件之一。雷震是《自由中國》雜誌發行人，長期發表批評政府的言論，並積極推動組成第一個反對黨。1960年9月，雷震以「知匪不報」與「為匪宣傳」等罪名遭軍事法庭判處十年有期徒刑。據記載，蔣中正曾手諭「刑期不得少於十年」，直接干預司法。雷震出獄後，《自由中國》已遭停刊，組黨計畫徹底瓦解。雷震案清楚揭示了那個時代的政治邏輯：任何試圖在制度內建立反對力量的嘗試，都會被國家機器無情清除。
+              </p>
+              <p class="subhead">蔣經國與情治體系的鞏固</p>
+              <p>
+                在白色恐怖體制的建立與運作中，蔣經國扮演了核心角色。他長期主掌情治系統，擔任保密局長、國家安全委員會秘書長等要職，是整個政治監控機器最關鍵的操盤手。數以千計的人在他主導的情治體系下被逮捕、審訊、判刑乃至處決。諷刺的是，蔣經國後來也是宣布解嚴（1987年）的人，使他在臺灣歷史上留下極為複雜而矛盾的形象。
+              </p>
+              <p class="subhead">創傷的累積與解嚴</p>
+              <p>
+                白色恐怖持續了近四十年，直到1987年7月15日解嚴，臺灣才正式回歸正常的憲政秩序。然而，政治檔案的開放、不法判決的平復、受難者的名譽回復，仍需更多年的社會運動與制度推進才能逐步實現。解嚴之後，三大惡法之一的《戡亂時期檢肅匪諜條例》也要到1991年6月3日才正式廢止，標誌著法律層面的白色恐怖才算終結。
+              </p>
+              <p>
+                四十年間，臺灣社會在恐懼下學會了沉默。這種沉默不只是政治上的，更是文化上的、心理上的：人們不組織、不連結、不問邊界在哪裡，因為邊界從來不清楚，而代價卻總是清楚的。二二八事件的記憶就在這種沉默中被壓抑了數十年，等待著某個裂縫的出現。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-1980s" data-search="平反運動 二二八和平日 陳永興 鄭南榕 李登輝 道歉 紀念基金會 1987 1991 1995 解嚴 促進會 自焚 言論自由 民主化">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1980年代後期</span>
+                <span class="pill">社會倡議</span>
+                <span class="pill">平反運動</span>
+                <a class="pill" href="people.html#p-sec-1980s-u8523u7d93u570b">蔣經國</a>
+                <a class="pill" href="people.html#p-sec-1980s-u674eu767bu8f1d">李登輝</a>
+                <a class="pill" href="people.html#p-sec-1980s-u9673u6c38u8208">陳永興</a>
+                <a class="pill" href="people.html#p-sec-1980s-u912du5357u6995">鄭南榕</a>
+              </div>
+              <h3>二二八平反運動興起，推動追查真相、公開紀念與政府回應</h3>
+              <span class="section-summary">平反運動由民間發起，透過紀念、研究與倡議追查真相、名譽回復與補償，促使政府回應改革並建立制度基礎。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                在戒嚴統治的長期壓制下，二二八事件的記憶在公共場域幾乎銷聲匿跡。然而到了1980年代後期，臺灣的政治環境開始鬆動：黨外運動持續擴展，社會對民主改革的渴望日益高漲。就在這個縫隙中，一批公民、知識分子與受難者家屬率先站出來，試圖把四十年間被迫沉默的記憶帶回公共空間——二二八平反運動由此展開。
+              </p>
+              <p class="subhead">1987年：二二八和平日促進會的成立</p>
+              <p>
+                1987年2月4日，在尚未解嚴、政治風險仍然極高的時刻，陳永興、李勝雄、鄭南榕三人聯合數十個海內外臺灣社團，共同成立「二二八和平日促進會」，發表《二二八和平日宣言》，要求政府公開二二八真相、還給受難者公道，並將2月28日訂為「和平日」。陳永興擔任主任委員，鄭南榕擔任秘書長。
+              </p>
+              <p>
+                促進會隨後在全臺各地舉辦演講與示威活動，每到一處便遭到大批鎮暴警察阻擋。然而活動仍持續進行，逐漸匯聚更廣泛的社會支持。臺灣基督長老教會、民主進步黨相繼加入行動，使運動的聲勢持續擴大。
+              </p>
+              <p class="subhead">鄭南榕的自焚與言論自由的代價</p>
+              <p>
+                在平反運動中，鄭南榕是最具象徵意義的人物之一。他創辦《自由時代》週刊，以「百分之百的言論自由」為辦刊宗旨，不斷挑戰政治禁忌。1989年，鄭南榕拒絕出庭接受叛亂罪的審訊，在警察試圖強制逮捕時，於雜誌社自焚身亡。他以生命為代價，宣告了捍衛言論自由的決心。鄭南榕的犧牲震驚社會，使平反運動的道德力量更加深入人心，也使臺灣的民主運動增添了沉重而不可迴避的歷史重量。
+              </p>
+              <p class="subhead">李登輝的道歉與紀念基金會的成立</p>
+              <p>
+                隨著社會運動持續累積，政府終於無法再迴避。1991年3月4日，總統李登輝接見七位二二八受難者家屬代表，承諾籌組二二八專案小組，開放總統府相關檔案，並允諾在翌年二二八前給予滿意答覆。
+              </p>
+              <p>
+                1995年2月28日，臺北二二八紀念碑落成，李登輝以國家元首身分出席，代表政府向受難者家屬正式道歉——這是臺灣歷史上第一次由國家領導人公開為二二八事件的國家責任道歉。同年，依據《二二八事件處理及補償條例》，行政院設立「財團法人二二八事件紀念基金會」，開始受理補償申請，並負責推動紀念、研究與教育工作。
+              </p>
+              <p class="subhead">平反運動的意義</p>
+              <p>
+                平反運動最深刻的成就，不只是政府的道歉或紀念碑的建立，而是它根本改變了臺灣社會談論二二八事件的方式。四十年的禁忌被打破，受難者的故事開始能在公共場合被說出；「叛亂分子」的污名逐步被「受難者」、「犧牲者」取代；事件的歷史地位從「動亂」轉向「國家暴力的受害者」。
+              </p>
+              <p>
+                平反運動也提醒我們：歷史的修復需要社會力量先行。在官方還不願面對的時代，是民間的倡議、受難者家屬的堅持、知識分子的研究與記錄，一點一滴地撐開了討論的空間。這些看似緩慢的積累，最終成為官方調查、補償制度與轉型正義工程得以展開的社會基礎。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-199202" data-search="研究報告 賴澤涵 行政院 傷亡人數 補償 責任歸屬 1992 調查 陳重光 葉明勳 補償條例 死亡人數">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1992/02</span>
+                <span class="pill">調查出版</span>
+                <span class="pill">平反調查</span>
+                <a class="pill" href="people.html#p-sec-199202-u9673u91cdu5149">陳重光</a>
+                <a class="pill" href="people.html#p-sec-199202-u8449u660eu52f3">葉明勳</a>
+                <a class="pill" href="people.html#p-sec-199202-u8cf4u6fa4u6db5">賴澤涵</a>
+              </div>
+              <h3>行政院出版《「二二八事件」研究報告》，形成官方調查研究的重要里程碑</h3>
+              <span class="section-summary">官方《研究報告》出版成為共同參照文本，讓責任與受害有制度入口，支撐後續平反、教育與立法，也擴大公共討論。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                在平反運動持續推動、社會輿論逐漸積累的壓力下，國民政府終於承認無法繼續迴避二二八的歷史真相。1991年，行政院正式委託學者組成研究小組，系統性地調查與撰寫《「二二八事件」研究報告》。1992年2月，報告正式公布，成為臺灣官方首次以國家力量對二二八事件進行完整調查與記錄的歷史里程碑。
+              </p>
+              <p class="subhead">研究報告的組成與方法</p>
+              <p>
+                行政院委聘賴澤涵擔任總主筆，研究團隊包括吳文星、許雪姬、黃富三、黃秀政、陳寬政等學者，以分工負責地區的方式撰寫報告。各章節涵蓋：事件的歷史背景、事件的爆發與衝突擴大、政府的應對與事件平復、傷亡與受害情況、當時的救卹，以及各地事件的詳細記述。
+              </p>
+              <p>
+                研究方法上，報告廣泛蒐集官方檔案、地方史料、口述訪談及境外資料，試圖在有限的檔案開放條件下盡可能還原事件全貌。其中，人口學者陳寬政以事件前後十年的人口統計數據進行反推，估計全台死亡人數介於18,000至28,000人之間——這是第一個由官方研究引述的傷亡估計，成為後來各方引用的重要基準。
+              </p>
+              <p class="subhead">報告的內容與意義</p>
+              <p>
+                研究報告明確呈現了事件的結構性成因：戰後接收治理失序、陳儀的施政失當、軍隊鎮壓的殘暴、以及清鄉行動的系統性迫害。報告在當時的政治環境下，已相對直接地指出國家暴力的存在，並承認受難者是政府行動的無辜犧牲者，而非「叛亂分子」。
+              </p>
+              <p>
+                對受難者家屬而言，這份報告具有深刻的象徵意義：長達四十五年、無法在公開場合說出口的痛苦，終於以官方文件的形式被承認。「你們的親人不是罪犯」——這個遲來的承認，對許多在沉默中度過半生的家屬來說，是一種難以言說的解脫。
+              </p>
+              <p class="subhead">報告的局限與後續補充</p>
+              <p>
+                然而，報告也面臨批評。部分學者與受難者家屬認為，報告在責任追究上仍過於保守，對個別決策者的批評有所保留，且受限於當時仍未完全開放的政治檔案，部分史實仍難以完整還原。
+              </p>
+              <p>
+                正因如此，後來的研究工作並未就此停步。二二八事件紀念基金會的真相研究小組於2006年進一步完成《二二八事件責任歸屬研究報告》，針對蔣中正、陳儀、柯遠芬、彭孟緝、劉雨卿等人在決策與執行層面的責任進行深入分析，將責任歸屬明確指向特定人物。兩份報告相互補充，共同構成迄今最完整的官方研究基礎。
+              </p>
+              <p class="subhead">從研究到制度：補償法的立法</p>
+              <p>
+                1992年研究報告的發布，直接推動了後續立法。1995年，立法院三讀通過《二二八事件處理及補償條例》，正式建立補償申請制度，由二二八事件紀念基金會受理案件，提供受難者或其家屬金錢補償及名譽回復。截至2010年，基金會累計補償超過一萬件，其中死刑案件809件。
+              </p>
+              <p>
+                從報告的出版到補償制度的建立，臺灣走出了一條「研究為先、立法跟進」的修復路徑：先用學術調查確立事實，再以制度承接受難者的需求。這個過程雖然緩慢，卻建立了較為穩固的社會共識基礎，也讓後來的轉型正義工程有了可以接續的起點。
+              </p>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-2017" data-search="轉型正義 促轉會 促進轉型正義條例 檔案開放 威權象徵 平復不法 2017 2018 2022 蔡英文 黃煌雄 張炎憲">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">2017/12/05</span>
+                <span class="pill">2018/05/31</span>
+                <span class="pill">轉型正義</span>
+                <a class="pill" href="people.html#p-sec-2017-u8521u82f1u6587">蔡英文</a>
+                <a class="pill" href="people.html#p-sec-2017-u9ec3u714cu96c4">黃煌雄</a>
+                <a class="pill" href="people.html#p-sec-2017-u5f35u708eu61b2">張炎憲</a>
+              </div>
+              <h3>轉型正義制度化：立法推進與機構成立</h3>
+              <span class="section-summary">《促進轉型正義條例》與專責機構成立，推進檔案開放、平復不法與公共記憶，讓修復制度化並追求不再發生。</span>
+            </summary>
+            <div class="section-body">
+              <p>
+                1992年研究報告的出版與1995年補償條例的通過，是臺灣面對二二八歷史的重要起點，卻還不是終點。進入21世紀後，隨著民主深化與社會意識的提升，臺灣開始更系統性地推動「轉型正義」——一套以面對歷史暴力、修復社會創傷、保障不再重演為核心的制度工程。2017年至2018年間，《促進轉型正義條例》的立法與促進轉型正義委員會（促轉會）的成立，是這個工程的最重要制度化節點。
+              </p>
+              <p class="subhead">《促進轉型正義條例》的立法</p>
+              <p>
+                2017年12月5日，立法院三讀通過《促進轉型正義條例》，同年12月27日由總統公布施行。這是臺灣第一部專門針對威權統治時期歷史不法行為、建立系統性處理機制的法律。條例規定的「威權統治時期」定義為1945年8月15日至1992年11月6日，涵蓋二二八事件、戒嚴與白色恐怖等整段政治迫害時期。
+              </p>
+              <p>
+                條例明確規範促轉會的四大任務：一、開放政治檔案；二、清除威權象徵、保存不義遺址；三、平復司法不法、還原歷史真相，並促進社會和解；四、處理不當黨產的運用。這四個面向共同構成轉型正義的完整框架，從檔案、空間、司法到教育，全面性地面對威權時代留下的遺產。
+              </p>
+              <p class="subhead">促轉會的成立與工作</p>
+              <p>
+                2018年5月31日，促進轉型正義委員會正式掛牌成立，作為行政院下設的獨立機關，負責統籌推動各項轉型正義工作。
+              </p>
+              <p>
+                在政治檔案的開放方面，促轉會推動各機關系統性整理與移交相關檔案，使研究者與受難者家屬得以查閱。透過檔案的開放，許多過去不為人知的案件細節得以重見天日，也讓部分家屬第一次得知親人當年被捕、被審、被處決的完整經過。在清除威權象徵方面，促轉會針對全台各地仍存在的蔣中正銅像等威權時代象徵，推動系統性的移除或移置，引發社會廣泛討論，也凸顯了公共空間中的歷史記憶政治。在平復司法不法方面，數百件白色恐怖時期的有罪判決被認定為「違反自由民主憲政秩序」而予以撤銷，當事人名譽正式恢復。
+              </p>
+              <p class="subhead">促轉會的解散與工作延續</p>
+              <p>
+                依法設立為任務型機關的促轉會，於2022年5月31日期滿解散。解散時，促轉會發布《任務總結報告》，梳理四年間的工作成果，並將未竟事項移交國家人權委員會、國家檔案局等機關繼續推進。轉型正義工作並未因機構解散而終止，而是進入下一個由常設機關承接的階段。
+              </p>
+              <p class="subhead">轉型正義的意義與未竟之處</p>
+              <p>
+                從二二八事件到轉型正義制度化，歷時超過七十年。這段漫長的等待本身，已說明歷史創傷的修復需要何等持久的社會力量與制度意志。平反運動讓沉默有了語言，官方研究報告讓討論有了文本，補償條例讓受難者有了制度承認，轉型正義立法則讓這一切進入更系統性的操作框架。
+              </p>
+              <p>
+                然而，轉型正義至今仍有未竟之處：部分檔案仍未完全開放，部分受難者身份仍待確認，威權時代的歷史教育也有待更全面的更新。更重要的是，轉型正義最深層的目標——讓社會建立對人權、民主與不再重演的集體共識——需要的不只是法律與機構，更需要每一個公民願意面對這段歷史、願意傾聽受難者的故事、並把「不再讓這種事發生」從口號轉化為日常的民主實踐。當我們在今日回望二二八事件，時間軸不只是事件的「發生」，更包括社會如何一步步學會以民主方式面對創傷、修復信任，並為未來建立更穩固的公共生活。
+              </p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <strong>資料來源</strong>
+          <p class="small">
+            本頁以行政院《「二二八事件」研究報告》為主要依據，並參考二二八事件紀念基金會、臺北二二八紀念館、維基百科及學術論著；內容依首頁時間軸大標題延伸撰寫。
+          </p>
+          <p class="small">
+            <a href="https://www.228.org.tw/incident-research1?lang=tw" target="_blank" rel="noreferrer">行政院《二二八事件研究報告》— 二二八事件紀念基金會</a>
+            <br />
+            <a href="https://www.228.org.tw/228_overview.php?sn=77" target="_blank" rel="noreferrer">二二八事件責任歸屬研究報告摘要 — 二二八事件紀念基金會</a>
+            <br />
+            <a href="https://228memorialmuseum.gov.taipei/cp.aspx?n=5FD2DBAFF988BC0B" target="_blank" rel="noreferrer">探索二二八事件 — 臺北二二八紀念館</a>
+            <br />
+            <a href="https://228memorialmuseum.gov.taipei/cp.aspx?n=A672EB3DBE05B336" target="_blank" rel="noreferrer">二二八事件大事紀要 — 臺北二二八紀念館</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%83%8C%E6%99%AF" target="_blank" rel="noreferrer">二二八事件的背景（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6" target="_blank" rel="noreferrer">二二八事件（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6" target="_blank" rel="noreferrer">圓環緝菸事件（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83" target="_blank" rel="noreferrer">二二八事件處理委員會（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E4%B8%89%E5%8D%81%E4%BA%8C%E6%A2%9D%E8%99%95%E7%90%86%E5%A4%A7%E7%B6%B1" target="_blank" rel="noreferrer">三十二條處理大綱（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%B8%85%E9%84%89" target="_blank" rel="noreferrer">二二八事件中的清鄉（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E7%99%BD%E8%89%B2%E6%81%90%E6%80%96%E6%99%82%E6%9C%9F" target="_blank" rel="noreferrer">臺灣白色恐怖時期（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E5%B9%B3%E5%8F%8D%E9%81%8B%E5%8B%95" target="_blank" rel="noreferrer">二二八平反運動（Wikipedia）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/zh-hant/%E4%BF%83%E9%80%B2%E8%BD%89%E5%9E%8B%E6%AD%A3%E7%BE%A9%E5%A7%94%E5%93%A1%E6%9C%83" target="_blank" rel="noreferrer">促進轉型正義委員會（Wikipedia）</a>
+            <br />
+            <a href="https://228.drnh.gov.tw/" target="_blank" rel="noreferrer">二二八事件數位典藏（DRNH）</a>
+            <br />
+            <a href="http://homepage.ntu.edu.tw/~ntut019/ltes/1945-1949.pdf" target="_blank" rel="noreferrer">1945–1949年國民政府對台灣的經濟政策 — 吳聰敏（臺灣大學）</a>
+          </p>
+        </div>
+        <div>
+          <strong>使用說明</strong>
+          <p class="small">
+            左側目錄可快速跳轉各章節；按 <span class="kbd">Esc</span> 可關閉閱讀提示。若只想看重點，回到首頁可閱讀只有大標題的時間軸。
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="tips-dialog" id="tipsDialog" aria-label="閱讀提示">
+      <div class="tips-head">
+        <h3>閱讀提示</h3>
+        <button class="icon-btn" type="button" id="btnCloseTips" aria-label="關閉閱讀提示">×</button>
+      </div>
+      <div class="tips-body">
+        <dl class="meta" style="margin: 0">
+          <dt>本頁特色</dt>
+          <dd>以首頁時間軸的大標題為章節，提供長文補充：背景脈絡、事件推進、社會影響、以及後續的平反調查與轉型正義。</dd>
+          <dt>閱讀方式</dt>
+          <dd>建議從目錄分段閱讀；若只想快速瀏覽，請回首頁查看時間軸。</dd>
+          <dt>快捷鍵</dt>
+          <dd>按 <span class="kbd">Esc</span> 可關閉此視窗。</dd>
+        </dl>
+        <p class="small" style="margin: 0">
+          注意：本頁為「詳細介紹」頁，字數較長；互動遊戲頁已完成，可由導覽列進入。
+        </p>
+      </div>
+      <div class="tips-actions">
+        <button class="btn secondary" type="button" id="btnOkTips">我知道了</button>
+      </div>
+    </dialog>
+
+    <script>
+      (function () {
+        const dialog = document.getElementById("tipsDialog");
+        const btnClose = document.getElementById("btnCloseTips");
+        const btnOk = document.getElementById("btnOkTips");
+        const KEY = "tipsDismissed.detail.v1";
+
+        function closeDialog() {
+          try {
+            dialog?.close();
+          } catch (err) {
+            dialog?.removeAttribute("open");
+          }
+        }
+
+        function openDialogOnce() {
+          try {
+            if (!dialog) return;
+            if (localStorage.getItem(KEY) === "1") return;
+            dialog.showModal();
+          } catch (err) {
+            dialog?.setAttribute("open", "");
+          }
+        }
+
+        btnClose?.addEventListener("click", () => {
+          localStorage.setItem(KEY, "1");
+          closeDialog();
+        });
+        btnOk?.addEventListener("click", () => {
+          localStorage.setItem(KEY, "1");
+          closeDialog();
+        });
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            localStorage.setItem(KEY, "1");
+          }
+        });
+
+        window.addEventListener("load", openDialogOnce);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        function openFromHash() {
+          const raw = (window.location.hash || "").slice(1);
+          if (!raw) return;
+          const id = decodeURIComponent(raw);
+          const target = document.getElementById(id);
+          if (!target) return;
+
+          const details =
+            target.tagName?.toLowerCase() === "details" ? target : target.closest("details.section");
+          if (details) details.open = true;
+        }
+
+        window.addEventListener("hashchange", openFromHash);
+        window.addEventListener("load", openFromHash);
+
+        document.querySelectorAll(".toc a[href^=\"#\"]").forEach((a) => {
+          a.addEventListener("click", () => setTimeout(openFromHash, 0));
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        const input = document.getElementById("detailSearch");
+        if (!input) return;
+        const sections = Array.from(document.querySelectorAll("details.section"));
+
+        function normalize(str) {
+          return str.toLowerCase().replace(/[\s　]+/g, "");
+        }
+
+        input.addEventListener("input", () => {
+          const q = normalize(input.value);
+          if (!q) {
+            sections.forEach((s) => s.removeAttribute("data-filtered"));
+            return;
+          }
+          sections.forEach((sec) => {
+            const hay =
+              normalize(sec.getAttribute("data-search") || "") +
+              normalize(sec.querySelector(".section-head h3")?.textContent || "") +
+              normalize(sec.querySelector(".section-body")?.textContent || "");
+            if (hay.includes(q)) {
+              sec.removeAttribute("data-filtered");
+              sec.open = true;
+            } else {
+              sec.setAttribute("data-filtered", "empty");
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

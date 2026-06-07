@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="二二八事件網相關文件頁：以時間軸大標題分類，呈現本機文件圖縮圖與彈出預覽框架。"
+    />
+    <title>二二八事件網｜相關文件</title>
+    <style>
+      :root {
+        --bg: #f3e4c6;
+        --panel: rgba(255, 255, 255, 0.58);
+        --panel-2: rgba(255, 255, 255, 0.38);
+        --text: rgba(15, 15, 15, 0.92);
+        --muted: rgba(15, 15, 15, 0.74);
+        --muted-2: rgba(15, 15, 15, 0.62);
+        --line: rgba(15, 15, 15, 0.28);
+        --accent: #111;
+        --shadow: none;
+        --radius: 0px;
+        --max: 1100px;
+        --font-body: ui-serif, "Noto Serif TC", "Songti TC", "PMingLiU", "Times New Roman", serif;
+        --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--bg);
+        background-image:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 45%),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.18) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 6px
+          );
+        color: var(--text);
+      }
+
+      a {
+        color: color-mix(in srgb, var(--accent), white 10%);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--bg);
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: 0.04em;
+        font-family: var(--font-display);
+      }
+
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav a {
+        display: inline-flex;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 2px solid transparent;
+        font-family: var(--font-display);
+        font-size: 13px;
+        color: var(--text);
+      }
+
+      .nav a[aria-current="page"] {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .nav a[aria-disabled="true"] {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      main {
+        padding: 28px 0 70px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 2px solid var(--accent);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 18px 20px 16px;
+        margin: 0 0 16px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.08), transparent 55%),
+          radial-gradient(circle at 70% 20%, rgba(0, 0, 0, 0.06), transparent 55%);
+        pointer-events: none; mix-blend-mode: multiply; opacity: 0.8;
+      }
+      .hero > * { position: relative; }
+
+      .mastline {
+        border-top: 3px solid var(--accent);
+        border-bottom: 1px solid var(--accent);
+        padding: 10px 0 12px;
+        margin: 4px 0 16px;
+      }
+
+      .mast-title {
+        font-family: var(--font-display);
+        font-weight: 900;
+        letter-spacing: -0.01em;
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      .mast-sub {
+        margin: 8px 0 0;
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-note {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 14px;
+      }
+
+      .documents-layout {
+        display: grid;
+        grid-template-columns: 290px 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .toc {
+        position: sticky;
+        top: 86px;
+        padding: 14px 14px 12px;
+      }
+
+      .panel-head h3,
+      .doc-card h4 {
+        margin: 0;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+      }
+
+      .toc h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .toc ol {
+        margin: 0;
+        padding: 0 0 0 16px;
+        display: grid;
+        gap: 8px;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .toc a {
+        color: var(--text);
+      }
+
+      .toc small {
+        display: block;
+        color: var(--muted-2);
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+
+      .documents-panel {
+        padding: 18px;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 14px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .panel-head p {
+        margin: 6px 0 0;
+        color: var(--muted-2);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        padding: 6px 10px;
+        border: 1px solid var(--accent);
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .doc-card {
+        padding: 10px;
+        border: 1px solid var(--accent);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .thumb-button {
+        appearance: none;
+        display: grid;
+        width: 100%;
+        padding: 0;
+        border: 1px solid var(--accent);
+        background: #fff;
+        cursor: pointer;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+      }
+
+      .thumb-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(0.12);
+        transition: transform 180ms ease, filter 180ms ease;
+      }
+
+      .thumb-button:hover img,
+      .thumb-button:focus-visible img {
+        transform: scale(1.03);
+        filter: grayscale(0);
+      }
+
+      .doc-card h4 {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .doc-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+        font-family: var(--font-display);
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .doc-meta span {
+        border: 1px solid var(--line);
+        padding: 4px 7px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      dialog.preview-dialog {
+        width: min(980px, calc(100vw - 28px));
+        max-height: calc(100vh - 28px);
+        border: 2px solid var(--accent);
+        border-radius: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      dialog.preview-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.58);
+      }
+
+      .dialog-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 14px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .dialog-head h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 15px;
+        letter-spacing: 0.02em;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--accent);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .dialog-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 0;
+        min-height: 420px;
+      }
+
+      .preview-frame {
+        padding: 14px;
+        border-right: 2px solid var(--accent);
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.3);
+        overflow: auto;
+      }
+
+      .preview-frame img {
+        max-width: 100%;
+        max-height: 72vh;
+        display: block;
+        border: 1px solid var(--accent);
+        background: #fff;
+      }
+
+      .preview-info {
+        padding: 14px;
+      }
+
+      .info-block {
+        margin: 0 0 14px;
+      }
+
+      .info-block dt {
+        margin: 0 0 6px;
+        font-family: var(--font-display);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        color: var(--muted-2);
+      }
+
+      .info-block dd {
+        min-height: 34px;
+        margin: 0;
+        padding: 8px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 13px;
+      }
+
+      .info-block dd a {
+        color: var(--accent);
+        text-underline-offset: 4px;
+      }
+
+      .empty-note {
+        color: var(--muted-2);
+        font-style: normal;
+      }
+
+      footer {
+        padding: 26px 0 50px;
+        border-top: 2px solid var(--accent);
+        background: var(--bg);
+      }
+
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .small {
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.7;
+      }
+
+      .nav a:focus-visible,
+      .thumb-button:focus-visible,
+      .icon-btn:focus-visible,
+      .timeline-list a:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 920px) {
+        .documents-layout,
+        .dialog-body,
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          position: static;
+        }
+
+        .preview-frame {
+          border-right: 0;
+          border-bottom: 2px solid var(--accent);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        nav ul {
+          justify-content: flex-start;
+        }
+
+        .hero,
+        .documents-panel {
+          padding: 16px;
+        }
+
+        .panel-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">
+          <svg aria-hidden="true" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 48"><g transform="translate(-488.29012,-254.49786)"><path fill="var(--accent)" fill-rule="evenodd" d="M 511.97791,260.45543 L 510.51184,259.46572 L 509.50097,259.50277 L 508.89409,259.45865 L 508.27134,259.21343 L 507.69796,258.75651 L 507.42099,258.38779 L 507.33454,258.30488 L 507.2869,258.27489 L 507.18282,258.21491 L 507.00464,258.14433 L 506.81586,258.0826 L 506.73648,258.08787 L 506.30071,258.1849 L 506.23898,258.20432 L 505.92141,258.37897 L 505.88437,258.42307 L 505.58623,258.78297 L 505.51566,258.87823 L 505.2175,259.48688 L 505.18927,259.5398 L 505.20868,259.61393 L 505.23691,259.6633 L 505.82438,260.06378 L 505.80322,260.12905 L 505.51741,259.9403 L 505.41509,259.8856 L 505.27396,259.8609 L 505.20868,259.87854 L 505.15046,259.90853 L 505.05696,259.9791 L 505.02345,260.0285 L 504.94759,260.11318 L 504.70765,260.28783 L 504.41833,260.41485 L 504.07078,260.56305 L 503.51858,260.69889 L 503.22397,260.81886 L 501.94845,261.76624 L 501.90082,261.80857 L 501.458,262.34842 L 501.3945,262.44721 L 501.07517,263.32932 L 501.01166,263.45633 L 500.78408,264.07203 L 500.67646,264.566 L 500.53356,265.75684 L 500.45771,265.7639 L 500.42066,265.80624 L 499.43271,267.05705 L 498.95461,267.70629 L 498.92991,267.76273 L 498.7482,268.56015 L 498.68998,268.83183 L 498.65647,269.05059 L 498.6106,269.2323 L 498.48533,269.444 L 498.19071,269.92387 L 498.05487,270.15851 L 497.99666,270.26788 L 497.89609,270.49018 L 497.79024,270.78303 L 497.55736,271.67042 L 497.5362,271.73746 L 497.34919,272.69012 L 497.33862,272.90007 L 496.94342,273.48402 L 496.89049,273.60222 L 496.45123,274.79305 L 496.08956,275.99624 L 495.88667,276.69308 L 495.84609,276.81128 L 495.53913,277.57341 L 495.3627,277.7269 L 495.15807,278.16972 L 495.13512,278.22792 L 494.5794,280.11739 L 494.5547,280.255 L 494.56529,280.32734 L 494.69938,280.85305 L 494.90226,281.47758 L 494.9199,281.5358 L 494.98516,281.71046 L 495.10515,282.01919 L 495.37682,282.79896 L 495.39093,282.86777 L 495.51444,283.62285 L 495.49502,283.67754 L 495.45444,283.71635 L 495.338,283.77103 L 495.17571,284.15917 L 495.10515,284.41498 L 495.00106,284.8966 L 494.8511,285.75222 L 494.84404,285.81926 L 494.85991,285.88983 L 494.8952,285.94099 L 494.94636,285.96922 L 495.00106,285.99039 L 495.16688,285.99039 L 495.22863,286.00804 L 495.28332,286.04157 L 495.30978,286.08743 L 495.43681,286.43674 L 495.44032,286.5073 L 495.40328,286.55317 L 495.32389,286.63433 L 495.11749,286.66432 L 495.00106,286.72431 L 494.97282,286.77545 L 494.94988,286.91306 L 494.99223,287.03303 L 495.01692,287.09302 L 495.05574,287.13182 L 495.16335,287.18477 L 495.67496,287.36119 L 495.96607,287.20417 L 496.40183,287.9663 L 496.5306,288.4885 L 496.63822,288.78664 L 497.11103,289.84694 L 497.20982,289.99513 L 497.52385,290.38324 L 497.86257,290.88074 L 497.88197,290.94778 L 497.88197,291.03246 L 497.77612,291.24945 L 497.81671,291.38001 L 497.88551,291.48057 L 498.00372,291.60583 L 498.12367,291.72579 L 498.17837,291.75225 L 498.23128,291.78048 L 498.52591,291.88456 L 498.75878,292.14391 L 498.88932,292.33797 L 499.01635,292.54085 L 499.06576,292.65376 L 499.05694,292.71197 L 498.96872,292.66258 L 498.7482,292.47734 L 498.7182,292.42088 L 498.65293,292.33797 L 498.68998,292.42088 L 498.76232,292.53204 L 499.034,292.73492 L 499.20512,292.85488 L 499.25452,292.88664 L 499.64088,293.06834 L 499.69381,293.09306 L 499.74144,293.10363 L 499.82083,293.09833 L 500.07664,293.00659 L 500.15251,293.08423 L 500.23718,293.16539 L 500.43478,293.29592 L 500.81407,293.48293 L 500.88464,293.50411 L 500.96403,293.49529 L 501.15986,293.54291 L 501.75968,293.92046 L 502.01019,294.0757 L 502.05077,294.11982 L 502.52534,294.63143 L 502.67,294.81315 L 502.80231,295.00544 L 503.49036,296.03572 L 503.53975,296.14511 L 503.79909,296.77845 L 503.83438,296.9037 L 503.86613,297.50883 L 504.21368,298.73846 L 504.23309,298.7967 L 504.32482,298.86902 L 504.38128,298.89019 L 504.44303,298.91313 L 504.51536,298.90077 L 505.63386,298.712 L 506.03609,297.37122 L 506.0502,297.30593 L 505.95847,296.6232 L 505.63386,295.06718 L 505.47861,294.58026 L 505.42921,294.38796 L 505.3851,294.09688 L 505.38333,294.01572 L 505.40098,293.79697 L 505.85791,291.38883 L 505.95141,290.9813 L 506.30778,290.12214 L 506.43833,289.8434 L 506.86349,289.13597 L 507.1493,288.92602 L 507.2675,288.8819 L 507.36452,288.82017 L 507.44392,288.72137 L 507.72266,288.34558 L 508.43716,286.56728 L 509.1005,284.19974 L 509.65975,281.21648 L 509.73208,280.31145 L 509.73208,280.14915 L 509.72149,280.0574 L 509.8097,279.28293 L 509.79912,276.68075 L 510.01965,274.24437 L 510.00553,273.24232 L 509.95083,272.64074 L 509.86616,272.56134 L 509.7709,272.40786 L 509.74795,272.35316 L 509.73561,272.11501 L 509.75148,272.04972 L 510.10785,270.79185 L 510.2384,270.5237 L 510.81001,269.43695 L 510.88234,269.34698 L 511.07287,269.20231 L 510.89821,268.96768 L 510.86822,268.91475 L 510.85764,268.83535 L 510.87881,267.88094 L 510.89468,267.72568 L 511.01466,267.44165 L 511.07463,267.34285 L 511.19812,267.22464 L 511.3428,267.10821 L 511.42217,267.02882 L 511.44159,266.33549 L 511.37984,265.97914 L 511.28104,265.65452 L 511.18402,265.49926 L 511.00583,265.43223 L 510.92114,265.34754 L 510.88939,265.30344 L 510.83471,265.18701 L 510.43599,263.95206 L 510.39541,263.81799 L 510.39365,263.41576 L 510.38483,262.87414 L 510.39365,262.72242 L 510.406,262.6589 L 510.47304,262.47191 L 510.87174,261.6498 L 510.9035,261.59509 L 511.18402,261.2158 L 511.50156,260.96175 L 511.71681,260.81886 L 511.81031,260.77653 L 511.94968,260.66538 L 511.99378,260.62478 L 512.02554,260.57539 L 512.01848,260.49425 L 511.97791,260.45543 z"/></g></svg>
+          <div>
+            <h1>二二八事件網</h1>
+            <p>相關文件｜縮圖預覽</p>
+          </div>
+        </div>
+        <nav aria-label="網站導覽">
+          <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="detail.html">詳細介紹</a></li>
+            <li><a href="people.html">重要人物</a></li>
+            <li><a href="#" aria-current="page">相關文件</a></li>
+            <li><a href="videos.html">延伸閱讀</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  
+    <main class="wrap">
+      <section class="card hero" aria-label="相關文件主視覺">
+        <div class="mastline" aria-label="頁面標題">
+          <p class="mast-sub">Documents · Archive Preview · Timeline</p>
+          <h2 class="mast-title">相關文件</h2>
+        </div>
+        <p class="hero-note">
+          依首頁時間軸大標題作為分類索引；點擊後可查看大圖與後續補充的來源、說明欄位。
+        </p>
+      </section>
+  
+      <div class="documents-layout">
+        <aside class="card toc" aria-label="章節目錄">
+          <h3>目錄</h3>
+          <ol>
+            <li><a href="#doc-1947">1945-1947｜背景</a></li>
+            <li><a href="#doc-19470228">1947/02/27｜導火線</a></li>
+            <li><a href="#doc-19470228">1947/02/28｜擴大</a></li>
+            <li><a href="#doc-19470303">1947/03/03｜協商</a></li>
+            <li><a href="#doc-19470310">1947/03/10｜鎮壓</a></li>
+            <li><a href="#doc-19470314">1947/03/14-03/16｜清剿</a></li>
+            <li><a href="#doc-19470516">1947/05/16｜處置</a></li>
+            <li><a href="#doc-1949">1949-1992｜白色恐怖</a></li>
+            <li><a href="#doc-1987">1980年代後期｜平反運動</a></li>
+            <li><a href="#doc-1992">1992/02｜平反調查</a></li>
+            <li><a href="#doc-2017">2017/12/05｜立法推進</a></li>
+            <li><a href="#doc-2018">2018/05/31｜機構成立</a></li>
+          </ol>
+          <small class="small">
+            點選時間點可跳至對應文件區塊；文件以縮圖方式呈現，點選後於頁面內預覽。
+          </small>
+        </aside>
+  
+        <section class="card documents-panel" id="documents" aria-label="文件縮圖清單">
+          <div class="panel-head">
+            <div>
+              <h3>文件圖預覽</h3>
+              <p>各時期相關之圖像，點按可查看内容。</p>
+            </div>
+          </div>
+  
+          <div class="doc-grid">
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="19460601"
+                data-img="https://collections.culture.tw/ShowGalImage.aspx?SYSUID=11&IMG=KMKMKQMP090BM65OMUMZMI09MWMF0V06MEMRMNM6M5M5MYMRK25XKKMJMHM4MK51MOK55VKWM7M5MY5SKXMFK7KCMFKD5RKM5R0WKL5UMXKK5O5U5LKY5VKGMWKE5101MEMG0EMD0WMRMF0RMWMR0RME&TEXT=K7KG575Y&FROM=5YKK57"
+                data-period="1945-1947｜背景" data-source="國家文化記憶庫"
+                data-source-url="https://tcmb.culture.tw/zh-tw/detail?query=%7B%22fetchIndex%22:%5B%22%E6%96%87%E5%8C%96%E9%83%A8%E5%85%B8%E8%97%8F%E7%B6%B2%22%5D%7D&limit=24&offset=0&sort=relevance&order=desc&keyword=1946&isFuzzyMode=false&indexCode=MOCCOLLECTIONS&id=11000032045&recOffset=14"
+                data-description="《臺灣新生報》創刊於1945年10月，是戰後初期由臺灣省行政長官公署宣傳委員會所經營的官方報刊。
+                  雖屬官營報紙，但仍忠實反應民意，在二二八事件前夕，官民衝突漸深之際，新生報屢次發表告誡官方約束權力之言論。
+                  二二八事件之後，李萬居職權遭架空，辦報人員亦多被肅清，《臺灣新生報》成為更加偏向政府的報紙。
+                  此篇報導有提及到當代人民生活以及當下物價情形及影響，如〈海南臺胞歸心似箭 賣衣買米日食為難 盼望政府設法迎接〉〈物價飛漲購買力薄 滬閩商家多虧本而返〉
+                  〈協助維持社會治安 收容一般失業遊民 警備總部勞動訓導營概況〉" aria-label="開啟 19460601 文件圖預覽">
+                <img
+                  src="https://collections.culture.tw/ShowGalImage.aspx?SYSUID=11&IMG=KMKMKQMP090BM65OMUMZMI09MWMF0V06MEMRMNM6M5M5MYMRK25XKKMJMHM4MK51MOK55VKWM7M5MY5SKXMFK7KCMFKD5RKM5R0WKL5UMXKK5O5U5LKY5VKGMWKE5101MEMG0EMD0WMRMF0RMWMR0RME&TEXT=K7KG575Y&FROM=5YKK57"
+                  alt="19460601 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1946/06/01 臺灣新生報</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="19460608"
+                data-img="https://collections.culture.tw/ShowGalImage.aspx?SYSUID=11&IMG=51K6K6M7MAM1MHKP54MGM7M2M6M1MHMWMZMRM7MAMPMSMQMEKH51K2M7MG0OMYKYKKKAK25TMKMSMB5V5U5UK451MBM55CMY5S0V57KB5TK5545UMIMK5LKCK55U5R0WM4MI0IMD0GM2M10BM4M50EMG&TEXT=K7KG575Y&FROM=5YKK57"
+                data-period="1945-1947｜背景" data-source="國家文化記憶庫"
+                data-source-url="https://tcmb.culture.tw/zh-tw/detail?query=%7B%22fetchIndex%22:%5B%22%E6%96%87%E5%8C%96%E9%83%A8%E5%85%B8%E8%97%8F%E7%B6%B2%22%5D%7D&limit=24&offset=0&sort=relevance&order=desc&keyword=1946&isFuzzyMode=false&indexCode=MOCCOLLECTIONS&id=11000032051&recOffset=20"
+                data-description="《臺灣新生報》創刊於1945年10月，是戰後初期由臺灣省行政長官公署宣傳委員會所經營的官方報刊。
+                              《臺灣新生報》雖屬官營報紙，但仍忠實反應民意，在二二八事件前夕，官民衝突漸深之際，新生報屢次發表告誡官方約束權力之言論。
+                              二二八事件之後，李萬居職權遭架空，辦報人員亦多被肅清，《臺灣新生報》成為更加偏向政府的報紙。
+                              此篇報導有提及到當代人民生活部分，如〈到處貧民無米可吃 酒家菜館返見日增 省垣所見明暗兩世相〉" aria-label="開啟 19460608 文件圖預覽">
+                <img
+                  src="https://collections.culture.tw/ShowGalImage.aspx?SYSUID=11&IMG=51K6K6M7MAM1MHKP54MGM7M2M6M1MHMWMZMRM7MAMPMSMQMEKH51K2M7MG0OMYKYKKKAK25TMKMSMB5V5U5UK451MBM55CMY5S0V57KB5TK5545UMIMK5LKCK55U5R0WM4MI0IMD0GM2M10BM4M50EMG&TEXT=K7KG575Y&FROM=5YKK57"
+                  alt="1947 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1946/06/08 臺灣新生報</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="1947" data-img="assets/1947.jpg"
+                data-period="1945-1947｜背景" data-source="konichiwawa"
+                data-source-url="https://www.twreporter.org/a/taiwan-economic-history-400-years-tsong-min-wu"
+                data-description="「1947年2月28日出刊的《民報》，頭條新聞報導前一天晚上發生在台北市延平北路的查緝私烟事件，也就是228事件的導火線。頭條新聞的左邊就是「米荒」的報導，標題的文字是「抑平物價措施」，副標題是「柯遠芬談米荒即可解決」，柯遠芬當時是警備總部參謀長。警備總部參謀長出面談米荒問題，似乎表示行政長官公署認為這並不是單純的經濟問題。」摘自 報導者"
+                aria-label="開啟 1947 文件圖預覽">
+                <img src="assets/1947.jpg" alt="1947 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/02/28 民報</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+  
+            <article class="doc-card" id="doc-19470228">
+              <button class="thumb-button" type="button" data-title="19470227" data-img="assets/19470228私煙擊斃市民.jpg" /*圖片*/
+                data-period="1947/02/28｜擴大" /*時間軸*/
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2658/rec/1" /*原網址*/
+                data-source="二二八事件台灣本地新聞史料" /*原網址縮名字*/
+                data-description="1947年2月27日晚間，臺灣省專賣局查緝私菸人員與警察在南京西路天馬茶房附近查緝私菸時，因與女煙販林江邁發生衝突，查緝員以槍托毆傷林江邁。過程中，圍觀市民陳文溪並非煙販，卻遭警員開槍擊中胸部身亡。事件引發群眾憤怒，民眾推翻並焚毀專賣局車輛，最終由憲警到場才恢復秩序。"
+                aria-label="開啟 19470228 文件圖預覽">
+                <img src="assets/19470228私煙擊斃市民.jpg" alt="19470228 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/02/28 查緝私煙肇禍 昨晚擊斃市民二名</h4>
+              <div class="doc-meta">
+                <span>1947/02/28｜擴大</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470228">
+              <button class="thumb-button" type="button" data-title="19470227" data-img="assets/194702282.jpg"
+                data-period="1947/02/28｜擴大"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2658/rec/1" /*原網址*/
+                data-source="二二八事件台灣本地新聞史料" data-description="此篇報導內容為陳儀為安定民心，表明政府對此次緝煙事件處理之態度起見，於3月1日下午五時向全體民眾廣播談話。
+                  演講內容大致為解釋2月28日的情形並給予了處置，因發生暴動，為了維持秩序而實行了戒嚴。
+                  一日時經過省參議員、市參議員、國大代表、參政員等陳情，陳儀宣布晚上十二點解除戒嚴。
+                  並且警告人民不許再發生暴動並禁止聚會，於2月28日逮捕的若要釋放需要鄰里長負責具保。也提及參議員願意派代表與政府合組成委員會來讓人民傳達訴求。"
+                aria-label="開啟 19470228 文件圖預覽">
+                <img src="assets/194702282.jpg" alt="19470228 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/02/28 本市查緝私烟〔煙〕事件 長官廣播處理情形</h4>
+              <div class="doc-meta">
+                <span>1947/02/28｜擴大</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470303">
+              <button class="thumb-button" type="button" data-title="19470303" data-img="assets/19470303陳儀.jpg"
+                data-period="1947/03/03｜協商" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2313/rec/1"
+                data-description="3月2日，陳儀接見民意代表後宣布四項措施：對參與二二八事件民眾從寬不究、簡化被拘押者保釋程序、對傷亡者給予治療或撫卹，
+                  並擴大事件處理委員會納入各界代表，以安定民心、恢復秩序。臺北市二二八事件處理委員會決定於中山堂持續開會至3月10日受理民眾意見，並建議清理街頭焚毀車輛與聯合發行號外傳遞資訊。首次會議中，各界代表逾二百人出席，決議要求軍隊停止巡邏與開槍，並派員協助恢復鐵公路交通，促使社會秩序儘速恢復。"
+                aria-label="開啟 19470303 文件圖預覽">
+                <img src="assets/19470303陳儀.jpg" alt="19470303 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/03 陳儀長官昨日廣播 表示接受四項意見</h4>
+              <div class="doc-meta">
+                <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+  
+            <article class="doc-card" id="doc-19470303">
+              <button class="thumb-button" type="button" data-title="19470303" data-img="assets/19470303處理委員會.jpg"
+                data-period="1947/03/03｜協商" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2492/rec/12"
+                data-description="3月2日下午，二二八事件處理委員會在中山堂開會，報告與陳儀長官協商結果。
+                  陳儀同意擴大委員會，由商會、工會、學生、民眾及政治建設協會推派代表參加，並答應釋放因事件被捕者、發放死難者撫卹金、停止追究相關責任、停止武裝巡邏及恢復交通。
+                  會中因市區仍有槍聲，要求立即制止並批評警察大隊濫用武力，主張解散該隊。民眾並要求廢除新聞檢查、調查專賣局與警察大隊相關責任，以及提高本省人在重要職位的任用比例。會議決定持續受理民眾意見後散會。"
+                aria-label="開啟 19470303 文件圖預覽">
+                <img src="assets/19470303處理委員會.jpg" alt="19470303 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/03處理委員會昨開會</h4>
+              <div class="doc-meta">
+                <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470303">
+              <button class="thumb-button" type="button" data-title="19470303" data-img="assets/二二八事件處理委員會名單.jpg"
+                data-period="1947/03/03｜協商" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2021/rec/11"
+                data-description="3月2日，臺北市二二八事件處理委員會公布成員名單，由省、市參議員、國大代表、參政員及官方代表共同組成，並預計增納工、農、商、學界代表。各界民眾普遍希望事件和平迅速解決，自發維持秩序，工人保護工廠、學生與家長維護校園安全。民意代表與官方協商後提出五項原則：釋放被捕民眾、撫卹死傷者、不追究參與事件民眾、恢復交通及擴大委員會代表性。同時成立聯絡、宣傳、救護、調查及總務五組推動相關工作。受事件影響，臺北南下鐵路停駛，北上列車僅行駛至彰化，南北交通幾近中斷。"
+                aria-label="開啟 19470303 文件圖預覽">
+                <img src="assets/二二八事件處理委員會名單.jpg" alt="19470303 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/03 處理委員會 代表名單</h4>
+              <div class="doc-meta">
+                <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470310">
+              <button class="thumb-button" type="button" data-title="19470308" data-img="assets/19470308 圍剿.jpg"
+                data-period="1947/03/10｜鎮壓" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2656/rec/3"
+                data-description="3月8日晚間，有共黨匪徒由松山及北投分批侵入市內，企圖搶劫臺灣銀行總行及各大公司，經軍憲警民協力圍勦結果，捕獲數十人，其餘潰散，現軍憲警正繼續搜捕中，希望人民維持原本秩序不要輕信謠言以協助維持治安。"
+                aria-label="開啟 19470308 文件圖預覽">
+                <img src="assets/19470308 圍剿.jpg" alt="19470308 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/10 共黨企圖侵擾臺北</h4>
+              <div class="doc-meta">
+                <span>1947/03/10｜鎮壓</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470310">
+              <button class="thumb-button" type="button" data-title="19470310" data-img="assets/19470310.jpg"
+                data-period="1947/3/10｜鎮壓" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2426/rec/14"
+                data-description="3月10日，陳儀以二二八事件處理委員會「超越政治改革範圍、近於背叛祖國」為由，下令解散該委員會。同時，警備總部發布公告，為恢復治安與社會秩序，限令全省非法團體於3月10日前一律解散，並禁止集會與遊行，由憲兵第四團負責取締，違者將依法嚴辦。"
+                aria-label="開啟 19470310 文件圖預覽">
+                <img src="assets/19470310.jpg" alt="19470310 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/10 陳儀長官下令解散 二二八事件處委會</h4>
+              <div class="doc-meta">
+                <span>1947/03/10｜鎮壓</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470310">
+              <button class="thumb-button" type="button" data-title="19470310" data-img="assets/19470310大員.jpg"
+                data-period="1947/3/10｜鎮壓" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2426/rec/14"
+                data-description="3月10日，南京國民政府紀念週中，蔣中正對二二八事件發表說明，並表示將於近日派員赴臺灣視察處理情況。同時，旅居南京的臺灣人士於3月10日召開二二八事件報告會，期望協助中央採取寬大處理政策，反映事件已引起中央與旅外臺人關注。"
+                aria-label="開啟 19470310 文件圖預覽">
+                <img src="assets/19470310大員.jpg" alt="19470310 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/10蔣主席關懷臺灣事件</h4>
+              <div class="doc-meta">
+                <span>1947/03/10｜鎮壓</span>
+              </div>
+            </article>
+  
+            <article class="doc-card" id="doc-19470310">
+              <button class="thumb-button" type="button" data-title="19470310" data-img="assets/19470310蔣中正深望.jpg"
+                data-period="1947/3/10｜鎮壓" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/1517/rec/17"
+                data-description="3月10日，蔣中正於南京紀念週發表對二二八事件的說明，指出事件起因於查緝私煙引發衝突，並稱部分不法份子與「共產黨員」煽動暴動，提出政治改革要求已逾越地方權限。中央已決定派軍隊赴臺維持治安，並派大員協助處理，據稱部隊已在基隆登陸，秩序良好。蔣並表示將推動臺灣行政改革，包括設立省政府、取消長官公署及實施縣長民選，以回應民意。同時強調臺灣同胞應守法自律、勿受煽動，盡快恢復秩序，重建「新臺灣」。中央廣播亦重申同樣立場，呼籲以合法方式解決事件並恢復社會安定。"
+                aria-label="開啟 19470310 文件圖預覽">
+                <img src="assets/19470310蔣中正深望.jpg" alt="19470310 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/10 深望全臺同胞猛省</h4>
+              <div class="doc-meta">
+                <span>1947/03/10｜鎮壓</span>
+              </div>
+            </article>
+  
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470314" data-img="assets/19470314掃蕩周報.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/959/rec/36"
+                data-description="原在江西、江蘇等地隨軍活動的國防部新聞局《掃蕩報》第四十四班已隨駐軍遷至臺灣。該報過去以內容充實、言論公正與印刷精良著稱，目前發行人黃存厚與總編輯柯偉雪等已在臺北展開籌備工作，預計短期內將重新發行週報。"
+                aria-label="開啟 19470314 文件圖預覽">
+                <img src="assets/19470314掃蕩周報.jpg" alt="19470314 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/14 掃蕩週〔周〕報　移臺發刊</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470314" data-img="assets/19470314湯德章.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/1560/rec/3"
+                data-description="3月13日，南部防衛司令部在臺南民生綠園公開槍決律師坂井德章（湯德章），指控其以臺南市人民自由保障委員會名義組織群眾，涉及攻擊軍公人員、組織非法團體、搶奪軍械及破壞軍事設施等行為，依多項戒嚴法與刑法條文判處死刑並褫奪公權終身。同日報導指出，南部防衛司令部已成立，由彭孟緝兼任司令，統一指揮嘉義以南治安。另有多名涉案人士被拘押審理，當局宣稱治安已逐步恢復。"
+                aria-label="開啟 19470314 文件圖預覽">
+                <img src="assets/19470314湯德章.jpg" alt="19470314 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/14 危害國家民族</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470315" data-img="assets/19470315秩序恢復交還武器.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2576/rec/3"
+                data-description="3月12日至13日，基隆與臺南地區秩序逐漸恢復。基隆商店陸續開市，市政恢復運作，街頭人潮回升，但部分民生物資仍短缺。要塞司令部與市參議會組織宣撫隊，挨戶安撫民眾，並呼籲檢舉「暴徒」以維持治安。臺南在戒嚴期間未舉行紀念活動，但街市逐漸恢復營業。13日臺南宣布解除戒嚴，同時要求民眾限期繳交武器，否則將再度戒嚴並進行武裝搜查，顯示治安控制仍持續進行中。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470315秩序恢復交還武器.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/15 基隆臺南秩序恢復 臺南市區展限繳還武器</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470315" data-img="assets/19470315市價.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/729/rec/18"
+                data-description="3月13日後，臺北市治安逐漸穩定，商店陸續恢復營業，永樂、建成、萬華等市場人潮回升，但米與蕃薯仍嚴重短缺，部分地區僅能由公所配給限量蕃薯。物價普遍上漲，蔬菜較2月27日平均上漲約兩倍後略有回落，但肉類與日常食品價格仍偏高，如豬肉、牛肉、雞肉等均維持高價。白糖等物資亦價格上升，而布匹等批發交易因局勢未穩仍停滯，呈現「有行無市」狀態。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470315市價.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/15 市場漸恢復舊觀 物價稍跌購米糧仍不易</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470315" data-img="assets/19470313 高雄繳出 槍三百餘桿.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2693/rec/46"
+                data-description="3月13日報導指出，高雄市憲警持續向民間清繳武器，已收繳槍枝三百餘枝，治安情勢逐漸趨於穩定。鳳山、屏東等地民眾亦陸續自動繳交武器，因此未再發生嚴重流血事件，以顯南部部分地區的衝突已開始降溫。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470313 高雄繳出 槍三百餘桿.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/15 高雄繳出 槍三百餘桿 鳳山屏東均安定</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470315" data-img="assets/19470315臺北初步調查損失.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/781/rec/59"
+                data-description="省民政處初步調查顯示，二二八事件造成臺北地區財產損失約一億四千餘萬元，若納入各縣市及私人損失，總額可能超過五億元。同時，臺北公教人員死傷初估達四百餘人。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470315臺北初步調查損失.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/15 臺北初步調查 損失慘重 財產逾五億元　傷亡四百人餘</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+  
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470315" data-img="assets/19470315國軍進入臺中.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/1640/rec/8"
+                data-description="臺中約一百二十餘名暴徒於12日中午轉往埔里，當地國軍駐守紀律嚴明，治安狀況良好。第二十一師一四六旅岳旅長及四三六團駱團長於13、14日先後抵達臺中坐鎮。當局表示駐軍目的在於除暴安良，並呼籲民眾安心。同時限令民間於13、14日繳回劫奪武器，已有部分長槍繳出，但短槍與手榴彈仍散落鄉間未繳。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470315國軍進入臺中.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/16 國軍進入臺中 暴徒百餘竄往埔里</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470316" data-img="assets/19470316不要上匪徒離間同胞感情的當.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/1070/rec/54"
+                data-description="告駐臺官兵 不許稍懷報復　應作懇切解說　禁止槍殺良民。陳儀發表《告駐臺全體官兵書》，指出臺灣二二八事件係少數人藉查緝私煙煽動群眾、破壞治安所致，呼籲駐臺官兵負起肅清奸匪、維持秩序之責任，並強調本省與外省同屬中華民國同胞，應互相愛護、團結一致。同時要求官兵不得侮辱或報復民眾，並列出軍紀規定，包括禁止搶掠、濫殺、任意開槍、藉檢查侮辱民眾等，違者嚴懲，以維護治安與恢復社會安定。"
+                aria-label="開啟 19470315 文件圖預覽">
+                <img src="assets/19470316不要上匪徒離間同胞感情的當.jpg" alt="19470315 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/16 不要上匪徒離間同胞感情的當！！</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470316" data-img="assets/19470316總部開始清除叛徒.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/3511/rec/52"
+                data-description="3月14日，臺灣省警備總司令部發布公報，宣布開始肅奸工作，要求民眾檢舉並密報可疑人士，並嚴禁窩藏「奸偽份子」，違者同罪。另稱全臺各地暴動已獲平息，國軍持續推進，至13日全省大致平定，地方政府恢復辦公，並呼籲民眾安居守業。公報同時宣布解散政治建設協會，指其涉嫌招募退伍軍人與暴徒。另有多地報告地方秩序恢復正常，惟部分地區仍有糧食短缺情形。"
+                aria-label="開啟 19470316 文件圖預覽">
+                <img src="assets/19470316總部開始清除叛徒.jpg" alt="19470316 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/16 總部開始清除叛徒</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470314">
+              <button class="thumb-button" type="button" data-title="19470317" data-img="assets/19470317物價高生活苦.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/617/rec/17"
+                data-description="物價上漲導致公務員待遇偏低，生活困難，且因二二八事件受到直接或間接損失，一時出現返鄉潮。據傳政府當局正考慮發放公務員救濟費，以補償損失，並可能自四月份起調整待遇，使公務員得以安心工作，作為善後處理措施之一。"
+                aria-label="開啟 19470317 文件圖預覽">
+                <img src="assets/19470317物價高生活苦.jpg" alt="19470317 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/17 物價高生活苦 公務員待遇 傳將調整</h4>
+              <div class="doc-meta">
+                <span>1947/03/14-03/16｜清剿</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470516">
+              <button class="thumb-button" type="button" data-title="19470411" data-img="assets/19470411柯參謀長對記者談.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/1070/rec/54"
+                data-description="3月10日，臺灣省警備總司令部召開記者會，由柯遠芬報告二二八事件經過，稱事件由專賣局緝私引發，後被「奸偽份子」煽動擴散為全臺多地暴動，並指控有計畫攻擊軍政機關。報告點名仍有「奸偽份子謝雪紅等」潛匿埔里、斗六、布袋一帶，已派軍隊清剿。另稱已收繳大量槍械與軍火，並呼籲輿論界協助政府完成綏靖工作。"
+                aria-label="開啟 19470411 文件圖預覽">
+                <img src="assets/19470411柯參謀長對記者談.jpg" alt="19470411 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/04/11 柯參謀長對記者談 臺灣事變經過真相</h4>
+              <div class="doc-meta">
+                <span>1947/05/16｜處置</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470516">
+              <button class="thumb-button" type="button" data-title="19470511" data-img="assets/19470511送別陳長官.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/4780/rec/1"
+                data-description="報導稱，因臺灣行政長官公署撤銷，陳儀將離臺赴南京改任要職。文中讚揚陳儀在臺一年半期間負責接收與治理工作，完成日僑遣返、機關接收、戰後整理、金融財政與交通恢復等多項事務，並推動民意機關、地方自治及經濟制度建設。文中認為其政績受到肯定，並引述輿論評價其「廉能苦幹」。亦指出二二八事件後仍持續進行政治與社會整頓。最後表達臺灣社會對陳儀離任的不捨與感謝，並希望其未來持續協助臺灣建設。"
+                aria-label="開啟 19470511 文件圖預覽">
+                <img src="assets/19470511送別陳長官.jpg" alt="19470511 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/05/11 送別陳長官</h4>
+              <div class="doc-meta">
+                <span>1947/05/16｜處置</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470516">
+              <button class="thumb-button" type="button" data-title="19470512" data-img="assets/19470512長官昨已飛抵南京.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/4868/rec/15"
+                data-description="3月11日，前臺灣行政長官陳儀偕隨員由臺灣乘專機赴南京，抵京後由魏道明、俞大維、蔣經國等人接機迎接並安排休息。同日臺北舉行送別活動，黨政軍官員、學生及民眾逾萬人至松山機場送行，並由黃朝琴致詞讚揚陳儀任內政績。陳儀於機場廣播致別詞，感謝各界協力完成接收與治理工作，並勉勵臺灣同胞在新任政府領導下團結合作、發展生產、學習語文與文化，推動建設三民主義新臺灣，成為全國模範省。"
+                aria-label="開啟 19470512 文件圖預覽">
+                <img src="assets/19470512長官昨已飛抵南京.jpg" alt="19470512 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/05/12 萬眾熱烈歡送聲中　長官昨已飛抵南京</h4>
+              <div class="doc-meta">
+                <span>1947/05/16｜處置</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470516">
+              <button class="thumb-button" type="button" data-title="19470515" data-img="assets/19470515歡迎魏道明主席.jpg"
+                data-period="1947/03/14-03/16｜清剿" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/4868/rec/15"
+                data-description="報導為歡迎新任臺灣省政府主席魏道明抵臺，表達對其推動臺灣建設與改善民生的期待，並認為其具法學背景與中央經驗，將有助於戰後臺灣行政整頓與發展。文中指出二二八事件後社會受創，改制後用人與制度改革尤為關鍵，主張應以「選賢任能」為原則，不分本省外省，避免裙帶關係與用人失當，並儘量延續現有人員以維持行政穩定。同時強調政治需講求策略與彈性，但應有核心原則不可動搖。最後指出臺灣為海疆重鎮，建設成敗關係重大，期望新政府能謹慎推動改革。"
+                aria-label="開啟 19470515 文件圖預覽">
+                <img src="assets/19470515歡迎魏道明主席.jpg" alt="19470515 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/05/15 歡迎魏道明主席</h4>
+              <div class="doc-meta">
+                <span>1947/05/16｜處置</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1949">
+              <button class="thumb-button" type="button" data-title="19490519" data-img="assets/19490519另臺灣省宣布戒嚴.jpg"
+                data-period="1949-1992｜白色恐怖" data-source="國史館檔案史料文物查詢系統"
+                data-source-url="https://ahonline.drnh.gov.tw/index.php?act=Display/image/9094406Dd=aKdH#2el"
+                data-description="蔣中正據朱紹良報告，南平已被共匪攻陷，福州動搖不安，因張雪中、李延年、侯鏡如等將領於閩浙交界處潰敗後，多自逃竄於閩東各縣，毫無秩序，尤以劉汝明部為最甚，以致共匪跟蹤入閩，又上海我軍擊退進犯楊行之匪及南翔高橋亦有激戰。戰事重心已自吳淞高橋附近轉移至浦東等，另臺灣省宣布戒嚴。"
+                aria-label="開啟 19490519 文件圖預覽">
+                <img src="assets/19490519另臺灣省宣布戒嚴.jpg" alt="19490519 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1949/05/19 事略稿本—民國三十八年五月</h4>
+              <div class="doc-meta">
+                <span>1949-1992｜白色恐怖</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1949">
+              <button class="thumb-button" type="button" data-title="1950" data-img="assets/1950對潛台匪諜活動之防制.jpg"
+                data-period="1949-1992｜白色恐怖" data-source="國史館檔案史料文物查詢系統"
+                data-source-url="https://ahonline.drnh.gov.tw/index.php?act=Display/image/9138528XxJXOUY#8Gva"
+                data-description="對潛台匪諜活動之防制" aria-label="開啟 1950 文件圖預覽">
+                <img src="assets/1950對潛台匪諜活動之防制.jpg" alt="1950 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1950 臺灣形勢談話要點</h4>
+              <div class="doc-meta">
+                <span>1949-1992｜白色恐怖</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1987">
+              <button class="thumb-button" type="button" data-title="19870818" data-img="assets/19870818抗議者與官員進行溝通.jpg"
+                data-period="1949-1992｜白色恐怖" data-source="國史館檔案史料文物查詢系統"
+                data-source-url="https://ahonline.drnh.gov.tw/index.php?act=Display/image/9094474=bCfhwo#08n"
+                data-description="民主進步黨人士在南區郵政管理局舉起「解嚴其名戒嚴其實」、「警總滾出郵局」等布條抗議，有抗議者與官員進行溝通" aria-label="開啟 19870818 文件圖預覽">
+                <img src="assets/19870818抗議者與官員進行溝通.jpg" alt="19870818 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1987/08/18 抗議</h4>
+              <div class="doc-meta">
+                <span>1949-1992｜白色恐怖</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1987">
+              <button class="thumb-button" type="button" data-title="19910307"
+                data-img="assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg" data-period="1949-1992｜白色恐怖" data-source="國史館檔案史料文物查詢系統"
+                data-source-url="https://ahonline.drnh.gov.tw/index.php?act=Display/image/9138094qNMug0w#14L"
+                data-description="總統李登輝宣告終止動員戡亂時期之事前相關政策措施及法規修法等問題研議" aria-label="開啟 19910307 文件圖預覽">
+                <img src="assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg" alt="19910307 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1991/03/07 總統李登輝宣告終止動員戡亂時期之事前</h4>
+              <div class="doc-meta">
+                <span>1949-1992｜白色恐怖</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1992">
+              <button class="thumb-button" type="button" data-title="19920401"
+                data-img="assets/19920401 關於「二二八事件研究報告」之出版.jpg" data-period="1949-1992｜白色恐怖" data-source="二二八事件檔案資料庫"
+                data-source-url="https://228.drnh.gov.tw/index.php?act=Display/image/97396IBG4a4k#3au"
+                data-description="關於「二二八事件研究報告」之出版" aria-label="開啟 19920401 文件圖預覽">
+                <img src="assets/19920401 關於「二二八事件研究報告」之出版.jpg" alt="19920401 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1992/04/01 關於「二二八事件研究報告」之出版</h4>
+              <div class="doc-meta">
+                <span>1992/02｜調查出版</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1987">
+              <button class="thumb-button" type="button" data-title="19950930"
+                data-img="assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg" data-period="2017-2018｜轉型正義"
+                data-source="二二八事件檔案資料庫"
+                data-source-url="https://228.drnh.gov.tw/index.php?act=Display/image/973979=QlRa0#ebJ"
+                data-description="關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜" aria-label="開啟 19950930 文件圖預覽">
+                <img src="assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg" alt="19950930 文件圖縮圖" loading="lazy"
+                  decoding="async" />
+              </button>
+              <h4>1995/09/30 關於「財團法人二二八事件紀念基金會」</h4>
+              <div class="doc-meta">
+                <span>1980年代後期｜社會倡議</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-2017">
+              <button class="thumb-button" type="button" data-title="20171205" data-img="assets/20171205促進轉型正義條例.jpg"
+                data-period="2017-2018｜轉型正義" data-source="全國法規資料庫"
+                data-source-url="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030296"
+                data-description="2017年12月5日，立法院三讀通過《促進轉型正義條例》（以下簡稱促轉條例），同年12月27日總統公布。根據該條例第一條規定，本條例係為「促進轉型正義及落實自由民主憲政秩序」，而「威權統治時期違反自由民主憲政秩序之不法行為與結果，其相關處理事項」，由本條例規劃、推動之。而「威權統治時期」係指1945年8月15日至1992年11月6日止。依第二條第一項規定，本條例由促進轉型正義委員會（以下簡稱促轉會）主管，促轉會隸屬行政院，為二級獨立機關，依同條第二項規定，負責規劃、推動以下事項：一、開放政治檔案；二、清除威權象徵、保存不義遺址；三、平復司法不法、還原歷史真相，並促進社會和解；四、不當黨產之處理及運用。依同條例第八條規定，促轉會設委員9人，其中5位專任，4位兼任，均由行政院長提名經立法院同意後任命。"
+                aria-label="開啟 20171205 文件圖預覽">
+                <img src="assets/20171205促進轉型正義條例.jpg" alt="20171205 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>2017/12/05 促進轉型正義條例通過</h4>
+              <div class="doc-meta">
+                <span>2017/12/05｜立法推進</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-2018">
+              <button class="thumb-button" type="button" data-title="20180531"
+                data-img="assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg" data-period="2017-2018｜轉型正義" data-source="國史館檔案史料文物查詢系統"
+                data-source-url="https://ahonline.drnh.gov.tw/index.php?act=Display/image/91389201tgd6Dx#uUze"
+                data-description="總統蔡英文主持促進轉型正義委員會布達暨揭牌典禮" aria-label="開啟 20180531 文件圖預覽">
+                <img src="assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg" alt="20180531 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>2018/05/31 總統蔡英文主持促進轉型正義委員會布達暨揭牌典禮</h4>
+              <div class="doc-meta">
+                <span>2018/05/31｜機構成立</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+  
+    </main>
+  
+    <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <strong>使用說明</strong>
+          <p class="small">點擊任一文件縮圖可開啟大圖預覽；按 Esc 或右上角按鈕可關閉。</p>
+        </div>
+      </div>
+    </footer>
+  
+    <dialog class="preview-dialog" id="previewDialog" aria-label="文件圖預覽">
+      <div class="dialog-head">
+        <h3 id="dialogTitle">文件圖預覽</h3>
+        <button class="icon-btn" type="button" id="btnClosePreview" aria-label="關閉預覽">×</button>
+      </div>
+      <div class="dialog-body">
+        <div class="preview-frame">
+          <img id="dialogImage" src="" alt="" />
+        </div>
+        <dl class="preview-info">
+          <div class="info-block">
+            <dt>說明</dt>
+            <dd id="dialogDescription"><span class="empty-note">待補</span></dd>
+          </div>
+          <div class="info-block">
+            <dt>時間軸分類</dt>
+            <dd id="dialogPeriod"><span class="empty-note">待補</span></dd>
+          </div>
+          <div class="info-block">
+            <dt>來源</dt>
+            <dd id="dialogSource"><span class="empty-note">待補</span></dd>
+          </div>
+        </dl>
+      </div>
+    </dialog>
+  
+    <script>
+      (function () {
+        const dialog = document.getElementById("previewDialog");
+        const dialogTitle = document.getElementById("dialogTitle");
+        const dialogImage = document.getElementById("dialogImage");
+        const dialogPeriod = document.getElementById("dialogPeriod");
+        const dialogSource = document.getElementById("dialogSource");
+        const dialogDescription = document.getElementById("dialogDescription");
+        const btnClose = document.getElementById("btnClosePreview");
+        const empty = '<span class="empty-note">待補</span>';
+
+        function setTextOrEmpty(target, value) {
+          if (!target) return;
+          const text = (value || "").trim();
+          target.innerHTML = text ? "" : empty;
+          if (text) target.textContent = text;
+        }
+
+        function setSourceOrEmpty(target, value, urlValue) {
+          if (!target) return;
+          const text = (value || "").trim();
+          const urlText = (urlValue || "").trim();
+          const label = text || urlText;
+          target.innerHTML = label ? "" : empty;
+          if (!label) return;
+
+          try {
+            const url = new URL(urlText || label);
+            if (url.protocol !== "http:" && url.protocol !== "https:") {
+              target.textContent = label;
+              return;
+            }
+
+            const link = document.createElement("a");
+            link.href = url.href;
+            link.textContent = label;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            target.appendChild(link);
+          } catch {
+            target.textContent = label;
+          }
+        }
+
+        function closePreview() {
+          if (!dialog) return;
+          if (typeof dialog.close === "function") dialog.close();
+        }
+
+        document.querySelectorAll(".thumb-button").forEach((button) => {
+          button.addEventListener("click", () => {
+            const title = button.dataset.title || "文件圖預覽";
+            const img = button.dataset.img || "";
+
+            dialogTitle.textContent = title;
+            dialogImage.src = img;
+            dialogImage.alt = `${title} 文件圖`;
+            setTextOrEmpty(dialogPeriod, button.dataset.period);
+            setSourceOrEmpty(dialogSource, button.dataset.source, button.dataset.sourceUrl);
+            setTextOrEmpty(dialogDescription, button.dataset.description);
+
+            if (dialog && typeof dialog.showModal === "function") {
+              dialog.showModal();
+            }
+          });
+        });
+
+        btnClose?.addEventListener("click", closePreview);
+        dialog?.addEventListener("click", (event) => {
+          if (event.target === dialog) closePreview();
+        });
+      })();
+    </script>
+  </body>
+</html>

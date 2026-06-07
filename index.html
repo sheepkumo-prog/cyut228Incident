@@ -1,0 +1,1342 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="二二八事件網首頁：依行政院《「二二八事件」研究報告》摘要整理，以時間軸呈現事件發生與後續發展。"
+    />
+    <title>二二八事件網｜首頁</title>
+    <style>
+      :root {
+        --bg: #f3e4c6;
+        --panel: rgba(255, 255, 255, 0.58);
+        --panel-2: rgba(255, 255, 255, 0.38);
+        --text: rgba(15, 15, 15, 0.92);
+        --muted: rgba(15, 15, 15, 0.74);
+        --muted-2: rgba(15, 15, 15, 0.62);
+        --line: rgba(15, 15, 15, 0.28);
+        --accent: #111;
+        --accent-2: #111;
+        --danger: #b4001e;
+        --shadow: none;
+        --radius: 0px;
+        --radius-sm: 0px;
+        --max: 1100px;
+        --font-body: ui-serif, "Noto Serif TC", "Songti TC", "PMingLiU", "Times New Roman", serif;
+        --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--bg);
+        background-image:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 45%),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.18) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 6px
+          );
+        color: var(--text);
+      }
+
+      a {
+        color: color-mix(in srgb, var(--accent), white 10%);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--bg);
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 0;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: 0.04em;
+        font-family: var(--font-display);
+      }
+
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav a {
+        display: inline-flex;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 2px solid transparent;
+        font-family: var(--font-display);
+        font-size: 13px;
+        color: var(--text);
+      }
+
+      .nav a[aria-current="page"] {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .nav a[aria-disabled="true"] {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      main {
+        padding: 28px 0 70px;
+      }
+
+      .hero {
+        padding: 22px 0 10px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 2px solid var(--accent);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .mastline {
+        border-top: 3px solid var(--accent);
+        border-bottom: 1px solid var(--accent);
+        padding: 10px 0 12px;
+        margin: 4px 0 16px;
+      }
+
+      .mastline .mast-title {
+        font-family: var(--font-display);
+        font-weight: 950;
+        letter-spacing: -0.02em;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 1;
+        margin: 0;
+      }
+
+      .mastline .mast-sub {
+        margin: 8px 0 0;
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      figure.hero-media {
+        margin: 0;
+        border: 1px solid var(--accent);
+        padding: 10px;
+        background: var(--panel-2);
+      }
+
+      figure.hero-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--accent);
+        background: #fff;
+      }
+
+      figure.hero-media figcaption {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.6;
+        font-family: var(--font-display);
+      }
+
+      figure.hero-media .carousel {
+        border: 2px solid var(--accent);
+      }
+
+      figure.hero-media .carousel-controls {
+        border-top: 2px solid var(--accent);
+      }
+
+      .deck-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px 18px 0;
+      }
+
+      .deck-head h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+      }
+
+      .deck-head p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .deck-body {
+        padding: 18px;
+      }
+
+      .carousel {
+        border: 1px solid var(--accent);
+        background: rgba(255, 255, 255, 0.46);
+      }
+
+      .carousel-viewport {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+      }
+
+      .slide {
+        grid-area: 1 / 1;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(6px);
+        transition:
+          opacity 180ms ease,
+          transform 220ms ease;
+      }
+
+      .slide[data-active="true"] {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .slide figure {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 520px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .slide figcaption {
+        border-top: 1px solid var(--line);
+        padding: 12px 14px 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .slide figcaption strong {
+        display: inline-block;
+        color: var(--text);
+        font-family: var(--font-display);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .carousel-controls {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 10px 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .carousel-controls .icon-btn {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--accent);
+        background: rgba(255, 255, 255, 0.58);
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        color: var(--text);
+      }
+
+      .carousel-controls .icon-btn:hover {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .carousel-dots {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .dot-btn {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .dot-btn[aria-current="true"] {
+        background: var(--accent);
+      }
+
+      .deck-note {
+        margin: 10px 0 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-family: var(--font-display);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      .hero h2 {
+        margin: 12px 0 10px;
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        font-family: var(--font-display);
+        font-weight: 900;
+        text-transform: none;
+      }
+
+      .hero p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .bullets {
+        margin: 0 0 18px;
+        padding: 0 0 0 18px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .bullets li {
+        margin: 6px 0;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 0;
+        border: 2px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        font-weight: 650;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: none;
+        transition: transform 140ms ease;
+        font-family: var(--font-display);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .btn.secondary {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--text);
+        box-shadow: none;
+      }
+
+      .side {
+        padding: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .side h3 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+      }
+
+      .meta {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--panel-2), transparent 10%);
+        border: 1px solid var(--line);
+      }
+
+      .meta dt {
+        font-size: 11px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .meta dd {
+        margin: 0;
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .timeline-head {
+        margin-top: 18px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .timeline-head h3 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+      }
+
+      .timeline-head p {
+        margin: 6px 0 0;
+        color: var(--muted-2);
+        font-size: 13px;
+      }
+
+      .tools {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .tool {
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--panel), transparent 12%);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .tool:focus-visible,
+      .btn:focus-visible,
+      .nav a:focus-visible,
+      .nav button:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--accent), transparent 55%);
+        outline-offset: 2px;
+      }
+
+      .timeline {
+        margin: 0;
+        padding: 12px 20px 24px;
+        list-style: none;
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        bottom: 14px;
+        width: 2px;
+        background: var(--accent);
+        opacity: 1;
+      }
+
+      .t-item {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: start;
+        position: relative;
+      }
+
+      .t-pin {
+        width: 20px;
+        height: 20px;
+        margin: 8px 0 0 20px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      .t-card {
+        padding: 16px 16px 14px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--accent);
+        background: transparent;
+      }
+
+      .t-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+
+      .date {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 0;
+        border: 1px solid var(--accent);
+        background: transparent;
+        font-size: 12px;
+        color: var(--text);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        font-family: var(--font-display);
+      }
+
+      .tag {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 0;
+        border: 1px solid var(--accent);
+        color: var(--muted);
+        white-space: nowrap;
+        font-family: var(--font-display);
+      }
+
+      .t-card h4 {
+        margin: 10px 0 8px;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        font-family: var(--font-display);
+        font-weight: 800;
+      }
+
+      .t-card h4 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .t-card h4 a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      .t-card h4 a:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      .t-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 14px;
+      }
+
+      details {
+        margin-top: 10px;
+        border-top: 1px dashed var(--line);
+        padding-top: 10px;
+      }
+
+      summary {
+        cursor: pointer;
+        color: color-mix(in srgb, var(--muted), var(--text) 20%);
+        font-weight: 650;
+        font-size: 13px;
+        list-style: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .caret {
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(-45deg);
+        transition: transform 140ms ease;
+        opacity: 0.9;
+        margin-top: -2px;
+      }
+
+      details[open] .caret {
+        transform: rotate(45deg);
+      }
+
+      .note {
+        margin: 0;
+        color: var(--muted-2);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 26px 0 50px;
+        border-top: 2px solid var(--accent);
+        background: var(--bg);
+      }
+
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .small {
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.7;
+      }
+
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--panel), transparent 4%);
+        color: var(--text);
+      }
+
+      dialog.tips-dialog {
+        width: min(720px, calc(100vw - 32px));
+        border: 2px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        box-shadow: var(--shadow);
+      }
+
+      dialog.tips-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(6px);
+      }
+
+      .tips-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 16px 10px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .tips-head h3 {
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+      }
+
+      .icon-btn {
+        appearance: none;
+        border: 2px solid var(--accent);
+        background: transparent;
+        color: var(--text);
+        border-radius: 999px;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+      }
+
+      .icon-btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--panel), transparent 20%);
+      }
+
+      .tips-body {
+        padding: 14px 16px 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .tips-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 16px 16px;
+      }
+
+      .tips-actions .btn.secondary {
+        border-radius: 999px;
+        padding: 10px 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">
+          <svg aria-hidden="true" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 48"><g transform="translate(-488.29012,-254.49786)"><path fill="var(--accent)" fill-rule="evenodd" d="M 511.97791,260.45543 L 510.51184,259.46572 L 509.50097,259.50277 L 508.89409,259.45865 L 508.27134,259.21343 L 507.69796,258.75651 L 507.42099,258.38779 L 507.33454,258.30488 L 507.2869,258.27489 L 507.18282,258.21491 L 507.00464,258.14433 L 506.81586,258.0826 L 506.73648,258.08787 L 506.30071,258.1849 L 506.23898,258.20432 L 505.92141,258.37897 L 505.88437,258.42307 L 505.58623,258.78297 L 505.51566,258.87823 L 505.2175,259.48688 L 505.18927,259.5398 L 505.20868,259.61393 L 505.23691,259.6633 L 505.82438,260.06378 L 505.80322,260.12905 L 505.51741,259.9403 L 505.41509,259.8856 L 505.27396,259.8609 L 505.20868,259.87854 L 505.15046,259.90853 L 505.05696,259.9791 L 505.02345,260.0285 L 504.94759,260.11318 L 504.70765,260.28783 L 504.41833,260.41485 L 504.07078,260.56305 L 503.51858,260.69889 L 503.22397,260.81886 L 501.94845,261.76624 L 501.90082,261.80857 L 501.458,262.34842 L 501.3945,262.44721 L 501.07517,263.32932 L 501.01166,263.45633 L 500.78408,264.07203 L 500.67646,264.566 L 500.53356,265.75684 L 500.45771,265.7639 L 500.42066,265.80624 L 499.43271,267.05705 L 498.95461,267.70629 L 498.92991,267.76273 L 498.7482,268.56015 L 498.68998,268.83183 L 498.65647,269.05059 L 498.6106,269.2323 L 498.48533,269.444 L 498.19071,269.92387 L 498.05487,270.15851 L 497.99666,270.26788 L 497.89609,270.49018 L 497.79024,270.78303 L 497.55736,271.67042 L 497.5362,271.73746 L 497.34919,272.69012 L 497.33862,272.90007 L 496.94342,273.48402 L 496.89049,273.60222 L 496.45123,274.79305 L 496.08956,275.99624 L 495.88667,276.69308 L 495.84609,276.81128 L 495.53913,277.57341 L 495.3627,277.7269 L 495.15807,278.16972 L 495.13512,278.22792 L 494.5794,280.11739 L 494.5547,280.255 L 494.56529,280.32734 L 494.69938,280.85305 L 494.90226,281.47758 L 494.9199,281.5358 L 494.98516,281.71046 L 495.10515,282.01919 L 495.37682,282.79896 L 495.39093,282.86777 L 495.51444,283.62285 L 495.49502,283.67754 L 495.45444,283.71635 L 495.338,283.77103 L 495.17571,284.15917 L 495.10515,284.41498 L 495.00106,284.8966 L 494.8511,285.75222 L 494.84404,285.81926 L 494.85991,285.88983 L 494.8952,285.94099 L 494.94636,285.96922 L 495.00106,285.99039 L 495.16688,285.99039 L 495.22863,286.00804 L 495.28332,286.04157 L 495.30978,286.08743 L 495.43681,286.43674 L 495.44032,286.5073 L 495.40328,286.55317 L 495.32389,286.63433 L 495.11749,286.66432 L 495.00106,286.72431 L 494.97282,286.77545 L 494.94988,286.91306 L 494.99223,287.03303 L 495.01692,287.09302 L 495.05574,287.13182 L 495.16335,287.18477 L 495.67496,287.36119 L 495.96607,287.20417 L 496.40183,287.9663 L 496.5306,288.4885 L 496.63822,288.78664 L 497.11103,289.84694 L 497.20982,289.99513 L 497.52385,290.38324 L 497.86257,290.88074 L 497.88197,290.94778 L 497.88197,291.03246 L 497.77612,291.24945 L 497.81671,291.38001 L 497.88551,291.48057 L 498.00372,291.60583 L 498.12367,291.72579 L 498.17837,291.75225 L 498.23128,291.78048 L 498.52591,291.88456 L 498.75878,292.14391 L 498.88932,292.33797 L 499.01635,292.54085 L 499.06576,292.65376 L 499.05694,292.71197 L 498.96872,292.66258 L 498.7482,292.47734 L 498.7182,292.42088 L 498.65293,292.33797 L 498.68998,292.42088 L 498.76232,292.53204 L 499.034,292.73492 L 499.20512,292.85488 L 499.25452,292.88664 L 499.64088,293.06834 L 499.69381,293.09306 L 499.74144,293.10363 L 499.82083,293.09833 L 500.07664,293.00659 L 500.15251,293.08423 L 500.23718,293.16539 L 500.43478,293.29592 L 500.81407,293.48293 L 500.88464,293.50411 L 500.96403,293.49529 L 501.15986,293.54291 L 501.75968,293.92046 L 502.01019,294.0757 L 502.05077,294.11982 L 502.52534,294.63143 L 502.67,294.81315 L 502.80231,295.00544 L 503.49036,296.03572 L 503.53975,296.14511 L 503.79909,296.77845 L 503.83438,296.9037 L 503.86613,297.50883 L 504.21368,298.73846 L 504.23309,298.7967 L 504.32482,298.86902 L 504.38128,298.89019 L 504.44303,298.91313 L 504.51536,298.90077 L 505.63386,298.712 L 506.03609,297.37122 L 506.0502,297.30593 L 505.95847,296.6232 L 505.63386,295.06718 L 505.47861,294.58026 L 505.42921,294.38796 L 505.3851,294.09688 L 505.38333,294.01572 L 505.40098,293.79697 L 505.85791,291.38883 L 505.95141,290.9813 L 506.30778,290.12214 L 506.43833,289.8434 L 506.86349,289.13597 L 507.1493,288.92602 L 507.2675,288.8819 L 507.36452,288.82017 L 507.44392,288.72137 L 507.72266,288.34558 L 508.43716,286.56728 L 509.1005,284.19974 L 509.65975,281.21648 L 509.73208,280.31145 L 509.73208,280.14915 L 509.72149,280.0574 L 509.8097,279.28293 L 509.79912,276.68075 L 510.01965,274.24437 L 510.00553,273.24232 L 509.95083,272.64074 L 509.86616,272.56134 L 509.7709,272.40786 L 509.74795,272.35316 L 509.73561,272.11501 L 509.75148,272.04972 L 510.10785,270.79185 L 510.2384,270.5237 L 510.81001,269.43695 L 510.88234,269.34698 L 511.07287,269.20231 L 510.89821,268.96768 L 510.86822,268.91475 L 510.85764,268.83535 L 510.87881,267.88094 L 510.89468,267.72568 L 511.01466,267.44165 L 511.07463,267.34285 L 511.19812,267.22464 L 511.3428,267.10821 L 511.42217,267.02882 L 511.44159,266.33549 L 511.37984,265.97914 L 511.28104,265.65452 L 511.18402,265.49926 L 511.00583,265.43223 L 510.92114,265.34754 L 510.88939,265.30344 L 510.83471,265.18701 L 510.43599,263.95206 L 510.39541,263.81799 L 510.39365,263.41576 L 510.38483,262.87414 L 510.39365,262.72242 L 510.406,262.6589 L 510.47304,262.47191 L 510.87174,261.6498 L 510.9035,261.59509 L 511.18402,261.2158 L 511.50156,260.96175 L 511.71681,260.81886 L 511.81031,260.77653 L 511.94968,260.66538 L 511.99378,260.62478 L 512.02554,260.57539 L 512.01848,260.49425 L 511.97791,260.45543 z"/></g></svg>
+          <div>
+            <h1>二二八事件網</h1>
+            <p>首頁｜事件簡介與時間軸</p>
+          </div>
+        </div>
+        <nav aria-label="網站導覽">
+          <ul>
+            <li><a href="#" aria-current="page">首頁</a></li>
+            <li><a href="detail.html">詳細介紹</a></li>
+            <li><a href="people.html">重要人物</a></li>
+            <li><a href="documents.html">相關文件</a></li>
+            <li><a href="videos.html">延伸閱讀</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero" aria-label="首頁主視覺">
+        <div class="hero-grid">
+          <div class="card hero-card">
+            <div class="mastline" aria-label="網站標題">
+              <p class="mast-sub">228 Incident · Timeline · Taiwan</p>
+              <h2 class="mast-title">二二八事件網</h2>
+            </div>
+
+            <div class="hero-inner">
+              <div>
+                <div class="kicker"><span class="dot" aria-hidden="true"></span> 事件摘要</div>
+                <p>
+                  二二八事件是1947年發生於臺灣的重大歷史悲劇，根源於戰後行政失序、通貨膨脹與官民長期積怨。
+                  1947年2月27日夜間，臺北專賣局查緝員在圓環附近取締私菸，打傷女販林江邁，並於群眾聚集時開槍誤殺路人，點燃民怨。
+                </p>
+                <p>
+                  翌日（2月28日），民眾前往長官公署請願，遭公署衛兵以機槍掃射，死傷數人。消息傳遍全島，各地相繼罷市、抗議，武裝衝突持續擴大。
+                  各界代表組成「二二八事件處理委員會」，提出涵蓋廢除專賣局與政治改革在內的三十二條訴求。
+                  行政長官陳儀表面與處委會周旋，暗中密電南京請調援軍。
+                </p>
+                <p>
+                  3月8日起，國府整編第二十一師等部隊陸續在基隆、高雄登陸，展開大規模清鄉與軍事鎮壓，
+                  大批本省知識份子、地方仕紳與民意代表遭逮捕、殺害或失蹤。
+                  依行政院《二二八事件研究報告》，估計全臺死亡人數約介於一萬八千至兩萬八千人之間。
+                </p>
+                <p>
+                  事件重創臺灣社會，造成本土精英斷層、族群隔閡加深，並成為此後數十年戒嚴體制與白色恐怖的政治背景。
+                  1995年政府公開道歉並設立二二八紀念基金會；2018年，促進轉型正義委員會成立，持續推動歷史真相的揭露與司法平反工作。
+                </p>
+                <div class="actions">
+                  <a class="btn" href="#timeline">開始閱讀時間軸</a>
+                </div>
+              </div>
+
+              <figure class="hero-media">
+                <img
+                  src="assets/drnh-72C.jpg"
+                  alt="二二八事件相關影像（來源：二二八事件數位典藏）"
+                  loading="eager"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='assets/228org-incident.jpg';"
+                />
+                <figcaption>
+                  圖片來源：二二八事件數位典藏（DRNH）・
+                  <a
+                    href="https://228.drnh.gov.tw/index.php?act=Display%2Fimage%2F50859DOA2qM%3D#72C"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    查看影像原始頁面
+                  </a>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="press-slides" aria-label="相關剪報">
+        <div class="deck-head">
+          <div>
+            <h3>相關報紙</h3>
+            <p>
+              以「當時報刊剪報」作為入口，快速理解事件在媒體上的呈現與時代氛圍。
+            </p>
+          </div>
+          <a
+            class="btn secondary"
+            href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/search"
+            target="_blank"
+            rel="noreferrer"
+          >
+            查看更多
+          </a>
+        </div>
+
+        <div class="deck-body">
+          <div class="carousel" data-carousel>
+            <div class="carousel-viewport" aria-live="polite">
+              <ul class="carousel-track">
+                <li class="slide" data-slide data-active="true">
+                  <figure>
+                    <img
+                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2657/default.jpg"
+                      alt="剪報影像 1（政大 228twnews 數位典藏）"
+                      loading="lazy"
+                      decoding="async"
+                      referrerpolicy="no-referrer"
+                    />
+                    <figcaption>
+                      <strong>剪報影像 1</strong>
+                      <div>
+                        <a
+                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2658/rec/1"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          查看典藏條目
+                        </a>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+
+                <li class="slide" data-slide>
+                  <figure>
+                    <img
+                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2661/default.jpg"
+                      alt="剪報影像 2（政大 228twnews 數位典藏）"
+                      loading="lazy"
+                      decoding="async"
+                      referrerpolicy="no-referrer"
+                    />
+                    <figcaption>
+                      <strong>剪報影像 2</strong>
+                      <div>
+                        <a
+                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2663/rec/2"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          查看典藏條目
+                        </a>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+
+                <li class="slide" data-slide>
+                  <figure>
+                    <img
+                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2543/default.jpg"
+                      alt="剪報影像 3（政大 228twnews 數位典藏）"
+                      loading="lazy"
+                      decoding="async"
+                      referrerpolicy="no-referrer"
+                    />
+                    <figcaption>
+                      <strong>剪報影像 3</strong>
+                      <div>
+                        <a
+                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2544/rec/3"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          查看典藏條目
+                        </a>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+
+            <div class="carousel-controls" aria-label="輪播控制">
+              <button class="icon-btn" type="button" data-prev aria-label="上一張">‹</button>
+              <div class="carousel-dots" data-dots aria-label="輪播指示點"></div>
+              <button class="icon-btn" type="button" data-next aria-label="下一張">›</button>
+            </div>
+          </div>
+
+          <p class="deck-note">
+            圖片來自政治大學圖書館「228twnews」數位典藏，點擊可開啟典藏條目。
+          </p>
+        </div>
+      </section>
+
+            <section class="card" id="timeline" aria-label="事件時間軸">
+        <div class="timeline-head">
+          <div>
+            <h3>事件時間軸</h3>
+          </div>
+        </div>
+
+        <ol class="timeline">
+          <li class="t-item" id="t-prelude">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1945">1945-1947</time> 背景</span>
+                <span class="tag">戰後接收</span>
+              </div>
+              <h4><a href="detail.html#sec-prelude">戰後接收與施政失序，社會不滿累積</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470227">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-02-27">1947/02/27</time> 導火線</span>
+                <span class="tag">緝私衝突</span>
+              </div>
+              <h4><a href="detail.html#sec-19470227">臺北緝私衝突引發抗議與群眾聚集</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470228">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-02-28">1947/02/28</time> 擴大</span>
+                <span class="tag">罷市請願</span>
+              </div>
+              <h4><a href="detail.html#sec-19470228">罷市與請願使情勢升高，衝突擴大</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470303">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-03">1947/03/03</time> 協商</span>
+                <span class="tag">處理委員會</span>
+              </div>
+              <h4><a href="detail.html#sec-19470303">成立處理委員會，提出改革與善後訴求</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470310">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-10">1947/03/10</time> 鎮壓</span>
+                <span class="tag">軍隊進駐</span>
+              </div>
+              <h4><a href="detail.html#sec-19470310">軍隊進駐與全面鎮壓，逮捕與傷亡增加</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470314">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-14">1947/03/14-03/16</time> 清剿</span>
+                <span class="tag">全臺擴大</span>
+              </div>
+              <h4><a href="detail.html#sec-19470314">全臺清剿與擴大逮捕，事件進入高壓控制</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470516">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-05-16">1947/05/16</time> 處置</span>
+                <span class="tag">政治處分</span>
+              </div>
+              <h4><a href="detail.html#sec-19470516">陳儀撤職，事件進入長期收束與控制</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-1949">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1949">1949-1992</time> 戒嚴時期</span>
+                <span class="tag">白色恐怖</span>
+              </div>
+              <h4><a href="detail.html#sec-1949">戒嚴體制下的白色恐怖延伸（長期政治迫害與肅清）</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-1980s">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1987">1980年代後期</time> 社會倡議</span>
+                <span class="tag">平反運動</span>
+              </div>
+              <h4><a href="detail.html#sec-1980s">二二八平反運動興起，推動追查真相、公開紀念與政府回應</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-199202">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1992-02">1992/02</time> 調查出版</span>
+                <span class="tag">平反調查</span>
+              </div>
+              <h4><a href="detail.html#sec-199202">行政院出版《「二二八事件」研究報告》，形成官方調查研究的重要里程碑</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-20171205">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="2017-12-05">2017/12/05</time> 立法推進</span>
+                <span class="tag">轉型正義</span>
+              </div>
+              <h4><a href="detail.html#sec-2017">《促進轉型正義條例》三讀通過，轉型正義制度化</a></h4>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-20180531">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="2018-05-31">2018/05/31</time> 機構成立</span>
+                <span class="tag">轉型正義</span>
+              </div>
+              <h4><a href="detail.html#sec-2017">促進轉型正義委員會成立（調查、平復不法、政治檔案與社會對話等）</a></h4>
+            </article>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+        <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <strong>資料來源</strong>
+          <p class="small">
+            本頁以行政院《「二二八事件」研究報告》摘要為主，並參考二二八相關數位典藏與公開資料。
+          </p>
+          <p class="small">
+            <a href="https://www.228.org.tw/incident-research1?lang=tw" target="_blank" rel="noreferrer">二二八事件紀念基金會（研究與資料）</a>
+            <br />
+            <a href="https://228.drnh.gov.tw/" target="_blank" rel="noreferrer">二二八事件數位典藏（DRNH）</a>
+            <br />
+            <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%83%8C%E6%99%AF" target="_blank" rel="noreferrer">二二八事件的背景（Wikipedia）</a>
+          </p>
+        </div>
+        <div>
+          <strong>使用說明</strong>
+          <p class="small">
+            以滑鼠滾動閱讀時間軸；輪播剪報可使用左右按鈕切換。目前已完成：首頁、詳細介紹、重要人物、相關文件、互動遊戲。
+          </p>
+        </div>
+      </div>
+    </footer>
+
+        <dialog class="tips-dialog" id="tipsDialog" aria-label="閱讀提示">
+      <div class="tips-head">
+        <h3>閱讀提示</h3>
+        <button class="icon-btn" type="button" id="btnCloseTips" aria-label="關閉閱讀提示">×</button>
+      </div>
+      <div class="tips-body">
+        <dl class="meta" style="margin: 0">
+          <dt>這頁在做什麼？</dt>
+          <dd>本頁為二二八事件網的總覽入口，依行政院《「二二八事件」研究報告》摘要整理，以時間軸呈現事件關鍵節點，涵蓋導火線、擴大、鎮壓、清鄉，以及白色恐怖、平反調查與轉型正義的後續脈絡。</dd>
+          <dt>怎麼閱讀？</dt>
+          <dd>向下捲動依時間順序瀏覽時間軸；點選「開始閱讀時間軸」可直接跳至該區塊。各節點僅保留大標題，詳細內容請前往上方導覽列的「詳細介紹」；人物背景見「重要人物」；史料文件見「相關文件」；書籍影片與線上資源見「延伸閱讀」；互動體驗見「互動遊戲」。</dd>
+          <dt>快捷鍵</dt>
+          <dd>按 <span class="kbd">Esc</span> 可關閉此視窗。</dd>
+        </dl>
+        </p>
+      </div>
+      <div class="tips-actions">
+        <button class="btn secondary" type="button" id="btnOkTips">我知道了</button>
+      </div>
+    </dialog>
+
+    <script>
+      (function () {
+        const dialog = document.getElementById("tipsDialog");
+        const btnClose = document.getElementById("btnCloseTips");
+        const btnOk = document.getElementById("btnOkTips");
+        const heroMedia = document.querySelector("figure.hero-media");
+        const pressSlides = document.getElementById("press-slides");
+        const carousel = pressSlides?.querySelector("[data-carousel]") ?? document.querySelector("[data-carousel]");
+        const willReplaceHeroWithCarousel = Boolean(
+          heroMedia && carousel && heroMedia !== carousel.closest("figure.hero-media")
+        );
+        const heroImg = document.querySelector("figure.hero-media img");
+
+        function closeTips() {
+          if (!dialog) return;
+          if (typeof dialog.close === "function") dialog.close();
+        }
+
+        btnClose?.addEventListener("click", closeTips);
+        btnOk?.addEventListener("click", closeTips);
+
+        if (dialog && typeof dialog.showModal === "function") {
+          if (!dialog.open) dialog.showModal();
+        }
+
+        // Fix: some environments may fail to load the hero image when it is embedded as a very long data URL.
+        // Force it to load from remote only when we still use the hero image (not the carousel replacement).
+        if (!willReplaceHeroWithCarousel && heroImg && heroImg.src && heroImg.src.startsWith("data:image/")) {
+          heroImg.setAttribute("loading", "eager");
+          heroImg.setAttribute("decoding", "async");
+          heroImg.setAttribute("referrerpolicy", "no-referrer");
+          // Prefer a remote image URL to avoid local asset loading issues in some environments.
+          heroImg.src = "https://228.drnh.gov.tw/index.php?act=Display/loadimg/72C";
+          heroImg.onerror = () => {
+            heroImg.onerror = null;
+            heroImg.src = "https://228.drnh.gov.tw/index.php?act=Display/loadimg/d0J";
+          };
+        }
+
+        function initCarousel(carousel) {
+          if (carousel.getAttribute("data-init") === "true") return;
+          carousel.setAttribute("data-init", "true");
+
+          const slides = Array.from(carousel.querySelectorAll("[data-slide]"));
+          const dotsWrap = carousel.querySelector("[data-dots]");
+          const btnPrev = carousel.querySelector("[data-prev]");
+          const btnNext = carousel.querySelector("[data-next]");
+
+          let index = slides.findIndex((s) => s.getAttribute("data-active") === "true");
+          if (index < 0) index = 0;
+
+          function setActive(nextIndex) {
+            const safe = (nextIndex + slides.length) % slides.length;
+            slides.forEach((s, i) => s.setAttribute("data-active", i === safe ? "true" : "false"));
+            if (dotsWrap) {
+              const dots = Array.from(dotsWrap.querySelectorAll("button"));
+              dots.forEach((d, i) => d.setAttribute("aria-current", i === safe ? "true" : "false"));
+            }
+            index = safe;
+
+            // Hint to browser: prioritize the visible slide image.
+            const img = slides[safe]?.querySelector("img");
+            if (img) {
+              img.loading = "eager";
+              img.decoding = "async";
+            }
+          }
+
+          if (dotsWrap) {
+            dotsWrap.innerHTML = "";
+            slides.forEach((_, i) => {
+              const b = document.createElement("button");
+              b.type = "button";
+              b.className = "dot-btn";
+              b.setAttribute("aria-label", `蛻・鋤蛻ｰ隨ｬ ${i + 1} 蠑ｵ`);
+              b.setAttribute("aria-current", i === index ? "true" : "false");
+              b.addEventListener("click", () => {
+                setActive(i);
+                resetAuto();
+              });
+              dotsWrap.appendChild(b);
+            });
+          }
+
+          btnPrev?.addEventListener("click", () => {
+            setActive(index - 1);
+            resetAuto();
+          });
+          btnNext?.addEventListener("click", () => {
+            setActive(index + 1);
+            resetAuto();
+          });
+
+          carousel.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+              setActive(index - 1);
+              resetAuto();
+            }
+            if (e.key === "ArrowRight") {
+              setActive(index + 1);
+              resetAuto();
+            }
+          });
+
+          // Make carousel focusable for keyboard navigation.
+          if (!carousel.hasAttribute("tabindex")) carousel.setAttribute("tabindex", "0");
+          setActive(index);
+
+          // Autoplay (every 5s), pause on hover/focus.
+          const prefersReducedMotion =
+            typeof window.matchMedia === "function" &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+          const AUTO_MS = 5000;
+          let autoId = null;
+
+          function startAuto() {
+            if (prefersReducedMotion) return;
+            if (autoId) return;
+            if (slides.length < 2) return;
+            autoId = window.setInterval(() => setActive(index + 1), AUTO_MS);
+          }
+
+          function stopAuto() {
+            if (!autoId) return;
+            window.clearInterval(autoId);
+            autoId = null;
+          }
+
+          function resetAuto() {
+            stopAuto();
+            startAuto();
+          }
+
+          carousel.addEventListener("mouseenter", stopAuto);
+          carousel.addEventListener("mouseleave", startAuto);
+          carousel.addEventListener("focusin", stopAuto);
+          carousel.addEventListener("focusout", startAuto);
+
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) stopAuto();
+            else startAuto();
+          });
+
+          startAuto();
+        }
+
+        if (carousel) initCarousel(carousel);
+
+        if (heroMedia && carousel && heroMedia !== carousel.closest("figure.hero-media")) {
+          heroMedia.innerHTML = "";
+          heroMedia.appendChild(carousel);
+          if (pressSlides) pressSlides.style.display = "none";
+        }
+      })();
+    </script>
+  </body>
+</html>

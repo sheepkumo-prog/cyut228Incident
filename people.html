@@ -1,0 +1,1546 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="二二八事件網｜重要人物：對照詳細介紹各時間點，整理政府體系與團體／組織（含民間人物）的重要相關人物，並提供每位人物的簡短介紹與延伸閱讀。"
+    />
+    <title>二二八事件網｜重要人物</title>
+    <style>
+      :root {
+        --bg: #f3e4c6;
+        --panel: rgba(255, 255, 255, 0.58);
+        --panel-2: rgba(255, 255, 255, 0.38);
+        --text: rgba(15, 15, 15, 0.92);
+        --muted: rgba(15, 15, 15, 0.74);
+        --muted-2: rgba(15, 15, 15, 0.62);
+        --line: rgba(15, 15, 15, 0.28);
+        --accent: #111;
+        --shadow: none;
+        --radius: 0px;
+        --max: 1100px;
+        --font-body: ui-serif, "Noto Serif TC", "Songti TC", "PMingLiU", "Times New Roman", serif;
+        --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC",
+          "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        background: var(--bg);
+        background-image:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04), transparent 40%),
+          radial-gradient(circle at 80% 0%, rgba(0, 0, 0, 0.03), transparent 45%),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.18) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 6px
+          );
+        color: var(--text);
+      }
+
+      a {
+        color: color-mix(in srgb, var(--accent), white 10%);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--bg);
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: 0.04em;
+        font-family: var(--font-display);
+      }
+
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-display);
+        font-size: 13px;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 10px;
+        border: 2px solid transparent;
+        border-radius: 999px;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      nav a[aria-current="page"] {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.32);
+      }
+
+      nav a[aria-disabled="true"] {
+        opacity: 0.55;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      @media (max-width: 840px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        nav ul {
+          flex-wrap: wrap;
+        }
+      }
+
+      .card {
+        border: 2px solid var(--accent);
+        background: var(--panel);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .page-hero {
+        padding: 18px 20px 16px;
+        margin: 0 0 16px;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute; inset: 0;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.08), transparent 55%),
+          radial-gradient(circle at 70% 20%, rgba(0, 0, 0, 0.06), transparent 55%);
+        pointer-events: none; mix-blend-mode: multiply; opacity: 0.8;
+      }
+      .page-hero > * { position: relative; }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-display);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .page-hero h2 {
+        margin: 10px 0 8px;
+        font-family: var(--font-display);
+        font-weight: 900;
+        letter-spacing: -0.01em;
+        font-size: clamp(22px, 3vw, 32px);
+        line-height: 1.1;
+      }
+
+      .page-hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 14px;
+        max-width: 86ch;
+      }
+
+      .filters {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+        max-width: 680px;
+      }
+
+      .filters label {
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.04em;
+      }
+
+      .filters input[type="search"] {
+        width: 100%;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        padding: 10px 12px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        outline: none;
+      }
+
+      .filters input[type="search"]:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 3px;
+      }
+
+      .hint {
+        margin: 0;
+        color: var(--muted-2);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      details.section[data-filtered="empty"] {
+        display: none;
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 14px;
+        margin: 14px 0 20px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .toc {
+        position: sticky;
+        top: 86px;
+        padding: 14px 14px 12px;
+      }
+
+      @media (max-width: 900px) {
+        .toc {
+          position: static;
+          top: 0;
+        }
+      }
+
+      .toc h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .toc ol {
+        margin: 0;
+        padding: 0 0 0 16px;
+        display: grid;
+        gap: 8px;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .toc a {
+        color: var(--text);
+      }
+
+      .toc small {
+        display: block;
+        color: var(--muted-2);
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+
+      .section {
+        padding: 16px 16px 18px;
+      }
+
+      .section + .section {
+        margin-top: 14px;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 6px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--accent);
+        margin-bottom: 12px;
+      }
+
+      details.section > .section-head {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        padding-right: 46px;
+        margin-bottom: 0;
+      }
+
+      details.section[open] > .section-head {
+        margin-bottom: 12px;
+      }
+
+      details.section > .section-head::-webkit-details-marker {
+        display: none;
+      }
+      details.section > .section-head::marker {
+        content: "";
+      }
+
+      details.section > .section-head::after {
+        content: "▾";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.28);
+        color: var(--text);
+        transform: rotate(-90deg);
+        transition: transform 160ms ease;
+      }
+
+      details.section[open] > .section-head::after {
+        transform: rotate(0deg);
+      }
+
+      .meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        font-family: var(--font-display);
+        color: var(--muted-2);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+        color: var(--text);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .section-head h3 {
+        margin: 0;
+        font-size: 18px;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+      }
+
+      .section-summary {
+        display: block;
+        margin: 2px 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 13px;
+        max-width: 80ch;
+      }
+
+      .people-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .people-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .people-col h4 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 14px;
+        letter-spacing: 0.04em;
+      }
+
+      .people-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .person {
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: var(--radius);
+        padding: 12px 12px 10px;
+        scroll-margin-top: 96px;
+      }
+
+      .person:target {
+        background: rgba(255, 255, 255, 0.58);
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 4px;
+      }
+
+      .person-top {
+        display: grid;
+        gap: 2px;
+        margin-bottom: 6px;
+      }
+
+      .person-name {
+        font-family: var(--font-display);
+        font-size: 15px;
+        letter-spacing: 0.04em;
+      }
+
+      .person-role {
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.5;
+      }
+
+      .person-bio {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      .person-links {
+        margin: 8px 0 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      .person-links a {
+        margin-right: 10px;
+        text-decoration: underline;
+      }
+
+      footer {
+        border-top: 2px solid var(--accent);
+        margin-top: 26px;
+        padding: 16px 0 22px;
+      }
+
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 860px) {
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .small {
+        font-size: 12px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 6px;
+        height: 22px;
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.35);
+        font-family: var(--font-display);
+        font-size: 12px;
+      }
+
+      dialog.tips-dialog {
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.92);
+        padding: 0;
+        width: min(720px, calc(100% - 24px));
+      }
+
+      .tips-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 14px 10px;
+        border-bottom: 2px solid var(--accent);
+        font-family: var(--font-display);
+      }
+
+      .tips-head h3 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+      }
+
+      .icon-btn {
+        border: 2px solid var(--accent);
+        background: transparent;
+        border-radius: 999px;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        font-family: var(--font-display);
+      }
+
+      .tips-body {
+        padding: 12px 14px 12px;
+      }
+
+      .tips-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 14px 14px;
+      }
+
+      .btn {
+        border: 2px solid var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 999px;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-family: var(--font-display);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap nav">
+        <div class="brand">
+          <svg aria-hidden="true" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 48"><g transform="translate(-488.29012,-254.49786)"><path fill="var(--accent)" fill-rule="evenodd" d="M 511.97791,260.45543 L 510.51184,259.46572 L 509.50097,259.50277 L 508.89409,259.45865 L 508.27134,259.21343 L 507.69796,258.75651 L 507.42099,258.38779 L 507.33454,258.30488 L 507.2869,258.27489 L 507.18282,258.21491 L 507.00464,258.14433 L 506.81586,258.0826 L 506.73648,258.08787 L 506.30071,258.1849 L 506.23898,258.20432 L 505.92141,258.37897 L 505.88437,258.42307 L 505.58623,258.78297 L 505.51566,258.87823 L 505.2175,259.48688 L 505.18927,259.5398 L 505.20868,259.61393 L 505.23691,259.6633 L 505.82438,260.06378 L 505.80322,260.12905 L 505.51741,259.9403 L 505.41509,259.8856 L 505.27396,259.8609 L 505.20868,259.87854 L 505.15046,259.90853 L 505.05696,259.9791 L 505.02345,260.0285 L 504.94759,260.11318 L 504.70765,260.28783 L 504.41833,260.41485 L 504.07078,260.56305 L 503.51858,260.69889 L 503.22397,260.81886 L 501.94845,261.76624 L 501.90082,261.80857 L 501.458,262.34842 L 501.3945,262.44721 L 501.07517,263.32932 L 501.01166,263.45633 L 500.78408,264.07203 L 500.67646,264.566 L 500.53356,265.75684 L 500.45771,265.7639 L 500.42066,265.80624 L 499.43271,267.05705 L 498.95461,267.70629 L 498.92991,267.76273 L 498.7482,268.56015 L 498.68998,268.83183 L 498.65647,269.05059 L 498.6106,269.2323 L 498.48533,269.444 L 498.19071,269.92387 L 498.05487,270.15851 L 497.99666,270.26788 L 497.89609,270.49018 L 497.79024,270.78303 L 497.55736,271.67042 L 497.5362,271.73746 L 497.34919,272.69012 L 497.33862,272.90007 L 496.94342,273.48402 L 496.89049,273.60222 L 496.45123,274.79305 L 496.08956,275.99624 L 495.88667,276.69308 L 495.84609,276.81128 L 495.53913,277.57341 L 495.3627,277.7269 L 495.15807,278.16972 L 495.13512,278.22792 L 494.5794,280.11739 L 494.5547,280.255 L 494.56529,280.32734 L 494.69938,280.85305 L 494.90226,281.47758 L 494.9199,281.5358 L 494.98516,281.71046 L 495.10515,282.01919 L 495.37682,282.79896 L 495.39093,282.86777 L 495.51444,283.62285 L 495.49502,283.67754 L 495.45444,283.71635 L 495.338,283.77103 L 495.17571,284.15917 L 495.10515,284.41498 L 495.00106,284.8966 L 494.8511,285.75222 L 494.84404,285.81926 L 494.85991,285.88983 L 494.8952,285.94099 L 494.94636,285.96922 L 495.00106,285.99039 L 495.16688,285.99039 L 495.22863,286.00804 L 495.28332,286.04157 L 495.30978,286.08743 L 495.43681,286.43674 L 495.44032,286.5073 L 495.40328,286.55317 L 495.32389,286.63433 L 495.11749,286.66432 L 495.00106,286.72431 L 494.97282,286.77545 L 494.94988,286.91306 L 494.99223,287.03303 L 495.01692,287.09302 L 495.05574,287.13182 L 495.16335,287.18477 L 495.67496,287.36119 L 495.96607,287.20417 L 496.40183,287.9663 L 496.5306,288.4885 L 496.63822,288.78664 L 497.11103,289.84694 L 497.20982,289.99513 L 497.52385,290.38324 L 497.86257,290.88074 L 497.88197,290.94778 L 497.88197,291.03246 L 497.77612,291.24945 L 497.81671,291.38001 L 497.88551,291.48057 L 498.00372,291.60583 L 498.12367,291.72579 L 498.17837,291.75225 L 498.23128,291.78048 L 498.52591,291.88456 L 498.75878,292.14391 L 498.88932,292.33797 L 499.01635,292.54085 L 499.06576,292.65376 L 499.05694,292.71197 L 498.96872,292.66258 L 498.7482,292.47734 L 498.7182,292.42088 L 498.65293,292.33797 L 498.68998,292.42088 L 498.76232,292.53204 L 499.034,292.73492 L 499.20512,292.85488 L 499.25452,292.88664 L 499.64088,293.06834 L 499.69381,293.09306 L 499.74144,293.10363 L 499.82083,293.09833 L 500.07664,293.00659 L 500.15251,293.08423 L 500.23718,293.16539 L 500.43478,293.29592 L 500.81407,293.48293 L 500.88464,293.50411 L 500.96403,293.49529 L 501.15986,293.54291 L 501.75968,293.92046 L 502.01019,294.0757 L 502.05077,294.11982 L 502.52534,294.63143 L 502.67,294.81315 L 502.80231,295.00544 L 503.49036,296.03572 L 503.53975,296.14511 L 503.79909,296.77845 L 503.83438,296.9037 L 503.86613,297.50883 L 504.21368,298.73846 L 504.23309,298.7967 L 504.32482,298.86902 L 504.38128,298.89019 L 504.44303,298.91313 L 504.51536,298.90077 L 505.63386,298.712 L 506.03609,297.37122 L 506.0502,297.30593 L 505.95847,296.6232 L 505.63386,295.06718 L 505.47861,294.58026 L 505.42921,294.38796 L 505.3851,294.09688 L 505.38333,294.01572 L 505.40098,293.79697 L 505.85791,291.38883 L 505.95141,290.9813 L 506.30778,290.12214 L 506.43833,289.8434 L 506.86349,289.13597 L 507.1493,288.92602 L 507.2675,288.8819 L 507.36452,288.82017 L 507.44392,288.72137 L 507.72266,288.34558 L 508.43716,286.56728 L 509.1005,284.19974 L 509.65975,281.21648 L 509.73208,280.31145 L 509.73208,280.14915 L 509.72149,280.0574 L 509.8097,279.28293 L 509.79912,276.68075 L 510.01965,274.24437 L 510.00553,273.24232 L 509.95083,272.64074 L 509.86616,272.56134 L 509.7709,272.40786 L 509.74795,272.35316 L 509.73561,272.11501 L 509.75148,272.04972 L 510.10785,270.79185 L 510.2384,270.5237 L 510.81001,269.43695 L 510.88234,269.34698 L 511.07287,269.20231 L 510.89821,268.96768 L 510.86822,268.91475 L 510.85764,268.83535 L 510.87881,267.88094 L 510.89468,267.72568 L 511.01466,267.44165 L 511.07463,267.34285 L 511.19812,267.22464 L 511.3428,267.10821 L 511.42217,267.02882 L 511.44159,266.33549 L 511.37984,265.97914 L 511.28104,265.65452 L 511.18402,265.49926 L 511.00583,265.43223 L 510.92114,265.34754 L 510.88939,265.30344 L 510.83471,265.18701 L 510.43599,263.95206 L 510.39541,263.81799 L 510.39365,263.41576 L 510.38483,262.87414 L 510.39365,262.72242 L 510.406,262.6589 L 510.47304,262.47191 L 510.87174,261.6498 L 510.9035,261.59509 L 511.18402,261.2158 L 511.50156,260.96175 L 511.71681,260.81886 L 511.81031,260.77653 L 511.94968,260.66538 L 511.99378,260.62478 L 512.02554,260.57539 L 512.01848,260.49425 L 511.97791,260.45543 z"/></g></svg>
+          <div>
+            <h1>二二八事件網</h1>
+            <p>重要人物｜依時間點整理行動者</p>
+          </div>
+        </div>
+        <nav aria-label="網站導覽">
+          <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="detail.html">詳細介紹</a></li>
+            <li><a href="#" aria-current="page">重要人物</a></li>
+            <li><a href="documents.html">相關文件</a></li>
+            <li><a href="videos.html">延伸閱讀</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="card page-hero" aria-label="重要人物導讀">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> People / Index</div>
+        <h2>重要人物</h2>
+        <p>
+          本頁對照「詳細介紹」的各個時間點，整理每個時間點常被提及的關鍵行動者：包含政府體系（行政、軍警、專賣等）與團體／組織（含民間人物；如處理委員會、
+          地方領袖、受難者、倡議者等）。每位人物附 10～200 字簡介與延伸閱讀連結，方便快速查找。
+        </p>
+        <div class="filters" aria-label="快速搜尋">
+          <label for="peopleSearch">快速搜尋（輸入姓名或關鍵字）</label>
+          <input id="peopleSearch" type="search" placeholder="例如：陳儀、王添燈、圓環、促轉會…" autocomplete="off" />
+          <p class="hint">提示：搜尋會自動展開包含關鍵字的章節，並隱藏不相符的人物卡。</p>
+        </div>
+      </section>
+
+      <div class="detail-grid">
+        <aside class="card toc" aria-label="章節目錄">
+          <h3>目錄</h3>
+          <ol>
+            <li><a href="#sec-prelude">1945-1947｜背景</a></li>
+            <li><a href="#sec-19470227">1947/02/27｜導火線</a></li>
+            <li><a href="#sec-19470228">1947/02/28｜擴大</a></li>
+            <li><a href="#sec-19470303">1947/03/03｜協商</a></li>
+            <li><a href="#sec-19470310">1947/03/10｜鎮壓</a></li>
+            <li><a href="#sec-19470314">1947/03/14-03/16｜清剿</a></li>
+            <li><a href="#sec-19470516">1947/05/16｜處置</a></li>
+            <li><a href="#sec-1949">1949-1992｜白色恐怖</a></li>
+            <li><a href="#sec-1980s">1980年代後期｜平反運動</a></li>
+            <li><a href="#sec-199202">1992/02｜平反調查</a></li>
+            <li><a href="#sec-2017">2017-2018｜轉型正義</a></li>
+          </ol>
+          <small class="small">
+            使用方式：點選時間點展開人物清單；也可先用上方搜尋，再展開對應章節查看。人物以「政府」與「團體／組織（含民間人物）」分欄整理；名單為整理用索引，非完整名冊。
+          </small>
+        </aside>
+
+        <article aria-label="重要人物清單">
+          <details class="card section" id="sec-prelude">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1945-1947</span>
+                <span class="pill">背景</span>
+                <span class="pill">戰後接收</span>
+              </div>
+              <h3>戰後接收與施政失序，社會不滿累積</h3>
+              <span class="section-summary">從接收到經濟與治安：理解人物位置，能看見「制度」如何推動衝突。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1945-1947）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-prelude-u9673u5100" data-search="陳儀 戰後接收 行政長官 省行政長官公署">
+                    <div class="person-top">
+                      <div class="person-name">陳儀</div>
+                      <div class="person-role">臺灣省行政長官公署長官（戰後初期）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省行政長官，1945年10月起主導戰後接收工作。任內以「公營」名義壟斷主要物資，官員腐化及通貨膨脹嚴重，加上省外官員優先任用，使官民矛盾持續累積，被視為二二八事件爆發的核心制度性背景。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-prelude-u67efu9060u82ac" data-search="柯遠芬 軍警 治安 安全體系">
+                    <div class="person-top">
+                      <div class="person-name">柯遠芬</div>
+                      <div class="person-role">軍警安全體系要角（事件前後常被提及）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省警備總司令部參謀長，主掌戰後台灣軍警安全體系。事件期間主導清鄉部署，以「寧可枉殺九十九個，只要殺死一個真的」定調搜捕標準；事後始終未受司法追究，並撰文為自身行為辯護。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E6%9F%AF%E9%81%A0%E8%8A%AC" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1945-1947）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-prelude-u8523u6e2du5ddd" data-search="蔣渭川 處理委員會 協商 改革">
+                    <div class="person-top">
+                      <div class="person-name">蔣渭川</div>
+                      <div class="person-role">地方政治與社會倡議者（事件前後活躍）</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣省政治建設協會理事長，日治時期即投身社會運動，戰後持續倡議政治改革。二二八事件中進入處理委員會擔任核心角色，其立場與陳儀的關係至今仍是歷史爭議焦點。事後歷任台灣省民政廳長、內政部次長。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E6%B8%AD%E5%B7%9D" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-prelude-u738bu6dfbu71c8" data-search="王添燈 處理委員會 地方領袖">
+                    <div class="person-top">
+                      <div class="person-name">王添燈</div>
+                      <div class="person-role">地方領袖、處理委員會成員</div>
+                    </div>
+                    <p class="person-bio">
+                      《人民導報》社長、台灣省參議員，戰後積極投入媒體論政與政治倡議。二二八事件中成為處理委員會宣傳負責人，起草《三十二條處理大綱》，透過廣播向全台傳播改革訴求；1947年3月11日凌晨遭憲兵帶走，疑遭汽油焚身，享年46歲，死因至今不明。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E7%8E%8B%E6%B7%BB%E7%87%88" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470227">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/02/27</span>
+                <span class="pill">導火線</span>
+                <span class="pill">緝私衝突</span>
+              </div>
+              <h3>臺北緝私衝突引發抗議與群眾聚集</h3>
+              <span class="section-summary">圓環緝菸衝突把「制度性不滿」集中爆發：執法者、受害者與旁觀者都成為後續敘事的起點。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/02/27）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470227-u694au5b50u624d" data-search="楊子才 專賣局 查緝 圓環">
+                    <div class="person-top">
+                      <div class="person-name">楊子才</div>
+                      <div class="person-role">臺灣省專賣局業務會第四組組長（事件當日相關）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省專賣局業務組組長，是2月27日晚間圓環查緝行動的直屬上級。當晚查緝員隊伍由其所轄，傅學通等人的行動在制度層面指向整個查緝體系的設計與授權。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6"
+                        target="_blank"
+                        rel="noreferrer"
+                        >圓環緝菸事件</a
+                      >
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470227-u5085u5b78u901a" data-search="傅學通 專賣局 查緝員 圓環">
+                    <div class="person-top">
+                      <div class="person-name">傅學通</div>
+                      <div class="person-role">專賣局查緝員（事件當日相關）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省專賣局查緝員，2月27日晚間參與天馬茶房附近的緝菸行動。以槍托擊打林江邁頭部後，混亂中開槍誤傷旁觀者陳文溪，致其不治身亡；隨後逃往警察局、再轉憲兵隊躲避。事後遭起訴，一審判死刑，上訴後以「正當自衛」改判十年有期徒刑。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6"
+                        target="_blank"
+                        rel="noreferrer"
+                        >圓環緝菸事件</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/02/27）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470227-u6797u6c5fu9081" data-search="林江邁 販菸 圓環 受害者">
+                    <div class="person-top">
+                      <div class="person-name">林江邁</div>
+                      <div class="person-role">街頭販菸者（衝突直接受害者）</div>
+                    </div>
+                    <p class="person-bio">
+                      圓環附近被查緝的販菸者。她在衝突中受傷並引發群眾憤怒與擴散；其遭遇常被視為生計壓力與執法手段碰撞的縮影。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6"
+                        target="_blank"
+                        rel="noreferrer"
+                        >圓環緝菸事件</a
+                      >
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470227-u9673u6587u6eaa" data-search="陳文溪 圓環 槍擊 死亡 旁觀者">
+                    <div class="person-top">
+                      <div class="person-name">陳文溪</div>
+                      <div class="person-role">旁觀民眾（衝突中死亡者）</div>
+                    </div>
+                    <p class="person-bio">
+                      衝突過程中被槍擊身亡的旁觀民眾，是當晚唯一的死亡者。其死亡使街頭事件迅速政治化，也加深民眾對責任追究與官方說明的疑慮與不信任。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6"
+                        target="_blank"
+                        rel="noreferrer"
+                        >圓環緝菸事件</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470228">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/02/28</span>
+                <span class="pill">擴大</span>
+                <span class="pill">罷市請願</span>
+              </div>
+              <h3>罷市與請願使情勢升高，衝突擴大</h3>
+              <span class="section-summary">群眾動員與訴求成形：誰能發聲、誰能談判、誰能調停，開始左右事件走向。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/02/28）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470228-u9673u5100" data-search="陳儀 罷市 請願">
+                    <div class="person-top">
+                      <div class="person-name">陳儀</div>
+                      <div class="person-role">臺灣省行政長官公署長官（事件處置主責）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省行政長官。2月28日面對民眾走向公署請願，下令衛兵以機槍掃射廣場，當場造成死傷，隨即宣布戒嚴；同日秘密致電南京請求援兵，同時表面上與民間代表周旋，形成兩面應對的策略。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/02/28）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470228-u5468u5ef6u58fd" data-search="周延壽 處理委員會 仕紳">
+                    <div class="person-top">
+                      <div class="person-name">周延壽</div>
+                      <div class="person-role">地方民意／仕紳代表（處委會成立相關）</div>
+                    </div>
+                    <p class="person-bio">
+                      台北市參議會議長。二二八事件爆發後積極協調民間訴求，與各界代表組成「緝菸血案調查委員會」，向陳儀提出停止逮捕、組成官民委員會等五項請求；其後擔任「二二八事件處理委員會」首任主席，是民間以政治方式回應危機的代表人物。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E5%91%A8%E5%BB%B6%E5%A3%BD" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83"
+                        target="_blank"
+                        rel="noreferrer"
+                        >處理委員會（條目）</a
+                      >
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470228-u738bu6dfbu71c8" data-search="王添燈 處理委員會 協商">
+                    <div class="person-top">
+                      <div class="person-name">王添燈</div>
+                      <div class="person-role">民間協商與組織者（處理委員會成員）</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣省參議員，《人民導報》社長。罷市當日積極組織民間訴求，協助推動成立「緝菸血案調查委員會」；後成為處理委員會宣傳負責人，主導廣播傳播改革主張，3月11日凌晨遭帶走後下落不明。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E7%8E%8B%E6%B7%BB%E7%87%88" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470303">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/03</span>
+                <span class="pill">協商</span>
+                <span class="pill">處理委員會</span>
+              </div>
+              <h3>成立處理委員會，提出改革與善後訴求</h3>
+              <span class="section-summary">處理委員會是「把街頭怒氣轉成政治議程」的嘗試：協商者的風險、責任與代表性，是理解此段的重點。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/03/03）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470303-u9673u5100" data-search="陳儀 處理委員會 協商">
+                    <div class="person-top">
+                      <div class="person-name">陳儀</div>
+                      <div class="person-role">地方最高行政首長（與處委會互動）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省行政長官。面對處委會提出的三十二條要求，表面上與代表周旋、聲稱「會認真研究」；實際上已秘密向南京請兵，靜待援軍抵台後宣布處委會為「叛亂組織」，下令清鄉。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/03/03）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470303-u8523u6e2du5ddd" data-search="蔣渭川 處理委員會 協商 訴求">
+                    <div class="person-top">
+                      <div class="person-name">蔣渭川</div>
+                      <div class="person-role">處理委員會核心成員之一</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣省政治建設協會理事長，處委會核心成員。事件中提出九項省政改革綱要，路線較王添燈溫和；兩人在是否廣播三十二條問題上出現分歧。鎮壓後女兒蔣巧雲遭流彈擊中，3月21日不治；蔣渭川事後進入政府體系任職，評價至今有爭議。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E6%B8%AD%E5%B7%9D" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470303-u738bu6dfbu71c8" data-search="王添燈 處理委員會">
+                    <div class="person-top">
+                      <div class="person-name">王添燈</div>
+                      <div class="person-role">處理委員會成員、地方領袖</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣省參議員，處委會宣傳負責人。主導起草《三十二條處理大綱》，要求民選首長、臺籍官員過半、廢除專賣制度等；3月7日在大會宣讀並透過廣播向全台播出，陳儀斷然拒絕全部內容。3月11日凌晨遭憲兵帶走，享年46歲，死因至今不明。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83"
+                        target="_blank"
+                        rel="noreferrer"
+                        >處理委員會（條目）</a
+                      >
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470310">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/10</span>
+                <span class="pill">鎮壓</span>
+                <span class="pill">軍隊進駐</span>
+              </div>
+              <h3>軍隊進駐與全面鎮壓，逮捕與傷亡增加</h3>
+              <span class="section-summary">當軍隊與安全機器成為主軸：決策者、指揮者與被指認者的關係，決定鎮壓如何擴大。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/03/10）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470310-u8523u4e2du6b63" data-search="蔣中正 派兵 定性 中央決策">
+                    <div class="person-top">
+                      <div class="person-name">蔣中正</div>
+                      <div class="person-role">中央最高領導者（派兵與定性的重要決策）</div>
+                    </div>
+                    <p class="person-bio">
+                      中華民國總統，二二八事件最終決策者。接獲陳儀請兵電報後，決定從大陸調派整編第二十一師赴台，以「戡亂」定性事件，使軍事鎮壓取代協商，是後續清查死傷擴大的關鍵轉折。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E4%B8%AD%E6%AD%A3" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470310-u5289u96e8u537f" data-search="劉雨卿 部隊 指揮 鎮壓">
+                    <div class="person-top">
+                      <div class="person-name">劉雨卿</div>
+                      <div class="person-role">部隊指揮官（鎮壓敘事常見）</div>
+                    </div>
+                    <p class="person-bio">
+                      整編第二十一師師長，率部隊於3月8日在基隆港登陸。部隊隨即在各地展開清鄉，以搜捕與槍決手段針對地方仕紳、知識份子與事件參與者；基隆港一帶出現大量遇難者被投入海中的浮屍記錄。事後被研究者列為鎮壓主要責任人，從未受到司法追究。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E5%8A%89%E9%9B%A8%E5%8D%BF" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/03/10）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470310-u8b1du96eau7d05" data-search="謝雪紅 二七部隊 抵抗 組織">
+                    <div class="person-top">
+                      <div class="person-name">謝雪紅</div>
+                      <div class="person-role">民間武裝／組織領導者（相關敘事常見）</div>
+                    </div>
+                    <p class="person-bio">
+                      1928年台灣共產黨創黨人之一。二二八事件期間在台中組建「二七部隊」，集結約四百名學生與青年武裝抵抗，是全台最具規模的民間武裝行動。援軍登陸後撤至埔里，3月14日在烏牛欄吊橋激戰後解散；謝雪紅輾轉出逃，1970年在北京病逝，享年69歲，終身未返台灣。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%AC%9D%E9%9B%AA%E7%B4%85" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470314">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/03/14-03/16</span>
+                <span class="pill">清剿</span>
+                <span class="pill">全臺擴大</span>
+              </div>
+              <h3>全臺清剿與擴大逮捕，事件進入高壓控制</h3>
+              <span class="section-summary">清剿階段常以「指認—逮捕—處決」擴散：受難者、見證者與行動者的名字，構成後續記憶與平反的核心。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/03/14-03/16）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470314-u67efu9060u82ac" data-search="柯遠芬 清查 逮捕 安全體系">
+                    <div class="person-top">
+                      <div class="person-name">柯遠芬</div>
+                      <div class="person-role">軍警安全體系要角（清查與控制脈絡常見）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺灣省警備總司令部參謀長，清鄉的主要執行官員。主導各地大規模逮捕行動，並以悔過書勒索台北林家花園主人鉅款，事後白崇禧建議撤職。始終未受司法追究，並撰文《事變十日記》為自身行為辯護。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E6%9F%AF%E9%81%A0%E8%8A%AC" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470314-u5f6du5b5fu7ddd" data-search="彭孟緝 高雄 鎮壓 指揮">
+                    <div class="person-top">
+                      <div class="person-name">彭孟緝</div>
+                      <div class="person-role">南部軍事／治安指揮官（高雄等地鎮壓相關）</div>
+                    </div>
+                    <p class="person-bio">
+                      高雄要塞司令。1947年3月6日扣押前往協商的市長黃仲圖、市議長彭清靠等談判代表，隨即下令軍隊攻入市府禮堂鎮壓；獲蔣中正電報稱「處置得當」，事後以「鎮暴有功」連連晉升，歷任台灣警備總司令、陸軍總司令、參謀總長，1997年辭世，從未受到司法追究。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E5%BD%AD%E5%AD%9F%E7%B7%9D" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/03/14-03/16）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470314-u9673u6f84u6ce2" data-search="陳澄波 受難者 嘉義 畫家">
+                    <div class="person-top">
+                      <div class="person-name">陳澄波</div>
+                      <div class="person-role">畫家（受難者；事件記憶象徵之一）</div>
+                    </div>
+                    <p class="person-bio">
+                      嘉義畫家，1926年以《嘉義街外》入選日本帝展，為首位以西畫打入日本官展的台灣人。二二八事件期間擔任嘉義處理委員會委員，以和平使者身分赴嘉義機場與軍方協商，甫抵達即遭拘押並受嚴刑逼供。1947年3月25日未經任何審判，在嘉義火車站前廣場被公開槍決，享年52歲。其妻張捷秘密保存大批畫作，使其名字與作品得以流傳，成為二二八事件最廣為人知的受難象徵之一。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://www.228.org.tw/228heroes/85626dea-4eb2-49fc-8e1b-16bfed940e09"
+                        target="_blank"
+                        rel="noreferrer"
+                        >二二八基金會（人物）</a
+                      >
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E6%BE%84%E6%B3%A2" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470314-u6e6fu5fb7u7ae0" data-search="湯德章 受難者 台南 律師">
+                    <div class="person-top">
+                      <div class="person-name">湯德章</div>
+                      <div class="person-role">律師（受難者；地方公共人物）</div>
+                    </div>
+                    <p class="person-bio">
+                      台南律師，日台混血，長期義務為弱勢者辯護。二二八事件期間擔任台南市處委會治安組組長。軍隊入城前夕，他徒手抵抗逮捕以爭取時間，趁機銷毀記有台南仕紳與成功大學學生姓名的名單，使許多人免遭株連。1947年3月13日被捕後遭徹夜刑求，翌日雙手反綁遊街示眾，在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判程序。事後法院正式判決：湯德章，無罪。
+                    </p>
+                    <p class="person-links">
+                      <a
+                        href="https://www.228.org.tw/228heroes/853e98d1-786b-403a-b197-674dd3f0029b"
+                        target="_blank"
+                        rel="noreferrer"
+                        >二二八基金會（人物）</a
+                      >
+                      <a href="https://zh.wikipedia.org/zh-tw/%E6%B9%AF%E5%BE%B7%E7%AB%A0" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-19470516">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1947/05/16</span>
+                <span class="pill">處置</span>
+                <span class="pill">政治處分</span>
+              </div>
+              <h3>陳儀撤職，事件進入長期收束與控制</h3>
+              <span class="section-summary">撤換官員不等於真相釐清：人事處置、政治收束與長期監控的接續，是後續歷史的關鍵。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1947/05/16）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470516-u9b4fu9053u660e" data-search="魏道明 省政府主席 1947 5月16">
+                    <div class="person-top">
+                      <div class="person-name">魏道明</div>
+                      <div class="person-role">臺灣省政府首任主席（1947/05/16 起）</div>
+                    </div>
+                    <p class="person-bio">
+                      前駐美大使，1947年5月16日接替陳儀出任首任台灣省政府主席。就任後宣布解除戒嚴、終止清鄉，延攬台籍人士入省府，推行相對寬鬆的施政。1949年去職後，繼任者採更強硬路線，白色恐怖全面展開。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%AD%8F%E9%81%93%E6%98%8E" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a
+                        href="https://zh.wikipedia.org/zh-tw/%E8%87%BA%E7%81%A3%E7%9C%81%E6%94%BF%E5%BA%9C%E4%B8%BB%E5%B8%AD"
+                        target="_blank"
+                        rel="noreferrer"
+                        >臺灣省政府主席</a
+                      >
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-19470516-u9673u5100" data-search="陳儀 撤職 1947 5月16">
+                    <div class="person-top">
+                      <div class="person-name">陳儀</div>
+                      <div class="person-role">被撤職的地方最高首長（事件後期處置焦點）</div>
+                    </div>
+                    <p class="person-bio">
+                      因鎮壓二二八事件，1947年4月以「處置失當」為由被撤職。1948年調任浙江省政府主席，期間秘密與中共接觸；1949年遭湯恩伯告密後被軟禁，1950年以「通共叛國」罪被押解台灣，同年6月18日在台北新店空軍公墓槍決，享年73歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1947/05/16）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-19470516-u8523u6e2du5ddd" data-search="蔣渭川 協商者 地方領袖 清查 風險">
+                    <div class="person-top">
+                      <div class="person-name">蔣渭川</div>
+                      <div class="person-role">協商者／地方領袖（後續清查風險的代表例）</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣省政治建設協會理事長，事件中擔任處委會核心角色。鎮壓展開後名列通緝，女兒蔣巧雲於3月10日遭流彈擊傷，同月21日不治。蔣渭川後來進入政府，歷任台灣省民政廳長、內政部次長，其在事件中的立場至今仍是歷史爭議焦點。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E6%B8%AD%E5%B7%9D" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-1949">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1949-1992</span>
+                <span class="pill">白色恐怖</span>
+                <span class="pill">戒嚴體制</span>
+              </div>
+              <h3>戒嚴體制下的白色恐怖延伸（長期政治迫害與肅清）</h3>
+              <span class="section-summary">從二二八到白色恐怖：制度化的情治、軍法與監控，使恐懼成為治理語言，也延長了沉默的時間。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1949-1992）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-1949-u8523u4e2du6b63" data-search="蔣中正 戒嚴 白色恐怖 威權">
+                    <div class="person-top">
+                      <div class="person-name">蔣中正</div>
+                      <div class="person-role">威權體制核心人物（戒嚴時期開端）</div>
+                    </div>
+                    <p class="person-bio">
+                      中華民國總統，1949年後以台灣為最後基地建立威權統治。頒布《戒嚴令》，以《懲治叛亂條例》為工具進行政治迫害，親批軍法案件，戒嚴期間（1949-1987）共1,061人被執行死刑。1975年4月5日逝世，未見解嚴。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E4%B8%AD%E6%AD%A3" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-1949-u8523u7d93u570b" data-search="蔣經國 白色恐怖 情治">
+                    <div class="person-top">
+                      <div class="person-name">蔣經國</div>
+                      <div class="person-role">戒嚴時期國家機器的重要掌權者之一</div>
+                    </div>
+                    <p class="person-bio">
+                      長期主掌情治體系，為白色恐怖機器最關鍵的執行者。1950年代主導大規模政治迫害，建立遍布全台的監控網絡。後出任行政院長（1972）與總統（1978），1987年宣布解嚴；情治角色與晚年民主化決策之間的矛盾，使其成為台灣歷史評價最複雜的政治人物之一。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E7%B6%93%E5%9C%8B" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1949-1992）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-1949-u96f7u9707" data-search="雷震 民主 言論自由 政治案件">
+                    <div class="person-top">
+                      <div class="person-name">雷震</div>
+                      <div class="person-role">民主與言論自由倡議者（政治案件象徵人物）</div>
+                    </div>
+                    <p class="person-bio">
+                      《自由中國》雜誌發行人，長期在戒嚴體制下批評一黨專政、倡議民主政治。1960年籌組反對黨「中國民主黨」，9月4日遭警備總司令部逮捕，以「為匪宣傳、知匪不報」判十年有期徒刑，蔣中正手諭「刑期不得少於10年」。1970年出獄，1979年辭世，享年82歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%9B%B7%E9%9C%87_(1897%E5%B9%B4)" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-1949-u6c5fu70b3u8208" data-search="江炳興 泰源事件 政治犯 台灣獨立 白色恐怖 死刑 平反">
+                    <div class="person-top">
+                      <div class="person-name">江炳興</div>
+                      <div class="person-role">白色恐怖政治犯、泰源事件參與者（1939–1970）</div>
+                    </div>
+                    <p class="person-bio">
+                      臺中人，陸軍官校三十三期學生。1963年因與友人在家討論台灣獨立遭告密逮捕，以《懲治叛亂條例》判有期徒刑十年，關押於國防部泰源感訓監獄。
+                      1970年2月8日，與鄭金河等人發動「泰源事件」，奪取衛兵槍械並佔領監獄廣播室，廣播「台灣獨立了」；軍方隨即調兵鎮壓，江炳興於2月13日被捕，同年5月30日以死刑執行，享年31歲，全部財產遭沒收。
+                      2019年及2022年，促進轉型正義委員會相繼公告撤銷其兩案判決，予以正式平反；姓名刻於綠島與景美人權紀念碑。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E6%B1%9F%E7%82%B3%E8%88%88" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a href="https://memory.nhrm.gov.tw/TopicExploration/Person/Detail/536" target="_blank" rel="noreferrer">國家人權記憶庫</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-1949-u5f6du660eu654f" data-search="彭明敏 台灣自救運動宣言 流亡 台灣獨立 國際法 白色恐怖 民主">
+                    <div class="person-top">
+                      <div class="person-name">彭明敏</div>
+                      <div class="person-role">國際法學者、台灣獨立運動推動者（1923–2022）</div>
+                    </div>
+                    <p class="person-bio">
+                      台灣大學政治系教授，首位以台灣視角從事國際法研究的學者。1964年，與學生謝聰敏、魏廷朝共同起草《台灣自救運動宣言》，主張「一個中國，一個台灣早已是鐵一般的事實」，並倡議台灣獨立、制定新憲、加入聯合國；宣言計劃印發一萬份，印刷中遭告密，三人隨即被捕，彭明敏以《懲治叛亂條例》判有期徒刑八年，翌年在國際輿論壓力下獲特赦，但仍遭24小時監控。
+                      1970年化裝成日本人持友人護照輾轉逃往瑞典，再轉赴美國，流亡海外23年。1992年通緝令撤銷後返台；1996年代表民主進步黨參與首次總統直選。2022年4月辭世，享壽98歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E5%BD%AD%E6%98%8E%E6%95%8F" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a href="https://plainlaw.me/posts/peng-ming-min" target="_blank" rel="noreferrer">法律白話文運動</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-1980s">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1980年代後期</span>
+                <span class="pill">平反運動</span>
+                <span class="pill">社會倡議</span>
+              </div>
+              <h3>二二八平反運動興起，推動追查真相、公開紀念與政府回應</h3>
+              <span class="section-summary">受難者家屬、公民社會與學界媒體把記憶帶回公共空間：誰在倡議、誰在寫史、誰在承擔風險，是理解此段的入口。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1980年代後期）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-1980s-u8523u7d93u570b" data-search="蔣經國 解嚴 政治鬆動">
+                    <div class="person-top">
+                      <div class="person-name">蔣經國</div>
+                      <div class="person-role">解嚴前後的關鍵掌權者（政治鬆動背景）</div>
+                    </div>
+                    <p class="person-bio">
+                      1980年代台灣最高執政者。1987年宣布解除長達38年的戒嚴，為民間公開討論歷史、二二八平反運動進入公共空間創造制度條件。1988年1月辭世，享年77歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A3%E7%B6%93%E5%9C%8B" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-1980s-u674eu767bu8f1d" data-search="李登輝 二二八道歉 平反 轉型正義 民主化 總統">
+                    <div class="person-top">
+                      <div class="person-name">李登輝</div>
+                      <div class="person-role">首位為二二八正式道歉的國家元首</div>
+                    </div>
+                    <p class="person-bio">
+                      1988年繼任總統，是臺灣首位本省籍國家元首。1991年接見二二八受難者家屬代表，承諾開放相關檔案並籌組調查小組。1995年2月28日，在臺北二二八紀念碑落成典禮上，以國家元首身分代表政府正式向受難者家屬道歉——這是臺灣歷史上首次由元首公開為二二八的國家暴力致歉。同年，《二二八事件處理及補償條例》通過，二二八事件紀念基金會隨之成立。李登輝推動的一系列民主化改革，為臺灣社會公開討論二二八歷史打開制度空間，是平反運動從民間走向官方的關鍵橋樑。2020年辭世，享年97歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E6%9D%8E%E7%99%BB%E8%BC%9D" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1980年代後期）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-1980s-u9673u6c38u8208" data-search="陳永興 平反運動 人權">
+                    <div class="person-top">
+                      <div class="person-name">陳永興</div>
+                      <div class="person-role">平反運動與人權倡議者（常被提及）</div>
+                    </div>
+                    <p class="person-bio">
+                      精神科醫師、人權倡議者。1987年解嚴前夕率先公開呼籲政府為二二八道歉、賠償受難家屬，以醫師身分串連受難者家屬、學界與社運團體，推動平反議題進入公共討論，是1980年代平反運動的重要先行者之一。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E6%B0%B8%E8%88%88" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-1980s-u912du5357u6995" data-search="鄭南榕 言論自由 民主">
+                    <div class="person-top">
+                      <div class="person-name">鄭南榕</div>
+                      <div class="person-role">言論自由象徵人物（公共空間擴張）</div>
+                    </div>
+                    <p class="person-bio">
+                      《自由時代》系列雜誌發行人，以捍衛言論自由與台灣獨立主張著稱。1989年2月拒絕法院傳喚，在雜誌社自我監禁77天；警察強制入內時引火自焚，享年41歲。其行動成為1990年代平反運動與言論自由倡議的重要精神座標。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%84%AD%E5%8D%97%E6%A6%95" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-199202">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">1992/02</span>
+                <span class="pill">平反調查</span>
+                <span class="pill">調查出版</span>
+              </div>
+              <h3>研究報告出版，官方調查成為里程碑</h3>
+              <span class="section-summary">從民間倡議走向官方調查：研究小組的召集人、總主筆與工作成員，決定「制度化面對歷史」的深度。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（1992/02）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-199202-u9673u91cdu5149" data-search="陳重光 研究小組 召集人 1991 1992">
+                    <div class="person-top">
+                      <div class="person-name">陳重光</div>
+                      <div class="person-role">行政院「二二八事件研究小組」成員／召集人（之一）</div>
+                    </div>
+                    <p class="person-bio">
+                      資深新聞人，曾任中央通訊社董事長，行政院「二二八事件研究小組」召集人之一。在官方首次正式調查的過程中扮演組織協調角色，促成1992年研究報告的完成與出版。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E9%87%8D%E5%85%89" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a href="https://www.228.org.tw/en/228-incident" target="_blank" rel="noreferrer">二二八基金會</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-199202-u8449u660eu52f3" data-search="葉明勳 研究小組 召集人 1991 1992">
+                    <div class="person-top">
+                      <div class="person-name">葉明勳</div>
+                      <div class="person-role">行政院「二二八事件研究小組」成員／召集人（之一）</div>
+                    </div>
+                    <p class="person-bio">
+                      資深新聞人，聯合報系創辦人之一，曾任聯合報社長，行政院「二二八事件研究小組」成員。其參與反映民間媒體與公民社會在推動官方正視歷史過程中所扮演的角色。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%91%89%E6%98%8E%E5%8B%B3" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a href="https://www.228.org.tw/en/228-incident" target="_blank" rel="noreferrer">二二八基金會</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（1992/02）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-199202-u8cf4u6fa4u6db5" data-search="賴澤涵 總主筆 研究報告 撰寫">
+                    <div class="person-top">
+                      <div class="person-name">賴澤涵</div>
+                      <div class="person-role">研究小組總主筆／撰寫者（之一）</div>
+                    </div>
+                    <p class="person-bio">
+                      歷史學者，行政院「二二八事件研究小組」總主筆。主導1992年《「二二八事件」研究報告》的史料蒐集與撰寫，是台灣官方首次正式調查二二八事件的核心學術執行者；其研究成果成為後續平反立法與受難認定工作的重要基礎。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://www.228.org.tw/en/228-incident" target="_blank" rel="noreferrer">二二八基金會（英文頁）</a>
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%B3%B4%E6%BE%A4%E6%B6%B5" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+
+          <details class="card section" id="sec-2017">
+            <summary class="section-head">
+              <div class="meta">
+                <span class="pill">2017-2018</span>
+                <span class="pill">轉型正義</span>
+                <span class="pill">制度化</span>
+              </div>
+              <h3>轉型正義制度化：法律通過與機構成立</h3>
+              <span class="section-summary">法律與機構把政治檔案、平復不法與社會對話納入制度流程：政策推動者與機構領導者成為此段的關鍵人物。</span>
+            </summary>
+            <div class="people-grid">
+              <section class="people-col" aria-label="政府相關人物（2017-2018）">
+                <h4>政府</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-2017-u8521u82f1u6587" data-search="蔡英文 總統 轉型正義 促進轉型正義條例">
+                    <div class="person-top">
+                      <div class="person-name">蔡英文</div>
+                      <div class="person-role">總統（轉型正義制度化時期的最高政治領導者）</div>
+                    </div>
+                    <p class="person-bio">
+                      中華民國第14、15任總統，任內推動轉型正義制度化。2017年12月《促進轉型正義條例》三讀通過，2018年5月促轉會成立，推動政治檔案開放、撤銷不當判決與清除威權象徵等工作。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E8%94%A1%E8%8B%B1%E6%96%87" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                  <li class="person" id="p-sec-2017-u9ec3u714cu96c4" data-search="黃煌雄 促轉會 主任委員 2018">
+                    <div class="person-top">
+                      <div class="person-name">黃煌雄</div>
+                      <div class="person-role">促進轉型正義委員會主任委員（2018 成立時）</div>
+                    </div>
+                    <p class="person-bio">
+                      前監察委員，2018年出任促進轉型正義委員會首任主任委員，任期至2020年。任內推動威權象徵移除、不當判決撤銷，以及二二八與白色恐怖相關檔案整理公開，為轉型正義制度化奠定初期基礎。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E9%BB%83%E7%85%8C%E9%9B%84" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="people-col" aria-label="民間與團體相關人物（2017-2018）">
+                <h4>團體／組織</h4>
+                <ul class="people-list">
+                  <li class="person" id="p-sec-2017-u5f35u708eu61b2" data-search="受難者 團體 倡議者 檔案開放 平反">
+                    <div class="person-top">
+                      <div class="person-name">張炎憲</div>
+                      <div class="person-role">學者／公共史與平反倡議重要人物之一</div>
+                    </div>
+                    <p class="person-bio">
+                      歷史學者，前國史館館長，長期從事二二八事件與台灣史口述訪談及研究。編輯出版多部受難者證言集，致力將民間記憶納入史學研究，並積極倡議政府正視歷史責任；2014年辭世，享年69歲。
+                    </p>
+                    <p class="person-links">
+                      <a href="https://zh.wikipedia.org/zh-tw/%E5%BC%B5%E7%82%8E%E6%86%B2" target="_blank" rel="noreferrer">Wikipedia</a>
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </details>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap foot-grid">
+        <div>
+          <strong>資料來源</strong>
+          <p class="small">
+            本頁人物與時間點依本站「詳細介紹」章節整理，並參考二二八基金會資料、Wikipedia 等公開資料。若要補充更多人物，可沿用本頁格式新增卡片並附上來源連結。
+          </p>
+          <p class="small">
+            <a href="https://www.228.org.tw/" target="_blank" rel="noreferrer">二二八事件紀念基金會</a><br />
+            <a href="https://www.228.org.tw/228youngs" target="_blank" rel="noreferrer">二二八基金會（人物／青年資料）</a><br />
+            <a
+              href="https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6"
+              target="_blank"
+              rel="noreferrer"
+              >圓環緝菸事件（Wikipedia）</a
+            ><br />
+            <a href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/search" target="_blank" rel="noreferrer"
+              >政大圖書館「228twnews」數位典藏</a
+            >
+          </p>
+        </div>
+        <div>
+          <strong>使用說明</strong>
+          <p class="small">可用上方搜尋框快速定位人物；點選目錄可跳轉到時間點。按 <span class="kbd">Esc</span> 可關閉提示視窗。</p>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="tips-dialog" id="tipsDialog" aria-label="閱讀提示">
+      <div class="tips-head">
+        <h3>閱讀提示</h3>
+        <button class="icon-btn" type="button" id="btnCloseTips" aria-label="關閉閱讀提示">×</button>
+      </div>
+      <div class="tips-body">
+        <p class="small" style="margin: 0">
+          本頁依「詳細介紹」時間點整理人物清單，並分成「政府」與「團體／組織（含民間人物）」。若你在閱讀時遇到不熟悉的名字，可先用搜尋，再展開章節查看簡介與來源連結。
+        </p>
+      </div>
+      <div class="tips-actions">
+        <button class="btn" type="button" id="btnOkTips">我知道了</button>
+      </div>
+    </dialog>
+
+    <script>
+      (function () {
+        const dialog = document.getElementById("tipsDialog");
+        const btnClose = document.getElementById("btnCloseTips");
+        const btnOk = document.getElementById("btnOkTips");
+        const KEY = "tipsDismissed.people.v1";
+
+        function closeDialog() {
+          try { dialog?.close(); } catch (e) { dialog?.removeAttribute("open"); }
+        }
+        function openDialogOnce() {
+          try {
+            if (!dialog) return;
+            if (localStorage.getItem(KEY) === "1") return;
+            dialog.showModal();
+          } catch (e) { dialog?.setAttribute("open", ""); }
+        }
+        btnClose?.addEventListener("click", () => { localStorage.setItem(KEY, "1"); closeDialog(); });
+        btnOk?.addEventListener("click",   () => { localStorage.setItem(KEY, "1"); closeDialog(); });
+        window.addEventListener("keydown", (e) => { if (e.key === "Escape") localStorage.setItem(KEY, "1"); });
+        window.addEventListener("load", openDialogOnce);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        const input = document.getElementById("peopleSearch");
+        if (!input) return;
+        const persons  = Array.from(document.querySelectorAll(".person"));
+        const sections = Array.from(document.querySelectorAll("details.section"));
+
+        function normalize(str) { return str.toLowerCase().replace(/\s+/g, ""); }
+
+        input.addEventListener("input", () => {
+          const q = normalize(input.value);
+          if (!q) {
+            persons.forEach((p) => (p.hidden = false));
+            sections.forEach((s) => s.removeAttribute("data-filtered"));
+            return;
+          }
+          sections.forEach((sec) => {
+            const items = Array.from(sec.querySelectorAll(".person"));
+            const matching = items.filter((p) => {
+              const hay =
+                normalize(p.getAttribute("data-search") || "") +
+                normalize(p.querySelector(".person-name")?.textContent || "") +
+                normalize(p.querySelector(".person-role")?.textContent || "");
+              return hay.includes(q);
+            });
+            items.forEach((p) => { p.hidden = !matching.includes(p); });
+            if (matching.length > 0) { sec.open = true; sec.removeAttribute("data-filtered"); }
+            else { sec.setAttribute("data-filtered", "empty"); }
+          });
+        });
+
+        function openFromHash() {
+          const raw = (window.location.hash || "").slice(1);
+          if (!raw) return;
+          const id = decodeURIComponent(raw);
+          const target = document.getElementById(id);
+          if (!target) return;
+          const details = target.tagName?.toLowerCase() === "details"
+            ? target : target.closest("details.section");
+          if (details) details.open = true;
+        }
+        window.addEventListener("hashchange", openFromHash);
+        window.addEventListener("load", openFromHash);
+      })();
+    </script>
+  </body>
+</html>                                                                                                                                        
