@@ -156,25 +156,25 @@
         border: 1px solid currentColor;
       }
       /* tag colours */
-      .tag-victim { background: #E1F5EE; color: #085041; }
-      .tag-perpetrator { background: #FAEEDA; color: #633806; }
-      .tag-reformer { background: #EDE9F5; color: #4A3880; }
-      .tag-martyr { background: #FCEAEA; color: #8A2020; }
-      .tag-authority { background: #E8ECF4; color: #2C3E6B; }
-      .tag-military { background: #F0EAEA; color: #6B1F1F; }
-      .tag-resistance { background: #F5EDE3; color: #7A3B1E; }
-      .tag-cleansing { background: #F0EBDE; color: #5C3A1E; }
-      .tag-envoy { background: #E3F0E8; color: #1A5C35; }
-      .tag-defender { background: #E3EBF5; color: #1A3A6B; }
-      .tag-mediator { background: #E3F5EC; color: #1A5235; }
-      .tag-successor { background: #E3EEF8; color: #1A3E6B; }
-      .tag-exiled { background: #EEE8E8; color: #5C2020; }
-      .tag-survivor { background: #EDE9F5; color: #4A2880; }
-      .tag-dictator { background: #E8EAF4; color: #1A2B5C; }
-      .tag-spymaster { background: #EEE8F5; color: #3A1A5C; }
-      .tag-dissident { background: #FAEAE8; color: #6B1A1A; }
-      .tag-prisoner { background: #E3F5EC; color: #1A5235; }
-      .tag-exile { background: #E3EFF5; color: #1A3A5C; }
+      .tag-victim { background: #E8ECF4; color: #2C3E6B; }
+      .tag-perpetrator { background: #FCEAEA; color: #8A2020; }
+      .tag-reformer { background: #E8ECF4; color: #2C3E6B; }
+      .tag-martyr { background: #E8ECF4; color: #2C3E6B; }
+      .tag-authority { background: #FCEAEA; color: #8A2020; }
+      .tag-military { background: #FCEAEA; color: #8A2020; }
+      .tag-resistance { background: #E8ECF4; color: #2C3E6B; }
+      .tag-cleansing { background: #FCEAEA; color: #8A2020; }
+      .tag-envoy { background: #E8ECF4; color: #2C3E6B; }
+      .tag-defender { background: #E8ECF4; color: #2C3E6B; }
+      .tag-mediator { background: #E8ECF4; color: #2C3E6B; }
+      .tag-successor { background: #FCEAEA; color: #8A2020; }
+      .tag-exiled { background: #FCEAEA; color: #8A2020; }
+      .tag-survivor { background: #E8ECF4; color: #2C3E6B; }
+      .tag-dictator { background: #FCEAEA; color: #8A2020; }
+      .tag-spymaster { background: #FCEAEA; color: #8A2020; }
+      .tag-dissident { background: #E8ECF4; color: #2C3E6B; }
+      .tag-prisoner { background: #E8ECF4; color: #2C3E6B; }
+      .tag-exile { background: #E8ECF4; color: #2C3E6B; }
 
       .scene-card {
         background: rgba(255, 255, 255, 0.70);
@@ -227,6 +227,56 @@
         padding-top: 0.75rem; line-height: 1.65;
         font-family: var(--font-body);
       }
+      .fictional-badge, .historical-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-family: var(--font-display);
+        letter-spacing: 0.07em;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        margin: 8px 0 10px;
+      }
+      .fictional-badge {
+        color: #7a4a00;
+        background: #fff5e0;
+        border: 1.5px dashed #c97d00;
+      }
+      .historical-badge {
+        color: #1a4d2e;
+        background: #eaf5ee;
+        border: 1.5px solid #4a9464;
+      }
+      .choice-path {
+        margin: 10px 0 8px;
+        padding: 9px 12px;
+        background: rgba(255,255,255,0.38);
+        border-left: 3px solid var(--line);
+        font-family: var(--font-display);
+      }
+      .choice-path-title {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+        margin-bottom: 6px;
+      }
+      .path-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        padding: 2px 0;
+      }
+      .path-step { color: var(--muted-2); font-size: 11px; min-width: 28px; }
+      .path-choice { font-weight: 700; }
+      .path-icon { font-weight: 700; font-size: 13px; }
+      .path-match .path-icon { color: #4a9464; }
+      .path-mismatch .path-icon { color: #c97d00; }
+      .path-actual { color: var(--muted-2); font-size: 11px; }
       .sources-section { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--line); }
       .sources-title { font-size: 11px; font-weight: 600; color: var(--muted-2); letter-spacing: 0.05em; margin-bottom: 0.4rem; font-family: var(--font-display); }
       .source-link { display: inline-block; font-size: 11px; color: var(--muted-2); text-decoration: none; margin-right: 0.75rem; margin-bottom: 0.2rem; font-family: var(--font-display); }
@@ -401,7 +451,6 @@
             <a href="https://228.drnh.gov.tw/" target="_blank" rel="noreferrer">二二八事件數位典藏（DRNH）</a>
             <br />
             <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6" target="_blank" rel="noreferrer">二二八事件（Wikipedia）</a>
-            <br />
             <a href="https://watchout.tw/projects/role-play/terror-30" target="_blank" rel="noreferrer">模擬人生 你是戒嚴時代的誰呢？</a>
           </p>
         </div>
@@ -534,9 +583,9 @@ const DATA = {
       title: "開口，但已太晚",
       text: "你跑回警察局，找到一個長官，顫抖著說出了今晚的一切——你打了婦女，開槍傷了路人。\n\n長官沉默了片刻，然後說：「先進來，我們內部處理。」你不確定這是保護你，還是一個更深的漩渦。\n\n外面的群眾越聚越多，包圍了整棟大樓。你的坦白，沒有讓任何人知道，也沒有換來任何公開的回應。\n\n第二天，2月28日，你的名字消失在更大的事件裡。",
       ending: "mid",
-      endingTitle: "坦白也被吞沒了",
+      endingTitle: "坦白也被吞沒了（虛擬結局）",
       endingText: "你選擇說出真相，但那個時代的體制沒有讓真相發揮任何作用。你的坦白被內部消化，沒有被公開，沒有讓受難者得到任何賠償。在那個時代，即使你想負責，也沒有讓你負責的機制。",
-      history: "史實：查緝員傅學通等人在憲兵隊保護下，未被交付民眾。然而事後仍遭司法追究——1947年4月3日地方法院判傅學通死刑，但上訴後最高法院以「正當自衛」改判十年有期徒刑（1947年5月17日定讞）。整起事件的司法處置，被許多人視為不公，是積怨持續延燒的原因之一。",
+      history: "此為劇本虛構走向。史實中傅學通未自行認罪，而是與同事逃往警察局再被轉入憲兵隊藏匿，民眾要求交人始終未果。事後傅學通遭起訴，1947年4月3日地方法院判死刑，上訴後最高法院以「正當自衛」改判十年有期徒刑（1947年5月17日定讞），整起司法處置被許多人視為不公。",
       step: 3, total: 3
     },
     fu_stay: {
@@ -546,7 +595,7 @@ const DATA = {
       ending: "mid",
       endingTitle: "一個不同的選擇，一樣的歷史",
       endingText: "你選擇留下、承擔，但那個夜晚積累的憤怒，早已不只是這一個事件。多年的統治壓迫、貧富不均、族群矛盾——你的一個選擇沒有辦法改變這些。歷史的悲劇，不是因為一個人的惡，也不是因為一個人的善。",
-      history: "史實：這是劇本的虛構走向。史實中傅學通等人均逃往警察局、憲兵隊，並未自行留下接受調查。",
+      history: "此為劇本虛構走向。史實中，傅學通等人棄傷者於現場，全數逃往警察局，再被轉入憲兵隊藏匿；民眾徹夜包圍要求交人，始終未果。事後傅學通仍遭起訴，1947年4月3日地方法院判死刑，上訴後最高法院以「正當自衛」改判十年有期徒刑（1947年5月17日定讞）。",
       step: 3, total: 3
     },
     fu_follow_run: {
@@ -608,7 +657,7 @@ const DATA = {
       ending: "dark",
       endingTitle: "沉默加速了一切",
       endingText: "你的沉默讓局勢更快惡化，更多人走上街頭，事件規模更難收拾。即使如此，你仍是在等待援軍——只是你讓這段等待變得更血腥。這條路線顯示：陳儀最終選擇了廣播安撫，而非沉默。",
-      history: "史實：2月28日長官公署衛兵開槍後，陳儀宣布戒嚴，次日廣播安撫——稱戒嚴是「為了保護人民」，同時秘密請兵。這條路線為劇本的反事實走向。",
+      history: "此為劇本反事實走向。史實中，陳儀在2月28日宣布戒嚴後，於3月1日主動廣播安撫，稱「戒嚴完全是為了保護你們」，承諾設立調查委員會。然而他同時已秘密向南京發電請兵，廣播不過是爭取時間的緩兵之計；3月8日援軍登陸，陳儀立刻翻臉下令鎮壓。",
       step: 3, total: 3
     },
     chen1_telegram: {
@@ -628,7 +677,7 @@ const DATA = {
       ending: "mid",
       endingTitle: "談判只是緩了幾天",
       endingText: "你嘗試了另一條路，但在那個時代的結構限制下，只能撐幾天。問題不只在於你個人的選擇，也在於整個體制沒有能夠真正談判的空間。這條路線為劇本的反事實走向。",
-      history: "史實：陳儀在二二八初期採取了表面周旋的策略，同時秘密請兵。這條路線為劇本設計的反事實走向，探索若陳儀真心嘗試談判會如何。",
+      history: "此為劇本反事實走向，探索若陳儀真心談判將如何。史實中陳儀從未有意妥協：他一面接見民間代表、表面應允，一面在2月28日起即秘密向南京發電請兵，在電報中誇大事態以取得出兵授權。3月8日援軍抵台後，他立即宣布處委會為叛亂組織，展開清鄉鎮壓。",
       step: 3, total: 3
     }
   },
@@ -1348,7 +1397,7 @@ const DATA = {
       ending: "bad",
       endingTitle: "坦誠也是另一種走向死亡",
       endingText: "在那個時代，主動說明或逃避，都無法改變已被決定的命運。這是劇本的虛構走向——史實中，陳澄波選擇了以和平使者身分走向危險，最後在嘉義火車站前倒下，享年52歲。",
-      history: "史實：陳澄波確實以和平使者身分前往嘉義機場，遭拘捕後被公開槍決，未經任何審判程序。這條路線為劇本虛構。",
+      history: "此為劇本虛構走向。史實中，陳澄波選擇以和平使者身分前往嘉義機場談判，不論出於何種考量都不曾選擇回避。他遭拘捕後被嚴刑逼供，1947年3月25日在嘉義火車站前廣場公開槍決，享年52歲，未經任何審判。其妻張捷秘密保存畫作，陳澄波成為二二八最具代表性的藝術家受難者。",
       step: 3, total: 3
     }
   },
@@ -1408,9 +1457,9 @@ const DATA = {
       title: "部分名字消失了",
       text: "你拼命撕毀名單，幾秒鐘內撕掉了一部分，但士兵很快制住了你。\n\n剩下的名單落入軍方手中。那些沒來得及撕去的名字，成了逮捕令。部分人倖免，部分人遭殃。\n\n你被帶走，3月13日在大正公園就義。",
       ending: "mid",
-      endingTitle: "撕去了一些，留下了一些",
+      endingTitle: "撕去了一些，留下了一些（虛擬結局）",
       endingText: "你用最後的幾秒鐘保住了部分人，但未能保住所有人。這是劇本的虛構走向——史實中，湯德章選擇了留下來燒毀名單，那一把完整的火，保住了所有人。數十年後，法院為他平反：湯德章，無罪。",
-      history: "史實：湯德章在逮捕前銷毀名單，使台南仕紳與成大學生免於株連，1947年3月13日在台南大正公園被公開槍決。大正公園現已更名為湯德章紀念公園。",
+      history: "此為劇本虛構走向。史實中，湯德章選擇留下來並徒手抵抗，爭取足夠時間將名單全數銷毀，使台南仕紳與成大學生免於株連。1947年3月13日在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判。法院事後判決：湯德章無罪。",
       step: 3, total: 3
     },
     tang_hide_list: {
@@ -1420,7 +1469,7 @@ const DATA = {
       ending: "bad",
       endingTitle: "那一把火，是最後的防線",
       endingText: "這是劇本的虛構走向。史實中，湯德章選擇了留下來、燒掉名單——那一把火，比任何逃亡都更保護了更多人。他被捕、遊街、槍決，但他換來的是許多人的生還。數十年後，法院為他平反：湯德章，無罪。",
-      history: "史實：湯德章在逮捕前徒手抵抗並銷毀名單，1947年3月13日在台南大正公園被公開槍決。大正公園現已更名為湯德章紀念公園，法院事後判決：湯德章無罪。",
+      history: "此為劇本虛構走向。史實中，湯德章選擇留下、徒手抵抗並銷毀全部名單，保護台南仕紳與成大學生。1947年3月13日在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判。法院事後判決：湯德章無罪。",
       step: 3, total: 3
     }
   },
@@ -1852,7 +1901,7 @@ const DATA = {
       ending: "bad",
       endingTitle: "在那個時代，只要發聲就會被聽見",
       endingText: "你以為放棄組黨能讓你繼續說話。但在那個時代，說話本身就是罪。你被判十年。這條路線為劇本虛構走向——史實中雷震繼續推動組黨，直至1960年9月4日被捕，享年82歲（1979年逝世）。",
-      history: "史實：雷震1960年9月4日遭逮捕，判處十年有期徒刑，《自由中國》隨即被迫停刊。這條路線為劇本虛構走向。",
+      history: "此為劇本虛構走向。史實中，雷震並未因放棄組黨而倖免——他持續推動中國民主黨的組建計畫，直至1960年9月4日遭警備總司令部逮捕。軍事法庭以「為匪宣傳、知匪不報」判處十年有期徒刑，《自由中國》同日停刊。蔣中正手諭「刑期不得少於10年」。1970年出獄後持續寫作，1979年逝世，享年82歲。",
       step: 3, total: 3
     }
   },
@@ -1904,7 +1953,7 @@ const DATA = {
       ending: "mid",
       endingTitle: "活著，帶著那些人的記憶",
       endingText: "這是劇本的虛構走向。史實中，江炳興參與並被判死刑，1970年5月30日執行，享年31歲，2019年促轉會撤銷判決。那場暴動失敗了，但泰源五烈士的名字，被後來的人記住了。",
-      history: "史實：1970年泰源事件，江炳興等人暴動奪槍，失敗後遭捕，以死刑定讞，1970年5月30日執行。2019年促轉會公告撤銷判決。此條路線為劇本虛構走向。",
+      history: "此為劇本虛構走向。史實中，江炳興選擇參與泰源事件，與鄭金河、詹天增、謝東榮、江炳興、賴明雄五人策動暴動、奪槍奪廣播室，試圖廣播獨立宣言。行動於1970年2月8日爆發，江炳興於2月13日被捕，以《懲治叛亂條例》判處死刑，1970年5月30日執行，享年31歲。2019年促轉會公告撤銷判決，正式平反。五人後稱「泰源五烈士」。",
       step: 3, total: 3
     },
     jiang_lead_uprising: {
@@ -2100,6 +2149,7 @@ const SOURCES = {
 };
 
 let currentPov = null;
+let currentPath = []; // { fromSceneId, choiceId, label, isHistorical }
 const root = document.getElementById('root');
 
 // 人物視角 → detail.html 章節對應表
@@ -2361,8 +2411,47 @@ function renderSelect() {
   `;
 }
 
+const HISTORICAL_PATHS = {
+  lin:   { start: 'lin_shout',        lin_shout:   'lin_witness_yes'  },
+  fu:    { start: 'fu_warn',          fu_warn:     'fu_run_hide'      },
+  chen1: { start: 'chen1_shoot',      chen1_shoot: 'chen1_broadcast'  },
+  zhou:  { start: 'zhou_broadcast',   zhou_broadcast: 'zhou_investigate' },
+  wang1: { start: 'wang1_organize',   wang1_organize: 'wang1_draft_demands' },
+  wei:   { start: 'wei_solo',         wei_solo:    'wei_keep_negotiate' },
+  wang:  { start: 'wang_broadcast',   wang_broadcast: 'wang_again'    },
+  chen:  { start: 'chen_stall',       chen_stall:  'chen_fake_agree'  },
+  liu:   { start: 'liu_open_fire',    liu_open_fire: 'liu_harbor_extend' },
+  xie:   { start: 'xie_fight',        xie_fight:   'xie_leave_early'  },
+  ke:    { start: 'ke_harsh',         ke_harsh:    'ke_extort_end'    },
+  peng:  { start: 'peng_arrest',      peng_arrest: 'peng_full_sweep'  },
+  czp:   { start: 'czp_go',           czp_go:      'czp_refuse_confess' },
+  tang:  { start: 'tang_burn',        tang_burn:   'tang_resist'      },
+  wdm:   { start: 'wdm_reform',       wdm_reform:  'wdm_protect_ppl'  },
+  cyi:   { start: 'cyi_drift',        cyi_drift:   'cyi_tell_tang'    },
+  wcc:   { start: 'wcc_enter_gov',    wcc_enter_gov: 'wcc_silent_work' },
+  ckss:  { start: 'ckss_system',      ckss_system: 'ckss_approve_all' },
+  cks2:  { start: 'cks2_expand',      cks2_expand: 'cks2_arrest_rumor' },
+  lei:   { start: 'lei_publish_bold', lei_publish_bold: 'lei_form_party' },
+  jiang: { start: 'jiang_deny',       jiang_deny:  'jiang_lead_uprising' },
+  pmm:   { start: 'pmm_destroy',      pmm_destroy: 'pmm_own_it_2'    },
+};
+
+function makeChoice(fromId, choiceId) {
+  var s = DATA[currentPov][fromId];
+  var choice = s && s.choices && s.choices.find(function(c) { return c.id === choiceId; });
+  var histPaths = HISTORICAL_PATHS[currentPov] || {};
+  currentPath.push({
+    fromSceneId: fromId,
+    choiceId: choiceId,
+    label: choice ? choice.label : '',
+    isHistorical: histPaths[fromId] === choiceId
+  });
+  renderScene(choiceId);
+}
+
 function startPov(pov) {
   currentPov = pov;
+  currentPath = [];
   renderScene('start');
 }
 
@@ -2428,6 +2517,35 @@ function renderScene(id) {
     const detailBtn = detailId
       ? '<a class="nav-btn" href="detail.html#' + detailId + '" target="_blank" rel="noreferrer">↗ 查看詳細介紹</a>'
       : '';
+    const isFictional =
+      (s.history  && (s.history.includes('虛構')   || s.history.includes('反事實'))) ||
+      (s.endingText && (s.endingText.includes('虛構走向') || s.endingText.includes('反事實走向')));
+    const badge = isFictional
+      ? '<div class="fictional-badge">✦ 虛擬結局｜以下補充正確歷史發展</div>'
+      : '<div class="historical-badge">✓ 此為史實走向｜以下補充歷史背景</div>';
+    // Build choice path summary
+    var histPaths = HISTORICAL_PATHS[currentPov] || {};
+    var pathItems = currentPath.map(function(p, i) {
+      var stepWord = i === 0 ? '一' : '二';
+      var icon = p.isHistorical ? '✓' : '✗';
+      var matchClass = p.isHistorical ? 'path-match' : 'path-mismatch';
+      var actualNote = '';
+      if (!p.isHistorical) {
+        var histChoiceId = histPaths[p.fromSceneId];
+        var fromS = DATA[currentPov][p.fromSceneId];
+        var histChoice = fromS && fromS.choices && fromS.choices.find(function(c) { return c.id === histChoiceId; });
+        if (histChoice) actualNote = '<span class="path-actual">（史實：' + histChoice.label + '）</span>';
+      }
+      return '<div class="path-item ' + matchClass + '">' +
+        '<span class="path-step">第' + stepWord + '步</span>' +
+        '<span class="path-choice">' + p.label + '</span>' +
+        '<span class="path-icon">' + icon + '</span>' +
+        actualNote +
+        '</div>';
+    }).join('');
+    var pathHTML = currentPath.length
+      ? '<div class="choice-path"><div class="choice-path-title">你的選擇</div>' + pathItems + '</div>'
+      : '';
     root.innerHTML =
       '<div class="scene-card fade-in">' +
         indicator + dotRow +
@@ -2437,9 +2555,11 @@ function renderScene(id) {
       '</div>' +
       '<div class="ending-card fade-in">' +
         '<span class="ending-tag ' + tagMap[s.ending] + '">' + labelMap[s.ending] + '</span>' +
+        badge +
+        pathHTML +
         '<div class="ending-title">' + s.endingTitle + '</div>' +
         '<p class="ending-text">' + s.endingText + '</p>' +
-        '<div class="history-note"><strong>史實補充：</strong> ' + s.history + '</div>' +
+        '<div class="history-note"><strong>' + (isFictional ? '正確歷史發展：' : '史實補充：') + '</strong> ' + s.history + '</div>' +
         sourceHTML +
       '</div>' +
       '<div class="btn-row">' +
@@ -2450,7 +2570,7 @@ function renderScene(id) {
       '</div>';
   } else {
     const choiceHTML = s.choices.map(function(c) {
-      return '<button class="choice-btn" onclick="renderScene(\'' + c.id + '\')">' +
+      return '<button class="choice-btn" onclick="makeChoice(\'' + id + '\', \'' + c.id + '\')">' +
         '<span class="choice-label">' + c.label + '</span>' + c.text +
         '</button>';
     }).join('');
