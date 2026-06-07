@@ -112,25 +112,21 @@
       }
       .page-hero > * { position: relative; }
 
-      .mastline {
-        border-top: 3px solid var(--accent); border-bottom: 1px solid var(--accent);
-        padding: 10px 0 12px; margin: 4px 0 16px;
+      .kicker {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: var(--font-display); font-size: 12px;
+        letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2);
       }
-
-      .mast-title {
-        font-family: var(--font-display); font-weight: 900;
-        letter-spacing: -0.01em; font-size: clamp(22px, 3vw, 32px);
-        line-height: 1.1; margin: 0;
+      .dot {
+        width: 10px; height: 10px; border-radius: 999px;
+        border: 2px solid var(--accent); background: rgba(255,255,255,0.35);
       }
-
-      .mast-sub {
-        margin: 8px 0 0; font-family: var(--font-display);
-        font-size: 12px; color: var(--muted-2);
-        letter-spacing: 0.08em; text-transform: uppercase;
+      .page-hero h2 {
+        margin: 10px 0 8px; font-family: var(--font-display); font-weight: 900;
+        letter-spacing: -0.01em; font-size: clamp(22px, 3vw, 32px); line-height: 1.1;
       }
-
-      .hero-note {
-        margin: 0; color: var(--muted); line-height: 1.7; font-size: 14px;
+      .page-hero p {
+        margin: 0; color: var(--muted); line-height: 1.75; font-size: 14px;
       }
 
       /* ── Layout ── */
@@ -329,14 +325,13 @@
 
     <main class="wrap">
       <section class="card page-hero" aria-label="延伸閱讀導讀">
-        <div class="mastline">
-          <h2 class="mast-title">延伸閱讀</h2>
-          <p class="mast-sub">Further Reading / Resources</p>
-        </div>
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> Further Reading / Resources</div>
+        <h2>延伸閱讀</h2>
         <p class="hero-note">
           精選書籍、紀錄片、學術論文與線上檔案，協助深入認識二二八事件的歷史脈絡、白色恐怖以及臺灣的轉型正義進程。
           資源依類型分類，外部連結將於新分頁開啟。
         </p>
+        
       </section>
 
       <div class="content-layout">
