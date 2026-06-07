@@ -514,57 +514,6 @@
         font-size: 12px;
       }
 
-      dialog.tips-dialog {
-        border: 2px solid var(--accent);
-        background: rgba(255, 255, 255, 0.92);
-        padding: 0;
-        width: min(720px, calc(100% - 24px));
-      }
-
-      .tips-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 14px 14px 10px;
-        border-bottom: 2px solid var(--accent);
-        font-family: var(--font-display);
-      }
-
-      .tips-head h3 {
-        margin: 0;
-        font-size: 14px;
-        letter-spacing: 0.04em;
-      }
-
-      .icon-btn {
-        border: 2px solid var(--accent);
-        background: transparent;
-        border-radius: 999px;
-        width: 34px;
-        height: 34px;
-        cursor: pointer;
-        font-family: var(--font-display);
-      }
-
-      .tips-body {
-        padding: 12px 14px 12px;
-      }
-
-      .tips-actions {
-        display: flex;
-        justify-content: flex-end;
-        padding: 0 14px 14px;
-      }
-
-      .btn {
-        border: 2px solid var(--accent);
-        background: rgba(255, 255, 255, 0.35);
-        border-radius: 999px;
-        padding: 10px 14px;
-        cursor: pointer;
-        font-family: var(--font-display);
-      }
     </style>
   </head>
   <body>
@@ -1458,44 +1407,6 @@
       </div>
     </footer>
 
-    <dialog class="tips-dialog" id="tipsDialog" aria-label="閱讀提示">
-      <div class="tips-head">
-        <h3>閱讀提示</h3>
-        <button class="icon-btn" type="button" id="btnCloseTips" aria-label="關閉閱讀提示">×</button>
-      </div>
-      <div class="tips-body">
-        <p class="small" style="margin: 0">
-          本頁依「詳細介紹」時間點整理人物清單，並分成「政府」與「團體／組織（含民間人物）」。若你在閱讀時遇到不熟悉的名字，可先用搜尋，再展開章節查看簡介與來源連結。
-        </p>
-      </div>
-      <div class="tips-actions">
-        <button class="btn" type="button" id="btnOkTips">我知道了</button>
-      </div>
-    </dialog>
-
-    <script>
-      (function () {
-        const dialog = document.getElementById("tipsDialog");
-        const btnClose = document.getElementById("btnCloseTips");
-        const btnOk = document.getElementById("btnOkTips");
-        const KEY = "tipsDismissed.people.v1";
-
-        function closeDialog() {
-          try { dialog?.close(); } catch (e) { dialog?.removeAttribute("open"); }
-        }
-        function openDialogOnce() {
-          try {
-            if (!dialog) return;
-            if (localStorage.getItem(KEY) === "1") return;
-            dialog.showModal();
-          } catch (e) { dialog?.setAttribute("open", ""); }
-        }
-        btnClose?.addEventListener("click", () => { localStorage.setItem(KEY, "1"); closeDialog(); });
-        btnOk?.addEventListener("click",   () => { localStorage.setItem(KEY, "1"); closeDialog(); });
-        window.addEventListener("keydown", (e) => { if (e.key === "Escape") localStorage.setItem(KEY, "1"); });
-        window.addEventListener("load", openDialogOnce);
-      })();
-    </script>
 
     <script>
       (function () {
@@ -1543,4 +1454,4 @@
       })();
     </script>
   </body>
-</html>                                                                                                                                        
+</html>
