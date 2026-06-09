@@ -133,7 +133,7 @@
       /* ── Layout ── */
       .content-layout {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 260px;
+        grid-template-columns: 260px minmax(0, 1fr);
         gap: 16px;
         align-items: start;
       }
@@ -290,7 +290,16 @@
       /* ── Responsive ── */
       @media (max-width: 900px) {
         .content-layout { grid-template-columns: 1fr; }
-        .toc { order: -1; position: static; }
+        .toc {
+          position: sticky;
+          top: 60px;
+          z-index: 40;
+          max-height: 50vh;
+          overflow-y: auto;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+        }
       }
 
       @media (max-width: 720px) {
@@ -455,6 +464,18 @@
 
 
       <div class="content-layout">
+
+        <!-- ── Sidebar TOC ── -->
+        <aside class="card toc" aria-label="章節目錄">
+          <h3>目錄</h3>
+          <ol>
+            <li><a href="#books">書籍推薦</a></li>
+            <li><a href="#films">紀錄片與影片</a></li>
+            <li><a href="#online">線上資源與資料庫</a></li>
+            <li><a href="#places">紀念場所</a></li>
+          </ol>
+          <small>點選分類可跳至對應區塊；外部連結均於新分頁開啟。</small>
+        </aside>
         <!-- ── Main content ── -->
         <div>
 
@@ -1015,18 +1036,6 @@
           </section>
 
         </div>
-
-        <!-- ── Sidebar TOC ── -->
-        <aside class="card toc" aria-label="章節目錄">
-          <h3>目錄</h3>
-          <ol>
-            <li><a href="#books">書籍推薦</a></li>
-            <li><a href="#films">紀錄片與影片</a></li>
-            <li><a href="#online">線上資源與資料庫</a></li>
-            <li><a href="#places">紀念場所</a></li>
-          </ol>
-          <small>點選分類可跳至對應區塊；外部連結均於新分頁開啟。</small>
-        </aside>
       </div>
     </main>
 
