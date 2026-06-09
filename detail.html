@@ -220,11 +220,6 @@
         align-items: start;
       }
 
-      .toc {
-        position: sticky;
-        top: 86px;
-        padding: 14px 14px 12px;
-      }
 
       .toc h3 {
         margin: 0 0 8px;
@@ -428,17 +423,56 @@
         color: var(--text);
       }
 
-      @media (max-width: 980px) {
+            .toc {
+        position: sticky;
+        top: 86px;
+        padding: 14px 14px 12px;
+      }
+
+      /* ── Mobile collapsible TOC ── */
+      .toc-toggle {
+        display: none;
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        text-align: left;
+        padding: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        letter-spacing: 0.04em;
+      }
+      .toc-arrow {
+        font-size: 20px;
+        transition: transform 200ms ease;
+      }
+      .toc.expanded .toc-arrow { transform: rotate(180deg); }
+
+            @media (max-width: 980px) {
         .detail-grid {
           grid-template-columns: 1fr;
-        }
-        .toc {
-          position: relative;
-          top: 0;
         }
         .foot-grid {
           grid-template-columns: 1fr;
         }
+      
+        .toc {
+          position: sticky;
+          top: 60px;
+          z-index: 40;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          margin-bottom: 12px;
+        }
+        .toc-toggle { display: flex; }
+        .toc-body { display: none; margin-top: 10px; }
+        .toc.expanded .toc-body { display: block; }
       }
 
       /* ── Section search ──────────────────────────────────────────────── */
@@ -637,6 +671,8 @@
 
       <div class="detail-grid">
         <aside class="card toc" aria-label="章節目錄">
+          <button class="toc-toggle" aria-expanded="false">目錄 <span class="toc-arrow">▾</span></button>
+          <div class="toc-body">
           <h3>目錄</h3>
           <ol>
             <li><a href="#sec-prelude">1945-1947｜背景</a></li>
@@ -654,7 +690,8 @@
           <small class="small">
             提醒：本頁每個章節為長文段落（字數較多），建議以目錄分段閱讀；若只想快速瀏覽，可回到首頁查看只保留大標題的時間軸。
           </small>
-        </aside>
+                  </div>
+          </aside>
 
         <article aria-label="詳細介紹正文">
           <details class="card section" id="sec-prelude" data-search="戰後接收 施政失序 行政長官公署 陳儀 柯遠芬 蔣渭川 王添燈 通貨膨脹 通膨 專賣制度 米荒 糧食 語言 族群 背景 1945 1946 1947">
@@ -1317,6 +1354,16 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       })();
+    </script>
+
+    <script>
+      document.querySelectorAll('.toc-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var toc = btn.closest('.toc');
+          toc.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded', toc.classList.contains('expanded'));
+        });
+      });
     </script>
 
   </body>
