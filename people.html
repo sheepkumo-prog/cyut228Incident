@@ -156,8 +156,8 @@
       }
 
       .page-hero {
-        padding: 18px 20px 16px;
-        margin: 0 0 16px;
+        padding: 18px 16px 14px;
+        margin: 0 0 14px;
         position: relative;
         overflow: hidden;
       }
@@ -174,20 +174,21 @@
       .kicker {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         font-family: var(--font-display);
         font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
         color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .dot {
         width: 10px;
         height: 10px;
         border-radius: 999px;
+        background: transparent;
         border: 2px solid var(--accent);
-        background: rgba(255, 255, 255, 0.35);
+        box-shadow: none;
       }
 
       .page-hero h2 {
@@ -202,9 +203,8 @@
       .page-hero p {
         margin: 0;
         color: var(--muted);
-        line-height: 1.75;
+        line-height: 1.7;
         font-size: 14px;
-        max-width: 86ch;
       }
 
       .filters {
@@ -665,7 +665,7 @@
           地方領袖、受難者、倡議者等）。點選大標題即可展開查看內容。每位人物附 10～200 字簡介與延伸閱讀連結，方便快速查找。
         </p>
         <div class="filters" aria-label="快速搜尋">
-          <label for="peopleSearch">快速搜尋（輸入姓名或關鍵字）</label>
+          <label for="peopleSearch">快速搜尋（輸入關鍵字或人名）</label>
           <input id="peopleSearch" type="search" placeholder="例如：陳儀、王添燈、圓環、促轉會…" autocomplete="off" />
           <p class="hint">提示：搜尋會自動展開包含關鍵字的章節，並隱藏不相符的人物卡。</p>
         </div>
@@ -1519,7 +1519,7 @@
         </div>
         <div>
           <strong>使用說明</strong>
-          <p class="small">可用上方搜尋框快速定位人物；點選目錄可跳轉到時間點。按 <span class="kbd">Esc</span> 可關閉提示視窗。</p>
+          <p class="small">可用上方搜尋框快速定位人物；點選目錄可跳轉到時間點。</p>
         </div>
       </div>
     </footer>
