@@ -80,6 +80,7 @@
         justify-content: space-between;
         gap: 16px;
         padding: 14px 0;
+        flex-wrap: nowrap;
       }
 
       .brand {
@@ -141,10 +142,7 @@
       }
 
       @media (max-width: 840px) {
-        .nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
+        .nav { flex-direction: row; align-items: center; }
         nav ul {
           flex-wrap: wrap;
         }
@@ -518,6 +516,7 @@
       /* ── Mobile / Responsive ──────────────────────────────────────────── */
       .hamburger-btn {
         display: none;
+        margin-left: auto;
         background: none;
         border: 2px solid var(--accent);
         border-radius: 4px;
@@ -537,7 +536,7 @@
       }
       .offcanvas.offcanvas-228 {
         background: var(--bg) !important;
-        border-right: 2px solid var(--accent) !important;
+        border-left: 2px solid var(--accent) !important;
         width: 260px !important;
       }
       .offcanvas-228 .offcanvas-header {
@@ -612,7 +611,7 @@
       </div>
     </header>
 
-    <div class="offcanvas offcanvas-start offcanvas-228" tabindex="-1" id="siteNavDrawer" aria-labelledby="siteNavDrawerLabel">
+    <div class="offcanvas offcanvas-end offcanvas-228" tabindex="-1" id="siteNavDrawer" aria-labelledby="siteNavDrawerLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="siteNavDrawerLabel">二二八事件網</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="關閉選單"></button>
