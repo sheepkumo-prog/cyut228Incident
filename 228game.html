@@ -6,9 +6,9 @@
     <meta name="color-scheme" content="light" />
     <meta
       name="description"
-      content="二二八事件網｜互動遊戲：選擇歷史中的視角，走進1947年的台灣，體驗不同立場的選擇與後果。"
+      content="二二八事件網首頁：依行政院《「二二八事件」研究報告》摘要整理，以時間軸呈現事件發生與後續發展。"
     />
-    <title>二二八事件網｜互動遊戲</title>
+    <title>二二八事件網｜首頁</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
       :root {
@@ -31,8 +31,12 @@
           "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
       }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
         font-family: var(--font-body);
@@ -49,354 +53,768 @@
           );
         color: var(--text);
       }
-      a { color: color-mix(in srgb, var(--accent), white 10%); text-decoration: none; }
-      a:hover { text-decoration: underline; }
 
-      .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+      a {
+        color: color-mix(in srgb, var(--accent), white 10%);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
       header {
-        position: sticky; top: 0; z-index: 50;
+        position: sticky;
+        top: 0;
+        z-index: 50;
         background: var(--bg);
         border-bottom: 2px solid var(--accent);
       }
-      .nav {
-        display: flex; align-items: center;
-        justify-content: space-between; gap: 16px; padding: 14px 0;
-      }
-      .brand { display: flex; align-items: center; gap: 10px; min-width: 220px; }
-      .logo { width: 34px; height: 34px; border-radius: 0; flex-shrink: 0; }
-      .brand h1 { font-size: 15px; line-height: 1.2; margin: 0; letter-spacing: 0.04em; font-family: var(--font-display); }
-      .brand p { margin: 0; font-size: 12px; color: var(--muted-2); }
-      nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; flex-wrap: wrap; justify-content: flex-end; }
-      .nav a {
-        display: inline-flex; padding: 8px 10px;
-        border-radius: 999px; border: 2px solid transparent;
-        font-family: var(--font-display); font-size: 13px; color: var(--text);
-      }
-      .nav a[aria-current="page"] { border-color: var(--accent); background: rgba(255, 255, 255, 0.35); }
-      .nav a[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 
-      main { padding: 22px 0 60px; }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+        flex-wrap: nowrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 220px;
+      }
+
+      .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 0;
+        flex-shrink: 0;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+        line-height: 1.2;
+        margin: 0;
+        letter-spacing: 0.04em;
+        font-family: var(--font-display);
+      }
+
+      .brand p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav a {
+        display: inline-flex;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 2px solid transparent;
+        font-family: var(--font-display);
+        font-size: 13px;
+        color: var(--text);
+      }
+
+      .nav a[aria-current="page"] {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .nav a[aria-disabled="true"] {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      main {
+        padding: 28px 0 70px;
+      }
+
+      .hero {
+        padding: 22px 0 10px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        align-items: stretch;
+      }
 
       .card {
-        border-radius: var(--radius);
         background: var(--panel);
         border: 2px solid var(--accent);
+        border-radius: var(--radius);
         box-shadow: var(--shadow);
       }
 
-      .page-hero {
-        padding: 18px 20px 16px;
-        margin: 0 0 16px;
-        position: relative; overflow: hidden;
+      .hero-card {
+        padding: 24px;
       }
-      .page-hero::before {
-        content: "";
-        position: absolute; inset: 0;
-        background:
-          radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.08), transparent 55%),
-          radial-gradient(circle at 70% 20%, rgba(0, 0, 0, 0.06), transparent 55%);
-        pointer-events: none; mix-blend-mode: multiply; opacity: 0.8;
-      }
-      .page-hero > * { position: relative; }
-      .kicker {
-        display: inline-flex; align-items: center; gap: 10px;
-        font-family: var(--font-display); font-size: 12px; color: var(--muted-2);
-        letter-spacing: 0.08em; text-transform: uppercase;
-      }
-      .kicker-dot { width: 10px; height: 10px; border-radius: 999px; background: transparent; border: 2px solid var(--accent); }
-      .page-hero h2 {
-        margin: 10px 0 8px;
-        font-family: var(--font-display); font-weight: 900;
-        font-size: clamp(22px, 3vw, 32px); letter-spacing: -0.01em; line-height: 1.1;
-      }
-      .page-hero p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14px; }
 
-      .game-wrap { padding: 24px 24px 28px; }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .mastline {
+        border-top: 3px solid var(--accent);
+        border-bottom: 1px solid var(--accent);
+        padding: 10px 0 12px;
+        margin: 4px 0 16px;
+      }
+
+      .mastline .mast-title {
+        font-family: var(--font-display);
+        font-weight: 950;
+        letter-spacing: -0.02em;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 1;
+        margin: 0;
+      }
+
+      .mastline .mast-sub {
+        margin: 8px 0 0;
+        font-family: var(--font-display);
+        font-size: 12px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      figure.hero-media {
+        margin: 0;
+        border: 1px solid var(--accent);
+        padding: 10px;
+        background: var(--panel-2);
+      }
+
+      figure.hero-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--accent);
+        background: #fff;
+      }
+
+      figure.hero-media figcaption {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.6;
+        font-family: var(--font-display);
+      }
+
+      figure.hero-media .carousel {
+        border: 2px solid var(--accent);
+      }
+
+      figure.hero-media .carousel-controls {
+        border-top: 2px solid var(--accent);
+      }
+
+      .deck-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px 18px 0;
+      }
+
+      .deck-head h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        letter-spacing: 0.02em;
+      }
+
+      .deck-head p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .deck-body {
+        padding: 18px;
+      }
+
+      .carousel {
+        border: 1px solid var(--accent);
+        background: rgba(255, 255, 255, 0.46);
+      }
+
+      .carousel-viewport {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+      }
+
+      .slide {
+        grid-area: 1 / 1;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(6px);
+        transition:
+          opacity 180ms ease,
+          transform 220ms ease;
+      }
+
+      .slide[data-active="true"] {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .slide figure {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 520px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .slide figcaption {
+        border-top: 1px solid var(--line);
+        padding: 12px 14px 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .slide figcaption strong {
+        display: inline-block;
+        color: var(--text);
+        font-family: var(--font-display);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .carousel-controls {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 10px 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .carousel-controls .icon-btn {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--accent);
+        background: rgba(255, 255, 255, 0.58);
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        color: var(--text);
+      }
+
+      .carousel-controls .icon-btn:hover {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .carousel-dots {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .dot-btn {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .dot-btn[aria-current="true"] {
+        background: var(--accent);
+      }
+
+      .deck-note {
+        margin: 10px 0 0;
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-family: var(--font-display);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      .hero h2 {
+        margin: 12px 0 10px;
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        font-family: var(--font-display);
+        font-weight: 900;
+        text-transform: none;
+      }
+
+      .hero p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .bullets {
+        margin: 0 0 18px;
+        padding: 0 0 0 18px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .bullets li {
+        margin: 6px 0;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 0;
+        border: 2px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        font-weight: 650;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: none;
+        transition: transform 140ms ease;
+        font-family: var(--font-display);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .btn.secondary {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--text);
+        box-shadow: none;
+      }
+
+      .side {
+        padding: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .side h3 {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+      }
+
+      .meta {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--panel-2), transparent 10%);
+        border: 1px solid var(--line);
+      }
+
+      .meta dt {
+        font-size: 11px;
+        color: var(--muted-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .meta dd {
+        margin: 0;
+        color: var(--text);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .timeline-head {
+        margin-top: 18px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .timeline-head h3 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+      }
+
+      .timeline-head p {
+        margin: 6px 0 0;
+        color: var(--muted-2);
+        font-size: 13px;
+      }
+
+      .tools {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .tool {
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--panel), transparent 12%);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .tool:focus-visible,
+      .btn:focus-visible,
+      .nav a:focus-visible,
+      .nav button:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--accent), transparent 55%);
+        outline-offset: 2px;
+      }
+
+      .timeline {
+        margin: 0;
+        padding: 12px 20px 24px;
+        list-style: none;
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 30px;
+        top: 10px;
+        bottom: 14px;
+        width: 2px;
+        background: var(--accent);
+        opacity: 1;
+      }
+
+      .t-item {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: start;
+        position: relative;
+      }
+
+      .t-pin {
+        width: 20px;
+        height: 20px;
+        margin: 8px 0 0 20px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      .t-card {
+        padding: 16px 16px 14px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--accent);
+        background: transparent;
+      }
+
+      .t-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+
+      .date {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 0;
+        border: 1px solid var(--accent);
+        background: transparent;
+        font-size: 12px;
+        color: var(--text);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        font-family: var(--font-display);
+      }
+
+      .tag {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 0;
+        border: 1px solid var(--accent);
+        color: var(--muted);
+        white-space: nowrap;
+        font-family: var(--font-display);
+      }
+
+      .t-card h4 {
+        margin: 10px 0 8px;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        font-family: var(--font-display);
+        font-weight: 800;
+      }
+
+      .t-card h4 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .t-card h4 a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      .t-card h4 a:focus-visible {
+        outline: 3px solid rgba(17, 17, 17, 0.25);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      .t-summary {
+        margin: 4px 0 0;
+        color: var(--muted-2);
+        font-size: 12px;
+        line-height: 1.65;
+        font-family: var(--font-display);
+      }
+
+      .t-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 14px;
+      }
+
+      details {
+        margin-top: 10px;
+        border-top: 1px dashed var(--line);
+        padding-top: 10px;
+      }
+
+      summary {
+        cursor: pointer;
+        color: color-mix(in srgb, var(--muted), var(--text) 20%);
+        font-weight: 650;
+        font-size: 13px;
+        list-style: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .caret {
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(-45deg);
+        transition: transform 140ms ease;
+        opacity: 0.9;
+        margin-top: -2px;
+      }
+
+      details[open] .caret {
+        transform: rotate(45deg);
+      }
+
+      .note {
+        margin: 0;
+        color: var(--muted-2);
+        font-size: 13px;
+        line-height: 1.7;
+      }
 
       footer {
         padding: 26px 0 50px;
         border-top: 2px solid var(--accent);
         background: var(--bg);
       }
-      .foot-grid {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;
-      }
-      @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr; } }
-      .small { font-size: 12px; color: var(--muted-2); line-height: 1.7; }
 
-      /* ── Game styles (mapped to site tokens) ─────────────────────────── */
-      #game {
-        font-family: var(--font-display);
-        max-width: 720px;
-        padding: 0;
-      }
-      .pov-select {
+      .foot-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 1.25rem;
+        gap: 14px;
+        align-items: start;
       }
-      .pov-btn {
-        background: var(--panel-2);
-        border: 1px solid var(--line);
-        border-radius: 0;
-        padding: 1rem;
-        cursor: pointer;
-        text-align: left;
-        transition: background 120ms ease, border-color 120ms ease;
-      }
-      .pov-btn:hover { background: var(--panel); border-color: var(--accent); }
-      .pov-role { font-size: 11px; color: var(--muted-2); margin: 0 0 4px; letter-spacing: 0.05em; text-transform: uppercase; }
-      .pov-name { font-size: 16px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
-      .pov-desc { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.55; }
-      .pov-tag {
-        display: inline-block; font-size: 11px; font-weight: 600;
-        padding: 2px 8px; border-radius: 0;
-        margin-top: 8px;
-        border: 1px solid currentColor;
-      }
-      /* tag colours */
-      .tag-victim { background: #E8ECF4; color: #2C3E6B; }
-      .tag-perpetrator { background: #FCEAEA; color: #8A2020; }
-      .tag-reformer { background: #E8ECF4; color: #2C3E6B; }
-      .tag-martyr { background: #E8ECF4; color: #2C3E6B; }
-      .tag-authority { background: #FCEAEA; color: #8A2020; }
-      .tag-military { background: #FCEAEA; color: #8A2020; }
-      .tag-resistance { background: #E8ECF4; color: #2C3E6B; }
-      .tag-cleansing { background: #FCEAEA; color: #8A2020; }
-      .tag-envoy { background: #E8ECF4; color: #2C3E6B; }
-      .tag-defender { background: #E8ECF4; color: #2C3E6B; }
-      .tag-mediator { background: #E8ECF4; color: #2C3E6B; }
-      .tag-successor { background: #FCEAEA; color: #8A2020; }
-      .tag-exiled { background: #FCEAEA; color: #8A2020; }
-      .tag-survivor { background: #E8ECF4; color: #2C3E6B; }
-      .tag-dictator { background: #FCEAEA; color: #8A2020; }
-      .tag-spymaster { background: #FCEAEA; color: #8A2020; }
-      .tag-dissident { background: #E8ECF4; color: #2C3E6B; }
-      .tag-prisoner { background: #E8ECF4; color: #2C3E6B; }
-      .tag-exile { background: #E8ECF4; color: #2C3E6B; }
 
-      .scene-card {
-        background: rgba(255, 255, 255, 0.70);
-        border: 1px solid var(--line);
-        border-left: 3px solid var(--accent);
-        padding: 1.5rem;
-        margin-bottom: 1rem;
+      @media (max-width: 900px) {
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
       }
-      .chapter-label {
-        font-size: 11px; color: var(--muted-2);
-        letter-spacing: 0.06em; text-transform: uppercase;
-        margin-bottom: 0.5rem; font-family: var(--font-display);
-      }
-      .scene-title { font-size: 18px; font-weight: 700; color: var(--text); margin: 0 0 1rem; }
-      .scene-text { font-size: 15px; color: var(--muted); line-height: 1.85; margin: 0 0 1.5rem; white-space: pre-line; font-family: var(--font-body); }
-      .choices { display: flex; flex-direction: column; gap: 0.5rem; }
-      .choice-btn {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 0;
-        padding: 0.75rem 1rem;
-        text-align: left; cursor: pointer;
-        font-size: 14px; color: var(--text); line-height: 1.55;
-        transition: background 120ms ease, border-color 120ms ease;
-        font-family: var(--font-display);
-      }
-      .choice-btn:hover { background: rgba(255,255,255,0.8); border-color: var(--accent); }
-      .choice-label { font-weight: 700; color: var(--muted-2); font-size: 11px; display: block; margin-bottom: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
-      .ending-card {
-        background: rgba(255, 255, 255, 0.70);
-        border: 1px solid var(--line);
-        padding: 1.5rem;
-        margin-top: 1rem;
-      }
-      .ending-tag {
-        display: inline-block; font-size: 12px; font-weight: 600;
-        padding: 3px 10px; border-radius: 0;
-        margin-bottom: 0.75rem;
-        border: 1px solid currentColor;
-      }
-      .e-good { background: #EAF3DE; color: #3B6D11; }
-      .e-bad { background: #FCEBEB; color: #A32D2D; }
-      .e-mid { background: #FAEEDA; color: #854F0B; }
-      .e-dark { background: #F1EFE8; color: #444441; }
-      .ending-title { font-size: 16px; font-weight: 700; color: var(--text); margin: 0 0 0.5rem; }
-      .ending-text { font-size: 14px; color: var(--muted); line-height: 1.75; margin: 0 0 1rem; font-family: var(--font-body); }
-      .history-note {
-        font-size: 12px; color: var(--muted-2);
-        border-top: 1px dashed var(--line);
-        padding-top: 0.75rem; line-height: 1.65;
-        font-family: var(--font-body);
-      }
-      .fictional-badge, .historical-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 11px;
-        font-family: var(--font-display);
-        letter-spacing: 0.07em;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding: 3px 9px;
-        margin: 8px 0 10px;
-      }
-      .fictional-badge {
-        color: #7a4a00;
-        background: #fff5e0;
-        border: 1.5px dashed #c97d00;
-      }
-      .historical-badge {
-        color: #1a4d2e;
-        background: #eaf5ee;
-        border: 1.5px solid #4a9464;
-      }
-      .choice-path {
-        margin: 10px 0 8px;
-        padding: 9px 12px;
-        background: rgba(255,255,255,0.38);
-        border-left: 3px solid var(--line);
-        font-family: var(--font-display);
-      }
-      .choice-path-title {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
+
+      .small {
+        font-size: 12px;
         color: var(--muted-2);
-        margin-bottom: 6px;
+        line-height: 1.7;
       }
-      .path-item {
+
+      .kbd {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: color-mix(in srgb, var(--panel), transparent 4%);
+        color: var(--text);
+      }
+
+      dialog.tips-dialog {
+        width: min(720px, calc(100vw - 32px));
+        border: 2px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        box-shadow: var(--shadow);
+      }
+
+      dialog.tips-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(6px);
+      }
+
+      .tips-head {
         display: flex;
         align-items: center;
-        gap: 7px;
-        font-size: 12px;
-        padding: 2px 0;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 16px 10px;
+        border-bottom: 2px solid var(--accent);
       }
-      .path-step { color: var(--muted-2); font-size: 11px; min-width: 28px; }
-      .path-choice { font-weight: 700; }
-      .path-icon { font-weight: 700; font-size: 13px; }
-      .path-match .path-icon { color: #4a9464; }
-      .path-mismatch .path-icon { color: #c97d00; }
-      .path-actual { color: var(--muted-2); font-size: 11px; }
-      .sources-section { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--line); }
-      .sources-title { font-size: 11px; font-weight: 600; color: var(--muted-2); letter-spacing: 0.05em; margin-bottom: 0.4rem; font-family: var(--font-display); }
-      .source-link { display: inline-block; font-size: 11px; color: var(--muted-2); text-decoration: none; margin-right: 0.75rem; margin-bottom: 0.2rem; font-family: var(--font-display); }
-      .source-link:hover { color: var(--text); text-decoration: underline; }
-      /* progress dots — scoped to avoid conflict with site .dot */
-      #game .progress-dots { display: flex; gap: 6px; margin-bottom: 1rem; }
-      #game .progress-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
-      #game .progress-dots .dot.active { background: var(--muted); }
-      #game .progress-dots .dot.done { background: var(--muted-2); }
-      .btn-row { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
-      .nav-btn {
-        display: inline-flex;
-        align-items: center;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 0;
-        padding: 0.5rem 1.25rem;
-        cursor: pointer; font-size: 14px; color: var(--muted);
-        font-family: var(--font-display);
-        text-decoration: none;
-        transition: border-color 120ms ease, color 120ms ease;
-      }
-      .nav-btn:hover { border-color: var(--accent); color: var(--text); text-decoration: none; }
-      .fade-in { animation: fadeIn 0.25s ease-in; }
-      @keyframes fadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:none; } }
-      .pov-indicator {
-        display: flex; align-items: center; gap: 8px;
-        margin-bottom: 1rem; font-size: 13px; color: var(--muted-2);
-        font-family: var(--font-display);
-      }
-      .pov-dot { width: 8px; height: 8px; border-radius: 50%; }
-      .dot-victim  { background: #1D9E75; } .dot-perp    { background: #BA7517; }
-      .dot-wei     { background: #6B5EA8; } .dot-wang    { background: #C04C4C; }
-      .dot-chen    { background: #4A6FA5; } .dot-liu     { background: #7A2020; }
-      .dot-xie     { background: #B05E2A; } .dot-ke      { background: #6E4020; }
-      .dot-peng    { background: #8B2500; } .dot-czp     { background: #1A6B3C; }
-      .dot-tang    { background: #1A4A7A; } .dot-chen1   { background: #3A5F95; }
-      .dot-zhou    { background: #3A8A5C; } .dot-wang1   { background: #B84040; }
-      .dot-wdm     { background: #2E5D9A; } .dot-cyi     { background: #5A7FA5; }
-      .dot-wcc     { background: #7855A8; } .dot-ckss    { background: #2C3E6B; }
-      .dot-cks2    { background: #4A2E6B; } .dot-lei     { background: #7A1A1A; }
-      .dot-jiang   { background: #1A6B3C; } .dot-pmm     { background: #1A5C6B; }
 
-      .chapter-divider {
-        font-size: 11px; color: var(--muted-2); text-transform: uppercase;
-        letter-spacing: 0.08em; margin: 1.5rem 0 0.75rem;
-        border-top: 1px solid var(--line); padding-top: 1rem;
-        font-family: var(--font-display);
+      .tips-head h3 {
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: 0.02em;
       }
-      .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 
-      /* ── Collapsible chapter sections ─────────────────────────────────── */
-      .chapter-section {
-        margin: 1.25rem 0 0;
-      }
-      .chapter-section > .chapter-summary {
-        list-style: none;
-        cursor: pointer;
-        font-size: clamp(16px, 2.2vw, 22px);
-        font-family: var(--font-display);
-        font-weight: 700;
-        color: var(--text);
-        letter-spacing: 0.01em;
-        line-height: 1.3;
-        border-top: 2px solid var(--accent);
-        padding: 0.85rem 54px 0.85rem 0;
-        position: relative;
-        user-select: none;
-      }
-      .chapter-section > .chapter-summary::-webkit-details-marker { display: none; }
-      .chapter-section > .chapter-summary::marker { content: ""; }
-      .chapter-section > .chapter-summary::after {
-        content: "▾";
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
+      .icon-btn {
+        appearance: none;
         border: 2px solid var(--accent);
-        background: rgba(255, 255, 255, 0.28);
+        background: transparent;
         color: var(--text);
-        font-size: 16px;
-        transform: translateY(-50%) rotate(-90deg);
-        transition: transform 160ms ease;
-      }
-      .chapter-section[open] > .chapter-summary::after {
-        transform: translateY(-50%) rotate(0deg);
-      }
-      .chapter-section > .chapter-summary:focus-visible {
-        outline: 3px solid rgba(17, 17, 17, 0.25);
-        outline-offset: 4px;
-      }
-      .chapter-section-body {
-        padding-top: 0.75rem;
-        padding-bottom: 0.25rem;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .chapter-section > .chapter-summary::after { transition: none; }
+        border-radius: 999px;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
       }
 
-      /* ── Character portrait background ───────────────────────────── */
-      .card { overflow: hidden; }
-      .game-wrap {
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
+      .icon-btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--panel), transparent 20%);
       }
 
-      @media (max-width: 600px) {
-        .pov-select { grid-template-columns: 1fr; }
-        .pov-select[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
-        .game-wrap { padding: 16px; }
+      .tips-body {
+        padding: 14px 16px 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .tips-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 16px 16px;
+      }
+
+      .tips-actions .btn.secondary {
+        border-radius: 999px;
+        padding: 10px 14px;
       }
       /* ── Mobile / Responsive ──────────────────────────────────────────── */
       .hamburger-btn {
         display: none;
+        margin-left: auto;
         background: none;
         border: 2px solid var(--accent);
         border-radius: 4px;
@@ -416,7 +834,7 @@
       }
       .offcanvas.offcanvas-228 {
         background: var(--bg) !important;
-        border-right: 2px solid var(--accent) !important;
+        border-left: 2px solid var(--accent) !important;
         width: 260px !important;
       }
       .offcanvas-228 .offcanvas-header {
@@ -472,7 +890,7 @@
           <svg aria-hidden="true" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 48"><g transform="translate(-488.29012,-254.49786)"><path fill="var(--accent)" fill-rule="evenodd" d="M 511.97791,260.45543 L 510.51184,259.46572 L 509.50097,259.50277 L 508.89409,259.45865 L 508.27134,259.21343 L 507.69796,258.75651 L 507.42099,258.38779 L 507.33454,258.30488 L 507.2869,258.27489 L 507.18282,258.21491 L 507.00464,258.14433 L 506.81586,258.0826 L 506.73648,258.08787 L 506.30071,258.1849 L 506.23898,258.20432 L 505.92141,258.37897 L 505.88437,258.42307 L 505.58623,258.78297 L 505.51566,258.87823 L 505.2175,259.48688 L 505.18927,259.5398 L 505.20868,259.61393 L 505.23691,259.6633 L 505.82438,260.06378 L 505.80322,260.12905 L 505.51741,259.9403 L 505.41509,259.8856 L 505.27396,259.8609 L 505.20868,259.87854 L 505.15046,259.90853 L 505.05696,259.9791 L 505.02345,260.0285 L 504.94759,260.11318 L 504.70765,260.28783 L 504.41833,260.41485 L 504.07078,260.56305 L 503.51858,260.69889 L 503.22397,260.81886 L 501.94845,261.76624 L 501.90082,261.80857 L 501.458,262.34842 L 501.3945,262.44721 L 501.07517,263.32932 L 501.01166,263.45633 L 500.78408,264.07203 L 500.67646,264.566 L 500.53356,265.75684 L 500.45771,265.7639 L 500.42066,265.80624 L 499.43271,267.05705 L 498.95461,267.70629 L 498.92991,267.76273 L 498.7482,268.56015 L 498.68998,268.83183 L 498.65647,269.05059 L 498.6106,269.2323 L 498.48533,269.444 L 498.19071,269.92387 L 498.05487,270.15851 L 497.99666,270.26788 L 497.89609,270.49018 L 497.79024,270.78303 L 497.55736,271.67042 L 497.5362,271.73746 L 497.34919,272.69012 L 497.33862,272.90007 L 496.94342,273.48402 L 496.89049,273.60222 L 496.45123,274.79305 L 496.08956,275.99624 L 495.88667,276.69308 L 495.84609,276.81128 L 495.53913,277.57341 L 495.3627,277.7269 L 495.15807,278.16972 L 495.13512,278.22792 L 494.5794,280.11739 L 494.5547,280.255 L 494.56529,280.32734 L 494.69938,280.85305 L 494.90226,281.47758 L 494.9199,281.5358 L 494.98516,281.71046 L 495.10515,282.01919 L 495.37682,282.79896 L 495.39093,282.86777 L 495.51444,283.62285 L 495.49502,283.67754 L 495.45444,283.71635 L 495.338,283.77103 L 495.17571,284.15917 L 495.10515,284.41498 L 495.00106,284.8966 L 494.8511,285.75222 L 494.84404,285.81926 L 494.85991,285.88983 L 494.8952,285.94099 L 494.94636,285.96922 L 495.00106,285.99039 L 495.16688,285.99039 L 495.22863,286.00804 L 495.28332,286.04157 L 495.30978,286.08743 L 495.43681,286.43674 L 495.44032,286.5073 L 495.40328,286.55317 L 495.32389,286.63433 L 495.11749,286.66432 L 495.00106,286.72431 L 494.97282,286.77545 L 494.94988,286.91306 L 494.99223,287.03303 L 495.01692,287.09302 L 495.05574,287.13182 L 495.16335,287.18477 L 495.67496,287.36119 L 495.96607,287.20417 L 496.40183,287.9663 L 496.5306,288.4885 L 496.63822,288.78664 L 497.11103,289.84694 L 497.20982,289.99513 L 497.52385,290.38324 L 497.86257,290.88074 L 497.88197,290.94778 L 497.88197,291.03246 L 497.77612,291.24945 L 497.81671,291.38001 L 497.88551,291.48057 L 498.00372,291.60583 L 498.12367,291.72579 L 498.17837,291.75225 L 498.23128,291.78048 L 498.52591,291.88456 L 498.75878,292.14391 L 498.88932,292.33797 L 499.01635,292.54085 L 499.06576,292.65376 L 499.05694,292.71197 L 498.96872,292.66258 L 498.7482,292.47734 L 498.7182,292.42088 L 498.65293,292.33797 L 498.68998,292.42088 L 498.76232,292.53204 L 499.034,292.73492 L 499.20512,292.85488 L 499.25452,292.88664 L 499.64088,293.06834 L 499.69381,293.09306 L 499.74144,293.10363 L 499.82083,293.09833 L 500.07664,293.00659 L 500.15251,293.08423 L 500.23718,293.16539 L 500.43478,293.29592 L 500.81407,293.48293 L 500.88464,293.50411 L 500.96403,293.49529 L 501.15986,293.54291 L 501.75968,293.92046 L 502.01019,294.0757 L 502.05077,294.11982 L 502.52534,294.63143 L 502.67,294.81315 L 502.80231,295.00544 L 503.49036,296.03572 L 503.53975,296.14511 L 503.79909,296.77845 L 503.83438,296.9037 L 503.86613,297.50883 L 504.21368,298.73846 L 504.23309,298.7967 L 504.32482,298.86902 L 504.38128,298.89019 L 504.44303,298.91313 L 504.51536,298.90077 L 505.63386,298.712 L 506.03609,297.37122 L 506.0502,297.30593 L 505.95847,296.6232 L 505.63386,295.06718 L 505.47861,294.58026 L 505.42921,294.38796 L 505.3851,294.09688 L 505.38333,294.01572 L 505.40098,293.79697 L 505.85791,291.38883 L 505.95141,290.9813 L 506.30778,290.12214 L 506.43833,289.8434 L 506.86349,289.13597 L 507.1493,288.92602 L 507.2675,288.8819 L 507.36452,288.82017 L 507.44392,288.72137 L 507.72266,288.34558 L 508.43716,286.56728 L 509.1005,284.19974 L 509.65975,281.21648 L 509.73208,280.31145 L 509.73208,280.14915 L 509.72149,280.0574 L 509.8097,279.28293 L 509.79912,276.68075 L 510.01965,274.24437 L 510.00553,273.24232 L 509.95083,272.64074 L 509.86616,272.56134 L 509.7709,272.40786 L 509.74795,272.35316 L 509.73561,272.11501 L 509.75148,272.04972 L 510.10785,270.79185 L 510.2384,270.5237 L 510.81001,269.43695 L 510.88234,269.34698 L 511.07287,269.20231 L 510.89821,268.96768 L 510.86822,268.91475 L 510.85764,268.83535 L 510.87881,267.88094 L 510.89468,267.72568 L 511.01466,267.44165 L 511.07463,267.34285 L 511.19812,267.22464 L 511.3428,267.10821 L 511.42217,267.02882 L 511.44159,266.33549 L 511.37984,265.97914 L 511.28104,265.65452 L 511.18402,265.49926 L 511.00583,265.43223 L 510.92114,265.34754 L 510.88939,265.30344 L 510.83471,265.18701 L 510.43599,263.95206 L 510.39541,263.81799 L 510.39365,263.41576 L 510.38483,262.87414 L 510.39365,262.72242 L 510.406,262.6589 L 510.47304,262.47191 L 510.87174,261.6498 L 510.9035,261.59509 L 511.18402,261.2158 L 511.50156,260.96175 L 511.71681,260.81886 L 511.81031,260.77653 L 511.94968,260.66538 L 511.99378,260.62478 L 512.02554,260.57539 L 512.01848,260.49425 L 511.97791,260.45543 z"/></g></svg>
           <div>
             <h1>二二八事件網</h1>
-            <p>互動遊戲｜選擇視角，走進歷史</p>
+            <p>首頁｜事件簡介與時間軸</p>
           </div>
         </div>
         <button class="hamburger-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#siteNavDrawer" aria-controls="siteNavDrawer" aria-label="開啟選單">
@@ -480,18 +898,18 @@
         </button>
         <nav aria-label="網站導覽">
           <ul>
-            <li><a href="index.html">首頁</a></li>
+            <li><a href="#" aria-current="page">首頁</a></li>
             <li><a href="detail.html">詳細介紹</a></li>
             <li><a href="people.html">重要人物</a></li>
             <li><a href="documents.html">相關文件</a></li>
             <li><a href="videos.html">延伸閱讀</a></li>
-            <li><a href="228game.html" aria-current="page">互動遊戲</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <div class="offcanvas offcanvas-start offcanvas-228" tabindex="-1" id="siteNavDrawer" aria-labelledby="siteNavDrawerLabel">
+    <div class="offcanvas offcanvas-end offcanvas-228" tabindex="-1" id="siteNavDrawer" aria-labelledby="siteNavDrawerLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="siteNavDrawerLabel">二二八事件網</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="關閉選單"></button>
@@ -499,2189 +917,538 @@
       <div class="offcanvas-body">
         <nav aria-label="網站導覽（選單）">
           <ul>
-            <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html" aria-current="page">首頁</a></li>
             <li><a href="detail.html">詳細介紹</a></li>
             <li><a href="people.html">重要人物</a></li>
             <li><a href="documents.html">相關文件</a></li>
             <li><a href="videos.html">延伸閱讀</a></li>
-            <li><a href="228game.html" aria-current="page">互動遊戲</a></li>
+            <li><a href="228game.html">互動遊戲</a></li>
           </ul>
         </nav>
       </div>
     </div>
 
     <main class="wrap">
-      <section class="card page-hero" aria-label="互動遊戲導讀">
-        <div class="kicker"><span class="kicker-dot" aria-hidden="true"></span> Interactive / Game</div>
-        <h2>互動歷史劇本</h2>
-        <p>
-          選擇一個歷史人物的視角，走進1947年的台灣。每一個選擇，都對應著歷史的走向——有些結局與史實一致，有些是反事實的推演。
-          遊玩結束後，「史實補充」欄會告訴你真實發生了什麼事。
-        </p>
-      </section>
+      <section class="hero" aria-label="首頁主視覺">
+        <div class="hero-grid">
+          <div class="card hero-card">
+            <div class="mastline" aria-label="網站標題">
+              <p class="mast-sub">228 Incident · Timeline · Taiwan</p>
+              <h2 class="mast-title">二二八事件網</h2>
+            </div>
 
-      <section class="card" aria-label="互動遊戲主體">
-        <div class="game-wrap">
-          <div id="game">
-            <h2 class="sr-only">228事件互動歷史劇本</h2>
-            <div id="root"></div>
+            <div class="hero-inner">
+              <div>
+                <div class="kicker"><span class="dot" aria-hidden="true"></span> 事件摘要</div>
+                <p>
+                  二二八事件是1947年發生於臺灣的重大歷史悲劇，根源於戰後行政失序、通貨膨脹與官民長期積怨。
+                  1947年2月27日夜間，臺北專賣局查緝員在圓環附近取締私菸，打傷女販林江邁，並於群眾聚集時開槍誤殺路人，點燃民怨。
+                </p>
+                <p>
+                  翌日（2月28日），民眾前往長官公署請願，遭公署衛兵以機槍掃射，死傷數人。消息傳遍全島，各地相繼罷市、抗議，武裝衝突持續擴大。
+                  各界代表組成「二二八事件處理委員會」，提出涵蓋廢除專賣局與政治改革在內的三十二條訴求。
+                  行政長官陳儀表面與處委會周旋，暗中密電南京請調援軍。
+                </p>
+                <p>
+                  3月8日起，國府整編第二十一師等部隊陸續在基隆、高雄登陸，展開大規模清鄉與軍事鎮壓，
+                  大批本省知識份子、地方仕紳與民意代表遭逮捕、殺害或失蹤。
+                  依行政院《二二八事件研究報告》，估計全臺死亡人數約介於一萬八千至兩萬八千人之間。
+                </p>
+                <p>
+                  事件重創臺灣社會，造成本土精英斷層、族群隔閡加深，並成為此後數十年戒嚴體制與白色恐怖的政治背景。
+                  1995年政府公開道歉並設立二二八紀念基金會；2018年，促進轉型正義委員會成立，持續推動歷史真相的揭露與司法平反工作。
+                </p>
+                <div class="actions">
+                  <a class="btn" href="#timeline">開始閱讀時間軸</a>
+                </div>
+              </div>
+
+              <figure class="hero-media">
+                <img
+                  src="assets/drnh-72C.jpg"
+                  alt="二二八事件相關影像（來源：二二八事件數位典藏）"
+                  loading="eager"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='assets/228org-incident.jpg';"
+                />
+                <figcaption>
+                  圖片來源：二二八事件數位典藏（DRNH）・
+                  <a
+                    href="https://228.drnh.gov.tw/index.php?act=Display%2Fimage%2F50859DOA2qM%3D#72C"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    查看影像原始頁面
+                  </a>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
+
+      <section class="card" id="press-slides" aria-label="相關剪報">
+        <div class="deck-head">
+          <div>
+            <h3>相關文件影像</h3>
+            <p>
+              以「當時文件影像」作為入口，快速理解事件在各時期的歷史脈絡。每次載入隨機顯示。
+            </p>
+          </div>
+          <a
+            class="btn secondary"
+            href="documents.html"
+          >
+            查看全部
+          </a>
+        </div>
+
+        <div class="deck-body">
+          <div class="carousel" data-carousel>
+            <div class="carousel-viewport" aria-live="polite">
+              <ul class="carousel-track" id="assetCarouselTrack">
+              </ul>
+            </div>
+
+            <div class="carousel-controls" aria-label="輪播控制">
+              <button class="icon-btn" type="button" data-prev aria-label="上一張">‹</button>
+              <div class="carousel-dots" data-dots aria-label="輪播指示點"></div>
+              <button class="icon-btn" type="button" data-next aria-label="下一張">›</button>
+            </div>
+          </div>
+
+          <p class="deck-note">
+            圖片取自相關文件影像，每次載入隨機排序。點擊「查看文件」可前往相關文件頁面對應條目。
+          </p>
+        </div>
+      </section>
+
+            <section class="card" id="timeline" aria-label="事件時間軸">
+        <div class="timeline-head">
+          <div>
+            <h3>事件時間軸</h3>
+          </div>
+        </div>
+
+        <ol class="timeline">
+          <li class="t-item" id="t-prelude">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1945">1945-1947</time> 背景</span>
+                <span class="tag">戰後接收</span>
+              </div>
+              <h4><a href="detail.html#sec-prelude">戰後接收與施政失序，社會不滿累積</a></h4>
+              <p class="t-summary">1945年日本投降後，國民政府接收臺灣，同胞治理的期待迅速落空。行政長官公署集行政、軍事大權一身，重要職缺幾乎全由外省官員把持，本省人難入要職。通貨膨脹與米荒讓生計日益艱難，公營事業壟斷壓縮民間商業空間；軍紀敗壞、執法粗暴卻不受追究，語言隔閡更讓申訴無門。一年多的系統性失序，讓社會積怨層層堆疊至臨界點。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470227">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-02-27">1947/02/27</time> 導火線</span>
+                <span class="tag">緝私衝突</span>
+              </div>
+              <h4><a href="detail.html#sec-19470227">臺北緝私衝突引發抗議與群眾聚集</a></h4>
+              <p class="t-summary">2月27日傍晚，專賣局查緝員在臺北圓環取締私菸，以槍托擊傷寡婦林江邁；群眾追討時，查緝員傅學通向人群開槍，誤殺旁觀市民陳文溪。憤怒群眾徹夜包圍警察局、憲兵隊要求交出兇手，官方始終拒絕正式回應。這場個別的執法暴力，精準點燃了長期積累的怨憤，成為翌日全島動盪的直接導火線。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470228">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-02-28">1947/02/28</time> 擴大</span>
+                <span class="tag">罷市請願</span>
+              </div>
+              <h4><a href="detail.html#sec-19470228">罷市與請願使情勢升高，衝突擴大</a></h4>
+              <p class="t-summary">2月28日全市罷市，民眾手無寸鐵前往行政長官公署請願，衛兵以機槍掃射廣場，當場數人死亡。陳儀一面廣播稱願協商，一面已秘密向南京請調援軍。消息透過廣播傳遍全島，基隆、臺中、嘉義、高雄相繼爆發抗議，民眾佔領官署、驅逐外省官員。事件在數日內從臺北的個別衝突，演變為牽動全島的政治危機。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470303">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-03">1947/03/03</time> 協商</span>
+                <span class="tag">處理委員會</span>
+              </div>
+              <h4><a href="detail.html#sec-19470303">成立處理委員會，提出改革與善後訴求</a></h4>
+              <p class="t-summary">民間代表組成二二八事件處理委員會，提出三十二條處理大綱，涵蓋民選縣市長、廢除專賣局、撤廢行政長官公署等改革訴求。陳儀表面配合協商，實則已密電請兵，以談判換取援軍抵台的時間。3月8日援軍登陸後，陳儀立即宣布處委會為叛亂組織，主導交涉的代表從合法談判者瞬間成為被追緝的對象，王添燈等人遭逮捕後下落不明。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470310">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-10">1947/03/10</time> 鎮壓</span>
+                <span class="tag">軍隊進駐</span>
+              </div>
+              <h4><a href="detail.html#sec-19470310">軍隊進駐與全面鎮壓，逮捕與傷亡增加</a></h4>
+              <p class="t-summary">3月8日整編第二十一師自基隆登陸，部隊立即掃蕩港口周邊，基隆出現大量浮屍。高雄要塞司令彭孟緝搶先自行鎮壓，逮捕前往談判的市長與議長後展開屠殺，事後獲蔣介石記大功。臺中謝雪紅率二七部隊武裝抵抗，終因力量懸殊敗退。軍隊進入各城市後隨意射殺行人，知識分子、參議員、醫師、律師按名單被逐一帶走，不少人此後音訊全無。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470314">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-03-14">1947/03/14-03/16</time> 清剿</span>
+                <span class="tag">全臺擴大</span>
+              </div>
+              <h4><a href="detail.html#sec-19470314">全臺清剿與擴大逮捕，事件進入高壓控制</a></h4>
+              <p class="t-summary">軍事鎮壓後進入更系統化的清鄉，以「預防性清除」為名大規模搜捕。警備總部參謀長柯遠芬明言「寧可枉殺九十九個」。畫家陳澄波以和平使者身分前往協商，遭捕後未經審判公開槍決；律師湯德章焚毀名單保護他人，隨後被捕就地處決。全臺死亡人數估計約一萬八千至兩萬八千人，構成戰後臺灣地方社會骨幹的知識精英大量消失，形成空前的菁英斷層。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-19470516">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1947-05-16">1947/05/16</time> 處置</span>
+                <span class="tag">政治處分</span>
+              </div>
+              <h4><a href="detail.html#sec-19470516">陳儀撤職，事件進入長期收束與控制</a></h4>
+              <p class="t-summary">陳儀遭撤職查辦，行政長官公署廢除，魏道明接任省政府主席，宣布解除戒嚴、停止清鄉。然而政府未公開調查真相、未追究施暴者，受難者在官方敘事中繼續被定性為「叛亂分子」，家屬申訴無門。1949年國府撤台後隨即頒布戒嚴令，二二八記憶被納入更大的管控框架；換人卻不換制度，讓恐懼化為延續數十年的社會底色。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-1949">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1949">1949-1992</time> 戒嚴時期</span>
+                <span class="tag">白色恐怖</span>
+              </div>
+              <h4><a href="detail.html#sec-1949">戒嚴體制下的白色恐怖延伸（長期政治迫害與肅清）</a></h4>
+              <p class="t-summary">1949年戒嚴令頒布，《懲治叛亂條例》讓異見言論皆可入罪，政治犯由缺乏保障的軍事法庭審判。蔣中正親批大量死刑，蔣經國主掌情治體系長達數十年。雷震案等案件顯示任何制度內反對力量皆遭清除。白色恐怖延續近四十年至1987年解嚴，期間人們學會不組織、不發言、不追問，二二八記憶在這片沉默中被迫埋藏，創傷以代際方式在家庭內部悄悄傳遞。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-1980s">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1987">1980年代後期</time> 社會倡議</span>
+                <span class="tag">平反運動</span>
+              </div>
+              <h4><a href="detail.html#sec-1980s">二二八平反運動興起，推動追查真相、公開紀念與政府回應</a></h4>
+              <p class="t-summary">1987年解嚴前夕，陳永興、鄭南榕等人冒政治風險成立二二八和平日促進會，要求公開真相、訂定和平日。鄭南榕後來拒絕接受叛亂罪審訊，於1989年自焚身亡，以生命宣示言論自由的代價。運動持續累積下，李登輝1991年承諾調查，1995年以國家元首身分正式道歉，二二八事件紀念基金會成立並開始受理補償，四十年禁忌首度獲得制度性承認。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-199202">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="1992-02">1992/02</time> 調查出版</span>
+                <span class="tag">平反調查</span>
+              </div>
+              <h4><a href="detail.html#sec-199202">行政院出版《「二二八事件」研究報告》，形成官方調查研究的重要里程碑</a></h4>
+              <p class="t-summary">1991年行政院委託學者組成研究小組，系統調查並撰寫《二二八事件研究報告》，1992年2月出版，是首次以國家力量對事件進行完整記錄。報告估計全台死亡人數約一萬八千至兩萬八千人，明確呈現陳儀施政失當與軍隊暴行，承認受難者並非叛亂分子。報告直接推動1995年補償條例立法，建立補償申請制度，成為後續轉型正義工程的重要研究基礎。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-20171205">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="2017-12-05">2017/12/05</time> 立法推進</span>
+                <span class="tag">轉型正義</span>
+              </div>
+              <h4><a href="detail.html#sec-2017">《促進轉型正義條例》三讀通過，轉型正義制度化</a></h4>
+              <p class="t-summary">2017年《促進轉型正義條例》通過，2018年促轉會成立，推動政治檔案開放、清除威權象徵、撤銷白色恐怖時期不法判決並恢復受難者名譽，威權統治時期定義為1945至1992年，涵蓋二二八與整段白色恐怖。促轉會於2022年期滿解散，工作移交國家人權委員會等常設機關延續，讓轉型正義從個案補償進入更系統性的制度工程。</p>
+            </article>
+          </li>
+
+          <li class="t-item" id="t-20180531">
+            <div class="t-pin" aria-hidden="true"></div>
+            <article class="t-card">
+              <div class="t-top">
+                <span class="date"><time datetime="2018-05-31">2018/05/31</time> 機構成立</span>
+                <span class="tag">轉型正義</span>
+              </div>
+              <h4><a href="detail.html#sec-2017">促進轉型正義委員會成立（調查、平復不法、政治檔案與社會對話等）</a></h4>
+              <p class="t-summary">2018年5月31日，促進轉型正義委員會正式掛牌，統籌推動檔案開放、清除威權象徵、平復司法不法等工作。透過檔案解密，許多家屬首次得知親人被捕、審判、處決的完整經過；數百件白色恐怖有罪判決被撤銷，當事人名譽正式恢復。促轉會2022年期滿解散，未竟事項移交常設機關，轉型正義以制度形式持續推進，致力讓歷史暴力不再重演。</p>
+            </article>
+          </li>
+        </ol>
+      </section>
     </main>
 
-    <footer>
+        <footer>
       <div class="wrap foot-grid">
         <div>
           <strong>資料來源</strong>
           <p class="small">
-            劇本依行政院《「二二八事件」研究報告》及各人物相關史料撰寫，部分走向為反事實推演，供歷史思考之用。
+            本頁以行政院《「二二八事件」研究報告》摘要為主，並參考二二八相關數位典藏與公開資料。
           </p>
           <p class="small">
             <a href="https://www.228.org.tw/incident-research1?lang=tw" target="_blank" rel="noreferrer">二二八事件紀念基金會（研究與資料）</a>
             <br />
             <a href="https://228.drnh.gov.tw/" target="_blank" rel="noreferrer">二二八事件數位典藏（DRNH）</a>
             <br />
-            <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6" target="_blank" rel="noreferrer">二二八事件（Wikipedia）</a>
-            <a href="https://watchout.tw/projects/role-play/terror-30" target="_blank" rel="noreferrer">模擬人生 你是戒嚴時代的誰呢？</a>
+            <a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%83%8C%E6%99%AF" target="_blank" rel="noreferrer">二二八事件的背景（Wikipedia）</a>
           </p>
         </div>
         <div>
           <strong>使用說明</strong>
           <p class="small">
-            選擇視角後，依序做出選擇；每個視角共三個決策節點。結局出現後可重玩同一視角，或切換至其他人物。所有結局末尾均附有史實說明。
+            以滑鼠滾動閱讀時間軸；輪播剪報可使用左右按鈕切換。目前已完成：首頁、詳細介紹、重要人物、相關文件、互動遊戲。
           </p>
         </div>
       </div>
     </footer>
 
+        <dialog class="tips-dialog" id="tipsDialog" aria-label="閱讀提示">
+      <div class="tips-head">
+        <h3>閱讀提示</h3>
+        <button class="icon-btn" type="button" id="btnCloseTips" aria-label="關閉閱讀提示">×</button>
+      </div>
+      <div class="tips-body">
+        <dl class="meta" style="margin: 0">
+          <dt>這頁在做什麼？</dt>
+          <dd>本頁為二二八事件網的總覽入口，依行政院《「二二八事件」研究報告》摘要整理，以時間軸呈現事件關鍵節點，涵蓋導火線、擴大、鎮壓、清鄉，以及白色恐怖、平反調查與轉型正義的後續脈絡。</dd>
+          <dt>怎麼閱讀？</dt>
+          <dd>向下捲動依時間順序瀏覽時間軸；點選「開始閱讀時間軸」可直接跳至該區塊。各節點僅保留大標題，詳細內容請前往上方導覽列的「詳細介紹」；人物背景見「重要人物」；史料文件見「相關文件」；書籍影片與線上資源見「延伸閱讀」；互動體驗見「互動遊戲」。</dd>
+          <dt>快捷鍵</dt>
+          <dd>按 <span class="kbd">Esc</span> 可關閉此視窗。</dd>
+        </dl>
+        </p>
+      </div>
+      <div class="tips-actions">
+        <button class="btn secondary" type="button" id="btnOkTips">我知道了</button>
+      </div>
+    </dialog>
+
     <script>
-const DATA = {
-  lin: {
-    start: {
-      chapter: "1947年2月27日傍晚，台北南京西路",
-      title: "那個夜晚",
-      text: "你是林江邁，四十歲的台北寡婦。戰爭結束才一年多，你靠在天馬茶房附近賣菸養活孩子。\n\n傍晚七點多，六名專賣局查緝員突然出現，把你攤位上所有的菸和現金全數沒收——那些錢是這個月的生活費，有一部分還是合法的菸。\n\n你跟在他們後面，苦苦哀求至少歸還你合法的部分。",
-      choices: [
-        { id: "lin_kneel", text: "跪下哀求，希望博取同情，請他們網開一面", label: "選擇 A" },
-        { id: "lin_shout", text: "大聲呼救，讓周圍路人聽見，讓大家評評理", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    lin_kneel: {
-      chapter: "第一個選擇之後",
-      title: "下跪也沒有用",
-      text: "你跪在地上哭著求他們。查緝員傅學通不耐煩了，舉起槍托猛地打在你的頭上。你的額頭血流如注，倒在地上。\n\n路人憤怒地圍上來。傅學通慌亂中開槍，誤傷了路人陳文溪，對方傷重不治。查緝員們趁亂逃往警察總局。\n\n有人扶起你，你頭部劇痛。群眾要去警察局討公道——要不要一起去？",
-      choices: [
-        { id: "lin_police_yes", text: "跟著群眾去包圍警察局，要求交出打人的查緝員", label: "選擇 A" },
-        { id: "lin_police_no", text: "頭傷太重，先去醫院，不再追究", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    lin_shout: {
-      chapter: "第一個選擇之後",
-      title: "眾人圍了上來",
-      text: "你大聲呼喊，路過市民紛紛停下。大家對專賣局早有怨言，私菸才是一般人負擔得起的。\n\n傅學通惱羞成怒，用槍托打傷你的頭。群眾大嘩，包圍查緝員。傅學通開槍，誤傷路人陳文溪，對方不治身亡。查緝員們逃往警察局。\n\n群眾問你：要不要出來作證，一起去追究責任？",
-      choices: [
-        { id: "lin_witness_yes", text: "包紮傷口後，前往警察局外作證", label: "選擇 A" },
-        { id: "lin_witness_no", text: "害怕報復，搖頭拒絕，默默離去", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    lin_police_yes: {
-      chapter: "2月27日深夜",
-      title: "包圍警察局",
-      text: "數百名市民跟著你走向警察局。警察局不肯交出人，把查緝員轉移到憲兵隊藏匿。群眾又包圍了憲兵隊，僵持至深夜，始終沒有答覆。\n\n你的傷口只草草包紮。你站在人群中，意識到今晚的事，遠比那些菸和現金要大得多。\n\n第二天，2月28日，人們的憤怒化成了全台北的抗議——那一天，改變了台灣的歷史。",
-      ending: "mid",
-      endingTitle: "正義未竟，歷史開始",
-      endingText: "你的遭遇成為這場事件的導火線。那一夜的血，沒有讓你得到任何賠償，卻讓長期積壓的民怨終於爆發。這就是後來被稱為「二二八事件」的起點——從你這個賣菸寡婦身上開始的。",
-      history: "此為劇本虛構走向。史實中林江邁並未選擇沉默，而是呼救並引來圍觀群眾，成為事件最早的見證者。林江邁頭部受傷，醫藥費高達800元，事後長官公署僅給予57元補助。查緝員傅學通等人始終未受到應有的懲罰。",
-      step: 3, total: 3
-    },
-    lin_police_no: {
-      chapter: "2月28日，清晨",
-      title: "獨自承受",
-      text: "你讓人扶著去了林外科醫院，躺在病床上，聽著窗外越來越大的喧囂。隔天，2月28日，人們的憤怒爆發成了全島的抗議。你直到3月5日才出院。\n\n那些沒收你財物、打傷你的查緝員，沒有被懲罰。長官公署只給了你57元的醫療補助——而你光是醫藥費就花了800元。",
-      ending: "bad",
-      endingTitle: "沉默的犧牲",
-      endingText: "你選擇了默默承受，但歷史沒有因此平靜。那個夜晚的事傳開，成為點燃全台灣人憤怒的火花。你的傷，是這一切的起點，卻也是最被遺忘的部分。",
-      history: "此為劇本虛構走向。史實中林江邁並未沉默承受，而是在現場呼救、引發群眾聚集，成為228事件的第一個見證者。林江邁後來依然在台北街頭賣菸度日，她的小女兒林明珠後來嫁給了一位外省籍的陳誠隨扈，成為那個時代族群融合的一個縮影。",
-      step: 3, total: 3
-    },
-    lin_witness_yes: {
-      chapter: "2月27日深夜",
-      title: "你站出來了",
-      text: "裹著繃帶，你走到警察局外，在人群中說出了今晚發生的一切。你的證詞讓更多人確信：查緝員打人、開槍是事實，不是謠言。\n\n但警察局不肯交人，憲兵隊也不肯。群眾的憤怒一夜未散。\n\n第二天，台灣廣播電台把昨夜的事播了出去——整個台灣都聽見了。那一天，是後來被稱為「二二八事件」的開始。",
-      ending: "good",
-      endingTitle: "你的聲音被聽見了",
-      endingText: "你站出來作證，讓這件事沒有被掩蓋。雖然查緝員最終沒有受到懲罰，但你的勇氣成為那個夜晚最重要的見證。歷史記住了林江邁的名字——那個用血與傷，點燃了一個時代的女人。",
-      history: "史實：事件發生後，台北市參議會成立「緝煙血案調查委員會」，但查緝員傅學通等人仍未受到制裁，抗議的民眾反而付出了更大的代價。",
-      step: 3, total: 3
-    },
-    lin_witness_no: {
-      chapter: "2月27日深夜",
-      title: "沉默的旁觀者",
-      text: "你默默退出人群，獨自走回家。頭痛讓你什麼都不想做。你沒有去作證，只想讓這一切快點過去。\n\n但這一切沒有過去。第二天，昨夜的事已傳遍整個台北。你沒有阻止任何事——歷史的車輪，已經開始轉動了。",
-      ending: "bad",
-      endingTitle: "無聲的見證",
-      endingText: "即使你選擇沉默，那一夜也已成為歷史。你的受傷、陳文溪的死，讓壓抑已久的民怨找到了缺口。有些事，不是一個人的選擇能夠阻止的。",
-      history: "此為劇本虛構走向。史實中林江邁並未沉默離去，而是呼救引來大批圍觀群眾，成為事件最早的見證者之一。路人陳文溪中彈後傷重不治，是「圓環緝菸事件」中死亡的第一位民眾，也是二二八事件導火線的關鍵一刻。",
-      step: 3, total: 3
-    }
-  },
-  fu: {
-    start: {
-      chapter: "1947年2月27日傍晚，台北南京西路",
-      title: "例行查緝",
-      text: "你是傅學通，專賣局查緝員。今天和另外五名同事接到密報，去淡水查緝走私菸，只查到五箱，又被告知私貨移到台北南京西路。\n\n你們抵達天馬茶房附近，私販早已逃跑，只逮到一個四十歲的寡婦，攤位上有私菸。照規定，全部沒收，連她的現金也一併帶走。\n\n她跪在地上哭著哀求你們，讓她帶走合法的菸和現金。周圍的路人開始對你們指指點點。你感到不耐煩，也感到一絲慌亂。",
-      choices: [
-        { id: "fu_warn", text: "嚴厲警告她安靜，用槍托嚇阻，讓她知道查緝員的權威不容挑戰", label: "選擇 A" },
-        { id: "fu_return", text: "將她的現金和合法菸還給她，只沒收私菸，快速離開", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    fu_warn: {
-      chapter: "第一個選擇之後",
-      title: "失控的那一刻",
-      text: "你舉起槍托，猛地打在那個婦女頭上，要讓她閉嘴。她倒在地上，額頭血流不止。\n\n圍觀的路人震驚了一秒，然後憤怒地湧上來，把你和同伴們團團圍住。人群越來越大，你開始慌了。\n\n有人抓住你的衣領，你本能地舉槍想要嚇退他們。槍響了——你沒想到真的會打到人。一個路人倒下，血染地板。你的腿已經在往警察總局的方向跑了。",
-      choices: [
-        { id: "fu_run_hide", text: "逃進警察總局，請上級保護你，等事情平息", label: "選擇 A" },
-        { id: "fu_run_confess", text: "跑進警察局後，向長官坦白一切，請求自首處理", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    fu_return: {
-      chapter: "第一個選擇之後",
-      title: "退一步的代價",
-      text: "你把她的現金和合法菸放回她手裡，只沒收了私菸。她的哭聲小了，周圍的路人也散去了幾個。\n\n但就在你們準備離開時，另一個情緒激動的路人突然衝上來，推搡你的同事，大聲指責你們欺負老百姓。\n\n混亂中，一名同事驚慌失措，槍枝走火，子彈擦傷了一個圍觀者。雖然傷勢不重，但現場立刻炸開了鍋。\n\n你站在原地，周圍都是怒目而視的人。你的同事已經開始往警察局方向跑了。你怎麼辦？",
-      choices: [
-        { id: "fu_stay", text: "留下來，讓傷者先就醫，對民眾說明情況", label: "選擇 A" },
-        { id: "fu_follow_run", text: "跟著同事一起跑，先撤回警察局再說", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    fu_run_hide: {
-      chapter: "2月27日深夜",
-      title: "躲在制度之後",
-      text: "你跑回警察總局，上級把你和同事們轉移到憲兵隊藏匿。憤怒的群眾先包圍了警察局，再包圍了憲兵隊，徹夜不散。\n\n你縮在憲兵隊的牆內，聽著外面越來越大的聲音。你知道你殺了一個人，但沒有人逼你去面對這件事。\n\n第二天，2月28日，整個台北城陷入更大的動盪。而你，始終沒有被交出去。",
-      ending: "dark",
-      endingTitle: "逃過了法律，逃不過歷史",
-      endingText: "你躲在體制保護之下，從來沒有被正式懲罰。一個人的死、一個婦女的傷，就這樣被輕描淡寫地帶過。但那個夜晚點燃的憤怒，讓整個台灣付出了遠比你更慘重的代價。",
-      history: "史實：查緝員傅學通等六人被轉移至憲兵隊後，民眾要求交人始終未果。然而事後傅學通等人仍遭逮捕，1947年3月31日以殺人及傷害罪提起公訴，4月3日地方法院判處傅學通死刑、褫奪公權終身。傅學通上訴最高法院，同年5月17日以「正當自衛」為由改判十年有期徒刑定讞。",
-      step: 3, total: 3
-    },
-    fu_run_confess: {
-      chapter: "2月27日深夜",
-      title: "開口，但已太晚",
-      text: "你跑回警察局，找到一個長官，顫抖著說出了今晚的一切——你打了婦女，開槍傷了路人。\n\n長官沉默了片刻，然後說：「先進來，我們內部處理。」你不確定這是保護你，還是一個更深的漩渦。\n\n外面的群眾越聚越多，包圍了整棟大樓。你的坦白，沒有讓任何人知道，也沒有換來任何公開的回應。\n\n第二天，2月28日，你的名字消失在更大的事件裡。",
-      ending: "mid",
-      endingTitle: "坦白也被吞沒了（虛擬結局）",
-      endingText: "你選擇說出真相，但那個時代的體制沒有讓真相發揮任何作用。你的坦白被內部消化，沒有被公開，沒有讓受難者得到任何賠償。在那個時代，即使你想負責，也沒有讓你負責的機制。",
-      history: "此為劇本虛構走向。史實中傅學通未自行認罪，而是與同事逃往警察局再被轉入憲兵隊藏匿，民眾要求交人始終未果。事後傅學通遭起訴，1947年4月3日地方法院判死刑，上訴後最高法院以「正當自衛」改判十年有期徒刑（1947年5月17日定讞），整起司法處置被許多人視為不公。",
-      step: 3, total: 3
-    },
-    fu_stay: {
-      chapter: "2月27日深夜",
-      title: "留下來的人",
-      text: "你沒有跑。你讓人把受傷的圍觀者扶去就醫，對著憤怒的人群說，今晚的事是意外，你願意配合調查。\n\n有人相信你，有人不信。群眾沒有散去，但也沒有立刻衝突升級。你被帶進警察局做筆錄，算是自行到案。\n\n第二天，2月28日，台北的怒火還是燒了起來——今晚的傷口，只是更深的積怨之一，不是你一個人的選擇能夠平息的。",
-      ending: "mid",
-      endingTitle: "一個不同的選擇，一樣的歷史",
-      endingText: "你選擇留下、承擔，但那個夜晚積累的憤怒，早已不只是這一個事件。多年的統治壓迫、貧富不均、族群矛盾——你的一個選擇沒有辦法改變這些。歷史的悲劇，不是因為一個人的惡，也不是因為一個人的善。",
-      history: "此為劇本虛構走向。史實中，傅學通等人棄傷者於現場，全數逃往警察局，再被轉入憲兵隊藏匿；民眾徹夜包圍要求交人，始終未果。事後傅學通仍遭起訴，1947年4月3日地方法院判死刑，上訴後最高法院以「正當自衛」改判十年有期徒刑（1947年5月17日定讞）。",
-      step: 3, total: 3
-    },
-    fu_follow_run: {
-      chapter: "2月27日深夜",
-      title: "隨著人群消失",
-      text: "你跟著同事一起跑，留下了受傷的人和憤怒的群眾。你們一路跑回警察局，躲進了憲兵隊。\n\n群眾在外面徹夜包圍，你聽著那些憤怒的聲音，知道今晚有人因為你們受了傷。你沒有說什麼，沒有做什麼。\n\n第二天，2月28日，台灣陷入了更大的騷動。你和你的名字，消失在那場更大的歷史風暴裡。",
-      ending: "bad",
-      endingTitle: "逃離，但良心不會",
-      endingText: "你選擇逃跑，是那個時代多數人在體制保護下的本能反應。但那個被你們遺棄在地上的受傷者，那個憤怒的人群，以及第二天爆發的一切，都與你當晚的那一步有關。你沒有被懲罰——但你也知道發生了什麼。",
-      history: "此為劇本虛構走向。史實中傅學通並未主動回頭勸說，而是直接逃往憲兵隊。民眾要求交出兇手始終未果，憤怒持續累積，成為次日二二八事件全面爆發的導火線之一。事後傅學通遭起訴，1947年4月3日被判死刑，但上訴後以「正當自衛」為由改判十年有期徒刑定讞。",
-      step: 3, total: 3
-    }
-  },
-  chen1: {
-    start: {
-      chapter: "1947年2月28日，台灣省行政長官公署",
-      title: "請願的人來了",
-      text: "你是陳儀，台灣省行政長官。昨天天馬茶房的緝菸事件已釀成死傷，今早全台北商店關門，群眾正在集結。\n\n下午一點，數百名市民走向長官公署，要求懲辦昨夜開槍的查緝員，要求廢除專賣局。他們手無寸鐵，只是走過來。\n\n公署的衛兵在等你的命令。",
-      choices: [
-        { id: "chen1_shoot", text: "下令衛兵阻擋，若群眾不退就開槍，以武力確立公署的威權", label: "選擇 A" },
-        { id: "chen1_receive", text: "派人出去接受請願書，表示願意傾聽，爭取時間", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    chen1_shoot: {
-      chapter: "1947年2月28日，長官公署廣場",
-      title: "槍響了",
-      text: "公署二樓的衛兵以機槍對廣場掃射，群眾四散奔逃，當場至少兩人死亡，數人受傷。\n\n下午三時，你宣布戒嚴。台北城陷入驚恐與憤怒之中。\n\n傍晚，幕僚說：你需要透過廣播說話，讓人民相信局勢還在控制之中。",
-      choices: [
-        { id: "chen1_broadcast", text: "廣播說「我宣布戒嚴，完全是為了保護你們」，以十二萬分的誠意安撫人心", label: "選擇 A" },
-        { id: "chen1_silence", text: "不廣播，讓戒嚴的事實說話，無需解釋", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    chen1_receive: {
-      chapter: "1947年2月28日，長官公署",
-      title: "你接受了請願書",
-      text: "你派人出去，接了那份請願書。群眾沒有立刻散去，但暫時未有更大的衝突。\n\n代表們說：他們要求組成官民調查委員會，嚴懲昨夜的查緝員。\n\n你看著那份請願書。幕僚問：陳長官，現在要怎麼回應南京？",
-      choices: [
-        { id: "chen1_telegram", text: "秘密向南京電報，誇大事態嚴重性請求派兵；表面上繼續與代表周旋", label: "選擇 A" },
-        { id: "chen1_negotiate", text: "暫不請兵，試圖以政治手段化解當下的危機，給談判一個機會", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    chen1_broadcast: {
-      chapter: "1947年3月1日，台灣廣播電台",
-      title: "「保護你們」",
-      text: "你坐在麥克風前，說出那句話：「我宣布戒嚴，完全是為了保護你們。」\n\n昨天死在公署廣場的人，沒有被提到。你說有「十二萬分的誠意」，說要設立委員會調查，說明天解除戒嚴。\n\n人們聽著廣播。有人半信半疑，有人憤怒，有人決定相信——因為他們別無選擇。",
-      ending: "dark",
-      endingTitle: "謊言說得誠懇，傷害不會消失",
-      endingText: "你的廣播為你爭取到幾天的時間。在這幾天裡，處理委員會開始運作，民間的訴求在成形——而你已在秘密準備援軍。你的「誠意」，是計算出來的緩兵之計。",
-      history: "史實：1947年2月28日，長官公署衛兵對請願民眾開槍造成死傷，陳儀宣布戒嚴。3月1日陳儀廣播稱「戒嚴是為了保護人民」，承諾設立調查委員會。同時，他已秘密向南京請兵。",
-      step: 3, total: 3
-    },
-    chen1_silence: {
-      chapter: "1947年2月28日深夜，台北",
-      title: "沉默讓憤怒漫延",
-      text: "你選擇不廣播。戒嚴令在整個台北城傳開，廣場的血跡還沒乾。\n\n沒有解釋，沒有安撫，只有槍聲和宵禁。\n\n隔天，抗議的範圍更大，情緒更激烈。你的沉默，成了另一種煽火。",
-      ending: "dark",
-      endingTitle: "沉默加速了一切",
-      endingText: "你的沉默讓局勢更快惡化，更多人走上街頭，事件規模更難收拾。即使如此，你仍是在等待援軍——只是你讓這段等待變得更血腥。這條路線顯示：陳儀最終選擇了廣播安撫，而非沉默。",
-      history: "此為劇本反事實走向。史實中，陳儀在2月28日宣布戒嚴後，於3月1日主動廣播安撫，稱「戒嚴完全是為了保護你們」，承諾設立調查委員會。然而他同時已秘密向南京發電請兵，廣播不過是爭取時間的緩兵之計；3月8日援軍登陸，陳儀立刻翻臉下令鎮壓。",
-      step: 3, total: 3
-    },
-    chen1_telegram: {
-      chapter: "1947年3月1日，台灣省行政長官公署",
-      title: "兩面手法",
-      text: "表面上，你與代表們見面，答應設立調查委員會，說會認真處理。\n\n密電室裡，你已發出了向南京請兵的電報，措辭把事態描述得比實際更嚴峻——「暴民作亂，非調兵不能平息。」\n\n你在等。等援軍抵台的那一天。",
-      ending: "dark",
-      endingTitle: "你從第一天就沒有打算談判",
-      endingText: "你的兩面手法從2月28日就開始了。那份請願書、那些委員會、那些承諾——都是爭取時間的工具。援軍抵台後，你翻臉，清鄉，讓那些相信你的人付出了代價。",
-      history: "此為劇本虛構走向。史實中陳儀並未選擇公開廣播鎮壓，而是一面與民間代表周旋，一面秘密向南京請兵，在電報中誇大事態。這份密電後來被公開，成為陳儀兩面手法的確鑿證據。",
-      step: 3, total: 3
-    },
-    chen1_negotiate: {
-      chapter: "1947年3月初，台灣省行政長官公署",
-      title: "談判的極限",
-      text: "你選擇暫時不請兵，試圖以談判化解危機。\n\n但幾天後，局勢仍在惡化，台灣各地都出現了抗議。你意識到，你能控制的越來越少。\n\n壓力之下，你最終還是發出了請兵電報。",
-      ending: "mid",
-      endingTitle: "談判只是緩了幾天",
-      endingText: "你嘗試了另一條路，但在那個時代的結構限制下，只能撐幾天。問題不只在於你個人的選擇，也在於整個體制沒有能夠真正談判的空間。這條路線為劇本的反事實走向。",
-      history: "此為劇本反事實走向，探索若陳儀真心談判將如何。史實中陳儀從未有意妥協：他一面接見民間代表、表面應允，一面在2月28日起即秘密向南京發電請兵，在電報中誇大事態以取得出兵授權。3月8日援軍抵台後，他立即宣布處委會為叛亂組織，展開清鄉鎮壓。",
-      step: 3, total: 3
-    }
-  },
-  zhou: {
-    start: {
-      chapter: "1947年2月28日上午，台北市參議會",
-      title: "城市在燃燒",
-      text: "你是周延壽，台北市參議會議長。昨夜的緝菸事件讓整個台北義憤填膺，今早商店關門，工人罷工，學生罷課，群眾集結。\n\n你知道今天是關鍵的一天。民間的憤怒如果沒有出口，隨時可能演變成更大的衝突。\n\n你能做什麼？你應該做什麼？",
-      choices: [
-        { id: "zhou_broadcast", text: "先透過廣播向全市說話，請大家冷靜，信賴代表的交涉，給訴求一個出口", label: "選擇 A" },
-        { id: "zhou_organize", text: "先集結各方代表，組成統一的應對陣線，才能有效向陳儀施壓", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    zhou_broadcast: {
-      chapter: "1947年2月28日下午，台北",
-      title: "廣播之後，槍聲之前",
-      text: "你坐在廣播電台的麥克風前，對全台北說：請冷靜，請信賴我們的交涉，我們正在為你們爭取。\n\n廣播播出後，部分市民緊張情緒稍有舒緩。但下午一點，長官公署的槍聲響了。你的廣播，沒能阻止那一刻。\n\n槍聲之後，你必須有所行動。",
-      choices: [
-        { id: "zhou_investigate", text: "立即召集各界代表成立「緝菸血案調查委員會」，要求陳儀正式面對", label: "選擇 A" },
-        { id: "zhou_calm_again", text: "再次廣播，呼籲民眾不要以暴制暴，等待調查結果", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    zhou_organize: {
-      chapter: "1947年2月28日下午，台北",
-      title: "代表們聚集了",
-      text: "你把能找到的代表都找來——省參議員、國大代表、市參議員。大家都憤怒，都焦急。\n\n下午一點，長官公署的槍聲傳來，所有人沉默了一秒，然後每個人都在說話。\n\n你需要讓這股憤怒有方向。",
-      choices: [
-        { id: "zhou_demand", text: "以集體名義向陳儀提出強硬要求：懲辦兇手、廢除專賣局，不答應不收手", label: "選擇 A" },
-        { id: "zhou_mediate", text: "維持調停姿態，提出溫和的五項請求，保留與陳儀對話的空間", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    zhou_investigate: {
-      chapter: "1947年3月1日，台北中山堂",
-      title: "調查委員會成立",
-      text: "你在中山堂召集各界代表，成立「緝菸血案調查委員會」。你和王添燈、黃朝琴等人前往面見陳儀，提出五項請求，包括組成「二二八事件處理委員會」。\n\n陳儀在你面前點頭，說會認真考慮。你帶著這個回應，告訴等待的人們：有進展了。",
-      ending: "mid",
-      endingTitle: "你給了人們一個形式，卻不知道形式是否夠用",
-      endingText: "你用最快的速度建立了一個談判的框架。但你還不知道，陳儀已在同一時間秘密向南京請兵。你給了民間一個表達訴求的管道，也給了陳儀拖延的理由。",
-      history: "史實：1947年3月1日，周延壽與各界代表在中山堂成立「緝菸血案調查委員會」，推派代表面見陳儀提出五項請求，包括組成二二八事件處理委員會。周延壽後來擔任處理委員會首任主席。",
-      step: 3, total: 3
-    },
-    zhou_calm_again: {
-      chapter: "1947年2月28日深夜，台北",
-      title: "第二次廣播",
-      text: "你再次走上麥克風，呼籲民眾冷靜，不要以暴制暴。你說：我們正在為你們交涉，請給我們時間。\n\n有些人聽了，暫時退開。有些人沒有聽。\n\n廣場的血，沒有因為你的廣播而消失。",
-      ending: "mid",
-      endingTitle: "廣播能做到的，有限",
-      endingText: "你的廣播維持了短暫的冷靜，但沒有解決任何根本的問題。廣播是那個時代能觸及最多人的工具，但能做到的終究有限。你盡力了，但盡力有時候不夠。",
-      history: "此為劇本虛構走向。史實中周延壽並未停播，而是繼續廣播事件始末，並著手調查衝突真相。廣播在事件初期的訊息傳遞中扮演關鍵角色，周延壽後來擔任二二八事件處理委員會首任主席。",
-      step: 3, total: 3
-    },
-    zhou_demand: {
-      chapter: "1947年3月1日，台灣省行政長官公署",
-      title: "強硬的請求",
-      text: "你帶著代表們，提出強硬的要求：嚴懲兇手、廢除專賣局、公開道歉。\n\n陳儀沉默了很長時間，然後說：「需要時間研究。」\n\n你離開他的辦公室，不確定這算不算一個答案。",
-      ending: "mid",
-      endingTitle: "強硬發出了訴求，但沒有換來答案",
-      endingText: "你的強硬讓民間代表感受到你沒有妥協。但陳儀的「需要研究」，是那個時代所有談判的終極終止語。你代表的是人民的憤怒，但你面對的對手，從一開始就沒有打算認真回答你的問題。",
-      history: "此為劇本虛構走向。史實中周延壽在組織代表協商前，先以廣播穩定民心，並以此為基礎推動後續訴求。周延壽與各界代表多次向陳儀提出訴求。處委會後來提出的三十二條要求，是這些早期訴求的系統化版本。陳儀表面應允，實則秘密請兵。",
-      step: 3, total: 3
-    },
-    zhou_mediate: {
-      chapter: "1947年3月1日，台灣省行政長官公署",
-      title: "溫和的五項請求",
-      text: "你帶著溫和的五項請求去見陳儀：調查事件、撫卹死傷、釋放被捕者、不追究示威者、官民共組委員會。\n\n陳儀點頭，說「很好，我們來做」。你覺得有了希望。\n\n隔天，你才知道他同時在向南京要兵。",
-      ending: "mid",
-      endingTitle: "溫和換來了點頭，換不來誠意",
-      endingText: "你給了陳儀一個能接受的框架，他用點頭回應，然後繼續他的計畫。在那個時代，溫和的訴求有時候更容易被接受——因為更容易被虛應，然後被忽略。",
-      history: "此為劇本虛構走向。史實中周延壽在與陳儀協商前，先透過廣播電台穩定局勢，才進入後續談判。周延壽等人向陳儀提出的初期請求相對溫和，包括官民共組委員會等。陳儀表面接受，同時秘密請兵。周延壽後來擔任二二八事件處理委員會首任主席。",
-      step: 3, total: 3
-    }
-  },
-  wang1: {
-    start: {
-      chapter: "1947年2月28日，台北",
-      title: "今天的台北",
-      text: "你是王添燈，台灣省參議員，也是《人民導報》的負責人。今天全台北商店關門，工人罷工，民眾走上街頭。\n\n你手裡有一個工具：你的筆，你的報紙，你與廣播的關係。訊息，在這一刻比武器更重要。\n\n你打算用你的位置做什麼？",
-      choices: [
-        { id: "wang1_document", text: "記錄下今天發生的一切，讓這個城市的真實面貌被看見、被留存", label: "選擇 A" },
-        { id: "wang1_organize", text: "連絡各方人士，協助把分散的憤怒組織成有方向的具體訴求", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    wang1_document: {
-      chapter: "1947年2月28日下午，長官公署廣場",
-      title: "公署廣場的事",
-      text: "你正在記錄，就聽到了公署廣場的槍聲。你趕到現場——地上有人倒下，有人逃跑，有人在哭。\n\n這一切，需要讓更多人知道。你手裡有筆，你有廣播的管道。",
-      choices: [
-        { id: "wang1_broadcast_truth", text: "立即向廣播電台報告：今天公署對請願民眾開槍的事實，讓全台灣聽見", label: "選擇 A" },
-        { id: "wang1_write_report", text: "先回去寫下完整的目擊記錄，讓文字成為歷史的見證", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wang1_organize: {
-      chapter: "1947年2月28日下午，台北",
-      title: "各方人士聚集了",
-      text: "你打了很多通電話。省參議員、市參議員、各界人士紛紛趕來。\n\n公署廣場的槍聲傳來，所有人的臉色都變了。現在，訴求需要成形。\n\n你開始思考：這份文件，要讓陳儀知道民間的底線在哪裡。",
-      choices: [
-        { id: "wang1_draft_demands", text: "起草強硬的要求清單，為後來三十二條的基礎打下第一塊磚", label: "選擇 A" },
-        { id: "wang1_coalition", text: "先不急著起草，把精力放在建立更廣泛的聯盟，讓更多人加入", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wang1_broadcast_truth: {
-      chapter: "1947年2月28日，台北廣播電台",
-      title: "讓全台灣聽見",
-      text: "你走進廣播電台，說出了今天發生的事：請願的民眾，公署的機槍，地上的死者。\n\n廣播傳遍全台灣。南部、中部的人，第一次從廣播裡聽見台北的真實狀況。\n\n這個廣播，是這場事件最早的紀錄之一。",
-      ending: "good",
-      endingTitle: "你讓聲音傳遠了",
-      endingText: "你用廣播突破了訊息的封鎖，讓全台灣知道台北發生了什麼事。這是你在二二八事件中最早也最重要的貢獻之一。那些在後來被消音的聲音，你在第一天就試圖讓它傳出去。",
-      history: "此為劇本虛構走向。史實中王添燈在228當日首先以組織者身份動員民間力量，才在後續發揮廣播宣傳的影響，而非一開始即選擇廣播報導。二二八期間廣播電台是訊息傳播的關鍵工具，2月28日民眾佔領台灣廣播電台向全台廣播。王添燈後來成為處委會宣傳負責人，3月7日提出三十二條處理大綱，3月11日凌晨被帶走，疑遭汽油焚身，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang1_write_report: {
-      chapter: "1947年2月28日深夜，台北",
-      title: "筆，比槍更能存活",
-      text: "你回到辦公室，把今天的一切寫下來：時間、地點、目擊者的描述、槍聲的方向、地上的血跡。\n\n你知道，有一天，這份記錄可能是唯一的證據。\n\n現在，你先把它藏好。",
-      ending: "mid",
-      endingTitle: "記錄下來，是另一種抵抗",
-      endingText: "你的文字記錄了那個時代的真實，但在那個當下，它無法阻止接下來發生的任何事。你選擇了見證，而不是立刻行動。這兩種選擇都有其代價——見證意味著你看見了，卻無法在那一刻改變。",
-      history: "此為劇本虛構走向。史實中王添燈在事件初期選擇積極組織民間力量，而非以旁觀記錄的方式回應。王添燈是《人民導報》負責人，也是台灣省參議員，在二二八事件中扮演重要的宣傳與組織角色，後來成為處委會宣傳負責人，提出三十二條處理大綱，3月11日凌晨被帶走，疑遭汽油焚身，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang1_draft_demands: {
-      chapter: "1947年2月28日深夜，台北",
-      title: "第一份草稿",
-      text: "你在紙上寫下要求：懲辦兇手，廢除專賣局，政治改革，民選縣市長……你寫得很快，像是這些話早就在你心裡等了很久。\n\n這不是最後的版本，但這是開始。\n\n幾天後，這些字會成為《三十二條處理大綱》的基礎。",
-      ending: "good",
-      endingTitle: "你把憤怒變成了文字",
-      endingText: "你把當天的憤怒凝聚成了具體的訴求。那份草稿，最終演變成了三十二條處理大綱——那是你對台灣人民最重要的貢獻之一，也是你被帶走之前最後完成的事。",
-      history: "史實：王添燈在二二八期間起草並提出《三十二條處理大綱》，要求政治改革、民選首長、廢除專賣制度等。1947年3月11日凌晨遭憲兵帶離，疑遭汽油焚身，享年46歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang1_coalition: {
-      chapter: "1947年2月28日，台北",
-      title: "更廣泛的聲音",
-      text: "你選擇先擴大聯盟——打電話、登門拜訪，把各界的人聯繫在一起。你相信，訴求要有更多人站在後面才有力量。\n\n幾天後，處理委員會成立，你成為宣傳負責人。你的聯絡工作，為委員會打下了基礎。",
-      ending: "mid",
-      endingTitle: "更廣的聯盟，同樣的命運",
-      endingText: "你建立了聯盟，讓處委會有了更廣泛的代表性。但那些站在委員會後面的人，最終無法阻止軍隊的到來。你所凝聚的聲音，在3月8日之後，一個一個被消音。",
-      history: "此為劇本虛構走向。史實中王添燈並未另組廣泛聯盟，而是直接主導處委會宣傳工作，並於3月7日提出三十二條處理大綱，1947年3月11日凌晨遭憲兵帶離，疑遭汽油焚身，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    }
-  },
-  wei: {
-    start: {
-      chapter: "1947年3月1日，台北中山堂",
-      title: "誰來掌舵",
-      text: "你是蔣渭川，台灣政治建設協會負責人。二二八事件爆發的第三天，「二二八事件處理委員會」在此宣告成立。\n\n陳儀表面接受，稱處委會是「合法組織」——但你清楚：他已向南京請兵，正在等待援軍抵台。\n\n委員會內部已有分歧。王添燈力主提出三十二條全面政治改革；你則有不同的盤算。\n\n你將如何定位自己？",
-      choices: [
-        { id: "wei_with_wang", text: "與王添燈並肩，全力支持提出三十二條改革大綱，並透過廣播讓全台灣人知道", label: "選擇 A" },
-        { id: "wei_solo", text: "另提九項省政改革綱要，保持與陳儀的獨立溝通管道，試圖以溫和手段周旋", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    wei_with_wang: {
-      chapter: "1947年3月7日，台北中山堂",
-      title: "廣播的前夕",
-      text: "三十二條在處委會大會上提出，陳儀表面應承，實則沉默等待。王添燈已決定透過廣播電台公開所有內容——這份要求，以及陳儀的態度。\n\n你站在一個選擇前面。",
-      choices: [
-        { id: "wei_broadcast_yes", text: "全力支持廣播，與王添燈並肩站在電台前，讓這份要求傳遍全島", label: "選擇 A" },
-        { id: "wei_broadcast_no", text: "私下勸王添燈先不要廣播，擔心激怒陳儀加速鎮壓，希望保留談判空間", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wei_solo: {
-      chapter: "1947年3月8日，台北",
-      title: "援軍登陸",
-      text: "你的九項綱要遞交陳儀後，對方說「正在研究」。三天過去，沒有任何回音。\n\n3月8日清晨，消息傳來：國府援軍已在基隆登陸。\n\n你清楚，陳儀等的就是這個。你的選擇窗口，正在關閉。",
-      choices: [
-        { id: "wei_keep_negotiate", text: "仍主張繼續談判，相信局勢或許有轉圜可能，繼續在委員會中奔走", label: "選擇 A" },
-        { id: "wei_escape_plan", text: "立刻放棄談判路線，設法安排撤退，你知道陳儀即將翻臉", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wei_broadcast_yes: {
-      chapter: "1947年3月10日，台北延平北路",
-      title: "槍聲從書局傳來",
-      text: "三十二條在廣播中傳遍全台，陳儀斷然拒絕。3月8日援軍登陸，清鄉開始。\n\n3月10日，五名武裝警察闖進你的三民書局，你從後門逃脫。\n\n但你的女兒蔣巧雲在混亂中遭流彈擊中頭部。3月21日，她不治身亡。",
-      ending: "dark",
-      endingTitle: "你活了下來，她沒有",
-      endingText: "你逃過了通緝，事後在政府體制內任官——1949年成為台灣省民政廳長，1950年升任內政部次長。史學界對你的評價始終分歧。你的女兒，是你心中永遠無法言說的代價。",
-      history: "此為劇本虛構走向。史實中蔣渭川在228期間走的是獨立路線，並未選擇與王添燈聯手合作廣播。1947年3月10日，武裝警察闖入蔣渭川三民書局，其女蔣巧雲中彈頭部，3月21日不治身亡。蔣渭川後來歷任台灣省民政廳長、中華民國內政部次長，其在二二八期間的角色至今仍有爭議。",
-      step: 3, total: 3
-    },
-    wei_broadcast_no: {
-      chapter: "1947年3月8日，台北",
-      title: "決裂",
-      text: "你私下勸阻王添燈，他沉默片刻，然後還是去了廣播電台。你們的路線從此分道。\n\n王添燈在電台宣讀三十二條及陳儀的拒絕，你站在外面，知道你的話沒有改變任何事。\n\n3月8日，援軍登陸，清鄉展開。你的名字在通緝名單上，你設法逃脫了。",
-      ending: "mid",
-      endingTitle: "勸阻了，改變了什麼嗎",
-      endingText: "王添燈仍廣播了，他3月11日被帶走，再也沒有回來。你倖存下來，後來在政府中任官，但歷史對你的標籤從未清晰：你曾試圖阻止，也曾主張改革，卻也在別人需要你時，選擇了一條更保護自己的路。",
-      history: "此為劇本虛構走向。史實中蔣渭川並未選擇與王添燈聯手行動後再加以阻攔，而是從一開始即以獨立路線行事。蔣渭川在二二八期間的具體立場至今仍有爭議。事後成為台灣省民政廳長及內政部次長，是二二八研究中評價最具爭議的人物之一。",
-      step: 3, total: 3
-    },
-    wei_keep_negotiate: {
-      chapter: "1947年3月10日，台北延平北路",
-      title: "談判沒有等到你",
-      text: "援軍已登陸，你仍相信還有空間，繼續出席會議，繼續發言。\n\n3月10日，武裝警察闖進你的三民書局，你從後門逃脫。\n\n你的女兒蔣巧雲在混亂中遭流彈擊中頭部，3月21日不治身亡。",
-      ending: "dark",
-      endingTitle: "談判的終點，不是你選的",
-      endingText: "你相信溫和手段還有機會，直到軍隊出現在書局門口。女兒的死讓你知道，陳儀的那些「正在研究」，從來就不是答案。你事後在政府體制內任官，歷史對此始終有爭議。",
-      history: "史實：蔣渭川曾向陳儀獻策提出九項省政改革綱要。其女蔣巧雲於3月10日中彈，3月21日不治。蔣渭川後來歷任台灣省民政廳長與內政部次長。",
-      step: 3, total: 3
-    },
-    wei_escape_plan: {
-      chapter: "1947年3月8日，台北",
-      title: "你先走了",
-      text: "援軍一登陸，你決定離開。你設法安排撤退，比通緝令早一步。\n\n你走了，但你的家人仍在台北。你的女兒蔣巧雲，在後來的混亂中遭流彈擊中頭部。3月21日，她不治身亡。",
-      ending: "dark",
-      endingTitle: "逃了，卻帶不走所有人",
-      endingText: "你逃脫通緝，後來任官。但無論你選擇何時、何種方式離開，軍隊仍然來了，女兒仍然遇難。那個時代，個人的逃脫改變不了家人的命運。你帶著這個代價，繼續活著。",
-      history: "此為劇本虛構走向。史實中蔣渭川並未事先安排系統性撤離計劃，而是在局勢急轉後被迫躲避。他後來逃過逮捕，1949年成為台灣省民政廳長，1950年升任內政部次長。其女蔣巧雲確實於3月10日中彈，3月21日不治身亡。",
-      step: 3, total: 3
-    }
-  },
-  wang: {
-    start: {
-      chapter: "1947年3月7日，台北中山堂",
-      title: "三十二條",
-      text: "你是王添燈，台灣省參議員，二二八處理委員會宣傳負責人。昨夜你和同仁草擬了《三十二條處理大綱》——要求各縣市長民選、臺籍官員過半、廢除專賣制度……\n\n今天是提出的時刻。你清楚陳儀未必接受，但你認為：不提出，就是對人民不盡責。\n\n你要如何推進這份改革要求？",
-      choices: [
-        { id: "wang_broadcast", text: "在全體大會公開宣讀，要求立即透過廣播電台向全台播送，讓每一個台灣人都知道", label: "選擇 A" },
-        { id: "wang_private", text: "先私下向陳儀遞交文件，等待官方正式回應，再決定下一步", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    wang_broadcast: {
-      chapter: "1947年3月7日，台北廣播電台",
-      title: "陳儀說不",
-      text: "三十二條透過廣播傳遍全台。陳儀收到後，斷然拒絕，一字不讓。\n\n你坐在電台的麥克風前，知道台灣各地的人都在等你說下一句話。",
-      choices: [
-        { id: "wang_again", text: "再次廣播，向全台灣人宣讀陳儀的拒絕，讓所有人知道談判的真實樣貌", label: "選擇 A" },
-        { id: "wang_pause", text: "暫停廣播，私下再試一次，不想讓局勢進一步激化", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wang_private: {
-      chapter: "1947年3月10日，台北",
-      title: "三天，沒有回音",
-      text: "你將三十二條私下遞交陳儀，等待。\n\n第一天，沒有回音。第二天，沒有回音。第三天，援軍在基隆登陸了。\n\n委員會的人問你怎麼辦。",
-      choices: [
-        { id: "wang_go_public", text: "等不下去了，決定廣播，讓人民知道這份要求，以及陳儀的沉默", label: "選擇 A" },
-        { id: "wang_keep_waiting", text: "繼續等待，相信談判仍有空間，不想讓廣播成為壓垮局勢的最後一根稻草", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wang_again: {
-      chapter: "1947年3月11日，凌晨",
-      title: "廣播停止的那一夜",
-      text: "你再次走上麥克風，沈痛宣讀陳儀的拒絕，告訴台灣人：「只有全體省民的力量，才能解決這件事。」\n\n3月8日，援軍登陸，清鄉開始。\n\n3月11日凌晨，憲兵包圍你的住所。你在睡夢中被拖出門。從此，再也沒有人見到你活著回來。",
-      ending: "bad",
-      endingTitle: "你說出了一切，然後消失了",
-      endingText: "據聞，王添燈被捕後遭人以汽油焚身而亡，享年46歲。你的聲音曾在廣播中傳遍台灣，但你的結局，從未有人給出一個正式的交代。",
-      history: "史實：王添燈多次在廣播電台宣讀改革訴求及陳儀的拒絕態度。3月11日凌晨遭憲兵強行帶離住所，疑遭汽油焚身而亡，享年46歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang_pause: {
-      chapter: "1947年3月11日，凌晨",
-      title: "克制換不來安全",
-      text: "你選擇暫停，不再廣播，希望留一條退路。\n\n但3月8日，援軍登陸。陳儀不需要你的克制，他已有了軍隊。\n\n3月11日凌晨，憲兵仍然包圍了你的住所，你在睡夢中被帶走。",
-      ending: "bad",
-      endingTitle: "克制，只是讓人少知道一點",
-      endingText: "你的克制沒有讓任何人更安全。你被帶走，再也沒有回來。也許那最後的廣播，至少讓更多人在你消失之前，知道了真相。",
-      history: "此為劇本虛構走向。史實中王添燈並未按兵不動，而是持續廣播與組織處委會宣傳工作。1947年3月11日凌晨遭憲兵強行帶離住所，疑遭汽油焚身而亡，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang_go_public: {
-      chapter: "1947年3月11日，凌晨",
-      title: "等不下去了",
-      text: "你走上廣播電台，沈痛地說出一切——三十二條的內容，陳儀的沉默，援軍已登陸的事實。\n\n台灣各地的人聽見了。\n\n3月11日凌晨，憲兵包圍你的住所，你在睡夢中被帶走。",
-      ending: "bad",
-      endingTitle: "你最終還是說出來了",
-      endingText: "就算你選擇先等待，最終你還是廣播了——因為沉默換不來任何改變。那個夜晚的廣播，是你最後一次讓台灣人聽見你的聲音。你被帶走之後，沒有人知道你去了哪裡。",
-      history: "此為劇本虛構走向。史實中王添燈選擇積極公開廣播改革訴求，而非採取私下或等待的策略。王添燈1947年3月11日凌晨被憲兵強行帶離住所，疑遭汽油焚身，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    },
-    wang_keep_waiting: {
-      chapter: "1947年3月11日，凌晨",
-      title: "等待的終點",
-      text: "你選擇繼續等待，不廣播，相信還有空間。\n\n3月8日，援軍登陸。3月10日，清鄉展開。\n\n3月11日凌晨，憲兵出現在你家門外。你知道等待已經結束了。",
-      ending: "bad",
-      endingTitle: "等待也是一種說法",
-      endingText: "你的等待沒有換來任何回應。你被帶走，再也沒有回來。那份三十二條的要求，最終仍在另一個人的廣播聲裡傳出去——只是那時你已不在了。",
-      history: "此為劇本虛構走向。史實中王添燈選擇公開廣播傳達改革訴求，而非消極等待或觀望。王添燈1947年3月11日凌晨遭憲兵強行帶離住所，疑遭汽油焚身，享年45歲，死因至今不明。",
-      step: 3, total: 3
-    }
-  },
-  chen: {
-    start: {
-      chapter: "1947年3月1日，台灣省行政長官公署",
-      title: "以拖待變",
-      text: "你是陳儀，台灣省行政長官。二二八事件已爆發三天，台北街頭仍動盪不安。\n\n你已秘密電報南京，請求蔣中正派兵增援。援軍最快數日內抵台。\n\n現在，各界代表組成的「二二八事件處理委員會」要求與你協商。他們以為這是談判——你知道，只要撐過這幾天，局面就會改變。\n\n你要如何應對處委會？",
-      choices: [
-        { id: "chen_stall", text: "表面接受處委會為「合法組織」，點頭微笑說會認真考慮，拖延時間等待援軍", label: "選擇 A" },
-        { id: "chen_reject", text: "直接斥責處委會越權，宣告三十二條要求不可接受，強硬表態", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    chen_stall: {
-      chapter: "1947年3月7日，長官公署",
-      title: "三十二條到了你桌上",
-      text: "王添燈代表處委會，將《三十二條處理大綱》正式遞交給你。\n\n援軍預計三天內抵台。你的幕僚在旁邊等你的指示。",
-      choices: [
-        { id: "chen_fake_agree", text: "說「會認真研究」，讓他們以為有希望，繼續拖延到軍隊抵台", label: "選擇 A" },
-        { id: "chen_ignore_all", text: "收下文件，不給任何回覆，讓對方自己在焦慮中等待", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    chen_reject: {
-      chapter: "1947年3月7日，台北市區",
-      title: "局勢升溫",
-      text: "你的強硬表態讓台北的憤怒迅速升溫，各地衝突報告接連而來。\n\n幕僚建議你稍微軟化措辭，以免在援軍抵台前局勢失控。",
-      choices: [
-        { id: "chen_hold_hard", text: "不退讓，繼續強硬等軍隊，這點動亂不在話下", label: "選擇 A" },
-        { id: "chen_soften_words", text: "在措辭上稍微緩和，但心裡什麼都不打算讓步", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    chen_fake_agree: {
-      chapter: "1947年3月8日，基隆港",
-      title: "援軍抵台",
-      text: "你接待了處委會代表，點頭、微笑、說「會認真研究」。\n\n3月8日，國府援軍在基隆登陸。你立刻宣布處委會為「叛亂組織」，通令解散，下令清鄉。你向蔣中正的密電中，把所有參與者列為「奸匪首謀」。",
-      ending: "dark",
-      endingTitle: "你得到了你要的結果",
-      endingText: "清鄉與鎮壓讓數萬人死亡或失蹤。你的手段達到了目的——但這不是終點。1948年你因涉嫌與中共接觸遭到逮捕。1950年6月18日，你被蔣中正下令槍決於台北馬場町，享年73歲。",
-      history: "史實：陳儀秘密請兵，表面與處委會周旋，援軍抵台後立即翻臉鎮壓。事後以「通共」罪名遭逮捕，1950年6月18日在台北馬場町被槍決。",
-      step: 3, total: 3
-    },
-    chen_ignore_all: {
-      chapter: "1947年3月8日，基隆港",
-      title: "沉默也是一種答案",
-      text: "你什麼都沒有回覆，讓三十二條靜靜躺在公文堆裡。\n\n他們在等，你在等。3月8日，你等到了——援軍在基隆登陸。\n\n你立刻翻臉，宣布處委會為「叛亂組織」，下令清鄉。",
-      ending: "dark",
-      endingTitle: "沉默是另一種欺騙",
-      endingText: "無論你說「會研究」還是什麼都不說，結局都一樣：軍隊來了，清鄉展開，人們死去。1950年6月18日，你在台北馬場町被槍決，享年73歲。鎮壓台灣人民的人，最後死在自己效忠的政權手中。",
-      history: "此為劇本虛構走向。史實中陳儀並未完全無視局勢，而是一面與民間虛與委蛇，一面秘密請兵。向南京請兵的密電後來被公開，證實他從事件初期便已部署鎮壓。1950年因涉嫌與中共接觸遭蔣中正下令槍決。",
-      step: 3, total: 3
-    },
-    chen_hold_hard: {
-      chapter: "1947年3月8日，基隆港",
-      title: "援軍抵台",
-      text: "你繼續強硬，各地衝突持續升溫，有更多人死去。\n\n但3月8日，援軍登陸了。你立刻宣布清鄉，下令鎮壓。\n\n那幾天的額外死傷，是你強硬換來的代價。",
-      ending: "dark",
-      endingTitle: "早一步撕破臉，多幾天的血",
-      endingText: "無論何時翻臉，結局都是一樣的鎮壓。提早強硬只讓更多人提早死去。你自己的結局也沒有因此不同：1950年6月18日，槍決於台北馬場町，享年73歲。",
-      history: "此為劇本虛構走向。史實中陳儀並非一開始就公開強硬，而是採取表面安撫、暗中請兵的兩面手法——廣播安撫的同時，已秘密電告南京。陳儀向南京請兵的密電證實他從事件初期便已部署鎮壓。1950年，他因涉嫌與中共接觸遭蔣中正下令槍決。",
-      step: 3, total: 3
-    },
-    chen_soften_words: {
-      chapter: "1947年3月8日，基隆港",
-      title: "軟化措辭，不軟化子彈",
-      text: "你在文字上稍稍緩和，讓局勢表面平靜了幾天。\n\n但3月8日，援軍在基隆登陸。你立刻翻臉，宣布清鄉。那幾天的「緩和」，只是換了個方式讓他們相信談判還在——實際上，你從來沒有打算談。",
-      ending: "dark",
-      endingTitle: "措辭緩和，手段不緩和",
-      endingText: "你的短暫軟化讓更多人抱持希望，也讓更多人措手不及。1950年6月18日，你在台北馬場町被槍決，享年73歲。鎮壓台灣人民的人，最後死在自己效忠的政權手中。",
-      history: "此為劇本虛構走向。史實中陳儀並非先強硬後軟化，而是始終維持兩面策略——措辭安撫與秘密請兵同步進行，從未間斷。陳儀事後以「通共」罪名遭蔣中正下令槍決，1950年6月18日在台北馬場町行刑。",
-      step: 3, total: 3
-    }
-  },
-  liu: {
-    start: {
-      chapter: "1947年3月8日，基隆港碼頭",
-      title: "登陸",
-      text: "你是劉雨卿，整編第二十一師師長。船艦靠岸，基隆港碼頭仍有許多工人和市民。你的任務是「恢復秩序」——陳儀的電報寫得很清楚。\n\n岸上的人不知道會發生什麼事。有些人好奇地張望，有些人轉身想走。你的部隊已上好刺刀。\n\n你下達第一道命令。",
-      choices: [
-        { id: "liu_open_fire", text: "下令對碼頭開槍，讓所有人知道軍隊抵台意味著什麼，立即建立威懾", label: "選擇 A" },
-        { id: "liu_arrest", text: "暫緩射擊，先控制港口，隨後按名單展開大規模逮捕與清鄉", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    liu_open_fire: {
-      chapter: "1947年3月8日，基隆港",
-      title: "碼頭已有傷亡",
-      text: "機槍聲響起，碼頭工人應聲倒下。港口的控制確立了。\n\n你的部隊在等下一道指令。基隆要塞司令史宏熹在旁邊，問你接下來怎麼部署。",
-      choices: [
-        { id: "liu_harbor_extend", text: "繼續在港口區域展開大規模搜捕，徹底清除碼頭一帶所有可疑人員", label: "選擇 A" },
-        { id: "liu_enter_city", text: "留少數兵力守港，主力進入市區，展開系統性清鄉", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    liu_arrest: {
-      chapter: "1947年3月8日，基隆港",
-      title: "港口已控制",
-      text: "你的部隊控制了港口，沒有立即開槍。基隆要塞司令史宏熹走來，問你清鄉要用什麼方式展開。",
-      choices: [
-        { id: "liu_with_list", text: "按名單逐一逮捕，有條理地鎖定知識份子、地方仕紳、社會領袖", label: "選擇 A" },
-        { id: "liu_sweep_all", text: "不需要名單，直接挨家挨戶全面搜查，速度優先", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    liu_harbor_extend: {
-      chapter: "1947年3月8日，基隆港一帶",
-      title: "港灣的浮屍",
-      text: "你的部隊在基隆港展開全面掃蕩。被捕的人關進戲院、學校，許多人連審問都沒有就被帶走。\n\n有受難者雙手被鐵絲穿掌，九個人串成一列，在槍響前，前面的屍體重力將最後一人扯落海中。\n\n基隆港的水，染了顏色。",
-      ending: "dark",
-      endingTitle: "命令執行完畢",
-      endingText: "你「恢復了秩序」。數千人在這場鎮壓中死亡或失蹤。你從未受到任何法律追究，在中華民國體制內繼續任職，最後在台灣終老。鐵絲穿掌的那些人的名字，大多沒有留下來。",
-      history: "史實：整編第二十一師登陸基隆後展開大規模逮捕與殺戮，基隆港一帶出現大量遭殺害後投入海中的浮屍，有受難者被鐵絲串穿手掌後推落海中的記載。劉雨卿被研究者列為二二八鎮壓的主要執行者，事後未受司法追究。",
-      step: 3, total: 3
-    },
-    liu_enter_city: {
-      chapter: "1947年3月8日起，基隆市區",
-      title: "進城",
-      text: "你的主力部隊進入基隆市區，展開逐街清鄉。名單已有，逐戶敲門。\n\n有人在家門口就地槍決，屍體留在門前。有人被帶走後再也沒有回來。\n\n整個基隆市，在你的部隊抵台後，籠罩在另一種恐懼之下。",
-      ending: "dark",
-      endingTitle: "有條理的恐懼",
-      endingText: "從港口到市區，你的部隊帶來的「秩序」讓數千人付出了生命。你從未因此受到追究，在體制內繼續任職，最後在台灣終老。",
-      history: "此為劇本虛構走向。史實中劉雨卿並未單獨進入市區清查，而是指揮部隊系統性展開清鄉。整編第二十一師在基隆各地大規模逮捕台灣知識份子與地方仕紳，許多人被捕後即遭殺害。劉雨卿被列為鎮壓主要責任人之一，事後未受追究。",
-      step: 3, total: 3
-    },
-    liu_with_list: {
-      chapter: "1947年3月8日起，基隆各地",
-      title: "按名單進行",
-      text: "你的部隊按名單逐一行動。醫師、律師、教師、地方頭面人物——那些被稱為「本省菁英」的人，一個一個從名單上消失。\n\n有些人被帶走後再也沒有回來。有些人在門口就地槍決。\n\n你稱之為「清鄉」。",
-      ending: "dark",
-      endingTitle: "殺人也可以是有秩序的",
-      endingText: "有條理的殺戮不代表合法，只是更難留下直接的證據。台灣的知識菁英在這場清鄉中消失了大半。你從未受到追究。",
-      history: "此為劇本虛構走向。史實中劉雨卿所率部隊登陸後即以開槍鎮壓為起點，而非以名單驅動的有序逮捕作為行動開端。整編第二十一師登陸後在各地展開清鄉，大規模逮捕台灣知識份子與地方仕紳。劉雨卿被二二八事件研究報告列為鎮壓主要責任人之一，事後未受任何正式追究。",
-      step: 3, total: 3
-    },
-    liu_sweep_all: {
-      chapter: "1947年3月8日起，基隆各地",
-      title: "全面掃蕩",
-      text: "不需要名單。你的部隊挨家挨戶搜查，見到男丁就問，問得不對就帶走，帶走了就不一定回得來。\n\n範圍比名單更廣，死的人也更多。\n\n你的任務是「恢復秩序」——你認為你做到了。",
-      ending: "dark",
-      endingTitle: "無差別，代價最高",
-      endingText: "全面掃蕩讓更多無辜者遭殃，卻仍以「恢復秩序」之名進行。你從未因此受到追究，在體制內繼續任職，最後在台灣終老。",
-      history: "此為劇本虛構走向。史實中劉雨卿部隊的行動以港口開槍鎮壓為起點，而非先以逮捕方式開始。整編第二十一師在基隆及各地的清鄉中，造成大規模平民傷亡。劉雨卿被研究者列為二二八鎮壓的主要執行者之一，事後均未受到司法追究。",
-      step: 3, total: 3
-    }
-  },
-  xie: {
-    start: {
-      chapter: "1947年3月6日，台中干城營區",
-      title: "二七部隊",
-      text: "你是謝雪紅，1928年台灣共產黨創黨人之一，此刻身在台中。二二八事件爆發後，台中的學生與青年陸續持槍集結，等待有人出來領導。\n\n在干城營區，你站在那些年輕的臉孔前——約四百人。他們願意為這座島嶼而戰。但援軍終將抵台，兵力懸殊，局勢只會越來越嚴峻。\n\n你要如何帶領他們？",
-      choices: [
-        { id: "xie_fight", text: "組織二七部隊，帶領這些年輕人守住台中，能撐多久就撐多久", label: "選擇 A" },
-        { id: "xie_retreat", text: "以保存組織力量為優先，讓部隊盡早向山區轉進，準備化整為零", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    xie_fight: {
-      chapter: "1947年3月14日，南投埔里",
-      title: "烏牛欄吊橋在前方",
-      text: "二七部隊守了台中將近十天，但3月8日援軍上岸，你率隊轉進埔里。\n\n3月14日，烏牛欄吊橋就在前方，國軍正在逼近。警備隊長黃金島已準備好守橋。\n\n你呢？",
-      choices: [
-        { id: "xie_stay_battle", text: "留下，與黃金島並肩守住烏牛欄，親自在場指揮", label: "選擇 A" },
-        { id: "xie_leave_early", text: "在戰役開始前帶黨員離隊，設法出逃，保存組織力量", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    xie_retreat: {
-      chapter: "1947年3月13日，南投埔里",
-      title: "命令下達了",
-      text: "你傳達命令：「就地解散，保存實力。」黨員開始各自撤離，二七部隊的組織迅速瓦解。\n\n你看著那些年輕人消失在不同的方向。你自己，接下來怎麼辦？",
-      choices: [
-        { id: "xie_flee_now", text: "立刻帶幾名核心黨員出逃，不再拖延，往香港方向走", label: "選擇 A" },
-        { id: "xie_wait_confirm", text: "等確認大家都安全撤離後再走，卻因此耽誤了時間", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    xie_stay_battle: {
-      chapter: "1947年3月16日，烏牛欄吊橋",
-      title: "最後的陣地",
-      text: "3月16日，黃金島率三十餘名學生軍守在烏牛欄吊橋，你在他們身旁。\n\n槍聲響了，持續了好幾個小時。最終彈藥耗盡，部隊在暮色中各自撤離。\n\n你趁亂逃脫，最終輾轉抵達香港。",
-      ending: "mid",
-      endingTitle: "你在場了，然後你走了",
-      endingText: "你親眼見到那些年輕人在吊橋邊浴血。你帶著那些記憶逃往香港，成立台灣民主自治同盟，1948年加入中共。1957年反右運動，你被打成右派，開除黨籍。1970年11月5日，你在北京病逝，享年69歲，再也沒有踏上台灣的土地。",
-      history: "此為劇本虛構走向。史實中謝雪紅於烏牛欄戰役前夕便已離隊，並未堅持留下作戰。警備隊長黃金島率三十餘名學生軍於3月16日激戰，彈盡後解散。謝雪紅輾轉逃往香港，1957年反右運動中遭批鬥並被開除中共黨籍，1970年11月5日病逝於北京。",
-      step: 3, total: 3
-    },
-    xie_leave_early: {
-      chapter: "1947年3月15日，南投",
-      title: "你走了，他們留下來了",
-      text: "你帶著幾名黨員在戰役前夕離隊，往香港方向出逃。\n\n3月16日，黃金島率三十餘名學生軍守在烏牛欄吊橋，沒有你在場。最終彈藥耗盡，部隊解散。\n\n你輾轉抵達香港，從此再未返台。",
-      ending: "mid",
-      endingTitle: "你走了，他們留下來了",
-      endingText: "你逃往香港，1947年11月成立台灣民主自治同盟，1948年加入中共。但在中國的日子並不平靜——1957年反右運動，你被打成右派，遭開除黨籍。1970年11月5日，你在北京病逝，享年69歲。守在烏牛欄的那些年輕人，有些活下來了，有些沒有。",
-      history: "史實：謝雪紅於烏牛欄戰役前夕離隊。警備隊長黃金島率三十餘名學生軍於3月16日激戰，彈盡後解散。謝雪紅輾轉逃往香港，1957年反右運動中遭批鬥並被開除中共黨籍，1970年11月5日病逝於北京，終身未返台灣。",
-      step: 3, total: 3
-    },
-    xie_flee_now: {
-      chapter: "1947年3月，南投埔里",
-      title: "保存實力",
-      text: "你立刻帶幾名核心黨員出逃，從高雄左營軍港搭船離台，輾轉於15日抵達香港。\n\n3月16日，留守的黃金島等人在烏牛欄吊橋守了最後一仗，彈盡後解散。\n\n你在香港聽到這個消息。",
-      ending: "mid",
-      endingTitle: "活著，是另一種代價",
-      endingText: "你活下來，繼續為你相信的事業奔走。但提早出逃的決定，讓你背上「臨陣脫逃」的爭議，至今眾說紛紜。在中國你同樣未能善終——1957年被打成右派，1970年在北京病逝，享年69歲。你相信過一個更好的台灣，但那個台灣，你始終沒有等到。",
-      history: "此為劇本虛構走向。史實中謝雪紅在二七部隊轉進埔里後並非立即出逃，而是先傳達「就地解散、保存實力」命令，等待留守者在烏牛欄吊橋打完最後一役，才輾轉出逃。謝雪紅後與楊克煌逃往香港，1957年反右運動中遭批鬥並被開除中共黨籍，1970年11月5日在北京病逝，終身未能返回台灣。",
-      step: 3, total: 3
-    },
-    xie_wait_confirm: {
-      chapter: "1947年3月，南投埔里",
-      title: "等待讓你差點走不了",
-      text: "你等著確認黨員都安全撤離，卻因此耽誤了時間。國軍已進入埔里附近，搜捕令已下達。\n\n你在極度危險中出逃，最終輾轉於15日抵達香港，驚險逃脫。\n\n3月16日，黃金島等人在烏牛欄打了最後一仗，你沒在場。",
-      ending: "mid",
-      endingTitle: "多等了一步，幾乎走不了",
-      endingText: "你逃到了香港，然後是中國。1957年反右運動，你被打成右派，遭開除中共黨籍。1970年11月5日，你在北京病逝，享年69歲，再也沒有踏上台灣的土地。你等的那段時間，是你最像自己的時刻。",
-      history: "此為劇本虛構走向。史實中謝雪紅並非因等待而陷入危機才緊急出逃，而是在妥善傳達解散令後，以相對有計劃的方式離開埔里。謝雪紅後逃往香港，至中國大陸，1957年反右運動中遭批鬥並被開除中共黨籍，1970年11月5日病逝於北京，終身未返台灣。",
-      step: 3, total: 3
-    }
-  },
-  ke: {
-    start: {
-      chapter: "1947年3月9日，台灣省警備總司令部",
-      title: "清鄉令",
-      text: "你是柯遠芬，台灣省警備司令部參謀長。援軍已登陸，陳儀正式下達清鄉命令。\n\n在清鄉會議上，幕僚詢問：面對可疑人員，應以什麼標準判定處置？\n\n你發言了。",
-      choices: [
-        { id: "ke_harsh", text: "「寧可枉殺九十九個，只要殺死一個真的就可以」——徹底清除，不留後患", label: "選擇 A" },
-        { id: "ke_moderate", text: "主張先查明身份，要求有實據再行處置，避免錯殺無辜激化民怨", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    ke_harsh: {
-      chapter: "1947年3月中，台北",
-      title: "林家花園主人來了",
-      text: "清鄉進行中。有人告密，說林家花園主人曾參與暴動。對方哭著說自己是冤枉的。\n\n你的清鄉邏輯告訴你：寧可信其有。",
-      choices: [
-        { id: "ke_extort_end", text: "讓對方寫悔過書，之後拿著悔過書向他勒索鉅款", label: "選擇 A" },
-        { id: "ke_summary_end", text: "不聽辯解，直接以「確認參與暴動」名義逮捕，交由部下處置", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    ke_moderate: {
-      chapter: "1947年3月中，全台各地",
-      title: "部下殺了人",
-      text: "清鄉仍在進行，你主張謹慎，但你的部下在一次搜查中槍殺了一名無任何參與記錄的市民。\n\n部下說：「他逃跑了。」\n\n你該怎麼辦？",
-      choices: [
-        { id: "ke_cover_end", text: "幫部下掩蓋，讓這件事就此過去，清鄉繼續進行", label: "選擇 A" },
-        { id: "ke_report_end", text: "如實向上級報告此案，但清鄉仍繼續執行", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    ke_extort_end: {
-      chapter: "1947年3月，台北",
-      title: "悔過書的用途",
-      text: "林家花園主人寫下了悔過書，以為可以免罪。\n\n你把悔過書收好，之後再拿出來，向他勒索鉅款。他不敢不給。\n\n這件事後來被楊亮功記錄在案，成為你行事的具體例證之一。",
-      ending: "dark",
-      endingTitle: "自以為是的人，最難動搖",
-      endingText: "白崇禧建議將你「撤職處分」，理由是「處事操切、濫用職權」、「賦性剛愎、不知悛改」。但你仍逃過一切追究，事後撰文《事變十日記》為自己辯護，從未為任何人的死承擔法律責任。",
-      history: "史實：柯遠芬曾以悔過書勒索林家花園主人鉅款，此事由楊亮功記錄在案。白崇禧事後建議將其撤職，但柯遠芬仍逃過司法追究，並撰文為自身行為辯護。",
-      step: 3, total: 3
-    },
-    ke_summary_end: {
-      chapter: "1947年3月，台北",
-      title: "九十九個的邏輯",
-      text: "林家花園主人被帶走，再也沒有回來。\n\n告密者領到了獎勵。你的清鄉繼續進行，更多告密，更多逮捕，更多消失的人。\n\n白崇禧巡台後，看了你的記錄，在簽呈中建議將你撤職。",
-      ending: "dark",
-      endingTitle: "九十九個冤魂",
-      endingText: "你說的那句話定義了清鄉的標準，換來的是無數冤死。白崇禧建議撤職，但你仍逃過追究。你日後撰文《事變十日記》為自己辯護，從未為任何一條人命承擔法律責任。",
-      history: "此為劇本虛構走向。史實中柯遠芬並未試圖核實名單，而是直接在清鄉會議中發表「寧可枉殺九十九個，只要殺死一個真的」言論，經白崇禧口述記錄佐證。白崇禧事後建議將其撤職，但柯遠芬仍逃過司法追究。",
-      step: 3, total: 3
-    },
-    ke_cover_end: {
-      chapter: "1947年3月，全台各地",
-      title: "掩蓋，清鄉繼續",
-      text: "你幫部下把這件事壓下去。清鄉繼續進行，又有更多人被帶走，更多「逃跑」的解釋。\n\n你告訴自己：你主張謹慎，但你也主張清鄉繼續。",
-      ending: "dark",
-      endingTitle: "謹慎，也可以是共謀",
-      endingText: "即使你個人主張有所保留，你選擇掩蓋的那一刻，你已成為共謀。清鄉期間無論你說什麼，你的行動讓更多人付出了生命。事後，你同樣未受任何司法追究。",
-      history: "此為劇本虛構走向。史實中柯遠芬在清鄉期間採取的是嚴厲、強硬的手段，而非走相對溫和的路線。柯遠芬擔任清鄉的主要執行官員，主導各地搜捕行動，其在二二八鎮壓期間的整體角色使其被研究者列為主要責任人之一，事後未受任何司法追究。",
-      step: 3, total: 3
-    },
-    ke_report_end: {
-      chapter: "1947年3月，全台各地",
-      title: "報告了，然後呢",
-      text: "你如實上報，記錄在案。但清鄉繼續進行，你沒有下令停止。\n\n那名被殺的市民，有了一個正式的記錄——然後什麼都沒有發生。\n\n清鄉繼續，人繼續消失。",
-      ending: "mid",
-      endingTitle: "報告了，也是共謀",
-      endingText: "你選擇了程序，但程序沒有讓任何人獲救。在那個體制裡，「依規上報」是一種自保，不是正義。清鄉期間你仍是主要執行者，事後同樣未受任何司法追究。",
-      history: "此為劇本虛構走向。史實中柯遠芬採取積極強硬的清鄉手段，並非走溫和、依程序的路線。柯遠芬擔任清鄉主要執行官員，其在二二八鎮壓期間的整體角色使其被研究者列為主要責任人之一。事後未受任何司法追究，並撰文為自身行為辯護。",
-      step: 3, total: 3
-    }
-  },
-  peng: {
-    start: {
-      chapter: "1947年3月6日，高雄要塞司令部",
-      title: "談判代表來了",
-      text: "你是彭孟緝，高雄要塞司令。高雄市長黃仲圖、市議長彭清靠等人，代表二二八處理委員會走進你的辦公室，希望以和平方式解決衝突。\n\n他們神情緊繃，但仍願意坐下來談。市區外，人群仍在集結；你的軍隊已備好武器。\n\n你要如何回應這些來談判的人？",
-      choices: [
-        { id: "peng_arrest", text: "拘捕所有談判代表，隨即下令軍隊攻入市府禮堂，對正在開會的處委會展開攻擊", label: "選擇 A" },
-        { id: "peng_delay", text: "假意周旋，放走幾人維持表面，暗中整理名單，再悄悄展開選擇性逮捕", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    peng_arrest: {
-      chapter: "1947年3月6日，高雄",
-      title: "蔣中正說你做得對",
-      text: "市府禮堂的事結束了，高雄市區的衝突用軍力平息了。\n\n蔣中正的電報來了，說你「處置得當」。現在，你要在全市展開清鄉。",
-      choices: [
-        { id: "peng_full_sweep", text: "對全市展開大規模掃蕩，逐街搜查，清除一切潛在威脅", label: "選擇 A" },
-        { id: "peng_select_targets", text: "集中清除特定目標：知識份子、仕紳、地方領袖，減少無差別傷亡", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    peng_delay: {
-      chapter: "1947年3月6日，高雄",
-      title: "消息外洩了",
-      text: "你的暗中逮捕名單還在擴大，但已有人逃脫並告知外界，消息開始傳出去。\n\n你要如何因應？",
-      choices: [
-        { id: "peng_intensify", text: "加大追捕力度，封鎖消息，嚴控出入，不讓任何人再逃脫", label: "選擇 A" },
-        { id: "peng_spin_end", text: "對外發表聲明，稱所有逮捕均屬「依法辦理」，繼續暗中清除", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    peng_full_sweep: {
-      chapter: "1947年3月起，高雄各地",
-      title: "屠殺有功，功成晉升",
-      text: "你的部隊在高雄逐街掃蕩，傷亡數字持續上升。\n\n事件後，你被蔣中正記大功二次、傳令嘉獎，兩個月後升任台灣警備總司令，之後歷任陸軍總司令、參謀總長，晉升一級上將。\n\n那些死在市府禮堂與街道上的人，沒有等到一聲道歉。",
-      ending: "dark",
-      endingTitle: "屠殺有功，功成晉升",
-      endingText: "1997年你逝世，從未面對任何法律追究。歷史研究者以「高雄屠夫」稱呼你，但那個時代，沒有任何機制讓你為此付出代價。",
-      history: "史實：彭孟緝在高雄的鎮壓行動後以「鎮暴有功」連連晉升，官至陸軍一級上將與參謀總長（1957-1959年），1997年逝世前從未受到任何司法追訴。",
-      step: 3, total: 3
-    },
-    peng_select_targets: {
-      chapter: "1947年3月起，高雄各地",
-      title: "換一種方式，殺的人一樣多",
-      text: "你集中清除特定目標，傷亡範圍相對「集中」。\n\n事件後，你被蔣中正記大功二次，兩個月後升任台灣警備總司令，之後歷任陸軍總司令、參謀總長。\n\n1997年你逝世，從未面對任何法律追究。",
-      ending: "dark",
-      endingTitle: "方法不同，飛黃騰達相同",
-      endingText: "不論你選擇哪種手段，結局是一樣的飛黃騰達與永久的免追究。歷史研究者將你列為二二八鎮壓的主要責任者，但那個時代，沒有任何機制讓你為此付出代價。",
-      history: "此為劇本虛構走向。史實中彭孟緝並未精準篩選逮捕對象，而是下令全面逮捕，並在高雄要塞司令部處決大批人士。他主導南部清鄉，事後連連晉升，官至陸軍一級上將與參謀總長，1997年逝世，終身未受司法追究。",
-      step: 3, total: 3
-    },
-    peng_intensify: {
-      chapter: "1947年3月起，高雄各地",
-      title: "封鎖消息，繼續清除",
-      text: "你加大追捕力度，封鎖高雄的出入。消息仍有部分流出，但你的軍事優勢讓這一切無關緊要。\n\n事件後，蔣中正記你大功，兩個月後你升任台灣警備總司令，之後一路晉升至參謀總長。\n\n1997年你逝世，從未面對任何法律追究。",
-      ending: "dark",
-      endingTitle: "消息壓不住，晉升擋不了",
-      endingText: "真相最終仍然流傳出去，但在那個時代，真相不能讓你付出任何代價。你一路飛黃騰達，從未為高雄的死亡承擔責任。",
-      history: "此為劇本虛構走向。史實中彭孟緝並非因訊息外洩才加大力度，而是在接獲命令後即以最大力度展開逮捕鎮壓。彭孟緝在高雄展開鎮壓後以「鎮暴有功」連連晉升，官至陸軍一級上將與參謀總長，1997年逝世，終身未受司法追究。",
-      step: 3, total: 3
-    },
-    peng_spin_end: {
-      chapter: "1947年3月起，高雄各地",
-      title: "依法辦理",
-      text: "你對外發表聲明，稱所有行動均屬「依法辦理」。同時，暗中的清除繼續進行。\n\n事件後，蔣中正說你「處置得當」，兩個月後你升任台灣警備總司令，之後歷任陸軍總司令、參謀總長。\n\n1997年你逝世，從未面對任何法律追究。",
-      ending: "dark",
-      endingTitle: "說法不重要，結果一樣",
-      endingText: "「依法辦理」四個字，成為那個時代遮掩殺戮的標準說法。你一路晉升，歷史研究者將你列為二二八鎮壓的主要責任者，但那個時代，說法什麼都遮掩得了。",
-      history: "此為劇本虛構走向。史實中彭孟緝並未採取先拖延再行動的策略，而是接令後即展開全面鎮壓。彭孟緝在高雄展開鎮壓後主導南部清鄉，事後連連晉升，官至陸軍一級上將與參謀總長，1997年逝世，終身未受司法追究。",
-      step: 3, total: 3
-    }
-  },
-  czp: {
-    start: {
-      chapter: "1947年3月，嘉義",
-      title: "和平使者",
-      text: "你是陳澄波，嘉義出身的畫家，1926年以《嘉義街外》入選日本帝國美術院展覽——台灣人以西畫打進日本官展的第一人。現在，你是嘉義市二二八處理委員會委員。\n\n嘉義機場軍民對峙，地方仕紳商議派「和平使者」前往協商，試圖降低衝突。這個任務極其危險——沒有人能保證走進去的人能走出來。\n\n他們看向你。",
-      choices: [
-        { id: "czp_go", text: "挺身而出，帶著和平的信念，作為使者前往機場，盡力爭取談判空間", label: "選擇 A" },
-        { id: "czp_stay", text: "婉拒出使，主張改以信件或其他管道與軍方溝通，保留更多迴旋空間", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    czp_go: {
-      chapter: "1947年3月，嘉義機場",
-      title: "被捕，逼供",
-      text: "你走進了機場。一行六人甫抵達便遭拘押，接連數日被嚴刑逼供，被要求承認「煽動暴動」。\n\n你知道，簽了可能不會活，不簽也可能不會活。",
-      choices: [
-        { id: "czp_refuse_confess", text: "拒絕認罪，堅持自己是以和平使者身分前往，沒有煽動任何人", label: "選擇 A" },
-        { id: "czp_forced_sign", text: "在持續的嚴刑下，最終被迫在認罪書上簽名", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    czp_stay: {
-      chapter: "1947年3月，嘉義",
-      title: "名單上有你的名字",
-      text: "你留在後方，幾天後軍隊開始按名單逮捕，你的名字在上面。\n\n你知道遲早會有人來。",
-      choices: [
-        { id: "czp_hide", text: "試圖躲藏，等待局勢明朗，或有人能幫助你逃脫", label: "選擇 A" },
-        { id: "czp_surrender", text: "主動到警察局說明，希望以坦誠換取從寬處理", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    czp_refuse_confess: {
-      chapter: "1947年3月25日，嘉義火車站前",
-      title: "最後的遊街",
-      text: "你拒絕認罪。\n\n3月25日清晨，你被五花大綁推上軍車，沿中山路遊街示眾，最後抵達嘉義火車站前廣場。\n\n第一槍沒打中。士兵上前，第二槍貫穿你的胸膛。你倒下了，享年52歲。未經任何審判。",
-      ending: "bad",
-      endingTitle: "畫筆與槍口",
-      endingText: "你的妻子張捷強忍悲痛，請攝影師拍下你的遺容，將被子彈打穿的血衣洗淨收妥，迅速把你的畫作拆下藏進閣樓。她保住了你的作品，讓你的名字得以留存。你的死是公開的羞辱；你的畫，是無法被槍擊中的部分。",
-      history: "史實：陳澄波以和平使者身分前往嘉義機場，遭拘捕後未經任何法律程序，於1947年3月25日在嘉義火車站前廣場公開槍決，享年52歲。其妻張捷秘密保存其畫作，陳澄波成為二二八事件中最具代表性的藝術家受難者。",
-      step: 3, total: 3
-    },
-    czp_forced_sign: {
-      chapter: "1947年3月25日，嘉義火車站前",
-      title: "認罪書沒有換來活命",
-      text: "你在嚴刑下簽了名。\n\n3月25日清晨，你仍然被推上軍車，仍然遊街，仍然被帶到嘉義火車站前廣場。\n\n那張認罪書，沒有換來任何憐憫。第二槍貫穿你的胸膛。你倒下了，享年52歲。",
-      ending: "bad",
-      endingTitle: "認罪也救不了你",
-      endingText: "在那個時代，認罪與不認罪，結局都一樣。你的妻子張捷將你的畫作藏進閣樓，保住了你的名字。你的死，是公開的羞辱；你的畫，是她保住的最後一塊你。",
-      history: "此為劇本虛構走向。史實中陳澄波遭拘捕後即遭嚴刑逼供，無論是否認罪均難逃一死。1947年3月25日在嘉義火車站前廣場公開槍決，享年52歲，未經任何審判程序。其妻張捷秘密保存其畫作。",
-      step: 3, total: 3
-    },
-    czp_hide: {
-      chapter: "1947年3月，嘉義",
-      title: "躲藏幾天後被找到（虛構走向）",
-      text: "你試圖躲藏，等待局勢明朗。幾天後，你仍被找到，遭到逮捕。\n\n最終，你仍未能倖免。",
-      ending: "bad",
-      endingTitle: "去，或不去，躲或不躲",
-      endingText: "在那個時代，躲藏或許能讓你多活幾天，但改變不了已被標記的命運。這是劇本的虛構走向——史實中，陳澄波選擇了挺身而出，帶著和平的信念走向那個危險的任務，最後在嘉義火車站前倒下，享年52歲。",
-      history: "史實：陳澄波確實以和平使者身分前往嘉義機場協商，遭拘捕後被公開槍決。這條路線為劇本虛構，用以對比真實的選擇：他走出去了。",
-      step: 3, total: 3
-    },
-    czp_surrender: {
-      chapter: "1947年3月，嘉義",
-      title: "坦誠換不來寬恕（虛構走向）",
-      text: "你主動到警察局說明，坦誠你的身分與立場，希望換取從寬處理。\n\n他們把你關起來。\n\n最終，你仍未能倖免。",
-      ending: "bad",
-      endingTitle: "坦誠也是另一種走向死亡",
-      endingText: "在那個時代，主動說明或逃避，都無法改變已被決定的命運。這是劇本的虛構走向——史實中，陳澄波選擇了以和平使者身分走向危險，最後在嘉義火車站前倒下，享年52歲。",
-      history: "此為劇本虛構走向。史實中，陳澄波選擇以和平使者身分前往嘉義機場談判，不論出於何種考量都不曾選擇回避。他遭拘捕後被嚴刑逼供，1947年3月25日在嘉義火車站前廣場公開槍決，享年52歲，未經任何審判。其妻張捷秘密保存畫作，陳澄波成為二二八最具代表性的藝術家受難者。",
-      step: 3, total: 3
-    }
-  },
-  tang: {
-    start: {
-      chapter: "1947年3月初，台南",
-      title: "名單",
-      text: "你是湯德章，台南律師，日台混血，常為無力負擔訴訟費的台灣人義務辯護。二二八事件後，你被推任處委會台南分會治安組組長，維持市區秩序。\n\n現在，軍隊已進城。你住所外出現可疑跡象，逮捕令很可能今夜就到。\n\n你手邊有一份名單——台南各界重要人士與成大學生的聯絡資料。如果這份名單落入軍方手中，他們全都將遭殃。\n\n你還有時間。",
-      choices: [
-        { id: "tang_burn", text: "立即銷毀名單，用那一把火換取那些人的安全，然後面對即將到來的逮捕", label: "選擇 A" },
-        { id: "tang_run", text: "帶著名單試圖出城，也許能趕在軍隊前面通知這些人各自轉移", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    tang_burn: {
-      chapter: "1947年3月初，台南，你的住所",
-      title: "火燒起來了",
-      text: "你燒掉了名單。火光燒起的那一刻，你知道你的選擇意味著什麼。\n\n幾分鐘後，軍隊敲門了。",
-      choices: [
-        { id: "tang_resist", text: "徒手抵抗拒捕，為自己多爭取一點時間，確認名單已完全燒盡", label: "選擇 A" },
-        { id: "tang_open_door", text: "確認名單已燒盡，平靜地開門，正面面對", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    tang_run: {
-      chapter: "1947年3月初，台南郊外",
-      title: "哨卡攔住了你",
-      text: "你帶著名單出城，但城外的哨卡已遍布道路。\n\n士兵攔截了你，上前要搜身。名單還在你手裡。\n\n你只有幾秒鐘。",
-      choices: [
-        { id: "tang_tear", text: "趁混亂拼命撕毀名單，盡可能讓更多名字消失", label: "選擇 A" },
-        { id: "tang_hide_list", text: "試圖把名單藏在身上，等待更好的機會處理", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    tang_resist: {
-      chapter: "1947年3月13日，台南大正公園",
-      title: "他燒掉了名單",
-      text: "你徒手抵抗，與士兵拉扯，爭取了一點時間，確認名單已完全燒盡。\n\n被捕後，你遭反綁懸吊刑求一整夜，肋骨被槍托打斷。\n\n3月13日，你雙手反綁，背後插著寫有名字的木牌，押上卡車遊街示眾，抵達大正公園。你就義了。那些名單上的人，活了下來。",
-      ending: "good",
-      endingTitle: "燒掉了名單，留下了名字",
-      endingText: "你是台南二二八最廣為人知的受難者之一。你的名字給了那座公園，至今仍在。你的犧牲，換來許多人的生還。數十年後，法院為你平反：湯德章，無罪。",
-      history: "史實：湯德章在逮捕前徒手抵抗以爭取時間銷毀名單，使許多台南仕紳與成大學生免於株連。1947年3月13日在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判。事後高等法院判決：湯德章無罪。",
-      step: 3, total: 3
-    },
-    tang_open_door: {
-      chapter: "1947年3月13日，台南大正公園",
-      title: "他平靜地開了門",
-      text: "名單已成灰，你確認了。你開門，面對士兵，沒有抵抗。\n\n被捕後，你仍遭反綁懸吊刑求一整夜，肋骨被打斷。\n\n3月13日，你被押赴大正公園，就義了。那些名單上的人，活了下來。",
-      ending: "good",
-      endingTitle: "從容，也是一種選擇",
-      endingText: "你平靜面對逮捕，因為你已做了最重要的事：名單燒了，那些人安全了。你被捕、遊街、槍決，但你換來的是許多人的生還。數十年後，法院為你平反：湯德章，無罪。",
-      history: "此為劇本虛構走向。史實中湯德章並未選擇開門迎接，而是在被捕前先銷毀了名單。1947年3月13日在台南大正公園被公開槍決，未經任何審判。大正公園現已更名為湯德章紀念公園，法院事後判決：湯德章無罪。",
-      step: 3, total: 3
-    },
-    tang_tear: {
-      chapter: "1947年3月初，台南郊外",
-      title: "部分名字消失了",
-      text: "你拼命撕毀名單，幾秒鐘內撕掉了一部分，但士兵很快制住了你。\n\n剩下的名單落入軍方手中。那些沒來得及撕去的名字，成了逮捕令。部分人倖免，部分人遭殃。\n\n你被帶走，3月13日在大正公園就義。",
-      ending: "mid",
-      endingTitle: "撕去了一些，留下了一些（虛擬結局）",
-      endingText: "你用最後的幾秒鐘保住了部分人，但未能保住所有人。這是劇本的虛構走向——史實中，湯德章選擇了留下來燒毀名單，那一把完整的火，保住了所有人。數十年後，法院為他平反：湯德章，無罪。",
-      history: "此為劇本虛構走向。史實中，湯德章選擇留下來並徒手抵抗，爭取足夠時間將名單全數銷毀，使台南仕紳與成大學生免於株連。1947年3月13日在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判。法院事後判決：湯德章無罪。",
-      step: 3, total: 3
-    },
-    tang_hide_list: {
-      chapter: "1947年3月初，台南郊外",
-      title: "名單落入他們手中",
-      text: "你試圖把名單藏在身上，但搜身時被找到。\n\n那些名字，一個接著一個，變成了逮捕令。\n\n你被帶走，3月13日在大正公園就義。而那些名單上的人，也因此付出了代價。",
-      ending: "bad",
-      endingTitle: "那一把火，是最後的防線",
-      endingText: "這是劇本的虛構走向。史實中，湯德章選擇了留下來、燒掉名單——那一把火，比任何逃亡都更保護了更多人。他被捕、遊街、槍決，但他換來的是許多人的生還。數十年後，法院為他平反：湯德章，無罪。",
-      history: "此為劇本虛構走向。史實中，湯德章選擇留下、徒手抵抗並銷毀全部名單，保護台南仕紳與成大學生。1947年3月13日在台南大正公園（今湯德章紀念公園）被公開槍決，未經任何審判。法院事後判決：湯德章無罪。",
-      step: 3, total: 3
-    }
-  },
-  wdm: {
-    start: {
-      chapter: "1947年5月15日，台北",
-      title: "接管",
-      text: "你是魏道明，前駐美大使，剛抵台就任首任台灣省政府主席。前任陳儀留下的是一個傷痕累累的島嶼，清鄉仍在各地進行，死亡還在發生。\n\n5月16日，你宣告解除戒嚴，結束清鄉。台灣人看著你，等待著。\n\n你的任期從現在開始。",
-      choices: [
-        { id: "wdm_reform", text: "積極延攬台籍菁英，推動開放改革，試圖以政策重建人心", label: "選擇 A" },
-        { id: "wdm_stable", text: "優先維護政治穩定，表面開明，但不觸動根本的控制結構", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    wdm_reform: {
-      chapter: "1947年底，台灣省政府",
-      title: "改革的邊界在哪裡",
-      text: "你延攬林獻堂、杜聰明等台籍菁英入省政府，廢除不合理管制，開放部分公營事業。台灣人慢慢感受到一些不同。\n\n但1948年起，國共內戰局勢急轉，南京方面不斷施壓。你手邊有一批因二二八被列為嫌疑的人，案件尚未結束。",
-      choices: [
-        { id: "wdm_protect_ppl", text: "要求這些案件走司法程序，不讓軍方隨意處置，為他們爭取一道保護", label: "選擇 A" },
-        { id: "wdm_bow_pressure", text: "在南京與軍方壓力下讓步，接受以軍事方式處理部分案件，換取整體穩定", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wdm_stable: {
-      chapter: "1947年底，台灣省政府",
-      title: "平靜之下",
-      text: "你解除了戒嚴，這讓台灣人鬆了口氣。但你沒有深入追究清鄉期間的責任，也沒有公開為受難者發聲。\n\n監控的機制沒有消失，只是換了一種更安靜的方式繼續運作。台灣人知道，但說不出口。",
-      choices: [
-        { id: "wdm_monitor", text: "要求情報機構繼續追蹤二二八相關人員，確保「穩定」不被破壞", label: "選擇 A" },
-        { id: "wdm_ignore", text: "不主動追蹤，但也不阻止下屬的監控行動，讓機制自行運作", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wdm_protect_ppl: {
-      chapter: "1949年，台灣省政府主席任期結束",
-      title: "你盡力了，但時代變了",
-      text: "你保護了一些人，讓他們的案件走了司法程序而非軍事法庭。\n\n但1949年，吳國楨接任，你離台。白色恐怖隨之全面展開。你離開後，你無法再保護任何人。",
-      ending: "mid",
-      endingTitle: "任期結束，保護也結束",
-      endingText: "你在台灣的兩年，是二二八後相對寬鬆的短暫窗口。但那個窗口隨著你的離去而關閉。1949年後的台灣，進入了另一種恐怖。你無法控制你身後發生的事——這是每一個善意者在那個時代的處境。",
-      history: "史實：魏道明於1947年5月至1949年1月任台灣省政府主席，任內解除戒嚴、終止清鄉，延攬台籍人士入省府，推行較為開明的政策。1949年吳國楨接任後，台灣進入白色恐怖時期。",
-      step: 3, total: 3
-    },
-    wdm_bow_pressure: {
-      chapter: "1948-1949年，台灣",
-      title: "妥協的代價",
-      text: "你在壓力下讓步，部分被列為嫌疑的人沒有走司法程序就遭到處置。你告訴自己，這是為了整體的穩定。\n\n1949年，你任期結束離台，白色恐怖全面展開。你的妥協，沒有換來更多人的安全。",
-      ending: "mid",
-      endingTitle: "妥協換不來穩定",
-      endingText: "你的讓步讓更多人在你任內就遭殃。1949年後的白色恐怖讓台灣進入更長期的高壓。那些你選擇放棄的人，沒有人為他們說話。",
-      history: "此為劇本虛構走向。史實中魏道明並未全面向壓力妥協，而是在有限範圍內試圖緩和局勢。任內雖相對開明，但並未能完全保護所有受難者。1949年後台灣進入白色恐怖，政治環境急劇惡化。",
-      step: 3, total: 3
-    },
-    wdm_monitor: {
-      chapter: "1948-1949年，台灣",
-      title: "監控繼續",
-      text: "你要求繼續追蹤二二八相關人員。名單還在，監控還在，只是更安靜了。\n\n1949年，你任期結束。吳國楨接任，白色恐怖全面展開。那些在你任內就被標記的名單，成為後來清算的基礎。",
-      ending: "dark",
-      endingTitle: "你種下了白色恐怖的種子",
-      endingText: "你維持的那套監控機制，在你離去後繼續運作，成為白色恐怖年代的基礎設施之一。你給台灣的「穩定」，是一個更深的控制系統。",
-      history: "此為劇本虛構走向。史實中魏道明接任省主席後，施政方向相對陳儀寬鬆，著重安撫穩定，而非積極強化監控。二二八後台灣的監控機制並未隨清鄉結束而消失，而是演變成後來白色恐怖年代的監控基礎。1949年後台灣進入更全面的政治高壓。",
-      step: 3, total: 3
-    },
-    wdm_ignore: {
-      chapter: "1948-1949年，台灣",
-      title: "不看見，也是一種選擇",
-      text: "你沒有主動追蹤，但也沒有阻止下屬的監控行動。台灣表面上恢復了平靜，但平靜之下，仍有人被帶走。\n\n你選擇不看見。1949年，你離台，歷史繼續。",
-      ending: "mid",
-      endingTitle: "不看見，是另一種共謀",
-      endingText: "你的不作為讓一些人得以喘息，但也讓追害繼續進行。「我不知道」或「我沒有下令」，在那個時代，是許多當權者的自我保護說法。1949年後，你走了，台灣進入白色恐怖。",
-      history: "此為劇本虛構走向。史實中魏道明任期以相對寬鬆的過渡施政著稱，並非採取漠視不作為的姿態。魏道明任內台灣的政治監控未完全終止，二二八後的追查仍持續以不同形式進行。1949年吳國楨接任後，台灣進入白色恐怖時期。",
-      step: 3, total: 3
-    }
-  },
-  cyi: {
-    start: {
-      chapter: "1947年4月，浙江省",
-      title: "另有重用",
-      text: "你是陳儀。台灣那幾個月已成為你無法抹去的過去。你被解除行政長官職務，「另有重用」——任浙江省政府主席。\n\n在台灣，你等待援軍，下令鎮壓，把人列為「奸匪」。現在你在浙江，形勢不同了。共產黨的軍隊步步逼近，國民政府搖搖欲墜。\n\n你開始思考：你這一生，究竟站在哪一邊？",
-      choices: [
-        { id: "cyi_drift", text: "對共產黨的勝利感到認可，開始暗中調整立場，接觸對方陣營", label: "選擇 A" },
-        { id: "cyi_hold", text: "繼續效忠國民政府，試圖在浙江守住局面", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    cyi_drift: {
-      chapter: "1948年底，浙江省",
-      title: "教唆的問題",
-      text: "你釋放了被關押的共產黨嫌疑犯，引起注意。中共方面的人聯繫了你，問你能否說動京滬杭警備軍司令湯恩伯投誠。\n\n這是一個危險的問題。",
-      choices: [
-        { id: "cyi_tell_tang", text: "去找湯恩伯，說明形勢，勸他投誠", label: "選擇 A" },
-        { id: "cyi_only_contact", text: "只與中共維持接觸，但不採取進一步的具體行動", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    cyi_hold: {
-      chapter: "1948-1949年，浙江省",
-      title: "守不住的省份",
-      text: "你試圖在浙江維持秩序，但共產黨的軍隊已逼近省境，國民政府的局勢每況愈下。你周圍的人開始各奔前程。\n\n有人問你：你打算怎麼辦？",
-      choices: [
-        { id: "cyi_escape_taiwan", text: "隨國民政府撤往台灣，繼續效忠到底", label: "選擇 A" },
-        { id: "cyi_stay_wait", text: "留在浙江，觀望形勢，不隨政府撤退", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    cyi_tell_tang: {
-      chapter: "1949年2月，上海",
-      title: "湯恩伯告密了",
-      text: "你去找了湯恩伯。他聽完，一言不發。然後他去向蔣中正報告了。\n\n1949年2月，你被免去浙江省主席職務，軟禁上海。1950年4月，你被押解到台灣，囚禁於基隆。\n\n6月18日清晨，有人告訴你蔣中正要召見你，你盛裝打扮，搭車前往新店，方知是槍決。",
-      ending: "dark",
-      endingTitle: "被自己效忠過的政權殺死",
-      endingText: "你在台灣主持了大屠殺，之後試圖投奔另一個陣營。蔣中正下手諭：「槍決可也。」1950年6月18日清晨，你在台北新店空軍公墓槍決，享年73歲。你鎮壓過台灣人，最後被蔣中正殺死——沒有一個陣營真正為你存在。",
-      history: "史實：陳儀因教唆湯恩伯投共，湯恩伯告密，陳儀於1949年2月被免職軟禁。1950年4月被押解台灣，6月18日以「通共叛國」罪在新店空軍公墓槍決，享年73歲。據記載，他被騙稱蔣中正要召見而盛裝赴死。",
-      step: 3, total: 3
-    },
-    cyi_only_contact: {
-      chapter: "1949年，上海",
-      title: "懷疑就足以致命",
-      text: "你只是接觸了中共方面，沒有採取進一步行動。但消息還是傳出去了。\n\n你被懷疑，被軟禁，最終被押解到台灣。\n\n1950年6月18日，你在新店空軍公墓槍決，享年73歲。即使你沒有明確行動，「懷疑」在那個時代已足夠。",
-      ending: "dark",
-      endingTitle: "懷疑就是定罪",
-      endingText: "你以「通共叛國」的罪名被槍決。蔣中正的手諭：「槍決可也。」在台灣，你主持過同樣的邏輯——懷疑就足以致命。你最後死在這套你自己也用過的邏輯之下。",
-      history: "此為劇本虛構走向。史實中陳儀與中共的接觸並非僅限於此，而是確有透過湯恩伯轉達投共意圖，事敗後遭蔣中正下令逮捕。1950年6月18日在台北新店空軍公墓槍決，享年73歲。",
-      step: 3, total: 3
-    },
-    cyi_escape_taiwan: {
-      chapter: "1949-1950年，台灣",
-      title: "回到台灣，卻沒有回頭路",
-      text: "你隨國民政府撤往台灣，繼續效忠。但台灣的人還記得1947年。你的名字和那幾個月無法切割。\n\n蔣中正仍然知道你在浙江的所作所為。1950年，你被以「通共叛國」罪名逮捕。6月18日，槍決。",
-      ending: "dark",
-      endingTitle: "無論你站哪一邊，你已無路可走",
-      endingText: "你試圖回到效忠的位置，但你在台灣和浙江的所作所為，讓你在任何陣營都無法容身。1950年6月18日，享年73歲。你在台灣殺了人，最後也在台灣被殺。",
-      history: "此為劇本虛構走向。史實中陳儀在離台後並未選擇回頭效忠蔣中正，而是在浙江省主席任內試圖與中共接觸，最終被捕押台處決。陳儀1950年6月18日以「通共叛國」罪被槍決，享年73歲。",
-      step: 3, total: 3
-    },
-    cyi_stay_wait: {
-      chapter: "1949年，浙江",
-      title: "觀望也是一種選擇",
-      text: "你留在浙江，觀望。共產黨的軍隊進入了浙江，你沒有明確投靠任何一邊。\n\n最終，你被帶回台灣，以「通共叛國」罪名定罪。\n\n1950年6月18日，槍決。",
-      ending: "dark",
-      endingTitle: "觀望換不來任何一邊的信任",
-      endingText: "你沒有明確選邊，哪一邊都不保護你。1950年6月18日，槍決於台北新店空軍公墓，享年73歲。在台灣，你是屠殺者；在中共，你是可疑者；在蔣中正，你是背叛者。",
-      history: "此為劇本虛構走向。史實中陳儀在浙江任內並非模糊觀望，而是確有試圖與中共接觸的具體行動，以致被蔣中正視為叛徒。陳儀1950年6月18日以「通共叛國」罪被槍決，享年73歲。",
-      step: 3, total: 3
-    }
-  },
-  wcc: {
-    start: {
-      chapter: "1947年底，台北",
-      title: "活著的人要怎麼面對",
-      text: "你是蔣渭川。女兒蔣巧雲已逝，你的身上帶著二二八的印記——有人認為你是「勾連陳儀的人」，有人認為你是「在困難時期試圖改革的人」，有人什麼都不說。\n\n1948年，你當選台灣省議會參議員。蔣中正抵台後，三度召見你。你知道，你即將面對一個選擇。",
-      choices: [
-        { id: "wcc_enter_gov", text: "接受體制的召喚，進入政府任職，以「在體制內影響」為理由說服自己", label: "選擇 A" },
-        { id: "wcc_stay_out", text: "婉拒進入政府，試圖以民間立場繼續推動本省利益", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    wcc_enter_gov: {
-      chapter: "1949-1950年，台灣省政府",
-      title: "40天的民政廳長",
-      text: "你成為台灣省民政廳長兼省府委員。任期只有40天，就在壓力下去職。\n\n但你沒有退出。1950年2月，你升任中華民國內政部次長——政治生命的最高峰。\n\n外界對你在二二八期間的質疑，從來沒有停止。",
-      choices: [
-        { id: "wcc_explain_pub", text: "試圖公開說明，寫文記錄自己的立場，讓後人評斷", label: "選擇 A" },
-        { id: "wcc_silent_work", text: "選擇沉默，以任官實績說話，不公開辯論二二八期間的角色", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wcc_stay_out: {
-      chapter: "1950年代，台灣",
-      title: "距離，是一種奢侈",
-      text: "你婉拒加入政府，試圖保持距離。但白色恐怖年代，「距離」是一種奢侈。你的過去隨時可以被人拿出來——你在二二八期間的角色，解讀的空間太大了。\n\n有人勸你：在體制內，反而比較安全。",
-      choices: [
-        { id: "wcc_persuaded_in", text: "最終被說服，加入政府，認為在體制內更有保護也更有影響力", label: "選擇 A" },
-        { id: "wcc_hold_ground", text: "繼續婉拒，在夾縫中以商業活動維生，試圖與政治保持距離", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    wcc_explain_pub: {
-      chapter: "事後，歷史的審判",
-      title: "你的說法，沒有終結爭議",
-      text: "你試圖解釋，你說你的出發點是改革，不是配合鎮壓。有人相信你，有人不信。歷史學家持續爭論。\n\n你在政府中任職多年後退休。二二八的問題在1990年代才開始被正式重新審視，那時你已去世多年。",
-      ending: "mid",
-      endingTitle: "解釋了，爭議仍在",
-      endingText: "歷史對蔣渭川的評價，至今仍是二二八研究中最具爭議的面向之一。你說的，和歷史記錄的，之間始終有一道無法完全弭合的裂縫。那些在二二八中死去的人的家屬，對你的評價，始終沒有一個統一的答案。",
-      history: "此為劇本虛構走向。史實中蔣渭川並未公開發表澄清聲明，而是採取較低調的行動。其在二二八期間的角色至今仍有爭議，史學界對其與陳儀的關係及在處委會的行為有不同解讀。他後來任台灣省民政廳長及內政部次長，是二二八研究中評價最複雜的人物之一。",
-      step: 3, total: 3
-    },
-    wcc_silent_work: {
-      chapter: "事後，歷史的審判",
-      title: "沉默被不同人解讀",
-      text: "你選擇不辯論，以任官實績說話。批評者說你的沉默是心虛；支持者說你選擇了務實。\n\n你升任內政部次長，達到政治生命的最高峰。退休後，你在台灣度過餘生。",
-      ending: "mid",
-      endingTitle: "沉默，讓每個人自行填空",
-      endingText: "你的沉默讓你的形象成為一個空白，每個人往裡面填入自己相信的東西。批評者看見的是共謀，支持者看見的是韌性。歷史沒有因為你的沉默而停止爭論——它只是繼續，沒有你的解釋。",
-      history: "史實：蔣渭川後來任台灣省民政廳長及內政部次長，對二二八期間的立場未有充分公開記錄，其歷史評價至今仍有爭議。",
-      step: 3, total: 3
-    },
-    wcc_persuaded_in: {
-      chapter: "事後，歷史的審判",
-      title: "體制保護了你，也定義了你",
-      text: "你進入政府，在體制的保護下度過了白色恐怖年代。你升任內政部次長，達到政治生命的最高峰。\n\n但每一次升遷，都有人在問：你是因為二二八中的角色才被選中的嗎？",
-      ending: "mid",
-      endingTitle: "活在爭議的陰影下",
-      endingText: "體制保護了你，讓你在政治最高壓的年代活了下來。但體制的保護也是一種標籤。你的一生，與「二二八中站在哪一邊」這個問題糾纏在一起，直到最後。",
-      history: "此為劇本虛構走向。史實中蔣渭川在二二八後進入政府並非由外部說服，而是源於其自身在亂局後的政治考量。蔣渭川後來歷任台灣省民政廳長及內政部次長，其在二二八期間的角色至今仍是爭議焦點，史學界對他是否與陳儀勾連有不同解讀。",
-      step: 3, total: 3
-    },
-    wcc_hold_ground: {
-      chapter: "1950年代，台灣",
-      title: "夾縫太窄",
-      text: "你婉拒了政府的邀請，試圖在夾縫中以商業維生。但白色恐怖的年代，你的名字和二二八的聯繫讓你無法真正安全。\n\n最終，政治仍然找上了你。你還是在某種程度上回到了體制的軌道上。",
-      ending: "mid",
-      endingTitle: "夾縫太窄，容不下拒絕",
-      endingText: "在那個年代，完全拒絕體制是一種難以長期維持的姿態。你最終仍在體制的軌道上生存。二二八的問題和你名字的連結，在1990年代才開始被正式討論，那時已是另一個台灣了。",
-      history: "此為劇本虛構走向。史實中蔣渭川在二二八後並未選擇長期拒絕政府，而是在一定時間後進入政府任官。蔣渭川後來進入政府體制，歷任省民政廳長及內政部次長，是二二八研究中評價最具爭議的本省籍政治人物之一。",
-      step: 3, total: 3
-    }
-  },
-  ckss: {
-    start: {
-      chapter: "1950年代，台灣",
-      title: "恐懼，是最穩定的治理語言",
-      text: "你是蔣中正。台灣已成為你最後的據點。《戒嚴令》已頒布，《懲治叛亂條例》已施行，《戡亂時期檢肅匪諜條例》將任何懷疑都變成逮捕的理由。\n\n你清楚：要維持政權，恐懼比說服更有效。問題是，恐懼要做到什麼程度？",
-      choices: [
-        { id: "ckss_system", text: "建立全面性的情治網絡，讓每一個人都可能成為告密者，恐懼滲透社會每一個角落", label: "選擇 A" },
-        { id: "ckss_selective", text: "只針對真正危險的「匪諜」，盡量減少錯殺，維持一定的社會秩序", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    ckss_system: {
-      chapter: "1950年代，台灣各地",
-      title: "你親自批示",
-      text: "情治網路遍布台灣，鄰居可以告密鄰居，學生可以舉報老師。案件一件件送到你的桌上，等待你的批示。\n\n軍法審判的生死，最終都在你手裡。",
-      choices: [
-        { id: "ckss_approve_all", text: "凡呈送案件，從嚴從速，一律批准最重刑罰，不留後患", label: "選擇 A" },
-        { id: "ckss_review", text: "親自審閱部分案件，偶爾減輕刑罰，保留「法外開恩」的彈性", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    ckss_selective: {
-      chapter: "1950年代，台灣",
-      title: "邊界很難劃定",
-      text: "你試圖只打擊真正的威脅，但情治系統的運作邏輯告訴你：誰是「真正危險」，取決於定義的人。\n\n情治機構送來的名單越來越長。你知道有些人是被冤枉的，但你知道放任機構自行運作會發生什麼事。",
-      choices: [
-        { id: "ckss_expand", text: "局勢緊張時擴大打擊面，以防遺漏任何真正的敵人", label: "選擇 A" },
-        { id: "ckss_hold_line", text: "試圖劃定邊界，駁回部分案件，堅持不無差別擴大", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    ckss_approve_all: {
-      chapter: "1949—1987年，台灣",
-      title: "1,061個死刑",
-      text: "你批示了所有案件。1949年至1987年間，台灣共有8,296人因政治案件被逮捕，1,061人被執行死刑。\n\n你在1975年4月5日逝世，沒有看見台灣後來的解嚴與民主化。\n\n那1,061個死刑，刻在你的名字旁邊。",
-      ending: "dark",
-      endingTitle: "恐懼奏效了，代價是1,061條命",
-      endingText: "你建立的體制維持了政權長達數十年。但那1,061個被你批示槍決的人，那8,296個被關押的人——他們的名字，在2000年代台灣的轉型正義過程中，一個一個被重新唸出來。",
-      history: "史實：1949年至1987年戒嚴期間，台灣共有8,296人因政治案件被逮捕，1,061人被執行死刑。蔣中正親批軍法案件，有時手諭加重刑罰。1975年4月5日逝世，未見解嚴。",
-      step: 3, total: 3
-    },
-    ckss_review: {
-      chapter: "1949—1987年，台灣",
-      title: "法外開恩，也是一種統治術",
-      text: "你偶爾減輕刑罰，偶爾特赦，讓人們知道生死在你手裡——不只是死，也是活。\n\n但這種「仁慈」是體制的一部分，不是對體制的限制。它讓更多人相信：也許跪得夠低，也許就能得到你的恩典。\n\n1,061人被執行死刑。你在1975年4月5日逝世。",
-      ending: "dark",
-      endingTitle: "仁慈，也是恐懼的一部分",
-      endingText: "你的「法外開恩」強化了統治的邏輯：你握有所有人的生死。偶爾的寬大不是正義，而是更深層的控制。那些你選擇不殺的人，感謝你，而不是感謝法律——這正是你要的效果。",
-      history: "此為劇本虛構走向。史實中蔣中正並未真正重新審視體制，而是在維持戒嚴的同時偶爾做出個別寬待。雖曾對部分政治犯如彭明敏給予特赦，但同時主導了整個白色恐怖體制。1949至1987年戒嚴期間共1,061人被執行死刑。1975年4月5日逝世。",
-      step: 3, total: 3
-    },
-    ckss_expand: {
-      chapter: "1950年代—1960年代，台灣",
-      title: "恐懼的範圍一直在擴大",
-      text: "你讓情治機構在局勢緊張時擴大打擊面。鹿窟事件、澎湖案、雷震案、彭明敏案……每一個「緊張時刻」，都帶來更多的逮捕和死亡。\n\n你在1975年逝世，台灣的戒嚴在你死後又持續了十二年。",
-      ending: "dark",
-      endingTitle: "恐懼沒有自然終點",
-      endingText: "你的體制在你死後繼續運作，直到1987年解嚴。恐懼作為治理工具，一旦啟動就很難自行停下。你選擇的每一次擴大，都讓停下來變得更難。",
-      history: "此為劇本虛構走向。史實中蔣中正對情治機構的打壓並非在緊張時才擴大，而是維持著系統性、持續性的政治恐怖統治，不以局勢鬆緊為標準。白色恐怖期間，鹿窟事件（1952）、雷震案（1960）、彭明敏案（1964）、泰源事件（1970）等重大政治案件持續發生。台灣戒嚴從1949年持續至1987年，是全球持續最久的戒嚴之一。",
-      step: 3, total: 3
-    },
-    ckss_hold_line: {
-      chapter: "1950年代—1960年代，台灣",
-      title: "邊界，不是你一個人能守的",
-      text: "你試圖劃定邊界，但情治機構有自己的邏輯和利益。你駁回的部分案件，以另一種方式重新送回來。\n\n恐懼的系統一旦建立，就很難從內部限制它。\n\n你在1975年4月5日逝世。戒嚴在你死後又持續了十二年。",
-      ending: "dark",
-      endingTitle: "限制一個你自己設計的機器",
-      endingText: "你建立了那個機器，你試圖限制它，但它的動能來自你最初設計的每一個齒輪。白色恐怖共持續38年（1949-1987），恐懼滲透了整整一代台灣人的記憶與沉默。",
-      history: "此為劇本虛構走向。史實中蔣中正並未試圖對情治機構劃定邊界或自我節制，而是主動建立並持續擴大恐怖統治體制。台灣戒嚴從1949年持續至1987年，共38年，是全球持續最久的戒嚴之一。蔣中正於1975年4月5日逝世，未見解嚴。解嚴由蔣經國於1987年宣布。",
-      step: 3, total: 3
-    }
-  },
-  cks2: {
-    start: {
-      chapter: "1950年代，台灣",
-      title: "機器的齒輪",
-      text: "你是蔣經國，國防部總政治部主任，後來的保密局監管者。你是白色恐怖機器最關鍵的齒輪。\n\n你的父親蔣中正賦予你這個任務：讓台灣的情治系統有效運作，讓任何威脅都在成型之前被消滅。\n\n你要怎麼做這件事？",
-      choices: [
-        { id: "cks2_expand", text: "積極擴大情報網絡，讓監控滲透社會每一個角落，連閒話都可能入罪", label: "選擇 A" },
-        { id: "cks2_precise", text: "主張精準打擊，只對付真正的「匪諜」，不搞無差別逮捕", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    cks2_expand: {
-      chapter: "1950年代，台灣各地",
-      title: "告密者換到免責",
-      text: "監控體系遍布台灣，鄰居監視鄰居，同事舉報同事。你的系統將告密制度化——告密者可獲減刑或獎勵。\n\n一份線報送到你的桌上：有人說鄰居在家裡批評政府。",
-      choices: [
-        { id: "cks2_arrest_rumor", text: "逮捕，先關再說，寧可枉殺，不讓危險種子生根", label: "選擇 A" },
-        { id: "cks2_investigate", text: "先調查，要有確實的行動證據才逮捕，不只是言論", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    cks2_precise: {
-      chapter: "1950年代，台灣",
-      title: "機器有自己的邏輯",
-      text: "你主張精準打擊，但你的部下認為「寧可錯殺」，他們送來的案件越來越多。\n\n他們有業績壓力，你有父親的期待，台灣有看不見的「匪諜」。每一個環節都在把名單變長。",
-      choices: [
-        { id: "cks2_approve_bulk", text: "在壓力下批准大量逮捕令，讓機器自行運轉，不一一細審", label: "選擇 A" },
-        { id: "cks2_push_back", text: "駁回部分案件，堅持「精準」原則，與部下的慣性對抗", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    cks2_arrest_rumor: {
-      chapter: "1950年代—1970年代，台灣",
-      title: "你建立的機器",
-      text: "無數人因言語、信仰、出身、或只是「有人說了什麼」而被關押。你的效率，讓父親滿意。\n\n幾十年後，你成為總統，你主導了1987年的解嚴。\n\n但解嚴之前，是你一手打造的三十八年恐懼。",
-      ending: "dark",
-      endingTitle: "你建了機器，也拆了機器",
-      endingText: "你在1987年宣布解嚴，被一些人稱為「台灣民主的推手」。但那三十八年間你所主導的情治機器，讓無數台灣人活在恐懼、沉默、和失去中。解嚴，不能抹去你打造的那些年。",
-      history: "史實：蔣經國長期掌控情治系統，1950年代主導大規模政治迫害。他後來成為行政院長（1972）及總統（1978），並於1987年宣布解嚴。其歷史評價至今仍有爭議。",
-      step: 3, total: 3
-    },
-    cks2_investigate: {
-      chapter: "1950年代—1970年代，台灣",
-      title: "相對謹慎，仍是共謀",
-      text: "你堅持要有行動證據才逮捕，少了一些冤案。但你仍然在那個系統裡，仍然是那個系統的核心。\n\n幾十年後，你解了嚴。台灣人記住了那個解嚴的人，但也記住了那個建了機器的人。",
-      ending: "mid",
-      endingTitle: "相對謹慎，改變不了機器的本質",
-      endingText: "你的相對謹慎讓部分人倖免於難，但你從未拆除那個機器——你只是讓它跑得稍慢一點。1987年你宣布解嚴，歷史對你的評價始終分裂：民主推手，還是白色恐怖的主持者？",
-      history: "此為劇本虛構走向。史實中蔣經國並未對白色恐怖案件展開系統性調查，而是繼續主導情治系統運作。據部分研究他在個別案件中曾表現一定克制，1987年宣布解嚴是台灣民主化的關鍵一步，但白色恐怖時期的歷史責任問題至今仍在討論中。",
-      step: 3, total: 3
-    },
-    cks2_approve_bulk: {
-      chapter: "1950年代—1970年代，台灣",
-      title: "你讓機器自行運轉",
-      text: "你批准了一批又一批的逮捕令，讓情治機構的運作邏輯主導一切。機器越跑越快，停不下來。\n\n幾十年後，你解了嚴。但那些被機器輾過的人，有多少人等到了那一天？",
-      ending: "dark",
-      endingTitle: "效率，是暴力的另一個名字",
-      endingText: "你讓機器高效運轉，代價是無數冤案。1987年解嚴，但白色恐怖的傷從未被完整正視。台灣的轉型正義進程，至今仍在持續。",
-      history: "此為劇本虛構走向。史實中蔣經國並非在精準打擊策略失效後才擴大審批，而是從一開始即身兼情治掌控核心，後期才逐步轉向開放。蔣經國長期掌控情治系統，大量政治案件在其監管下被快速審判定罪。1987年他宣布解嚴，是台灣民主化的重要轉折，但其在白色恐怖期間的歷史責任評價至今仍有爭議。",
-      step: 3, total: 3
-    },
-    cks2_push_back: {
-      chapter: "1950年代—1970年代，台灣",
-      title: "你試圖抵抗機器，也是機器的一部分",
-      text: "你駁回了部分案件，部下不太開心，但你堅持。這讓一些人倖免於難。\n\n但你仍然是那個機器的掌控者。你試圖讓它精準，但你沒有拆除它。\n\n幾十年後，你解了嚴。歷史給了你這個功勞，也留下了那些年的問號。",
-      ending: "mid",
-      endingTitle: "抵抗機器，又是機器的一部分",
-      endingText: "你的抵抗讓部分案件更公正，但整個體制的基礎——恐懼、監控、軍法審判——仍在你任內繼續運作。1987年解嚴，是你職業生涯中最重要的決定。歷史對你的評價，至今是台灣最複雜的問題之一。",
-      history: "此為劇本虛構走向。史實中蔣經國在情治系統的角色並非以抵抗機器著稱，而是作為掌控核心長期主導運作，直至後期才轉向民主化。蔣經國1987年宣布解嚴，是台灣民主化的關鍵。他在白色恐怖時期的情治角色與後來的民主化之間的矛盾，使其成為台灣歷史上評價最複雜的政治人物之一。",
-      step: 3, total: 3
-    }
-  },
-  lei: {
-    start: {
-      chapter: "1950年代，台北",
-      title: "沉默是另一種共謀",
-      text: "你是雷震，《自由中國》雜誌發行人。1950年代，你開始在雜誌上批評一黨專政，呼籲民主、法治、言論自由。\n\n你知道這很危險。特務在監視，每一期雜誌都可能是最後一期。但你相信：如果有能力說話的人選擇沉默，那就是另一種共謀。\n\n你要怎麼做？",
-      choices: [
-        { id: "lei_publish_bold", text: "繼續大膽發表批評，不自我審查，讓《自由中國》成為民主的燈塔", label: "選擇 A" },
-        { id: "lei_strategic", text: "有策略地發表，批評有分寸，試圖在危險與影響力之間保持平衡", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    lei_publish_bold: {
-      chapter: "1960年，台北",
-      title: "組黨，最後的步驟",
-      text: "你的文章越來越直接，讀者越來越多，特務的監視也越來越密。\n\n1960年，你開始籌備一件在台灣史上從未成功過的事：組成真正的反對黨，「中國民主黨」。\n\n特務已在你周圍佈線。你感受到了。",
-      choices: [
-        { id: "lei_form_party", text: "繼續推動組黨，不因壓力退縮，民主沒有「等待適當時機」這回事", label: "選擇 A" },
-        { id: "lei_pause_party", text: "感受到壓力，暫停組黨計畫，保存力量等待更好的時機", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    lei_strategic: {
-      chapter: "1960年，台北",
-      title: "有策略，也逃不了",
-      text: "你有策略地批評，雜誌活了比預期更久。但1960年，你仍然走到了組黨這一步——因為你知道，沒有組黨，批評只是批評。\n\n特務在監視，你的夥伴們也在等你的決定。",
-      choices: [
-        { id: "lei_form_party_2", text: "組黨計畫無論如何要繼續，這是民主必要的一步", label: "選擇 A" },
-        { id: "lei_abort_party", text: "放棄組黨，改以其他方式繼續推動民主改革", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    lei_form_party: {
-      chapter: "1960年9月4日，台北",
-      title: "逮捕令",
-      text: "1960年9月4日清晨，台灣警備總司令部的人來了。你和幾名夥伴被帶走。\n\n軍事法庭以「為匪宣傳」、「知匪不報」定罪。蔣中正的手諭：「雷之刑期不得少於10年。」\n\n你被判十年有期徒刑。1970年9月4日刑期屆滿出獄，你已是七十三歲的老人。",
-      ending: "bad",
-      endingTitle: "十年，換來一個沒有建立的反對黨",
-      endingText: "你試圖在台灣建立第一個真正的反對黨，失敗了——被送進監獄。但你的嘗試讓後來的人知道：組黨是可能的，即使代價是十年自由。台灣直到1986年才有合法的反對黨（民進黨）。",
-      history: "史實：1960年9月4日，雷震遭警備總司令部逮捕，軍事法庭以「為匪宣傳、知匪不報」判處十年有期徒刑。蔣中正手諭「刑期不得少於10年」、「覆判不能變更初審」。1970年出獄，享年82歲（1979年逝世）。",
-      step: 3, total: 3
-    },
-    lei_pause_party: {
-      chapter: "1960年秋，台北",
-      title: "暫停，但已被標記",
-      text: "你暫停了組黨計畫。但你已被標記——在情治機構的名單上，你早就在那裡了。\n\n1960年9月4日，你仍然被捕了。不是因為組黨，而是因為你這些年說的每一句話。\n\n軍事法庭以「為匪宣傳」判你十年。",
-      ending: "bad",
-      endingTitle: "暫停了，但你說過的話還在",
-      endingText: "在那個時代，暫停行動不能讓你從名單上消失。你說過的話，寫過的文字，都在那裡等著被用來起訴你。十年後你出獄，台灣還要再等十六年才有合法的反對黨。",
-      history: "史實：雷震1960年9月4日遭逮捕，判處十年有期徒刑。此路線為劇本虛構走向。史實中雷震繼續推動組黨直至被捕。",
-      step: 3, total: 3
-    },
-    lei_form_party_2: {
-      chapter: "1960年9月4日，台北",
-      title: "逮捕令",
-      text: "1960年9月4日，台灣警備總司令部的人來了。軍事法庭以「為匪宣傳」、「知匪不報」定罪。蔣中正手諭：「刑期不得少於10年。」\n\n你被判十年有期徒刑。1970年9月4日出獄，你已是七十三歲的老人。",
-      ending: "bad",
-      endingTitle: "十年，換來一個沒有建立的反對黨",
-      endingText: "你坐了十年監獄，中國民主黨在你被捕當天宣告組黨失敗，《自由中國》雜誌同日解散。台灣直到1986年才有合法的反對黨。你說出了一代人說不出口的話，然後為此付出了十年。",
-      history: "此為劇本虛構走向。史實中雷震並未成功建立反對黨，而是在籌備過程中即遭逮捕。1960年9月4日遭警備總司令部逮捕，判處十年有期徒刑。蔣中正手諭「刑期不得少於10年」。1970年出獄後持續寫作，1979年逝世，享年82歲。",
-      step: 3, total: 3
-    },
-    lei_abort_party: {
-      chapter: "1960年代，台北",
-      title: "放棄了組黨，但沒有放棄發聲",
-      text: "你放棄了組黨，改以文章繼續推動改革。《自由中國》繼續出刊，你繼續批評，雖然聲音比以前稍小了一些。\n\n但在那個時代，稍小的聲音仍然太大。\n\n1960年9月，你仍然被捕了。",
-      ending: "bad",
-      endingTitle: "在那個時代，只要發聲就會被聽見",
-      endingText: "你以為放棄組黨能讓你繼續說話。但在那個時代，說話本身就是罪。你被判十年。這條路線為劇本虛構走向——史實中雷震繼續推動組黨，直至1960年9月4日被捕，享年82歲（1979年逝世）。",
-      history: "此為劇本虛構走向。史實中，雷震並未因放棄組黨而倖免——他持續推動中國民主黨的組建計畫，直至1960年9月4日遭警備總司令部逮捕。軍事法庭以「為匪宣傳、知匪不報」判處十年有期徒刑，《自由中國》同日停刊。蔣中正手諭「刑期不得少於10年」。1970年出獄後持續寫作，1979年逝世，享年82歲。",
-      step: 3, total: 3
-    }
-  },
-  jiang: {
-    start: {
-      chapter: "1963年，台中，陸軍官校",
-      title: "幾個人在家裡談話",
-      text: "你是江炳興，陸軍官校第三十三期學生，台中人，基督徒。\n\n1963年，你還是個學生。你和黃重光、陳新吉幾個人，在朋友家裡談論台灣獨立——談的是想法，是信念，是這片土地應有的命運。\n\n有人告密了。1963年6月16日，你被羈押。",
-      choices: [
-        { id: "jiang_confess", text: "在審訊的壓力下，說出了其他人的名字，希望換取寬待", label: "選擇 A" },
-        { id: "jiang_deny", text: "拒絕招供，也不透露任何人的名字，一個人承受一切", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    jiang_confess: {
-      chapter: "1965—1970年，泰源感訓監獄",
-      title: "十年，然後呢",
-      text: "你被判十年有期徒刑，關在台東「國防部泰源感訓監獄」。\n\n1970年初，監獄裡有一個計畫——泰源事件，一群政治犯計畫暴動，奪槍，以「台灣獨立了」的廣播震動全島。\n\n你已服了快七年的刑。你知道出去之後是什麼，也知道留在這裡是什麼。",
-      choices: [
-        { id: "jiang_join_uprising", text: "加入暴動計畫，在監獄裡為台灣獨立的信念再搏一次", label: "選擇 A" },
-        { id: "jiang_wait", text: "相信時代終將改變，繼續等待服滿刑期，不參與暴動", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    jiang_deny: {
-      chapter: "1965—1970年，泰源感訓監獄",
-      title: "十年，在這裡",
-      text: "你拒絕招供，只有你一人被起訴定罪，被判十年。朋友們因此未受牽連。\n\n你被關在台東泰源感訓監獄，在這裡遇到了鄭金河、詹天增、陳良等人，志同道合，信念沒有磨滅。\n\n1970年初，暴動計畫成形。",
-      choices: [
-        { id: "jiang_lead_uprising", text: "積極參與甚至協助領導泰源事件，你的信念是你行動的理由", label: "選擇 A" },
-        { id: "jiang_support_uprising", text: "參與，但在後方支援，不在最前線", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    jiang_join_uprising: {
-      chapter: "1970年2月8日，泰源感訓監獄",
-      title: "台灣獨立了",
-      text: "1970年2月8日，你和鄭金河、詹天增等人趁換哨時機搶奪衛兵槍械，奪取了監獄廣播室。\n\n「台灣獨立了！把槍交出來！」廣播傳出去了，但只在監獄內部。外面的世界沒有響應。\n\n軍方動員東部海防部隊三個營十六個連進行搜山。2月13日，你被捕。",
-      ending: "dark",
-      endingTitle: "廣播響了，但只在那個監獄裡",
-      endingText: "你以「意圖以暴動之方法顛覆政府而著手實行」被判死刑，全部財產沒收。1970年5月30日，你在安坑刑場執行死刑，享年31歲。2019年，促轉會撤銷你的判決，正式平反。",
-      history: "此為劇本虛構走向。史實中江炳興並未被動等待聲援，而是積極主導了起義行動。1970年2月8日泰源事件爆發，江炳興等人奪槍奪廣播室。軍方大規模搜捕，江炳興於2月13日被捕，以《懲治叛亂條例》判處死刑，1970年5月30日執行，享年31歲。2019年促轉會公告撤銷判決。",
-      step: 3, total: 3
-    },
-    jiang_wait: {
-      chapter: "1970年後，泰源感訓監獄",
-      title: "你沒有加入（虛構走向）",
-      text: "你選擇不加入。2月8日，鄭金河、詹天增等人發動了那場暴動，你沒在其中。\n\n他們被捕，被槍決。你繼續服刑，最終期滿出獄。\n\n出去之後的台灣，與你當年談論的那個台灣，還差得很遠。",
-      ending: "mid",
-      endingTitle: "活著，帶著那些人的記憶",
-      endingText: "這是劇本的虛構走向。史實中，江炳興參與並被判死刑，1970年5月30日執行，享年31歲，2019年促轉會撤銷判決。那場暴動失敗了，但泰源五烈士的名字，被後來的人記住了。",
-      history: "此為劇本虛構走向。史實中，江炳興選擇參與泰源事件，與鄭金河、詹天增、謝東榮、江炳興、賴明雄五人策動暴動、奪槍奪廣播室，試圖廣播獨立宣言。行動於1970年2月8日爆發，江炳興於2月13日被捕，以《懲治叛亂條例》判處死刑，1970年5月30日執行，享年31歲。2019年促轉會公告撤銷判決，正式平反。五人後稱「泰源五烈士」。",
-      step: 3, total: 3
-    },
-    jiang_lead_uprising: {
-      chapter: "1970年2月8日，泰源感訓監獄",
-      title: "台灣獨立了",
-      text: "你在那個暴動計畫中扮演了核心角色。2月8日，廣播室被奪取，「台灣獨立了！」傳出去了。\n\n但外面的世界沒有響應。軍方動員大規模搜捕，2月13日，你被捕。\n\n法庭上，你以「意圖以暴動之方法顛覆政府而著手實行」被判處死刑。",
-      ending: "dark",
-      endingTitle: "廣播響了，但只在那個監獄裡",
-      endingText: "1970年5月30日，你在安坑刑場被執行死刑，享年31歲。你的名字被刻在綠島和景美的人權紀念碑上。2019年，促轉會撤銷你的判決，正式平反。你相信的那個台灣，在你死後幾十年，以不同的方式慢慢成型。",
-      history: "史實：泰源事件（1970年2月8日）是白色恐怖時期最重要的政治犯暴動。江炳興等人以死刑定讞，1970年5月30日執行。2019年促轉會公告撤銷判決，正式平反。",
-      step: 3, total: 3
-    },
-    jiang_support_uprising: {
-      chapter: "1970年2月8日，泰源感訓監獄",
-      title: "在後方，也在其中",
-      text: "你在後方支援，沒有在最前線。但2月8日那天，你仍然是整個行動的一部分。\n\n廣播響了，然後軍方來了。你在2月13日被捕。\n\n法庭上，你以「意圖以暴動之方法顛覆政府而著手實行」被判處死刑。",
-      ending: "dark",
-      endingTitle: "參與就是其中的一部分",
-      endingText: "1970年5月30日，你在安坑刑場被執行死刑，享年31歲。2019年，促轉會撤銷你的判決，正式平反。在那個時代，站在那裡，做了那件事——這已經是一切。",
-      history: "此為劇本虛構走向。史實中江炳興在泰源事件中並非以後方支援的方式參與，而是作為核心行動者直接投身行動，於事後遭到逮捕。江炳興以《懲治叛亂條例》判處死刑，1970年5月30日執行，享年31歲。2019年促轉會公告撤銷判決，正式平反。",
-      step: 3, total: 3
-    }
-  },
-  pmm: {
-    start: {
-      chapter: "1964年，台北",
-      title: "一份宣言",
-      text: "你是彭明敏，台灣大學政治系教授，台灣最受矚目的本省籍學者。\n\n1964年，你和學生謝聰敏、魏廷朝起草了《台灣人民自救運動宣言》——「一個中國，一個台灣，早已是鐵一般的事實；反攻大陸，絕對不可能。」\n\n你們計畫印製一萬份。還沒發送，有人告密了。",
-      choices: [
-        { id: "pmm_send_first", text: "在被捕前搶先寄出一部分宣言，讓聲音傳出去，即使只有一部分", label: "選擇 A" },
-        { id: "pmm_destroy", text: "立即銷毀宣言，保護自己和謝聰敏、魏廷朝，等待另一個時機", label: "選擇 B" }
-      ],
-      step: 1, total: 3
-    },
-    pmm_send_first: {
-      chapter: "1964年9月，台北",
-      title: "被捕，被審訊",
-      text: "一部分宣言寄出了，但你仍然被捕。\n\n在審訊室裡，審訊者問你：誰還知道這份宣言？謝聰敏和魏廷朝是否參與？\n\n你知道，你怎麼回答，可能影響他們的命運。",
-      choices: [
-        { id: "pmm_refuse_all", text: "拒絕承認任何事，不招供任何人，讓他們在沒有你的口供下定罪", label: "選擇 A" },
-        { id: "pmm_own_it", text: "承認宣言是你主導起草的，盡量保護謝聰敏和魏廷朝少受牽連", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    pmm_destroy: {
-      chapter: "1964年9月，台北",
-      title: "宣言消失了，但他們已有線索",
-      text: "你銷毀了宣言。但情治人員已有其他情報，你仍然被捕。\n\n在審訊中，謝聰敏和魏廷朝已被分別拘押。你知道他們遭受了嚴厲的刑求——三天三夜，冷水、電擊、拳打，魏廷朝兩顆門牙被打落。\n\n你面對的問題是：現在，你要怎麼說？",
-      choices: [
-        { id: "pmm_deny_deny", text: "全盤否認，什麼都不承認，讓定罪的責任完全由他們的程序來承擔", label: "選擇 A" },
-        { id: "pmm_own_it_2", text: "承認宣言是你起草的，堅持這是言論自由，不是叛亂", label: "選擇 B" }
-      ],
-      step: 2, total: 3
-    },
-    pmm_refuse_all: {
-      chapter: "1964—1970年，台北",
-      title: "八年，然後逃亡",
-      text: "你拒絕招供。1965年，你以「預備以非法方法變更國憲、顛覆政府」被判處八年有期徒刑。謝聰敏判十年，魏廷朝判八年。\n\n同年11月，在國際輿論壓力下，你獲總統特赦，但被置於嚴密監控之下。\n\n1970年1月，在多方協助下，你化裝秘密出走——香港、曼谷、哥本哈根——抵達瑞典，獲政治庇護，後赴美。",
-      ending: "mid",
-      endingTitle: "你逃了，但台灣留下來了",
-      endingText: "你流亡海外23年，在異鄉繼續為台灣發聲。1992年返台，1996年以總統候選人身分出現在第一次直選的選票上。那份宣言說的——「一個中國，一個台灣，早已是事實」——幾十年後成了多數台灣人的共識。",
-      history: "此為劇本虛構走向。史實中彭明敏在危機顯現時，最初的應對是試圖銷毀宣言，而非率先廣發傳播，最終仍遭逮捕。彭明敏1964年起草《台灣人民自救運動宣言》，遭逮捕後判8年，1965年獲特赦，1970年化裝秘密逃往瑞典，後赴美，流亡23年。1992年返台，1996年以總統候選人參選，2022年逝世，享年98歲。",
-      step: 3, total: 3
-    },
-    pmm_own_it: {
-      chapter: "1964—1970年，台北",
-      title: "你承擔，他們仍然受苦",
-      text: "你承認宣言是你主導的，試圖讓謝聰敏和魏廷朝少受牽連。但軍事法庭仍然重判了他們。\n\n謝聰敏十年，魏廷朝八年，你八年。\n\n1965年，你獲特赦，被置於監控下。1970年，你秘密出走，逃往瑞典，流亡23年。",
-      ending: "mid",
-      endingTitle: "承擔了，但他們仍然付出了代價",
-      endingText: "你的承擔沒能讓他們免於重刑——在那個體制裡，主犯的承認只會讓所有人都更重。1992年你返台，1996年以總統候選人參選。那份宣言的名字，在台灣的民主史上留了下來。",
-      history: "此為劇本虛構走向。史實中彭明敏在得知危機後的第一個行動是試圖銷毀宣言，而非先廣發後招認。彭明敏、謝聰敏、魏廷朝三人均遭重判（彭8年、謝10年、魏8年）。彭明敏1965年獲特赦，1970年秘密逃往瑞典，流亡23年，1992年返台，2022年逝世，享年98歲。",
-      step: 3, total: 3
-    },
-    pmm_deny_deny: {
-      chapter: "1964—1970年，台北",
-      title: "否認，但宣言已在那裡",
-      text: "你全盤否認。但宣言的草稿、印刷機、謝聰敏和魏廷朝的供詞——都在那裡。\n\n1965年，你以「預備顛覆政府」被判八年，謝聰敏十年，魏廷朝八年。同年獲特赦，被置監控下。\n\n1970年，你秘密出走，逃往瑞典，流亡23年。",
-      ending: "mid",
-      endingTitle: "否認沒有改變任何一個刑期",
-      endingText: "在那個體制裡，定罪的邏輯不取決於你承不承認。那份宣言在那裡，那個時代在那裡。1992年你返台，你的名字和那份宣言的名字連在一起，成為台灣民主史的一部分。",
-      history: "此為劇本虛構走向。史實中彭明敏並未選擇全面否認，而是在審訊中坦承起草宣言。1964年起草《台灣人民自救運動宣言》，1965年被判8年並獲特赦，1970年化裝秘密逃往瑞典，流亡23年後1992年返台，2022年逝世，享年98歲。",
-      step: 3, total: 3
-    },
-    pmm_own_it_2: {
-      chapter: "1964—1970年，台北",
-      title: "這是言論自由，不是叛亂",
-      text: "你在審訊中說：這份宣言，說的是事實，不是叛亂。你承認起草，但堅持你的立場。\n\n法庭判你八年，謝聰敏十年，魏廷朝八年。\n\n1965年，你獲總統特赦，但監控從未結束。1970年，你秘密出走，逃往瑞典，開始了23年的流亡。",
-      ending: "mid",
-      endingTitle: "你說了，然後你逃了，然後你回來了",
-      endingText: "你的堅持讓那份宣言在歷史裡的意義更清晰——它不是陰謀，是一個人用教授的身份，對著這片土地說出的真話。1992年你返台，1996年參選總統，2022年逝世，享年98歲。",
-      history: "史實：彭明敏1964年起草《台灣人民自救運動宣言》，遭逮捕判8年，獲特赦後受監控，1970年秘密逃往瑞典，流亡23年，1992年返台，1996年以總統候選人參選，2022年逝世，享年98歲。",
-      step: 3, total: 3
-    }
-  }
-};
-// 各視角資料來源
-const SOURCES = {
-  lin: [
-    { label: "圓環緝菸事件 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6" },
-    { label: "二二八事件 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6" }
-  ],
-  fu: [
-    { label: "傅學通 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%82%85%E5%AD%B8%E9%80%9A" },
-    { label: "圓環緝菸事件 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%9C%93%E7%92%B0%E7%B7%9D%E8%8F%B8%E4%BA%8B%E4%BB%B6" },
-    { label: "政治大學：228新聞史料", url: "https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/3519/" }
-  ],
-  chen1: [
-    { label: "陳儀 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" },
-    { label: "二二八事件大事紀要 — 台北二二八紀念館", url: "https://228memorialmuseum.gov.taipei/cp.aspx?n=A672EB3DBE05B336" }
-  ],
-  zhou: [
-    { label: "二二八事件處理委員會 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83" },
-    { label: "二二八事件 — 財團法人二二八事件紀念基金會", url: "https://www.228.org.tw/incident-research1" }
-  ],
-  wang1: [
-    { label: "王添燈 — 二二八消失的台灣菁英", url: "https://www.228.org.tw/228heroes/ed5a4f57-87d4-4d2b-8690-57174f69eeb9" },
-    { label: "臺灣廣播電台遺址 — 二二八紀念基金會", url: "https://www.228.org.tw/courses-1/%E8%87%BA%E7%81%A3%E5%BB%A3%E6%92%AD%E9%9B%BB%E5%8F%B0" }
-  ],
-  wei: [
-    { label: "蔣渭川 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%94%A3%E6%B8%AD%E5%B7%9D" },
-    { label: "二二八事件處理委員會 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83" }
-  ],
-  wang: [
-    { label: "王添燈 — 二二八消失的台灣菁英", url: "https://www.228.org.tw/228heroes/ed5a4f57-87d4-4d2b-8690-57174f69eeb9" },
-    { label: "三十二條處理大綱 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%B8%89%E5%8D%81%E4%BA%8C%E6%A2%9D%E8%99%95%E7%90%86%E5%A4%A7%E7%B6%B1" }
-  ],
-  chen: [
-    { label: "陳儀 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" },
-    { label: "二二八事件處理委員會 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83" }
-  ],
-  liu: [
-    { label: "基隆二二八屠殺 — 台灣放送", url: "https://www.telltaiwan.org/?p=1592" },
-    { label: "二二八事件期間整編廿一師主力回台經過", url: "https://haixia-info.com/articles/5048.html" }
-  ],
-  xie: [
-    { label: "謝雪紅 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%AC%9D%E9%9B%AA%E7%B4%85" },
-    { label: "二七部隊 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%B8%83%E9%83%A8%E9%9A%8A" },
-    { label: "烏牛欄之役 — 維基百科", url: "https://zh.wikipedia.org/zh-hant/%E7%83%8F%E7%89%9B%E6%AC%84%E4%B9%8B%E5%BD%B9" }
-  ],
-  ke: [
-    { label: "柯遠芬 — 維基百科", url: "https://zh.wikipedia.org/zh-hant/%E6%9F%AF%E9%81%A0%E8%8A%AC" },
-    { label: "二二八事件中的清鄉 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%B8%85%E9%84%89" }
-  ],
-  peng: [
-    { label: "彭孟緝 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%BD%AD%E5%AD%9F%E7%B7%9D" },
-    { label: "高雄大屠殺 — 聚珍台灣", url: "https://www.gjtaiwan.com/new/?p=109601" }
-  ],
-  czp: [
-    { label: "陳澄波 — 二二八消失的台灣菁英", url: "https://www.228.org.tw/228heroes/85626dea-4eb2-49fc-8e1b-16bfed940e09" },
-    { label: "陳澄波 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%99%B3%E6%BE%84%E6%B3%A2" }
-  ],
-  tang: [
-    { label: "湯德章 — 二二八消失的台灣菁英", url: "https://www.228.org.tw/228heroes/853e98d1-786b-403a-b197-674dd3f0029b" },
-    { label: "湯德章 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E6%B9%AF%E5%BE%B7%E7%AB%A0" }
-  ],
-  wdm: [
-    { label: "魏道明 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%AD%8F%E9%81%93%E6%98%8E" },
-    { label: "台灣省政府主席 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%87%BA%E7%81%A3%E7%9C%81%E6%94%BF%E5%BA%9C%E4%B8%BB%E5%B8%AD" }
-  ],
-  cyi: [
-    { label: "陳儀 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%99%B3%E5%84%80" },
-    { label: "陳儀的下場 — 台灣228紀念網", url: "https://taiwantt.org.tw/books/228/new_page_41.htm" }
-  ],
-  wcc: [
-    { label: "蔣渭川 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%94%A3%E6%B8%AD%E5%B7%9D" },
-    { label: "二二八事件處理委員會 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E4%BA%8B%E4%BB%B6%E8%99%95%E7%90%86%E5%A7%94%E5%93%A1%E6%9C%83" }
-  ],
-  ckss: [
-    { label: "臺灣白色恐怖時期 — 維基百科", url: "https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E7%99%BD%E8%89%B2%E6%81%90%E6%80%96%E6%99%82%E6%9C%9F" },
-    { label: "蔣中正 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%94%A3%E4%B8%AD%E6%AD%A3" },
-    { label: "白色恐怖簡介 — 台灣民間真相與和解促進會", url: "https://taiwantrc.org/taiwan-history/white-terror-history/" }
-  ],
-  cks2: [
-    { label: "蔣經國 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%94%A3%E7%B6%93%E5%9C%8B" },
-    { label: "臺灣白色恐怖時期 — 維基百科", url: "https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E7%99%BD%E8%89%B2%E6%81%90%E6%80%96%E6%99%82%E6%9C%9F" }
-  ],
-  lei: [
-    { label: "雷震 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%9B%B7%E9%9C%87_(1897%E5%B9%B4)" },
-    { label: "雷震事件 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E9%9B%B7%E9%9C%87%E4%BA%8B%E4%BB%B6" },
-    { label: "自由中國雜誌 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E8%87%AA%E7%94%B1%E4%B8%AD%E5%9C%8B_(%E9%9B%9C%E8%AA%8C)" }
-  ],
-  jiang: [
-    { label: "江炳興 — 國家人權記憶庫", url: "https://memory.nhrm.gov.tw/TopicExploration/Person/Detail/536" },
-    { label: "江炳興 — 維基百科", url: "https://zh.wikipedia.org/zh-hant/%E6%B1%9F%E7%82%B3%E8%88%88" },
-    { label: "泰源事件 — 故事 StoryStudio", url: "https://storystudio.tw/article/gushi/%E3%80%8C%E8%87%BA%E7%81%A3%E7%8D%A8%E7%AB%8B%E4%BA%86%EF%BC%81%E6%8A%8A%E6%A7%8D%E4%BA%A4%E5%87%BA%E4%BE%86%EF%BC%81%E3%80%8D%E2%94%80%E2%94%801970%E5%B9%B42%E6%9C%888%E6%97%A5%EF%BC%8E%E8%A2%AB/" }
-  ],
-  pmm: [
-    { label: "彭明敏 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%BD%AD%E6%98%8E%E6%95%8F" },
-    { label: "台灣自救運動宣言 — 維基百科", url: "https://zh.wikipedia.org/zh-tw/%E5%8F%B0%E7%81%A3%E8%87%AA%E6%95%91%E9%81%8B%E5%8B%95%E5%AE%A3%E8%A8%80" },
-    { label: "彭明敏生平 — 法律白話文運動", url: "https://plainlaw.me/posts/peng-ming-min" }
-  ]
-};
+      (function () {
+        const assetImages = [
+          { src: 'assets/1946.jpg',                                                                                        title: '1946年 臺灣新生報',                            docId: 'doc-1947' },
+          { src: 'assets/1947.jpg',                                                                                        title: '1947/02/28 民報',                              docId: 'doc-1947' },
+          { src: 'assets/194702282.jpg',                                                                                   title: '1947/02/28 陳儀廣播談話',                      docId: 'doc-19470228' },
+          { src: 'assets/19470228私煙擊斃市民.jpg',                                                                        title: '1947/02/28 查緝私煙肇禍',                      docId: 'doc-19470228' },
+          { src: 'assets/194703012.png',                                                                                   title: '1947/03/01 臺北市戒嚴佈告',                    docId: 'doc-19470303' },
+          { src: 'assets/19470301戒嚴解除.jpg',                                                                            title: '1947/03/01 戒嚴解除',                          docId: 'doc-19470303' },
+          { src: 'assets/19470303處理委員會.jpg',                                                                          title: '1947/03/03 二二八處理委員會',                  docId: 'doc-19470303' },
+          { src: 'assets/19470303陳儀.jpg',                                                                                title: '1947/03/03 陳儀',                              docId: 'doc-19470303' },
+          { src: 'assets/19470306.jpg',                                                                                    title: '1947/03/06 臺灣新生報',                        docId: 'doc-19470303' },
+          { src: 'assets/二二八事件處理委員會名單.jpg',                                                                    title: '二二八事件處理委員會名單',                      docId: 'doc-19470303' },
+          { src: 'assets/19470308 圍剿.jpg',                                                                               title: '1947/03/08 圍剿',                              docId: 'doc-19470310' },
+          { src: 'assets/19470308.jpg',                                                                                    title: '1947/03/08 軍隊登陸基隆',                      docId: 'doc-19470310' },
+          { src: 'assets/19470310.jpg',                                                                                    title: '1947/03/10 軍隊進駐',                          docId: 'doc-19470310' },
+          { src: 'assets/19470310大員.jpg',                                                                                title: '1947/03/10 大員',                              docId: 'doc-19470310' },
+          { src: 'assets/19470310蔣中正深望.jpg',                                                                          title: '1947/03/10 蔣中正',                            docId: 'doc-19470310' },
+          { src: 'assets/19470313 高雄繳出 槍三百餘桿.jpg',                                                               title: '1947/03/13 高雄繳槍三百餘桿',                  docId: 'doc-19470314' },
+          { src: 'assets/19470314掃蕩周報.jpg',                                                                            title: '1947/03/14 掃蕩周報',                          docId: 'doc-19470314' },
+          { src: 'assets/19470314湯德章.jpg',                                                                              title: '1947/03/14 湯德章',                            docId: 'doc-19470314' },
+          { src: 'assets/19470315國軍進入臺中.jpg',                                                                        title: '1947/03/15 國軍進入臺中',                      docId: 'doc-19470314' },
+          { src: 'assets/19470315市價.jpg',                                                                                title: '1947/03/15 市價報導',                          docId: 'doc-19470314' },
+          { src: 'assets/19470315秩序恢復交還武器.jpg',                                                                    title: '1947/03/15 秩序恢復交還武器',                  docId: 'doc-19470314' },
+          { src: 'assets/19470315臺北初步調查損失.jpg',                                                                    title: '1947/03/15 臺北初步調查損失',                  docId: 'doc-19470314' },
+          { src: 'assets/19470316不要上匪徒離間同胞感情的當.jpg',                                                          title: '1947/03/16 不要上匪徒離間同胞感情的當',        docId: 'doc-19470314' },
+          { src: 'assets/19470316總部開始清除叛徒.jpg',                                                                    title: '1947/03/16 總部開始清除叛徒',                  docId: 'doc-19470314' },
+          { src: 'assets/19470317物價高生活苦.jpg',                                                                        title: '1947/03/17 物價高生活苦',                      docId: 'doc-19470314' },
+          { src: 'assets/19470411柯參謀長對記者談.jpg',                                                                    title: '1947/04/11 柯遠芬對記者談',                    docId: 'doc-19470516' },
+          { src: 'assets/19470511送別陳長官.jpg',                                                                          title: '1947/05/11 送別陳長官',                        docId: 'doc-19470516' },
+          { src: 'assets/19470512長官昨已飛抵南京.jpg',                                                                    title: '1947/05/12 陳儀飛抵南京',                      docId: 'doc-19470516' },
+          { src: 'assets/19470515歡迎魏道明主席.jpg',                                                                      title: '1947/05/15 歡迎魏道明主席',                    docId: 'doc-19470516' },
+          { src: 'assets/19490519另臺灣省宣布戒嚴.jpg',                                                                    title: '1949/05/19 臺灣省宣布戒嚴',                    docId: 'doc-1949' },
+          { src: 'assets/1950對潛台匪諜活動之防制.jpg',                                                                    title: '1950 對潛台匪諜活動之防制',                    docId: 'doc-1949' },
+          { src: 'assets/19870818抗議者與官員進行溝通.jpg',                                                                title: '1987/08/18 抗議者與官員溝通',                  docId: 'doc-1987' },
+          { src: 'assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg',                                                    title: '1991/03/07 終止動員戡亂時期',                  docId: 'doc-1987' },
+          { src: 'assets/19920401 關於「二二八事件研究報告」之出版.jpg',                                                   title: '1992/04/01 研究報告出版',                      docId: 'doc-1992' },
+          { src: 'assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg',                           title: '1995/09/30 二二八紀念基金會第一次董監事會',    docId: 'doc-1987' },
+          { src: 'assets/20171205促進轉型正義條例.jpg',                                                                    title: '2017/12/05 促進轉型正義條例',                  docId: 'doc-2017' },
+          { src: 'assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg',                                                    title: '2018/05/31 促轉會揭牌典禮',                    docId: 'doc-2018' },
+        ];
 
-let currentPov = null;
-let currentPath = []; // { fromSceneId, choiceId, label, isHistorical }
-const root = document.getElementById('root');
+        // Fisher-Yates shuffle
+        for (let i = assetImages.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [assetImages[i], assetImages[j]] = [assetImages[j], assetImages[i]];
+        }
 
-// 人物視角 → detail.html 章節對應表
-const detailMap = {
-  lin:   'sec-19470227',  // 林江邁 → 緝私衝突
-  fu:    'sec-19470227',  // 傅學通 → 緝私衝突
-  chen1: 'sec-19470228',  // 陳儀（2/28）→ 罷市請願
-  zhou:  'sec-19470228',  // 周延壽 → 罷市請願
-  wang1: 'sec-19470228',  // 王添燈（2/28）→ 罷市請願
-  wei:   'sec-19470303',  // 蔣渭川 → 處理委員會
-  wang:  'sec-19470303',  // 王添燈（3/3）→ 處理委員會
-  chen:  'sec-19470303',  // 陳儀（3/3）→ 處理委員會
-  liu:   'sec-19470310',  // 劉雨卿 → 軍隊進駐鎮壓
-  xie:   'sec-19470310',  // 謝雪紅 → 軍隊進駐鎮壓
-  ke:    'sec-19470314',  // 柯遠芬 → 全臺清剿
-  peng:  'sec-19470314',  // 彭孟緝 → 全臺清剿
-  czp:   'sec-19470314',  // 陳澄波 → 全臺清剿
-  tang:  'sec-19470314',  // 湯德章 → 全臺清剿
-  wdm:   'sec-19470516',  // 魏道明 → 陳儀撤職
-  cyi:   'sec-19470516',  // 陳儀（撤職後）→ 陳儀撤職
-  wcc:   'sec-19470516',  // 蔣渭川（撤職後）→ 陳儀撤職
-  ckss:  'sec-1949',      // 蔣中正 → 白色恐怖
-  cks2:  'sec-1949',      // 蔣經國 → 白色恐怖
-  lei:   'sec-1949',      // 雷震 → 白色恐怖
-  jiang: 'sec-1949',      // 江炳興 → 白色恐怖
-  pmm:   'sec-1949',      // 彭明敏 → 白色恐怖
-};
+        const track = document.getElementById('assetCarouselTrack');
+        if (track) {
+          assetImages.slice(0, 5).forEach(function (item, i) {
+            const li = document.createElement('li');
+            li.className = 'slide';
+            li.setAttribute('data-slide', '');
+            if (i === 0) li.setAttribute('data-active', 'true');
+            const encodedSrc = item.src.replace(/'/g, '%27');
+            li.innerHTML =
+              '<figure>' +
+                '<img src="' + encodedSrc + '" alt="' + item.title + '" loading="lazy" decoding="async" />' +
+                '<figcaption>' +
+                  '<strong>' + item.title + '</strong>' +
+                  '<div><a href="documents.html#' + item.docId + '">查看文件</a></div>' +
+                '</figcaption>' +
+              '</figure>';
+            track.appendChild(li);
+          });
+        }
+      })();
+    </script>
 
-// 人物視角 → people.html 錨點對應表
-const personMap = {
-  lin:   'p-sec-19470227-u6797u6c5fu9081',  // 林江邁
-  fu:    'p-sec-19470227-u5085u5b78u901a',  // 傅學通
-  chen1: 'p-sec-19470228-u9673u5100',       // 陳儀（2/28）
-  zhou:  'p-sec-19470228-u5468u5ef6u58fd',  // 周延壽
-  wang1: 'p-sec-19470228-u738bu6dfbu71c8',  // 王添燈（2/28）
-  wei:   'p-sec-19470303-u8523u6e2du5ddd',  // 蔣渭川（3/3）
-  wang:  'p-sec-19470303-u738bu6dfbu71c8',  // 王添燈（3/3）
-  chen:  'p-sec-19470303-u9673u5100',       // 陳儀（3/3）
-  liu:   'p-sec-19470310-u5289u96e8u537f',  // 劉雨卿
-  xie:   'p-sec-19470310-u8b1du96eau7d05',  // 謝雪紅
-  ke:    'p-sec-19470314-u67efu9060u82ac',  // 柯遠芬
-  peng:  'p-sec-19470314-u5f6du5b5fu7ddd',  // 彭孟緝
-  czp:   'p-sec-19470314-u9673u6f84u6ce2',  // 陳澄波
-  tang:  'p-sec-19470314-u6e6fu5fb7u7ae0',  // 湯德章
-  wdm:   'p-sec-19470516-u9b4fu9053u660e',  // 魏道明
-  cyi:   'p-sec-19470516-u9673u5100',       // 陳儀（撤職後）
-  wcc:   'p-sec-19470516-u8523u6e2du5ddd',  // 蔣渭川（撤職後）
-  ckss:  'p-sec-1949-u8523u4e2du6b63',      // 蔣中正
-  cks2:  'p-sec-1949-u8523u7d93u570b',      // 蔣經國
-  lei:   'p-sec-1949-u96f7u9707',           // 雷震
-  jiang: 'p-sec-1949-u6c5fu70b3u8208',      // 江炳興
-  pmm:   'p-sec-1949-u5f6du660eu654f',      // 彭明敏
-};
+    <script>
+      (function () {
+        const dialog = document.getElementById("tipsDialog");
+        const btnClose = document.getElementById("btnCloseTips");
+        const btnOk = document.getElementById("btnOkTips");
+        const heroMedia = document.querySelector("figure.hero-media");
+        const pressSlides = document.getElementById("press-slides");
+        const carousel = pressSlides?.querySelector("[data-carousel]") ?? document.querySelector("[data-carousel]");
+        const willReplaceHeroWithCarousel = Boolean(
+          heroMedia && carousel && heroMedia !== carousel.closest("figure.hero-media")
+        );
+        const heroImg = document.querySelector("figure.hero-media img");
 
-function dots(step, total) {
-  return Array.from({length: total}, (_, i) => {
-    const cls = i < step - 1 ? 'done' : i === step - 1 ? 'active' : '';
-    return `<div class="dot ${cls}"></div>`;
-  }).join('');
-}
+        function closeTips() {
+          if (!dialog) return;
+          if (typeof dialog.close === "function") dialog.close();
+        }
 
-function renderSelect() {
-  const gw = document.querySelector('.game-wrap');
-  if (gw) gw.style.backgroundImage = '';
-  root.innerHTML = `
-    <div class="fade-in">
-      <p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 0.5rem;line-height:1.6;">1947年，台灣。選擇一個視角，走進那段歷史。</p>
+        btnClose?.addEventListener("click", closeTips);
+        btnOk?.addEventListener("click", closeTips);
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第一章・圓環緝菸事件　1947年2月27日</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select">
-            <button class="pov-btn" onclick="startPov('lin')">
-              <p class="pov-role">受難者視角</p>
-              <p class="pov-name">林江邁</p>
-              <p class="pov-desc">四十歲的台北寡婦，靠賣菸養活孩子。那個夜晚，她的菸、她的錢、她的頭，全都成了事件的一部分。</p>
-              <span class="pov-tag tag-victim">受難者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('fu')">
-              <p class="pov-role">加害者視角</p>
-              <p class="pov-name">傅學通</p>
-              <p class="pov-desc">專賣局查緝員。那個夜晚，他的一個動作改變了台灣歷史。他如何想的，他有沒有選擇？</p>
-              <span class="pov-tag tag-perpetrator">加害者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+        if (dialog && typeof dialog.showModal === "function") {
+          if (!dialog.open) dialog.showModal();
+        }
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第二章・罷市請願，衝突升高　1947年2月28日</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select" style="grid-template-columns: 1fr 1fr 1fr;">
-            <button class="pov-btn" onclick="startPov('chen1')">
-              <p class="pov-role">當權者視角</p>
-              <p class="pov-name">陳儀</p>
-              <p class="pov-desc">群眾走向長官公署，手無寸鐵，只是走過來。公署的衛兵在等命令。他如何下這道令，如何在廣播裡說出那句話——決定了接下來的一切。</p>
-              <span class="pov-tag tag-authority">當權者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('zhou')">
-              <p class="pov-role">調停者視角</p>
-              <p class="pov-name">周延壽</p>
-              <p class="pov-desc">台北市參議會議長，夾在民間憤怒與政府之間。他試圖成為橋樑——但橋樑能承受多重的憤怒，又能撐多久？</p>
-              <span class="pov-tag tag-mediator">調停者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('wang1')">
-              <p class="pov-role">倡議者視角</p>
-              <p class="pov-name">王添燈</p>
-              <p class="pov-desc">《人民導報》負責人，台灣省參議員。他手裡有筆，有廣播，有位置。在這個城市燃燒的一天，他選擇用這些工具做什麼？</p>
-              <span class="pov-tag tag-martyr">倡議者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+        // Fix: some environments may fail to load the hero image when it is embedded as a very long data URL.
+        // Force it to load from remote only when we still use the hero image (not the carousel replacement).
+        if (!willReplaceHeroWithCarousel && heroImg && heroImg.src && heroImg.src.startsWith("data:image/")) {
+          heroImg.setAttribute("loading", "eager");
+          heroImg.setAttribute("decoding", "async");
+          heroImg.setAttribute("referrerpolicy", "no-referrer");
+          // Prefer a remote image URL to avoid local asset loading issues in some environments.
+          heroImg.src = "https://228.drnh.gov.tw/index.php?act=Display/loadimg/72C";
+          heroImg.onerror = () => {
+            heroImg.onerror = null;
+            heroImg.src = "https://228.drnh.gov.tw/index.php?act=Display/loadimg/d0J";
+          };
+        }
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第三章・處理委員會　1947年3月3日起</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select" style="grid-template-columns: 1fr 1fr 1fr;">
-            <button class="pov-btn" onclick="startPov('wei')">
-              <p class="pov-role">斡旋者視角</p>
-              <p class="pov-name">蔣渭川</p>
-              <p class="pov-desc">台灣政治建設協會負責人，處委會核心人物。在陳儀的虛與委蛇與委員會內部的分歧之間，他如何抉擇？</p>
-              <span class="pov-tag tag-reformer">斡旋者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('wang')">
-              <p class="pov-role">倡議者視角</p>
-              <p class="pov-name">王添燈</p>
-              <p class="pov-desc">台灣省參議員，處委會宣傳負責人。他草擬三十二條改革要求，走上廣播電台，讓全台灣人聽見那些話。</p>
-              <span class="pov-tag tag-martyr">倡議者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('chen')">
-              <p class="pov-role">當權者視角</p>
-              <p class="pov-name">陳儀</p>
-              <p class="pov-desc">台灣省行政長官。他已秘密請兵，正在等待援軍抵台。處委會的三十二條要求，對他來說只是需要拖過去的幾天。</p>
-              <span class="pov-tag tag-authority">當權者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+        function initCarousel(carousel) {
+          if (carousel.getAttribute("data-init") === "true") return;
+          carousel.setAttribute("data-init", "true");
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第四章・軍隊進駐與全面鎮壓　1947年3月8日起</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select">
-            <button class="pov-btn" onclick="startPov('liu')">
-              <p class="pov-role">鎮壓者視角</p>
-              <p class="pov-name">劉雨卿</p>
-              <p class="pov-desc">整編第二十一師師長，奉命率軍自基隆登陸。他手握命令，手握武器。「恢復秩序」——這四個字，由他來決定意味著什麼。</p>
-              <span class="pov-tag tag-military">鎮壓者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('xie')">
-              <p class="pov-role">抵抗者視角</p>
-              <p class="pov-name">謝雪紅</p>
-              <p class="pov-desc">台灣共產黨創黨人，在台中組織二七部隊，帶領四百名學生與青年抵抗。她知道軍隊終將壓制一切，卻仍然站在那裡。</p>
-              <span class="pov-tag tag-resistance">抵抗者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+          const slides = Array.from(carousel.querySelectorAll("[data-slide]"));
+          const dotsWrap = carousel.querySelector("[data-dots]");
+          const btnPrev = carousel.querySelector("[data-prev]");
+          const btnNext = carousel.querySelector("[data-next]");
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第五章・全台清剿與擴大逮捕　1947年3月中旬起</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select">
-            <button class="pov-btn" onclick="startPov('ke')">
-              <p class="pov-role">清鄉執行者視角</p>
-              <p class="pov-name">柯遠芬</p>
-              <p class="pov-desc">台灣省警備司令部參謀長，清鄉的主要執行官員。他說出的那句話，定義了這場鎮壓的標準。</p>
-              <span class="pov-tag tag-cleansing">清鄉者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('peng')">
-              <p class="pov-role">要塞司令視角</p>
-              <p class="pov-name">彭孟緝</p>
-              <p class="pov-desc">高雄要塞司令，3月6日拘捕談判代表，下令攻入市府禮堂。他因此一路晉升至參謀總長。</p>
-              <span class="pov-tag tag-military">要塞司令</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('czp')">
-              <p class="pov-role">和平使者視角</p>
-              <p class="pov-name">陳澄波</p>
-              <p class="pov-desc">台灣第一位打進日本官展的西畫家，嘉義處委會委員。他以畫筆記錄這片土地，最後以和平使者的身分走向危險。</p>
-              <span class="pov-tag tag-envoy">和平使者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('tang')">
-              <p class="pov-role">守護者視角</p>
-              <p class="pov-name">湯德章</p>
-              <p class="pov-desc">台南律師，日台混血，常為弱勢者義務辯護。軍隊入城的那一夜，他手邊有一份名單，還有最後的選擇。</p>
-              <span class="pov-tag tag-defender">守護者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+          let index = slides.findIndex((s) => s.getAttribute("data-active") === "true");
+          if (index < 0) index = 0;
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第六章・陳儀撤職，事件進入長期收束　1947年4月起</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select" style="grid-template-columns: 1fr 1fr 1fr;">
-            <button class="pov-btn" onclick="startPov('wdm')">
-              <p class="pov-role">繼任者視角</p>
-              <p class="pov-name">魏道明</p>
-              <p class="pov-desc">前駐美大使，接替陳儀出任首任台灣省政府主席。他宣告解除戒嚴、結束清鄉——但傷口已在，他能做什麼，又願意做什麼？</p>
-              <span class="pov-tag tag-successor">繼任者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('cyi')">
-              <p class="pov-role">撤職者視角</p>
-              <p class="pov-name">陳儀（續）</p>
-              <p class="pov-desc">被解除台灣行政長官職務後，調任浙江省主席。在政治大變局中，他的選擇與下場，成為這段歷史最黑暗的諷刺。</p>
-              <span class="pov-tag tag-exiled">撤職者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('wcc')">
-              <p class="pov-role">倖存者視角</p>
-              <p class="pov-name">蔣渭川（續）</p>
-              <p class="pov-desc">二二八後，女兒已逝，爭議纏身。蔣中正三度召見。他如何在歷史的裂縫中定義自己，如何選擇繼續活下去的方式？</p>
-              <span class="pov-tag tag-survivor">倖存者</span>
-            </button>
-          </div>
-        </div>
-      </details>
+          function setActive(nextIndex) {
+            const safe = (nextIndex + slides.length) % slides.length;
+            slides.forEach((s, i) => s.setAttribute("data-active", i === safe ? "true" : "false"));
+            if (dotsWrap) {
+              const dots = Array.from(dotsWrap.querySelectorAll("button"));
+              dots.forEach((d, i) => d.setAttribute("aria-current", i === safe ? "true" : "false"));
+            }
+            index = safe;
 
-      <details class="chapter-section">
-        <summary class="chapter-summary">第七章・戒嚴體制下的白色恐怖延伸　1950年代起</summary>
-        <div class="chapter-section-body">
-          <div class="pov-select" style="grid-template-columns: 1fr 1fr 1fr;">
-            <button class="pov-btn" onclick="startPov('ckss')">
-              <p class="pov-role">威權建立者視角</p>
-              <p class="pov-name">蔣中正</p>
-              <p class="pov-desc">恐懼，是他選擇的治理語言。戒嚴令、軍法審判、情治網絡——他親筆批示了那1,061個死刑。</p>
-              <span class="pov-tag tag-dictator">建立者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('cks2')">
-              <p class="pov-role">情治掌控者視角</p>
-              <p class="pov-name">蔣經國</p>
-              <p class="pov-desc">白色恐怖機器最關鍵的齒輪。他後來也是宣布解嚴的人。這兩件事，都是他。</p>
-              <span class="pov-tag tag-spymaster">情治者</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('lei')">
-              <p class="pov-role">異見者視角</p>
-              <p class="pov-name">雷震</p>
-              <p class="pov-desc">《自由中國》發行人，試圖在戒嚴台灣組成第一個反對黨。1960年9月4日被捕，判十年，蔣中正手諭「刑期不得少於10年」。</p>
-              <span class="pov-tag tag-dissident">異見者</span>
-            </button>
-          </div>
-          <div class="pov-select">
-            <button class="pov-btn" onclick="startPov('jiang')">
-              <p class="pov-role">政治犯視角</p>
-              <p class="pov-name">江炳興</p>
-              <p class="pov-desc">陸軍官校學生，1963年因討論台灣獨立被捕判十年。在泰源監獄裡，他做了一個決定，那個決定定義了他的一生。1970年5月30日執行死刑，享年31歲。</p>
-              <span class="pov-tag tag-prisoner">政治犯</span>
-            </button>
-            <button class="pov-btn" onclick="startPov('pmm')">
-              <p class="pov-role">流亡者視角</p>
-              <p class="pov-name">彭明敏</p>
-              <p class="pov-desc">台大教授，1964年起草《台灣人民自救運動宣言》，被捕判8年，特赦後1970年秘密逃往瑞典，流亡23年。他說出的那些話，幾十年後成了多數台灣人的共識。</p>
-              <span class="pov-tag tag-exile">流亡者</span>
-            </button>
-          </div>
-        </div>
-      </details>
-    </div>
-  `;
-}
+            // Hint to browser: prioritize the visible slide image.
+            const img = slides[safe]?.querySelector("img");
+            if (img) {
+              img.loading = "eager";
+              img.decoding = "async";
+            }
+          }
 
-const HISTORICAL_PATHS = {
-  lin:   { start: 'lin_shout',        lin_shout:   'lin_witness_yes'  },
-  fu:    { start: 'fu_warn',          fu_warn:     'fu_run_hide'      },
-  chen1: { start: 'chen1_shoot',      chen1_shoot: 'chen1_broadcast'  },
-  zhou:  { start: 'zhou_broadcast',   zhou_broadcast: 'zhou_investigate' },
-  wang1: { start: 'wang1_organize',   wang1_organize: 'wang1_draft_demands' },
-  wei:   { start: 'wei_solo',         wei_solo:    'wei_keep_negotiate' },
-  wang:  { start: 'wang_broadcast',   wang_broadcast: 'wang_again'    },
-  chen:  { start: 'chen_stall',       chen_stall:  'chen_fake_agree'  },
-  liu:   { start: 'liu_open_fire',    liu_open_fire: 'liu_harbor_extend' },
-  xie:   { start: 'xie_fight',        xie_fight:   'xie_leave_early'  },
-  ke:    { start: 'ke_harsh',         ke_harsh:    'ke_extort_end'    },
-  peng:  { start: 'peng_arrest',      peng_arrest: 'peng_full_sweep'  },
-  czp:   { start: 'czp_go',           czp_go:      'czp_refuse_confess' },
-  tang:  { start: 'tang_burn',        tang_burn:   'tang_resist'      },
-  wdm:   { start: 'wdm_reform',       wdm_reform:  'wdm_protect_ppl'  },
-  cyi:   { start: 'cyi_drift',        cyi_drift:   'cyi_tell_tang'    },
-  wcc:   { start: 'wcc_enter_gov',    wcc_enter_gov: 'wcc_silent_work' },
-  ckss:  { start: 'ckss_system',      ckss_system: 'ckss_approve_all' },
-  cks2:  { start: 'cks2_expand',      cks2_expand: 'cks2_arrest_rumor' },
-  lei:   { start: 'lei_publish_bold', lei_publish_bold: 'lei_form_party' },
-  jiang: { start: 'jiang_deny',       jiang_deny:  'jiang_lead_uprising' },
-  pmm:   { start: 'pmm_destroy',      pmm_destroy: 'pmm_own_it_2'    },
-};
+          if (dotsWrap) {
+            dotsWrap.innerHTML = "";
+            slides.forEach((_, i) => {
+              const b = document.createElement("button");
+              b.type = "button";
+              b.className = "dot-btn";
+              b.setAttribute("aria-label", `蛻・鋤蛻ｰ隨ｬ ${i + 1} 蠑ｵ`);
+              b.setAttribute("aria-current", i === index ? "true" : "false");
+              b.addEventListener("click", () => {
+                setActive(i);
+                resetAuto();
+              });
+              dotsWrap.appendChild(b);
+            });
+          }
 
-function makeChoice(fromId, choiceId) {
-  var s = DATA[currentPov][fromId];
-  var choice = s && s.choices && s.choices.find(function(c) { return c.id === choiceId; });
-  var histPaths = HISTORICAL_PATHS[currentPov] || {};
-  currentPath.push({
-    fromSceneId: fromId,
-    choiceId: choiceId,
-    label: choice ? choice.label : '',
-    isHistorical: histPaths[fromId] === choiceId
-  });
-  renderScene(choiceId);
-}
+          btnPrev?.addEventListener("click", () => {
+            setActive(index - 1);
+            resetAuto();
+          });
+          btnNext?.addEventListener("click", () => {
+            setActive(index + 1);
+            resetAuto();
+          });
 
-function startPov(pov) {
-  currentPov = pov;
-  currentPath = [];
-  renderScene('start');
-}
+          carousel.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") {
+              setActive(index - 1);
+              resetAuto();
+            }
+            if (e.key === "ArrowRight") {
+              setActive(index + 1);
+              resetAuto();
+            }
+          });
 
+          // Make carousel focusable for keyboard navigation.
+          if (!carousel.hasAttribute("tabindex")) carousel.setAttribute("tabindex", "0");
+          setActive(index);
 
-function buildSourceHTML(pov) {  var srcs = SOURCES[pov];
-  if (!srcs || !srcs.length) return '';
-  return '<div class="sources-section"><div class="sources-title">資料來源</div>' +
-    srcs.map(function(src) {
-      return '<a class="source-link" href="' + src.url + '" target="_blank" rel="noopener noreferrer">↗ ' + src.label + '</a>';
-    }).join('') + '</div>';
-}
+          // Autoplay (every 5s), pause on hover/focus.
+          const prefersReducedMotion =
+            typeof window.matchMedia === "function" &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function renderScene(id) {
-  const s = DATA[currentPov][id];
-  if (!s) return;
-  const colorMap = { lin: 'dot-victim', fu: 'dot-perp', wei: 'dot-wei', wang: 'dot-wang', chen: 'dot-chen', liu: 'dot-liu', xie: 'dot-xie', ke: 'dot-ke', peng: 'dot-peng', czp: 'dot-czp', tang: 'dot-tang', wdm: 'dot-wdm', cyi: 'dot-cyi', wcc: 'dot-wcc', chen1: 'dot-chen1', zhou: 'dot-zhou', wang1: 'dot-wang1', ckss: 'dot-ckss', cks2: 'dot-cks2', lei: 'dot-lei', jiang: 'dot-jiang', pmm: 'dot-pmm' };
-  const nameMap = { lin: '林江邁', fu: '傅學通', wei: '蔣渭川', wang: '王添燈', chen: '陳儀', liu: '劉雨卿', xie: '謝雪紅', ke: '柯遠芬', peng: '彭孟緝', czp: '陳澄波', tang: '湯德章', wdm: '魏道明', cyi: '陳儀', wcc: '蔣渭川', chen1: '陳儀', zhou: '周延壽', wang1: '王添燈', ckss: '蔣中正', cks2: '蔣經國', lei: '雷震', jiang: '江炳興', pmm: '彭明敏' };
-  const POV_IMAGES = {
-    lin:   'gamepic/01.林江邁1.webp',
-    fu:    'gamepic/01.傅學通1.webp',
-    chen1: 'gamepic/02.陳儀1.webp',
-    zhou:  'gamepic/02.周延壽1.webp',
-    wang1: 'gamepic/02.王添燈1.webp',
-    cyi:   'gamepic/03.陳儀1.webp',
-    wcc:   'gamepic/03.蔣渭川1.webp',
-    wang:  'gamepic/03.王添燈1.webp',
-    xie:   'gamepic/04.謝雪紅1.webp',
-    liu:   'gamepic/04.劉雨卿1.webp',
-    czp:   'gamepic/05.陳澄波1.webp',
-    ke:    'gamepic/05.柯遠芬1.webp',
-    peng:  'gamepic/05.彭孟緝1.webp',
-    tang:  'gamepic/05.湯德章1.webp',
-    chen:  'gamepic/06.陳儀1.webp',
-    wei:   'gamepic/06.蔣渭川1.webp',
-    wdm:   'gamepic/06.魏道明1.webp',
-    jiang: 'gamepic/07.江炳興1.webp',
-    pmm:   'gamepic/07.彭明敏1.webp',
-    lei:   'gamepic/07.雷震1.webp',
-    ckss:  'gamepic/07.蔣中正1.webp',
-    cks2:  'gamepic/07.蔣經國1.webp',
-  };
-  const gameWrap = document.querySelector('.game-wrap');
-  if (gameWrap) {
-    gameWrap.style.backgroundImage = POV_IMAGES[currentPov]
-      ? 'url(\'' + POV_IMAGES[currentPov] + '\')'
-      : '';
-  }
-  const povColor = colorMap[currentPov] || 'dot-victim';
-  const povName = nameMap[currentPov] || '';
-  const indicator = `<div class="pov-indicator"><div class="pov-dot ${povColor}"></div>${povName} 的視角</div>`;
-  const dotRow = `<div class="progress-dots">${dots(s.step, s.total)}</div>`;
+          const AUTO_MS = 5000;
+          let autoId = null;
 
-  if (s.ending) {
-    const tagMap = { good: 'e-good', bad: 'e-bad', mid: 'e-mid', dark: 'e-dark' };
-    const labelMap = { good: '結局：見證', bad: '結局：沉默', mid: '結局：歷史裂縫', dark: '結局：逃脫懲罰' };
-    const personId = personMap[currentPov];
-    const sourceHTML = buildSourceHTML(currentPov);
-    const personBtn = personId
-      ? '<a class="nav-btn" href="people.html#' + personId + '" target="_blank" rel="noreferrer">↗ 查看人物介紹</a>'
-      : '';
-    const detailId = detailMap[currentPov];
-    const detailBtn = detailId
-      ? '<a class="nav-btn" href="detail.html#' + detailId + '" target="_blank" rel="noreferrer">↗ 查看詳細介紹</a>'
-      : '';
-    const isFictional =
-      (s.history  && (s.history.includes('虛構') || s.history.includes('反事實'))) ||
-      (s.endingText && (s.endingText.includes('虛構走向') || s.endingText.includes('反事實走向')));
-    const badge = isFictional
-      ? '<div class="fictional-badge">✦ 虛擬結局｜以下補充正確歷史發展</div>'
-      : '<div class="historical-badge">✓ 此為史實走向｜以下補充歷史背景</div>';
+          function startAuto() {
+            if (prefersReducedMotion) return;
+            if (autoId) return;
+            if (slides.length < 2) return;
+            autoId = window.setInterval(() => setActive(index + 1), AUTO_MS);
+          }
 
-    var histPaths = HISTORICAL_PATHS[currentPov] || {};
-    var pathItems = currentPath.map(function(p, i) {
-      var stepWord = i === 0 ? '一' : '二';
-      var icon = p.isHistorical ? '✓' : '✗';
-      var matchClass = p.isHistorical ? 'path-match' : 'path-mismatch';
-      var actualNote = '';
-      if (!p.isHistorical) {
-        var histChoiceId = histPaths[p.fromSceneId];
-        var fromS = DATA[currentPov][p.fromSceneId];
-        var histChoice = fromS && fromS.choices && fromS.choices.find(function(c) { return c.id === histChoiceId; });
-        if (histChoice) actualNote = '<span class="path-actual">（史實：' + histChoice.label + '）</span>';
-      }
-      return '<div class="path-item ' + matchClass + '">' +
-        '<span class="path-step">第' + stepWord + '步</span>' +
-        '<span class="path-choice">' + p.label + '</span>' +
-        '<span class="path-icon">' + icon + '</span>' +
-        actualNote +
-        '</div>';
-    }).join('');
-    var pathHTML = currentPath.length
-      ? '<div class="choice-path"><div class="choice-path-title">你的選擇</div>' + pathItems + '</div>'
-      : '';
+          function stopAuto() {
+            if (!autoId) return;
+            window.clearInterval(autoId);
+            autoId = null;
+          }
 
-    root.innerHTML =
-      '<div class="scene-card fade-in">' +
-        indicator + dotRow +
-        '<div class="chapter-label">' + s.chapter + '</div>' +
-        '<div class="scene-title">' + s.title + '</div>' +
-        '<p class="scene-text">' + s.text + '</p>' +
-      '</div>' +
-      '<div class="ending-card fade-in">' +
-        '<span class="ending-tag ' + tagMap[s.ending] + '">' + labelMap[s.ending] + '</span>' +
-        badge +
-        pathHTML +
-        '<div class="ending-title">' + s.endingTitle + '</div>' +
-        '<p class="ending-text">' + s.endingText + '</p>' +
-        '<div class="history-note"><strong>' + (isFictional ? '正確歷史發展：' : '史實補充：') + '</strong> ' + s.history + '</div>' +
-        sourceHTML +
-      '</div>' +
-      '<div class="btn-row">' +
-        '<button class="nav-btn" onclick="startPov(\'' + currentPov + '\')">↺ 重玩這個視角</button>' +
-        '<button class="nav-btn" onclick="renderSelect()">← 切換視角</button>' +
-        personBtn +
-        detailBtn +
-      '</div>';
-  } else {
-    const choiceHTML = s.choices.map(function(c) {
-      return '<button class="choice-btn" onclick="makeChoice(\'' + id + '\', \'' + c.id + '\')">' +
-        '<span class="choice-label">' + c.label + '</span>' + c.text +
-        '</button>';
-    }).join('');
-    root.innerHTML =
-      '<div class="scene-card fade-in">' +
-        indicator + dotRow +
-        '<div class="chapter-label">' + s.chapter + '</div>' +
-        '<div class="scene-title">' + s.title + '</div>' +
-        '<p class="scene-text">' + s.text + '</p>' +
-        '<div class="choices">' + choiceHTML + '</div>' +
-      '</div>' +
-      '<div class="btn-row">' +
-        '<button class="nav-btn" onclick="renderSelect()">← 切換視角</button>' +
-      '</div>';
-  }
-}
+          function resetAuto() {
+            stopAuto();
+            startAuto();
+          }
 
-renderSelect();
-</script>
+          carousel.addEventListener("mouseenter", stopAuto);
+          carousel.addEventListener("mouseleave", startAuto);
+          carousel.addEventListener("focusin", stopAuto);
+          carousel.addEventListener("focusout", startAuto);
+
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) stopAuto();
+            else startAuto();
+          });
+
+          startAuto();
+        }
+
+        if (carousel) initCarousel(carousel);
+
+        if (heroMedia && carousel && heroMedia !== carousel.closest("figure.hero-media")) {
+          heroMedia.innerHTML = "";
+          heroMedia.appendChild(carousel);
+          if (pressSlides) pressSlides.style.display = "none";
+        }
+      })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
