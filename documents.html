@@ -196,11 +196,6 @@
         align-items: start;
       }
 
-      .toc {
-        position: sticky;
-        top: 86px;
-        padding: 14px 14px 12px;
-      }
 
       .panel-head h3,
       .doc-card h4 {
@@ -462,7 +457,14 @@
         outline-offset: 3px;
       }
 
-      @media (max-width: 920px) {
+.toc {
+        position: sticky;
+        top: 86px;
+        padding: 14px 14px 12px;
+        align-self: start;
+      }
+
+            @media (max-width: 920px) {
         .documents-layout,
         .dialog-body,
         .foot-grid {
@@ -470,7 +472,13 @@
         }
 
         .toc {
-          position: static;
+          position: sticky;
+          top: 60px;
+          z-index: 40;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          margin-bottom: 12px;
         }
 
         .preview-frame {
@@ -558,12 +566,49 @@
         background: rgba(255, 255, 255, 0.35);
       }
       .offcanvas-228 .offcanvas-body a:hover { text-decoration: underline; }
-      @media (max-width: 768px) {
+      /* ── Mobile collapsible TOC ── */
+      .toc-toggle {
+        display: none;
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        text-align: left;
+        padding: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        letter-spacing: 0.04em;
+      }
+      .toc-arrow {
+        font-size: 20px;
+        transition: transform 200ms ease;
+      }
+      .toc.expanded .toc-arrow { transform: rotate(180deg); }
+
+            @media (max-width: 768px) {
         .hamburger-btn { display: flex; }
         header nav[aria-label="網站導覽"] { display: none; }
         .wrap { padding: 0 12px; }
         .brand h1 { font-size: 13px; }
         .brand p { font-size: 11px; }
+      
+        .toc {
+          position: sticky;
+          top: 60px;
+          z-index: 40;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          margin-bottom: 12px;
+        }
+        .toc-toggle { display: flex; }
+        .toc-body { display: none; margin-top: 10px; }
+        .toc.expanded .toc-body { display: block; }
       }
 
       /* ── Back to top ── */
@@ -650,6 +695,8 @@
   
       <div class="documents-layout">
         <aside class="card toc" aria-label="章節目錄">
+          <button class="toc-toggle" aria-expanded="false">目錄 <span class="toc-arrow">▾</span></button>
+          <div class="toc-body">
           <h3>目錄</h3>
           <ol>
             <li><a href="#doc-1947">1945-1947｜背景</a></li>
@@ -668,7 +715,8 @@
           <small class="small">
             點選時間點可跳至對應文件區塊；文件以縮圖方式呈現，點選後於頁面內預覽。
           </small>
-        </aside>
+                  </div>
+          </aside>
   
         <section class="card documents-panel" id="documents" aria-label="文件縮圖清單">
           <div class="panel-head">
@@ -1267,6 +1315,16 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       })();
+    </script>
+
+    <script>
+      document.querySelectorAll('.toc-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var toc = btn.closest('.toc');
+          toc.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded', toc.classList.contains('expanded'));
+        });
+      });
     </script>
 
   </body>
