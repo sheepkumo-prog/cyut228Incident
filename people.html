@@ -256,24 +256,56 @@
         align-items: start;
       }
 
-      @media (max-width: 900px) {
-        .detail-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .toc {
+            .toc {
         position: sticky;
         top: 86px;
         padding: 14px 14px 12px;
       }
 
-      @media (max-width: 900px) {
-        .toc {
-          position: static;
-          top: 0;
-        }
+      /* ── Mobile collapsible TOC ── */
+      .toc-toggle {
+        display: none;
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        text-align: left;
+        padding: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        letter-spacing: 0.04em;
       }
+      .toc-arrow {
+        font-size: 20px;
+        transition: transform 200ms ease;
+      }
+      .toc.expanded .toc-arrow { transform: rotate(180deg); }
+
+            @media (max-width: 900px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+      
+        .toc {
+          position: sticky;
+          top: 60px;
+          z-index: 40;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          margin-bottom: 12px;
+        }
+        .toc-toggle { display: flex; }
+        .toc-body { display: none; margin-top: 10px; }
+        .toc.expanded .toc-body { display: block; }
+      }
+
+
 
       .toc h3 {
         margin: 0 0 8px;
@@ -673,6 +705,8 @@
 
       <div class="detail-grid">
         <aside class="card toc" aria-label="章節目錄">
+          <button class="toc-toggle" aria-expanded="false">目錄 <span class="toc-arrow">▾</span></button>
+          <div class="toc-body">
           <h3>目錄</h3>
           <ol>
             <li><a href="#sec-prelude">1945-1947｜背景</a></li>
@@ -690,7 +724,8 @@
           <small class="small">
             使用方式：點選時間點展開人物清單；也可先用上方搜尋，再展開對應章節查看。人物以「政府」與「團體／組織（含民間人物）」分欄整理；名單為整理用索引，非完整名冊。
           </small>
-        </aside>
+                  </div>
+          </aside>
 
         <article aria-label="重要人物清單">
           <details class="card section" id="sec-prelude">
@@ -1583,6 +1618,16 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       })();
+    </script>
+
+    <script>
+      document.querySelectorAll('.toc-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var toc = btn.closest('.toc');
+          toc.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded', toc.classList.contains('expanded'));
+        });
+      });
     </script>
 
   </body>
