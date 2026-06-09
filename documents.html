@@ -167,31 +167,19 @@
       }
       .hero > * { position: relative; }
 
-      .mastline {
-        border-top: 3px solid var(--accent);
-        border-bottom: 1px solid var(--accent);
-        padding: 10px 0 12px;
-        margin: 4px 0 16px;
+      .kicker {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: var(--font-display); font-size: 12px;
+        letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2);
       }
-
-      .mast-title {
-        font-family: var(--font-display);
-        font-weight: 900;
-        letter-spacing: -0.01em;
-        font-size: clamp(22px, 3vw, 32px);
-        line-height: 1.1;
-        margin: 0;
+      .dot {
+        width: 10px; height: 10px; border-radius: 999px;
+        border: 2px solid var(--accent); background: rgba(255,255,255,0.35);
       }
-
-      .mast-sub {
-        margin: 8px 0 0;
-        font-family: var(--font-display);
-        font-size: 12px;
-        color: var(--muted-2);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .hero h2 {
+        margin: 10px 0 8px; font-family: var(--font-display); font-weight: 900;
+        letter-spacing: -0.01em; font-size: clamp(22px, 3vw, 32px); line-height: 1.1;
       }
-
       .hero-note {
         margin: 0;
         color: var(--muted);
@@ -536,10 +524,8 @@
   
     <main class="wrap">
       <section class="card hero" aria-label="相關文件主視覺">
-        <div class="mastline" aria-label="頁面標題">
-          <p class="mast-sub">Documents · Archive Preview · Timeline</p>
-          <h2 class="mast-title">相關文件</h2>
-        </div>
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> Documents · Archive Preview · Timeline</div>
+        <h2>相關文件</h2>
         <p class="hero-note">
           依首頁時間軸大標題作為分類索引；點擊後可查看大圖與後續補充的來源、說明欄位。
         </p>
