@@ -896,96 +896,23 @@
       <section class="card" id="press-slides" aria-label="相關剪報">
         <div class="deck-head">
           <div>
-            <h3>相關報紙</h3>
+            <h3>相關文件影像</h3>
             <p>
-              以「當時報刊剪報」作為入口，快速理解事件在媒體上的呈現與時代氛圍。
+              以「當時文件影像」作為入口，快速理解事件在各時期的歷史脈絡。每次載入隨機顯示。
             </p>
           </div>
           <a
             class="btn secondary"
-            href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/search"
-            target="_blank"
-            rel="noreferrer"
+            href="documents.html"
           >
-            查看更多
+            查看全部
           </a>
         </div>
 
         <div class="deck-body">
           <div class="carousel" data-carousel>
             <div class="carousel-viewport" aria-live="polite">
-              <ul class="carousel-track">
-                <li class="slide" data-slide data-active="true">
-                  <figure>
-                    <img
-                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2657/default.jpg"
-                      alt="剪報影像 1（政大 228twnews 數位典藏）"
-                      loading="lazy"
-                      decoding="async"
-                      referrerpolicy="no-referrer"
-                    />
-                    <figcaption>
-                      <strong>剪報影像 1</strong>
-                      <div>
-                        <a
-                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2658/rec/1"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          查看典藏條目
-                        </a>
-                      </div>
-                    </figcaption>
-                  </figure>
-                </li>
-
-                <li class="slide" data-slide>
-                  <figure>
-                    <img
-                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2661/default.jpg"
-                      alt="剪報影像 2（政大 228twnews 數位典藏）"
-                      loading="lazy"
-                      decoding="async"
-                      referrerpolicy="no-referrer"
-                    />
-                    <figcaption>
-                      <strong>剪報影像 2</strong>
-                      <div>
-                        <a
-                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2663/rec/2"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          查看典藏條目
-                        </a>
-                      </div>
-                    </figcaption>
-                  </figure>
-                </li>
-
-                <li class="slide" data-slide>
-                  <figure>
-                    <img
-                      src="https://contentdm.lib.nccu.edu.tw/digital/api/singleitem/image/228twnews/2543/default.jpg"
-                      alt="剪報影像 3（政大 228twnews 數位典藏）"
-                      loading="lazy"
-                      decoding="async"
-                      referrerpolicy="no-referrer"
-                    />
-                    <figcaption>
-                      <strong>剪報影像 3</strong>
-                      <div>
-                        <a
-                          href="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews/id/2544/rec/3"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          查看典藏條目
-                        </a>
-                      </div>
-                    </figcaption>
-                  </figure>
-                </li>
+              <ul class="carousel-track" id="assetCarouselTrack">
               </ul>
             </div>
 
@@ -997,7 +924,7 @@
           </div>
 
           <p class="deck-note">
-            圖片來自政治大學圖書館「228twnews」數位典藏，點擊可開啟典藏條目。
+            圖片取自相關文件影像，每次載入隨機排序。點擊「查看典藏條目」可前往相關文件頁面對應條目。
           </p>
         </div>
       </section>
@@ -1201,6 +1128,76 @@
         <button class="btn secondary" type="button" id="btnOkTips">我知道了</button>
       </div>
     </dialog>
+
+    <script>
+      (function () {
+        const assetImages = [
+          { src: 'assets/1946.jpg',                                                                                        title: '1946年 臺灣新生報',                            docId: 'doc-1947' },
+          { src: 'assets/1947.jpg',                                                                                        title: '1947/02/28 民報',                              docId: 'doc-1947' },
+          { src: 'assets/194702282.jpg',                                                                                   title: '1947/02/28 陳儀廣播談話',                      docId: 'doc-19470228' },
+          { src: 'assets/19470228私煙擊斃市民.jpg',                                                                        title: '1947/02/28 查緝私煙肇禍',                      docId: 'doc-19470228' },
+          { src: 'assets/194703012.png',                                                                                   title: '1947/03/01 臺北市戒嚴佈告',                    docId: 'doc-19470303' },
+          { src: 'assets/19470301戒嚴解除.jpg',                                                                            title: '1947/03/01 戒嚴解除',                          docId: 'doc-19470303' },
+          { src: 'assets/19470303處理委員會.jpg',                                                                          title: '1947/03/03 二二八處理委員會',                  docId: 'doc-19470303' },
+          { src: 'assets/19470303陳儀.jpg',                                                                                title: '1947/03/03 陳儀',                              docId: 'doc-19470303' },
+          { src: 'assets/19470306.jpg',                                                                                    title: '1947/03/06 臺灣新生報',                        docId: 'doc-19470303' },
+          { src: 'assets/二二八事件處理委員會名單.jpg',                                                                    title: '二二八事件處理委員會名單',                      docId: 'doc-19470303' },
+          { src: 'assets/19470308 圍剿.jpg',                                                                               title: '1947/03/08 圍剿',                              docId: 'doc-19470310' },
+          { src: 'assets/19470308.jpg',                                                                                    title: '1947/03/08 軍隊登陸基隆',                      docId: 'doc-19470310' },
+          { src: 'assets/19470310.jpg',                                                                                    title: '1947/03/10 軍隊進駐',                          docId: 'doc-19470310' },
+          { src: 'assets/19470310大員.jpg',                                                                                title: '1947/03/10 大員',                              docId: 'doc-19470310' },
+          { src: 'assets/19470310蔣中正深望.jpg',                                                                          title: '1947/03/10 蔣中正',                            docId: 'doc-19470310' },
+          { src: 'assets/19470313 高雄繳出 槍三百餘桿.jpg',                                                               title: '1947/03/13 高雄繳槍三百餘桿',                  docId: 'doc-19470314' },
+          { src: 'assets/19470314掃蕩周報.jpg',                                                                            title: '1947/03/14 掃蕩周報',                          docId: 'doc-19470314' },
+          { src: 'assets/19470314湯德章.jpg',                                                                              title: '1947/03/14 湯德章',                            docId: 'doc-19470314' },
+          { src: 'assets/19470315國軍進入臺中.jpg',                                                                        title: '1947/03/15 國軍進入臺中',                      docId: 'doc-19470314' },
+          { src: 'assets/19470315市價.jpg',                                                                                title: '1947/03/15 市價報導',                          docId: 'doc-19470314' },
+          { src: 'assets/19470315秩序恢復交還武器.jpg',                                                                    title: '1947/03/15 秩序恢復交還武器',                  docId: 'doc-19470314' },
+          { src: 'assets/19470315臺北初步調查損失.jpg',                                                                    title: '1947/03/15 臺北初步調查損失',                  docId: 'doc-19470314' },
+          { src: 'assets/19470316不要上匪徒離間同胞感情的當.jpg',                                                          title: '1947/03/16 不要上匪徒離間同胞感情的當',        docId: 'doc-19470314' },
+          { src: 'assets/19470316總部開始清除叛徒.jpg',                                                                    title: '1947/03/16 總部開始清除叛徒',                  docId: 'doc-19470314' },
+          { src: 'assets/19470317物價高生活苦.jpg',                                                                        title: '1947/03/17 物價高生活苦',                      docId: 'doc-19470314' },
+          { src: 'assets/19470411柯參謀長對記者談.jpg',                                                                    title: '1947/04/11 柯遠芬對記者談',                    docId: 'doc-19470516' },
+          { src: 'assets/19470511送別陳長官.jpg',                                                                          title: '1947/05/11 送別陳長官',                        docId: 'doc-19470516' },
+          { src: 'assets/19470512長官昨已飛抵南京.jpg',                                                                    title: '1947/05/12 陳儀飛抵南京',                      docId: 'doc-19470516' },
+          { src: 'assets/19470515歡迎魏道明主席.jpg',                                                                      title: '1947/05/15 歡迎魏道明主席',                    docId: 'doc-19470516' },
+          { src: 'assets/19490519另臺灣省宣布戒嚴.jpg',                                                                    title: '1949/05/19 臺灣省宣布戒嚴',                    docId: 'doc-1949' },
+          { src: 'assets/1950對潛台匪諜活動之防制.jpg',                                                                    title: '1950 對潛台匪諜活動之防制',                    docId: 'doc-1949' },
+          { src: 'assets/19870818抗議者與官員進行溝通.jpg',                                                                title: '1987/08/18 抗議者與官員溝通',                  docId: 'doc-1987' },
+          { src: 'assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg',                                                    title: '1991/03/07 終止動員戡亂時期',                  docId: 'doc-1987' },
+          { src: 'assets/19920401 關於「二二八事件研究報告」之出版.jpg',                                                   title: '1992/04/01 研究報告出版',                      docId: 'doc-1992' },
+          { src: 'assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg',                           title: '1995/09/30 二二八紀念基金會第一次董監事會',    docId: 'doc-1987' },
+          { src: 'assets/20171205促進轉型正義條例.jpg',                                                                    title: '2017/12/05 促進轉型正義條例',                  docId: 'doc-2017' },
+          { src: 'assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg',                                                    title: '2018/05/31 促轉會揭牌典禮',                    docId: 'doc-2018' },
+        ];
+
+        // Fisher-Yates shuffle
+        for (let i = assetImages.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [assetImages[i], assetImages[j]] = [assetImages[j], assetImages[i]];
+        }
+
+        const track = document.getElementById('assetCarouselTrack');
+        if (track) {
+          assetImages.slice(0, 5).forEach(function (item, i) {
+            const li = document.createElement('li');
+            li.className = 'slide';
+            li.setAttribute('data-slide', '');
+            if (i === 0) li.setAttribute('data-active', 'true');
+            const encodedSrc = item.src.replace(/'/g, '%27');
+            li.innerHTML =
+              '<figure>' +
+                '<img src="' + encodedSrc + '" alt="' + item.title + '" loading="lazy" decoding="async" />' +
+                '<figcaption>' +
+                  '<strong>' + item.title + '</strong>' +
+                  '<div><a href="documents.html#' + item.docId + '">查看典藏條目</a></div>' +
+                '</figcaption>' +
+              '</figure>';
+            track.appendChild(li);
+          });
+        }
+      })();
+    </script>
 
     <script>
       (function () {
