@@ -566,7 +566,7 @@
         background: rgba(255, 255, 255, 0.35);
       }
       .offcanvas-228 .offcanvas-body a:hover { text-decoration: underline; }
-      /* ── Mobile collapsible TOC ── */
+      /* ── TOC toggle button (base) ── */
       .toc-toggle {
         display: none;
         width: 100%;
@@ -590,13 +590,13 @@
       }
       .toc.expanded .toc-arrow { transform: rotate(180deg); }
 
-            @media (max-width: 768px) {
-        .hamburger-btn { display: flex; }
-        header nav[aria-label="網站導覽"] { display: none; }
-        .wrap { padding: 0 12px; }
-        .brand h1 { font-size: 13px; }
-        .brand p { font-size: 11px; }
-      
+      /* ── Tablet / iPad Pro / Mobile: sticky collapsible TOC (≤1700px) ── */
+      @media (max-width: 1700px) {
+        .documents-layout,
+        .dialog-body,
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
         .toc {
           position: sticky;
           top: 60px;
@@ -609,6 +609,15 @@
         .toc-toggle { display: flex; }
         .toc-body { display: none; margin-top: 10px; }
         .toc.expanded .toc-body { display: block; }
+      }
+
+      /* ── Mobile: hamburger nav (≤768px) ── */
+      @media (max-width: 768px) {
+        .hamburger-btn { display: flex; }
+        header nav[aria-label="網站導覽"] { display: none; }
+        .wrap { padding: 0 12px; }
+        .brand h1 { font-size: 13px; }
+        .brand p { font-size: 11px; }
       }
 
       /* ── Back to top ── */
