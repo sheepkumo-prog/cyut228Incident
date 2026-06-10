@@ -262,7 +262,7 @@
         padding: 14px 14px 12px;
       }
 
-      /* ── Mobile collapsible TOC ── */
+      /* ── TOC toggle button (base) ── */
       .toc-toggle {
         display: none;
         width: 100%;
@@ -286,11 +286,11 @@
       }
       .toc.expanded .toc-arrow { transform: rotate(180deg); }
 
-            @media (max-width: 900px) {
+      /* ── Tablet / iPad Pro / Mobile: sticky collapsible TOC (≤1700px) ── */
+      @media (max-width: 1700px) {
         .detail-grid {
           grid-template-columns: 1fr;
         }
-      
         .toc {
           position: sticky;
           top: 60px;
@@ -428,7 +428,7 @@
         color: var(--muted);
         line-height: 1.7;
         font-size: 13px;
-        max-width: 80ch;
+        width: 100%;
       }
 
       .people-grid {
@@ -736,7 +736,7 @@
                 <span class="pill">戰後接收</span>
               </div>
               <h3>戰後接收與施政失序，社會不滿累積</h3>
-              <span class="section-summary">從接收到經濟與治安：理解人物位置，能看見「制度」如何推動衝突。</span>
+              <span class="section-summary">陳儀主導戰後接收，壟斷物資、獨攬行政軍事大權，種下官民矛盾；柯遠芬主掌軍警安全體系，奠定日後清鄉的執行基礎。民間則有蔣渭川透過台灣省政治建設協會倡議政治改革，王添燈以《人民導報》批評施政亂象，兩人成為本省社會積怨的重要代言聲音。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1945-1947）">
@@ -809,7 +809,7 @@
                 <span class="pill">緝私衝突</span>
               </div>
               <h3>臺北緝私衝突引發抗議與群眾聚集</h3>
-              <span class="section-summary">圓環緝菸衝突把「制度性不滿」集中爆發：執法者、受害者與旁觀者都成為後續敘事的起點。</span>
+              <span class="section-summary">查緝員傅學通在楊子才所轄隊伍中，以槍托擊傷販菸寡婦林江邁，混亂中開槍誤殺旁觀市民陳文溪。兩起傷亡引爆長期積怨，憤怒群眾徹夜包圍警察局要求交兇，官方始終拒絕正式回應，成為翌日全島動盪的直接導火線。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/02/27）">
@@ -902,7 +902,7 @@
                 <span class="pill">罷市請願</span>
               </div>
               <h3>罷市與請願使情勢升高，衝突擴大</h3>
-              <span class="section-summary">群眾動員與訴求成形：誰能發聲、誰能談判、誰能調停，開始左右事件走向。</span>
+              <span class="section-summary">陳儀下令衛兵掃射前往公署請願的民眾，同日秘密向南京請兵。台北市參議會議長周延壽出面協調、組成緝菸血案調查委員會；省參議員王添燈積極組織民間訴求，協助推動處委會成立，3月11日遭憲兵帶走後下落不明。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/02/28）">
@@ -969,7 +969,7 @@
                 <span class="pill">處理委員會</span>
               </div>
               <h3>成立處理委員會，提出改革與善後訴求</h3>
-              <span class="section-summary">處理委員會是「把街頭怒氣轉成政治議程」的嘗試：協商者的風險、責任與代表性，是理解此段的重點。</span>
+              <span class="section-summary">王添燈主導起草《三十二條處理大綱》並廣播全台，訴求廢除專賣局、民選縣市長；蔣渭川立場較溫和，另提九項改革綱要。陳儀表面與代表周旋，實則密電請兵，援軍登陸後立即宣布處委會為叛亂組織，協商者瞬間成為被追緝的對象。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/03/03）">
@@ -1035,7 +1035,7 @@
                 <span class="pill">軍隊進駐</span>
               </div>
               <h3>軍隊進駐與全面鎮壓，逮捕與傷亡增加</h3>
-              <span class="section-summary">當軍隊與安全機器成為主軸：決策者、指揮者與被指認者的關係，決定鎮壓如何擴大。</span>
+              <span class="section-summary">蔣中正決定調派整編第二十一師赴台，師長劉雨卿率部自基隆登陸後展開清鄉，港口周邊出現大量浮屍。臺中謝雪紅組建二七部隊約四百人武裝抵抗，援軍登陸後終因力量懸殊敗退，輾轉出逃。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/03/10）">
@@ -1096,7 +1096,7 @@
                 <span class="pill">全臺擴大</span>
               </div>
               <h3>全臺清剿與擴大逮捕，事件進入高壓控制</h3>
-              <span class="section-summary">清剿階段常以「指認—逮捕—處決」擴散：受難者、見證者與行動者的名字，構成後續記憶與平反的核心。</span>
+              <span class="section-summary">柯遠芬主導各地清鄉搜捕，以「寧可枉殺九十九個」定調；彭孟緝在高雄逮捕前往談判的市長與議長後展開屠殺，事後獲蔣介石嘉獎晉升。畫家陳澄波以和平使者身分赴嘉義機場協商，遭捕後未經審判公開槍決；律師湯德章銷毀仕紳名單保護他人，隨後被捕遊街處決。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/03/14-03/16）">
@@ -1181,7 +1181,7 @@
                 <span class="pill">政治處分</span>
               </div>
               <h3>陳儀撤職，事件進入長期收束與控制</h3>
-              <span class="section-summary">撤換官員不等於真相釐清：人事處置、政治收束與長期監控的接續，是後續歷史的關鍵。</span>
+              <span class="section-summary">陳儀以「處置失當」被撤職，1950年以通共罪槍決；魏道明接任省主席，宣布解嚴、停止清鄉，施政相對寬鬆。蔣渭川雖曾名列通緝，後進入政府歷任要職，其在事件中的立場至今仍是歷史爭議焦點。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1947/05/16）">
@@ -1248,7 +1248,7 @@
                 <span class="pill">戒嚴體制</span>
               </div>
               <h3>戒嚴體制下的白色恐怖延伸（長期政治迫害與肅清）</h3>
-              <span class="section-summary">從二二八到白色恐怖：制度化的情治、軍法與監控，使恐懼成為治理語言，也延長了沉默的時間。</span>
+              <span class="section-summary">蔣中正頒布戒嚴令、親批軍法死刑案件；蔣經國主掌情治體系，建立遍布全台的監控網絡。雷震因籌組反對黨遭判十年，江炳興發動泰源事件後遭執行死刑，彭明敏因起草《台灣自救運動宣言》被捕，流亡海外二十三年後方能返台。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1949-1992）">
@@ -1338,7 +1338,7 @@
                 <span class="pill">社會倡議</span>
               </div>
               <h3>二二八平反運動興起，推動追查真相、公開紀念與政府回應</h3>
-              <span class="section-summary">受難者家屬、公民社會與學界媒體把記憶帶回公共空間：誰在倡議、誰在寫史、誰在承擔風險，是理解此段的入口。</span>
+              <span class="section-summary">陳永興率先公開串連受難家屬、倡議政府道歉；鄭南榕以自焚宣示言論自由的代價，成為運動精神座標。蔣經國1987年宣布解嚴，開放公共討論空間；李登輝1995年以國家元首身分正式道歉，同年推動《補償條例》立法，四十年禁忌首度獲制度承認。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1980年代後期）">
@@ -1411,7 +1411,7 @@
                 <span class="pill">調查出版</span>
               </div>
               <h3>研究報告出版，官方調查成為里程碑</h3>
-              <span class="section-summary">從民間倡議走向官方調查：研究小組的召集人、總主筆與工作成員，決定「制度化面對歷史」的深度。</span>
+              <span class="section-summary">行政院研究小組由陳重光、葉明勳召集，歷史學者賴澤涵擔任總主筆，系統調查並完成1992年《研究報告》。報告估計死亡人數一萬八千至兩萬八千人，承認受難者並非叛亂分子，直接推動1995年補償條例立法，成為後續轉型正義工程的重要基礎。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（1992/02）">
@@ -1475,7 +1475,7 @@
                 <span class="pill">制度化</span>
               </div>
               <h3>轉型正義制度化：法律通過與機構成立</h3>
-              <span class="section-summary">法律與機構把政治檔案、平復不法與社會對話納入制度流程：政策推動者與機構領導者成為此段的關鍵人物。</span>
+              <span class="section-summary">蔡英文任內推動《促進轉型正義條例》於2017年三讀通過；黃煌雄出任首任促轉會主委，推動政治檔案開放與不當判決撤銷。學者張炎憲長期整理受難者口述與史料、積極倡議歷史責任，2014年辭世，為轉型正義的民間基礎奠定重要根基。</span>
             </summary>
             <div class="people-grid">
               <section class="people-col" aria-label="政府相關人物（2017-2018）">
