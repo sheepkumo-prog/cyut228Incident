@@ -141,6 +141,30 @@
       /* ── TOC ── */
       .toc { padding: 16px 18px; position: sticky; top: 80px; align-self: start; }
 
+      /* ── TOC toggle button (base) ── */
+      .toc-toggle {
+        display: none;
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        text-align: left;
+        padding: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        letter-spacing: 0.04em;
+      }
+      .toc-arrow {
+        font-size: 20px;
+        transition: transform 200ms ease;
+      }
+      .toc.expanded .toc-arrow { transform: rotate(180deg); }
+
       .toc h3 {
         margin: 0 0 10px;
         font-family: var(--font-display);
@@ -288,18 +312,20 @@
       }
 
       /* ── Responsive ── */
-      @media (max-width: 900px) {
+      @media (max-width: 1700px) {
         .content-layout { grid-template-columns: 1fr; }
         .toc {
           position: sticky;
           top: 60px;
           z-index: 40;
-          max-height: 50vh;
-          overflow-y: auto;
           background: rgba(255, 255, 255, 0.82);
           backdrop-filter: blur(6px);
           -webkit-backdrop-filter: blur(6px);
+          margin-bottom: 12px;
         }
+        .toc-toggle { display: flex; }
+        .toc-body { display: none; margin-top: 10px; }
+        .toc.expanded .toc-body { display: block; }
       }
 
       @media (max-width: 720px) {
@@ -467,14 +493,17 @@
 
         <!-- ── Sidebar TOC ── -->
         <aside class="card toc" aria-label="章節目錄">
-          <h3>目錄</h3>
-          <ol>
-            <li><a href="#books">書籍推薦</a></li>
-            <li><a href="#films">紀錄片與影片</a></li>
-            <li><a href="#online">線上資源與資料庫</a></li>
-            <li><a href="#places">紀念場所</a></li>
-          </ol>
-          <small>點選分類可跳至對應區塊；外部連結均於新分頁開啟。</small>
+          <button class="toc-toggle" aria-expanded="false">目錄 <span class="toc-arrow">▾</span></button>
+          <div class="toc-body">
+            <h3>目錄</h3>
+            <ol>
+              <li><a href="#books">書籍推薦</a></li>
+              <li><a href="#films">紀錄片與影片</a></li>
+              <li><a href="#online">線上資源與資料庫</a></li>
+              <li><a href="#places">紀念場所</a></li>
+            </ol>
+            <small>點選分類可跳至對應區塊；外部連結均於新分頁開啟。</small>
+          </div>
         </aside>
         <!-- ── Main content ── -->
         <div>
@@ -1063,6 +1092,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <button id="back-to-top" aria-label="返回頁面頂端" title="返回頁面頂端">↑</button>
+    <script>
+      document.querySelectorAll('.toc-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var toc = btn.closest('.toc');
+          toc.classList.toggle('expanded');
+          btn.setAttribute('aria-expanded', toc.classList.contains('expanded'));
+        });
+      });
+    </script>
+
     <script>
       (function () {
         var btn = document.getElementById('back-to-top');
