@@ -464,23 +464,7 @@
         align-self: start;
       }
 
-            @media (max-width: 920px) {
-        .documents-layout,
-        .dialog-body,
-        .foot-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .toc {
-          position: sticky;
-          top: 60px;
-          z-index: 40;
-          background: rgba(255, 255, 255, 0.82);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
-          margin-bottom: 12px;
-        }
-
+      @media (max-width: 768px) {
         .preview-frame {
           border-right: 0;
           border-bottom: 2px solid var(--accent);
@@ -590,8 +574,8 @@
       }
       .toc.expanded .toc-arrow { transform: rotate(180deg); }
 
-      /* ── Tablet / iPad Pro / Mobile: sticky collapsible TOC (≤1700px) ── */
-      @media (max-width: 1700px) {
+      /* ── Mobile: sticky collapsible TOC (≤768px) ── */
+      @media (max-width: 768px) {
         .documents-layout,
         .dialog-body,
         .foot-grid {
