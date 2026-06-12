@@ -100,11 +100,12 @@
       }
 
       .brand h1 {
-        font-size: 15px;
+        font-size: 21px;
         line-height: 1.2;
         margin: 0;
-        letter-spacing: 0.04em;
-        font-family: var(--font-display);
+        letter-spacing: 0.06em;
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 700;
       }
 
       .brand p {
@@ -199,8 +200,8 @@
 
       .page-hero h2 {
         margin: 10px 0 8px;
-        font-family: var(--font-display);
-        letter-spacing: -0.01em;
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        letter-spacing: 0.02em;
         font-weight: 900;
         font-size: clamp(22px, 3vw, 32px);
         line-height: 1.1;
@@ -354,7 +355,8 @@
 
       .section-head h3 {
         margin: 0;
-        font-family: var(--font-display);
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 800;
         font-size: clamp(18px, 2.5vw, 24px);
         line-height: 1.2;
         letter-spacing: 0.02em;
@@ -577,7 +579,7 @@
         .hamburger-btn { display: flex; }
         header nav[aria-label="網站導覽"] { display: none; }
         .wrap { padding: 0 12px; }
-        .brand h1 { font-size: 13px; }
+        .brand h1 { font-size: 17px; }
         .brand p { font-size: 11px; }
       }
 
@@ -607,6 +609,187 @@
       #back-to-top.visible { display: flex; opacity: 1; }
       #back-to-top:hover { background: rgba(255,255,255,0.7); }
 
+      /* ── 章節史料圖片 ── */
+      .section-figures {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-top: 6px;
+        padding-top: 14px;
+        border-top: 1px dashed var(--line);
+      }
+      .section-figures figure {
+        margin: 0;
+        border: 1px solid var(--accent);
+        background: var(--panel-2);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .section-figures img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        border: 1px solid var(--accent);
+        background: #fff;
+        cursor: zoom-in;
+        transition: transform 180ms ease;
+      }
+      .section-figures img:hover { transform: scale(1.02); }
+      .section-figures figcaption {
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.5;
+        font-family: var(--font-display);
+      }
+
+      /* ── 段落間插圖（與章節史料圖卡同尺寸）── */
+      .inline-figure {
+        margin: 6px 0;
+        border: 1px solid var(--accent);
+        background: var(--panel-2);
+        padding: 8px;
+        max-width: 280px;
+      }
+      .inline-figure img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        border: 1px solid var(--accent);
+        background: #fff;
+        cursor: zoom-in;
+        transition: transform 180ms ease;
+      }
+      .inline-figure img:hover { transform: scale(1.01); }
+      .inline-figure figcaption {
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--muted-2);
+        line-height: 1.5;
+        font-family: var(--font-display);
+      }
+
+      /* ── 圖片燈箱 ── */
+      dialog.lightbox {
+        border: 2px solid var(--accent);
+        background: var(--bg);
+        padding: 10px;
+        max-width: min(960px, calc(100vw - 32px));
+        max-height: calc(100vh - 48px);
+      }
+      dialog.lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+      }
+      dialog.lightbox img {
+        display: block;
+        max-width: 100%;
+        max-height: calc(100vh - 150px);
+        margin: 0 auto;
+        border: 1px solid var(--accent);
+        background: #fff;
+      }
+      dialog.lightbox .lb-cap {
+        margin: 10px 4px 4px;
+        font-size: 13px;
+        color: var(--muted);
+        font-family: var(--font-display);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      dialog.lightbox .lb-close {
+        border: 2px solid var(--accent);
+        background: transparent;
+        color: var(--text);
+        border-radius: 999px;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        flex-shrink: 0;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      /* ── 滾動淡入動畫 ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+      .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* ── 動態背景：漂移光影＋報紙風格浮水印 ── */
+      @keyframes bg-drift-a {
+        0%   { transform: translate(-6%, -5%) scale(1); }
+        50%  { transform: translate(6%, 6%) scale(1.1); }
+        100% { transform: translate(-6%, -5%) scale(1); }
+      }
+      @keyframes bg-drift-b {
+        0%   { transform: translate(5%, 6%) scale(1.08); }
+        50%  { transform: translate(-6%, -5%) scale(1); }
+        100% { transform: translate(5%, 6%) scale(1.08); }
+      }
+      @keyframes bg-pan {
+        from { transform: translate(0, 0); }
+        to   { transform: translate(-90px, -120px); }
+      }
+      html::before {
+        content: "";
+        position: fixed;
+        inset: -30%;
+        z-index: -2;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='1080'%3E%3Cdefs%3E%3Cpattern id='vt' width='9' height='160' patternUnits='userSpaceOnUse'%3E%3Cline x1='4.5' y1='0' x2='4.5' y2='160' stroke='%23000' stroke-width='1.6' stroke-dasharray='15 4 9 3 21 4 7 3 13 4'/%3E%3C/pattern%3E%3Cfilter id='gr'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0.7 0.7 0 0'/%3E%3C/filter%3E%3Cfilter id='bl' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='10'/%3E%3C/filter%3E%3CradialGradient id='vg' cx='50%25' cy='50%25' r='75%25'%3E%3Cstop offset='60%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='0.5'/%3E%3C/radialGradient%3E%3Cfilter id='sb' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeGaussianBlur stdDeviation='1.3'/%3E%3C/filter%3E%3C/defs%3E%3Cg opacity='0.055' filter='url(%23sb)' font-family='serif' fill='%23000' style='writing-mode:vertical-rl'%3E%3Crect x='22' y='22' width='716' height='1036' fill='none' stroke='%23000' stroke-width='2'/%3E%3Crect x='28' y='28' width='704' height='1024' fill='none' stroke='%23000' stroke-width='0.8'/%3E%3Ctext x='700' y='44' font-size='46' font-weight='bold'%3E臺灣新生報%3C/text%3E%3Ctext x='660' y='44' font-size='12'%3E中華民國三十六年三月一日　星期六　第一版　零售每份五元%3C/text%3E%3Cline x1='644' y1='36' x2='644' y2='1044' stroke='%23000' stroke-width='1.6'/%3E%3Cline x1='639' y1='36' x2='639' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='488' y1='36' x2='488' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='335' y1='36' x2='335' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='182' y1='36' x2='182' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='616' y='44' font-size='19' font-weight='bold'%3E查緝私煙肇禍%3C/text%3E%3Ctext x='594' y='44' font-size='12'%3E群眾包圍警察局%3C/text%3E%3Crect x='496' y='40' width='90' height='420' fill='url(%23vt)'/%3E%3Ctext x='616' y='486' font-size='17' font-weight='bold'%3E物價高生活苦%3C/text%3E%3Crect x='496' y='482' width='112' height='180' fill='url(%23vt)'/%3E%3Crect x='496' y='690' width='136' height='120' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3Ctext x='586' y='716' font-size='15'%3E安定民心%3C/text%3E%3Ctext x='556' y='716' font-size='15'%3E恢復秩序%3C/text%3E%3Crect x='496' y='836' width='136' height='200' fill='url(%23vt)'/%3E%3Ctext x='463' y='44' font-size='18' font-weight='bold'%3E處理委員會昨開會%3C/text%3E%3Ctext x='441' y='44' font-size='11'%3E各界代表二百餘人出席中山堂%3C/text%3E%3Crect x='343' y='40' width='90' height='380' fill='url(%23vt)'/%3E%3Crect x='343' y='440' width='138' height='110' fill='none' stroke='%23000'/%3E%3Cline x1='343' y1='440' x2='481' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='481' y1='440' x2='343' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='469' y='562' font-size='10'%3E中山堂開會情形%3C/text%3E%3Ctext x='463' y='660' font-size='17' font-weight='bold'%3E米荒問題待解決%3C/text%3E%3Crect x='343' y='656' width='112' height='280' fill='url(%23vt)'/%3E%3Crect x='343' y='950' width='138' height='86' fill='url(%23vt)'/%3E%3Ctext x='310' y='44' font-size='19' font-weight='bold'%3E戒嚴宣告解除%3C/text%3E%3Ctext x='288' y='44' font-size='11'%3E民意代表陳情　長官廣播談話%3C/text%3E%3Crect x='190' y='40' width='90' height='360' fill='url(%23vt)'/%3E%3Crect x='190' y='420' width='138' height='170' fill='none' stroke='%23000' stroke-width='2'/%3E%3Ctext x='292' y='450' font-size='16' font-weight='bold'%3E佈告%3C/text%3E%3Ctext x='262' y='446' font-size='12'%3E禁止集會遊行%3C/text%3E%3Ctext x='236' y='446' font-size='12'%3E限制夜間通行%3C/text%3E%3Ctext x='310' y='630' font-size='17' font-weight='bold'%3E交通逐步恢復%3C/text%3E%3Crect x='190' y='626' width='112' height='290' fill='url(%23vt)'/%3E%3Crect x='190' y='930' width='138' height='106' fill='url(%23vt)'/%3E%3Ctext x='157' y='44' font-size='18' font-weight='bold'%3E秩序恢復　交還武器%3C/text%3E%3Ctext x='135' y='44' font-size='12'%3E學生返校上課%3C/text%3E%3Crect x='36' y='40' width='92' height='400' fill='url(%23vt)'/%3E%3Ctext x='157' y='466' font-size='16' font-weight='bold'%3E旅滬臺人組團返臺%3C/text%3E%3Crect x='36' y='462' width='114' height='240' fill='url(%23vt)'/%3E%3Crect x='36' y='730' width='142' height='110' fill='none' stroke='%23000'/%3E%3Ctext x='124' y='756' font-size='14'%3E新生戲院%3C/text%3E%3Ctext x='96' y='760' font-size='11'%3E本日上映%3C/text%3E%3Crect x='36' y='866' width='142' height='170' fill='url(%23vt)'/%3E%3Cline x1='22' y1='540' x2='738' y2='540' stroke='%23000' stroke-width='2' stroke-opacity='0.5'/%3E%3C/g%3E%3Crect width='760' height='1080' filter='url(%23gr)' opacity='0.06'/%3E%3Cg filter='url(%23bl)' fill='%235c4419'%3E%3Cellipse cx='90' cy='120' rx='75' ry='50' opacity='0.16'/%3E%3Cellipse cx='680' cy='950' rx='95' ry='65' opacity='0.14'/%3E%3Cellipse cx='620' cy='90' rx='55' ry='38' opacity='0.12'/%3E%3Cellipse cx='140' cy='1000' rx='65' ry='42' opacity='0.12'/%3E%3Cellipse cx='380' cy='560' rx='100' ry='34' opacity='0.1'/%3E%3C/g%3E%3Crect width='760' height='1080' fill='url(%23vg)' opacity='0.3'/%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: bg-pan 80s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: -20%;
+        z-index: -1;
+        pointer-events: none;
+        will-change: transform;
+      }
+      body::before {
+        background:
+          radial-gradient(circle at 25% 20%, rgba(180, 0, 30, 0.09), transparent 44%),
+          radial-gradient(circle at 78% 68%, rgba(0, 0, 0, 0.09), transparent 50%);
+        animation: bg-drift-a 40s ease-in-out infinite;
+      }
+      body::after {
+        background:
+          radial-gradient(circle at 70% 18%, rgba(255, 255, 255, 0.6), transparent 46%),
+          radial-gradient(circle at 18% 78%, rgba(0, 0, 0, 0.07), transparent 50%);
+        animation: bg-drift-b 55s ease-in-out infinite;
+        mix-blend-mode: soft-light;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html::before,
+        body::before,
+        body::after { animation: none; }
+      }
     </style>
   </head>
   <body>
@@ -712,10 +895,18 @@
               <p>
                 1945年8月，日本宣布無條件投降，臺灣長達五十年的日本殖民統治宣告終結。同年10月25日，中華民國政府代表陳儀在臺北公會堂接受日本駐臺軍隊投降，臺灣正式回歸中華民國版圖。對多數臺灣民眾而言，這是一個充滿期待的時刻：人們期望終結殖民壓迫，迎來同胞治理的新局面，渴望政治地位的提升、語言文化的解放，以及生活的改善。然而接下來的一年多時間，這份期待逐漸被失落與憤怒所取代。
               </p>
+              <figure class="inline-figure">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg/500px-1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg" alt="1945年10月25日臺北公會堂受降典禮後合影" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>1945/10/25 臺北公會堂受降典禮後合影（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">行政長官公署的集權體制</p>
               <p>
                 國民政府在制度設計上，選擇為臺灣設立有別於其他省份的「臺灣省行政長官公署」。行政長官陳儀集行政、立法、司法與軍事大權於一身，同時兼任臺灣省警備總司令，形成高度集中的一元統治。此一體制在設計上即排除了地方民意的實質參與。臺灣本省人雖在日治時期已具備相當行政與專業能力，卻大多被排除在政府要職之外，重要職缺幾乎清一色由自大陸來臺的外省籍官員出任。省參議會與縣市參議會雖名義上存在，但在制度上並無實質影響政策的空間，本省籍精英的政治訴求幾乎無從被正式回應。
               </p>
+              <figure class="inline-figure">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Taiwan_%28Republic_of_China%29_1949_bank_note_-_10%2C000_old_Taiwan_dollars_%28front%29.jpg" alt="1949年舊臺幣一萬圓紙鈔" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>1949年發行的舊臺幣一萬圓紙鈔，惡性通膨下幣值急遽崩跌的見證（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">通貨膨脹與經濟惡化</p>
               <p>
                 戰後臺灣的經濟面臨多重打擊。日治末期的戰爭動員已嚴重消耗物資，接收過程又帶來進一步的混亂。國民政府延續並強化統制經濟框架，由公營事業壟斷糖、樟腦、菸、酒等重要物資的生產與銷售，民間商業活動受到嚴格管制。
@@ -723,10 +914,18 @@
               <p>
                 通貨膨脹是衝擊民眾生活最直接的問題。政府以遠低於市場的匯率收兌臺幣與中國法幣，實質上將臺灣的物資財富轉移至大陸。加以中國大陸內戰持續消耗、法幣不斷貶值，連帶拉動臺灣物價飆漲。1945年至1947年間，各類民生物資的價格往往以數倍乃至數十倍計漲，薪資購買力大幅萎縮，尋常百姓日常開銷愈來愈難以維持。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/1946.jpg" alt="1946年臺灣新生報民生報導" loading="lazy" decoding="async" />
+                <figcaption>1946年《臺灣新生報》民生與物價報導（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">米荒與糧食管制的失策</p>
               <p>
                 糧食問題是民怨的另一核心。行政長官公署延續日治時期的糧食管制，但執行嚴重失當：政府以遠低於市場行情的價格強制向農民徵購稻米，農民為求生計寧可滯納或轉入黑市，官方收購量遠不如預期。1946年底，公署宣布停止徵購配給，卻同時封存官方糧倉，市面米糧供給急劇減少，米價在短期內暴漲，爆發嚴重米荒。糧食短缺的直接受害者是城市中的勞工與低收入家庭，積累的憤怒自然轉向施政者。
               </p>
+              <figure class="inline-figure">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Monopoly_Bureau_Building%2C_historic_view.jpg" alt="臺灣省專賣局大樓歷史影像" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>臺灣省專賣局大樓歷史影像，專賣制度與緝私衝突的核心機關（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">專賣制度與緝私衝突</p>
               <p>
                 臺灣省專賣局接收並延續日治時期的公賣制度，繼續由政府壟斷菸、酒、樟腦等物資，並大力取締私菸、私酒。然而在物資匱乏、物價高漲的環境下，許多底層民眾正是靠販售這類商品維持生計。對他們而言，專賣制度既奪走生存空間，查緝人員的粗暴執法更形同雪上加霜。專賣局查緝員素質參差不齊，強搶財物、打人傷人的事件時有發生，卻鮮少受到法律追究，令民眾普遍感到「有法律也沒有公道」。
@@ -764,6 +963,10 @@
               <p>
                 1947年2月27日傍晚，一起發生在臺北圓環附近的取締私菸行動，成為二二八事件的直接導火線。這個事件本身在規模上並不特殊，但它精準地落在一個積怨已深的社會的最脆弱的裂縫上：執法者的暴力、庶民的生計、申訴無門的無力感，以及群眾的憤怒——全部在同一個夜晚、同一條街道上匯聚。
               </p>
+              <figure class="inline-figure">
+                <img src="https://static.wixstatic.com/media/6665c9_035e2aa6c1fd4f6999adce4234875241~mv2.jpg" alt="天馬茶房歷史照片" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>天馬茶房歷史照片，門口合照者為臺北帝國大學醫學部學生；此處即1947年2月27日緝菸衝突的爆發地（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">圓環緝菸事件的經過</p>
               <p>
                 當日上午，臺北分局接獲密報，專賣局派出傅學通等六名查緝員前往淡水港追查走私，但收獲甚微。傍晚查緝員回到臺北，轉往太平町圓環一帶繼續緝查。附近私菸攤販聞訊四散，查緝員最終在天馬茶房廊下攔下一名逃避不及的販菸婦女——四十歲的寡婦林江邁。
@@ -771,6 +974,10 @@
               <p>
                 查緝員依規定沒收林江邁的全部香菸及現款。林江邁一家三口生計全賴此攤，她跪地哀求至少歸還合法部分，圍觀路人也紛紛幫忙求情。查緝員葉得根不耐煩，隨手以配備手槍的槍托猛擊林江邁頭部，導致她頭破血流、昏倒在地。目睹此景的路人群情激憤，立即包圍查緝員。查緝員倉皇棄車逃竄，傅學通在永樂町遭群眾追及抱住，情急之下向人群開槍示警，子彈擊中正在自家門口圍觀的市民陳文溪胸口，翌日不治身亡。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470228私煙擊斃市民.jpg" alt="查緝私煙擊斃市民報導" loading="lazy" decoding="async" />
+                <figcaption>1947/02/28 報導：查緝私煙擊斃市民（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">群眾的憤怒與包圍警察局</p>
               <p>
                 陳文溪中彈的消息迅速傳開，憤怒的民眾將查緝員遺留的貨車及緝獲的香菸拖至圓環焚燒洩憤。隨後大批群眾轉往查緝員躲藏的永樂町派出所，再轉往警察總局，要求交出兇手、就地槍斃。警察局始終不肯交人，群眾徹夜包圍。翌日又轉往憲兵隊，持續到深夜，始終沒有得到正式回應。
@@ -778,6 +985,10 @@
               <p>
                 這場包圍本身已具有深刻的象徵意義：人民帶著受傷的婦女、死去的路人，向政府機關要求公道，卻連最基本的正式回應都求不到。對那個時代已深感不滿的臺灣民眾來說，這不只是一起打人的事件，而是長期以來執法任意、申訴無門、官員豁免於法律之上的縮影。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/1947.jpg" alt="1947年2月28日民報頭版" loading="lazy" decoding="async" />
+                <figcaption>1947/02/28《民報》頭版（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">消息傳播與全市的憤怒</p>
               <p>
                 當晚的衝突透過口耳相傳，迅速在整個臺北蔓延。無論是親眼目睹者、從旁聽說者，還是第二天才輾轉得知的人，都在各自的理解框架下重述這件事。林江邁被打傷、陳文溪中彈身亡、查緝員逃入官署受保護、警察局不肯交人——這些事實在一夜之間化為一個簡單清晰的訊息：「官府打死人，卻毫無代價。」
@@ -822,6 +1033,10 @@
               <p>
                 午後，數百名民眾手持旗幟走向位於中山南路的臺灣省行政長官公署，要求陳儀接見，懲辦昨夜打人開槍的查緝員，並要求廢除專賣局。群眾手無寸鐵，只是走到公署門前。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/194703012.png" alt="臺北市戒嚴佈告" loading="lazy" decoding="async" />
+                <figcaption>1947/03/01 臺北市戒嚴佈告（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">長官公署開槍與戒嚴宣布</p>
               <p>
                 公署的反應是開槍。駐守公署二樓的衛兵以機槍對廣場掃射，現場群眾四散奔逃，當場至少兩人中彈死亡，多人受傷。這一刻，是二二八事件從個人遭遇轉為官民對立的決定性節點：手無寸鐵的請願群眾遭到國家武力的直接射殺。
@@ -829,6 +1044,10 @@
               <p>
                 下午三時，陳儀宣布全市戒嚴。臺北城陷入驚恐與憤怒交織的氛圍之中。傍晚，陳儀透過廣播稱「戒嚴是為了保護人民」，承諾成立調查委員會。但就在同一時間，他已以「暴民作亂」為由，秘密向南京發出請求派兵增援的電報。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/194702282.jpg" alt="陳儀廣播談話報導" loading="lazy" decoding="async" />
+                <figcaption>1947/02/28 陳儀廣播談話（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">廣播電台與消息擴散全島</p>
               <p>
                 2月28日下午，憤怒的民眾衝入臺灣廣播電台，向全島播出臺北發生的事情：請願群眾遭到機槍掃射，民眾死傷，長官公署拒絕對話。這是許多臺灣各地民眾第一次聽到臺北真實情況的管道。廣播聲傳遍南部、中部、東部，各地積累的怨氣迅速找到了共鳴點。
@@ -836,6 +1055,10 @@
               <p>
                 消息傳開後，全島各地接連出現自發性抗議：基隆、新竹、臺中、嘉義、臺南、高雄等地相繼爆發罷工、罷市與示威。各地民眾佔領官署、武裝自衛、驅逐外省籍官員的事件陸續出現。事件在短短數日內從臺北的個別衝突，演變為牽動全島的政治危機。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470301戒嚴解除.jpg" alt="戒嚴解除報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/01 戒嚴解除報導（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">社會秩序的重組與陳儀的兩面手法</p>
               <p>
                 在混亂中，臺灣社會也開始嘗試自我組織。省參議員、市參議員、地方仕紳與各界代表聚集，試圖扮演斡旋者的角色，在官民之間建立溝通管道。3月1日，「緝菸血案調查委員會」在中山堂成立，隨後擴大改組為「二二八事件處理委員會」，以制度化方式匯集民間訴求，向陳儀進行交涉。
@@ -866,6 +1089,10 @@
               <p>
                 2月28日之後，事件迅速從街頭衝突蔓延為全島性的政治對抗。在局勢動盪中，臺灣社會各界試圖以制度化方式尋找出路——「二二八事件處理委員會」就是在這個背景下應運而生的協商機制。它代表臺灣社會在危機時刻嘗試以政治談判取代街頭衝突的努力，也成為一面映照出那個時代權力結構的鏡子。
               </p>
+              <figure class="inline-figure">
+                <img src="https://static.wixstatic.com/media/6665c9_9357df9e16b14048bc86782df51d38c4~mv2.jpg" alt="1940年臺北公會堂" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>1940年臺北公會堂（今中山堂），二二八事件處理委員會於此開會並提出三十二條處理大綱（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">處理委員會的成立</p>
               <p>
                 3月1日，周延壽、王添燈、黃朝琴等省參議員與各界代表，先在臺北中山堂召開會議，成立「緝菸血案調查委員會」，隨後於3月3日擴大改組為「二二八事件處理委員會」（簡稱處委會）。委員會廣納省參議員、市參議員、國大代表及各界人士，以制度化的形式匯集民間訴求，並代表民間與陳儀進行交涉。周延壽擔任首任主席。
@@ -873,6 +1100,10 @@
               <p>
                 處委會初期提出五項請求：查明此次傷亡真相、撫卹死傷者、釋放被捕民眾、不追究示威者、由官民雙方共同組成調查委員會。陳儀表面上點頭接受，稱「很好，我們來做」。但與此同時，他已在3月2日向南京發出急電，以「武裝暴動」為由請求派遣援軍。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470303處理委員會.jpg" alt="處理委員會開會報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/03 處理委員會開會報導（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">三十二條處理大綱</p>
               <p>
                 隨著協商進入實質階段，處委會在3月7日提出了最重要的政治文件——《三十二條處理大綱》，由台灣省參議員、處委會宣傳負責人王添燈主導起草。大綱涵蓋政治、軍事、行政、司法各面向的改革訴求，核心包括：各縣市長由民選產生、臺籍官員占各機關職位過半、廢除專賣制度、撤廢行政長官公署改制省政府、保障集會結社自由、以及廢除軍事法庭等。
@@ -880,6 +1111,10 @@
               <p>
                 這份大綱是當時臺灣社會改革訴求的最完整表述，反映出民間不只要求懲辦個別官員，更要求結構性的制度改革。同日下午，王添燈等人將大綱正式呈交陳儀，卻遭陳儀斷然拒絕。當晚，王添燈透過臺灣廣播電台向全島宣讀三十二條全文及陳儀拒絕的情形，讓全島民眾知道談判的真實樣貌。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470303陳儀.jpg" alt="陳儀接受四項意見報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/03 陳儀長官廣播表示接受四項意見（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">陳儀的兩面手法</p>
               <p>
                 處委會與陳儀交涉的整個過程，是一場不對等的騙局。陳儀在公開場合持續展現「願意溝通」的姿態，多次接見代表，說「會認真研究」，甚至在3月6日廣播中宣稱處委會是「合法組織」。然而他在3月2日已向南京急電請兵，3月6日再度發電，確認整編第二十一師已從上海出發，憲兵第四團從福州啟程，援軍最遲數日內抵台。陳儀所做的一切協商，都只是為了爭取時間，等待軍隊登陸。
@@ -887,6 +1122,10 @@
               <p>
                 陳儀請兵的密電在事後被公開，成為他兩面手法的確鑿證據。這份密電也揭示了他從事件初期便已決定以武力平息，而非透過政治手段解決問題。處委會的所有代表，在毫不知情的情況下，被陳儀利用為拖延時間的工具。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/二二八事件處理委員會名單.jpg" alt="二二八事件處理委員會代表名單" loading="lazy" decoding="async" />
+                <figcaption>二二八事件處理委員會代表名單（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">委員會內部的分歧</p>
               <p>
                 處委會內部並非鐵板一塊。以王添燈為代表的強硬派主張把三十二條訴求廣播全島、向全臺人民公開，藉社會壓力迫使政府讓步；而以蔣渭川為代表的溫和派則擔心激怒陳儀加速鎮壓，希望保留私下談判空間，主張另提較溫和的九項省政改革綱要。兩種路線的分歧，折射出當時社會在面對絕境時的不同判斷：公開透明的訴求能動員更廣泛的民意，卻也更容易被當成「挑釁」的理由；溫和委婉的路線看似保留空間，卻可能讓所有訴求都在陳儀的虛應故事中被逐一消化。
@@ -917,6 +1156,10 @@
               <p>
                 1947年3月8日，整編第二十一師主力部隊由基隆港登陸，憲兵第四團亦同日從福州抵台。隨著援軍踏上臺灣土地，陳儀立即翻臉：宣布處理委員會為「非法組織」，通令解散，並向全島廣播稱「臺灣發生武裝叛亂」，命令軍隊全面鎮壓。那些相信還在協商的民間代表，頓時成為被追緝的對象。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470308.jpg" alt="軍隊登陸基隆" loading="lazy" decoding="async" />
+                <figcaption>1947/03/08 軍隊登陸基隆（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">基隆與北部的鎮壓</p>
               <p>
                 整編第二十一師師長劉雨卿率部自基隆登陸，部隊上岸後隨即向基隆港口周邊展開掃蕩。碼頭工人、在場民眾皆遭波及，士兵對港口一帶大規模開槍射擊，造成嚴重傷亡。部分受難者被捕後遭以鐵絲穿掌、多人串成一列投入海中，基隆港一帶出現大量浮屍。隨後部隊向南挺進，自桃園、新竹一路掃蕩，各地出現無差別逮捕、路邊就地槍決的情形。
@@ -924,6 +1167,10 @@
               <p>
                 在臺北，軍隊進入後立即實施宵禁，對各路口展開封鎖。部隊在街頭隨意開槍，外出市民不分身份遭到射殺。處委會成員的名單已落入軍方手中，許多代表在毫無預警的情況下被帶走，從此音訊全無。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470313 高雄繳出 槍三百餘桿.jpg" alt="高雄繳出槍三百餘桿報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/13 高雄繳出槍三百餘桿（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">高雄的屠殺</p>
               <p>
                 在南部，高雄要塞司令彭孟緝從3月6日便已搶先展開鎮壓，未等援軍登陸即自行行動。當日，高雄二二八處理委員會代表前往要塞司令部談判，包括高雄市長黃仲圖、市議長彭清靠等人被彭孟緝當場逮捕。隨即，彭孟緝下令武裝部隊兵分三路進攻高雄車站、高雄一中及市政府，對市區展開大規模屠殺。傷亡人數至今難以確切統計，但高雄在此役中喪失大批本省人士。彭孟緝因此役「功績」，事後被蔣介石記大功二次、兩個月後升任臺灣警備總司令。
@@ -932,6 +1179,10 @@
               <p>
                 臺灣並非沒有武裝抵抗。3月6日，臺灣共產黨創黨人謝雪紅在臺中糾集青年學生約四百餘人，組成「二七部隊」，成為二二八期間最具組織規模的武裝抵抗力量。二七部隊一度佔領臺中市區，控制部分官署。援軍登陸後，二七部隊向南投、埔里一帶轉進。3月14日至16日，警備隊長黃金島率三十餘名學生軍在南投烏牛欄吊橋浴血抵抗，彈盡後各自撤散。謝雪紅率部分核心黨員輾轉逃往香港。二七部隊雖終究不敵正規軍，卻留下臺灣人曾以武裝捍衛家園的歷史記錄。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470310.jpg" alt="下令解散處委會報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/10 陳儀下令解散二二八事件處委會（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">全面控制的確立</p>
               <p>
                 3月8日至3月中旬，軍隊迅速控制全島各主要城市。各地抵抗零星且力量懸殊，在正規軍面前無法形成有效阻擋。嘉義、臺南、屏東等地相繼宣告「平定」。軍事機器的展開伴隨著系統性的逮捕——知識分子、地方仕紳、參議員、記者、醫師、律師、教師，凡是曾在處委會或各地協商中出現過的人，都在軍方的搜查名單之上。許多人在家門前就被帶走，再未回家。
@@ -963,6 +1214,10 @@
               <p>
                 軍隊登陸之後，鎮壓行動並未隨著各地抵抗瓦解而停止，反而進入一個更系統化的階段——「清鄉」。清鄉是軍事鎮壓的延伸，是國家機器以「肅清叛亂分子」為名，對臺灣社會展開的大規模搜捕行動。這個階段所造成的傷亡與創傷，在許多地區比軍隊登陸時還要深重。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470316總部開始清除叛徒.jpg" alt="總部開始清除叛徒報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/16 「總部開始清除叛徒」（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">清鄉制度的建立</p>
               <p>
                 3月9日起，陳儀正式頒布清鄉命令，由臺灣省警備總司令部參謀長柯遠芬主導執行，在全臺各地依序展開。清鄉以高雄地區（3月7日起）為最早，隨後擴及屏東、基隆、宜蘭、臺北等地，持續至5月間才大體完成。
@@ -970,6 +1225,10 @@
               <p>
                 清鄉的邏輯以「預防性清除」為核心：不只針對事件中有具體行動的人，更要清除「可能的威脅」。清查對象涵蓋地方仕紳、知識分子、參議員、律師、醫師、教師、記者，乃至曾在處委會出現或被認為有「影響力」的任何人。名單來源混雜，包括軍方情報、官員舉報，乃至鄰里間的告密，導致大量無辜者遭到牽連。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470314掃蕩周報.jpg" alt="掃蕩周報" loading="lazy" decoding="async" />
+                <figcaption>1947/03/14《掃蕩周報》（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">柯遠芬與「寧可枉殺九十九個」</p>
               <p>
                 在清鄉會議中，柯遠芬明確表示清查的基準：「寧可枉殺九十九個，只要殺死一個真的就可以。」這句話後來被白崇禧在回憶錄中記載，成為清鄉暴行最廣為人知的歷史佐證。以這種邏輯執行的清查，必然造成大規模錯殺——被告密、被誤認、被仇家藉機陷害的平民，在缺乏任何正式調查程序的情況下遭到逮捕，繼而失蹤或被就地處決。
@@ -977,6 +1236,10 @@
               <p>
                 柯遠芬本人也被記錄以悔過書勒索林家花園主人鉅款的行為。白崇禧巡台後，建議將其撤職處分，理由是「處事操切、濫用職權、賦性剛愎、不知悛改」。然而柯遠芬最終逃過一切追究，事後甚至撰文為自身行為辯護。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470314湯德章.jpg" alt="湯德章相關報導" loading="lazy" decoding="async" />
+                <figcaption>1947/03/14 湯德章相關報導（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">受難的菁英：陳澄波與湯德章</p>
               <p>
                 清鄉期間最令人扼腕的事件之一，是嘉義出身的西畫大師陳澄波的遭難。陳澄波是1926年以《嘉義街外》入選日本帝展的第一位臺灣人畫家，同時也是嘉義市二二八處理委員會委員。他以和平使者身分前往嘉義機場與國軍協商，甫抵達即遭拘押，在嚴刑逼供後，於3月25日被五花大綁推上軍車遊街，在嘉義火車站前廣場公開槍決，未經任何審判程序，享年52歲。其妻張捷秘密保存其畫作，使作品得以流傳後世。
@@ -1014,6 +1277,10 @@
               <p>
                 隨著鎮壓行動在1947年3月下旬逐步收束，國民政府開始進行政治善後。這個階段的核心動作是撤換陳儀、廢除行政長官公署、改組為省政府，並任命魏道明接任主席。這些人事異動在形式上回應了民間「撤換陳儀」的訴求，卻無法彌補事件已造成的深重傷害，也沒有觸及制度性改革的根本問題。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470511送別陳長官.jpg" alt="送別陳長官報導" loading="lazy" decoding="async" />
+                <figcaption>1947/05/11 送別陳長官（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">陳儀的撤職與離台</p>
               <p>
                 1947年3月22日，中國國民黨第六屆中央執行委員會三全大會通過，將行政長官陳儀撤職查辦。4月22日，行政院議決撤銷臺灣省行政長官公署，改組為臺灣省政府，並任命前駐美大使魏道明為首任省政府主席。
@@ -1021,6 +1288,10 @@
               <p>
                 陳儀離台後，先調任浙江省主席，不久因局勢動盪去職。1948年，他與湯恩伯接觸，被認為有意向中共輸誠，事後被以「通共」罪名逮捕。1950年6月18日，陳儀在臺北馬場町被蔣中正下令槍決，享年73歲。那個命令軍隊鎮壓臺灣人民的人，最後死在自己效忠的政權手中。這一諷刺性的結局，在許多臺灣人的歷史記憶中留下了複雜而難以消化的印記。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470515歡迎魏道明主席.jpg" alt="歡迎魏道明主席報導" loading="lazy" decoding="async" />
+                <figcaption>1947/05/15 歡迎魏道明主席（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">魏道明就職與表面的緩和</p>
               <p>
                 1947年5月16日，魏道明在臺北宣誓就職。他隨即宣布解除戒嚴令、結束清鄉工作、廢除新聞圖書及郵電檢查、撤銷交通及通訊機構的軍事管制，並調整臺幣與法幣的兌換比率。這些措施在形式上鬆動了部分管制，讓臺灣社會從最緊繃的恐怖狀態中稍微喘息。
@@ -1028,6 +1299,10 @@
               <p>
                 然而，這些調整並未觸及更根本的問題：沒有公開調查真相，沒有追究施暴者的責任，沒有對死難者及家屬給予正式的承認與撫卹，更沒有對導致事件爆發的制度性缺失進行改革。許多在清鄉中被捕的人仍在獄中，許多家庭不知道親人下落。「解除戒嚴」只是換了一種管理形式，監控與壓迫並未消失。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19470411柯參謀長對記者談.jpg" alt="柯遠芬對記者談報導" loading="lazy" decoding="async" />
+                <figcaption>1947/04/11 柯參謀長對記者談（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">官方敘事的建立與記憶的壓制</p>
               <p>
                 隨著秩序表面恢復，國民政府開始建立關於二二八事件的官方敘事：事件被定性為「奸匪煽動的武裝暴亂」，鎮壓被描繪為「必要的恢復秩序」，受難者被污名化為「叛亂分子」或其同情者。這套敘事在接下來的教育體系、媒體管控與公開紀念中被系統性地強化，使二二八事件在公共領域幾乎成為禁忌。
@@ -1064,6 +1339,10 @@
               <p>
                 1949年，中華民國政府在國共內戰中節節敗退，最終撤退台灣。這個歷史轉折對臺灣社會的意義，遠不只是政治中心的轉移——它同時帶來了長達數十年的戒嚴統治與政治迫害，俗稱「白色恐怖」。二二八事件的恐懼記憶，在此時成為白色恐怖得以順利運作的社會土壤。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19490519另臺灣省宣布戒嚴.jpg" alt="臺灣省宣布戒嚴檔案" loading="lazy" decoding="async" />
+                <figcaption>1949/05/19 臺灣省宣布戒嚴（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">戒嚴令的頒布與法律體系的構建</p>
               <p>
                 1949年5月19日，臺灣省政府主席兼警備總司令陳誠奉蔣中正命令，宣布自翌日起在臺灣省全境實施戒嚴。同年5月24日，立法院三讀通過《懲治叛亂條例》，確立了以「叛亂罪」大規模起訴政治異見人士的法律基礎。這兩項措施共同構成白色恐怖的制度框架：戒嚴令暫停憲法對基本權利的保障，《懲治叛亂條例》則讓任何與政府意見不符的言論或行動都可能以「叛亂」罪名定罪。
@@ -1071,6 +1350,10 @@
               <p>
                 1950年，《戡亂時期檢肅匪諜條例》頒布，進一步擴大了情報機關的逮捕與審訊權限。三項法律合力打造了一個讓任何政治異見都難以生存的體制環境，並由臺灣警備總司令部、調查局、保密局等情治機構分工執行。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/1950對潛台匪諜活動之防制.jpg" alt="對潛台匪諜活動之防制檔案" loading="lazy" decoding="async" />
+                <figcaption>1950 對潛台匪諜活動之防制（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">蔣中正與政治迫害的規模</p>
               <p>
                 在蔣中正主政期間，政治案件的審判幾乎都由軍事法庭進行，被告缺乏正常的司法保障。據後來陸續解密的史料顯示，蔣中正對大量政治犯死刑案件親筆批示「照準」，確認執行。二二八事件紀念基金會的補償紀錄顯示，補償範圍內的死刑執行達809人；但實際受政治迫害、被逮捕、監禁、處決或失蹤的人數，遠高於此。
@@ -1114,6 +1397,10 @@
               <p>
                 在戒嚴統治的長期壓制下，二二八事件的記憶在公共場域幾乎銷聲匿跡。然而到了1980年代後期，臺灣的政治環境開始鬆動：黨外運動持續擴展，社會對民主改革的渴望日益高漲。就在這個縫隙中，一批公民、知識分子與受難者家屬率先站出來，試圖把四十年間被迫沉默的記憶帶回公共空間——二二八平反運動由此展開。
               </p>
+              <figure class="inline-figure">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Taipei228PeaceMemorialPark.jpg/500px-Taipei228PeaceMemorialPark.jpg" alt="臺北二二八和平紀念公園紀念碑" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                <figcaption>臺北二二八和平紀念公園內的二二八紀念碑，平反運動推動公開紀念的具體成果（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">1987年：二二八和平日促進會的成立</p>
               <p>
                 1987年2月4日，在尚未解嚴、政治風險仍然極高的時刻，陳永興、李勝雄、鄭南榕三人聯合數十個海內外臺灣社團，共同成立「二二八和平日促進會」，發表《二二八和平日宣言》，要求政府公開二二八真相、還給受難者公道，並將2月28日訂為「和平日」。陳永興擔任主任委員，鄭南榕擔任秘書長。
@@ -1125,6 +1412,10 @@
               <p>
                 在平反運動中，鄭南榕是最具象徵意義的人物之一。他創辦《自由時代》週刊，以「百分之百的言論自由」為辦刊宗旨，不斷挑戰政治禁忌。1989年，鄭南榕拒絕出庭接受叛亂罪的審訊，在警察試圖強制逮捕時，於雜誌社自焚身亡。他以生命為代價，宣告了捍衛言論自由的決心。鄭南榕的犧牲震驚社會，使平反運動的道德力量更加深入人心，也使臺灣的民主運動增添了沉重而不可迴避的歷史重量。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg" alt="李登輝宣告終止動員戡亂時期檔案" loading="lazy" decoding="async" />
+                <figcaption>1991/03/07 總統李登輝宣告終止動員戡亂時期（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">李登輝的道歉與紀念基金會的成立</p>
               <p>
                 隨著社會運動持續累積，政府終於無法再迴避。1991年3月4日，總統李登輝接見七位二二八受難者家屬代表，承諾籌組二二八專案小組，開放總統府相關檔案，並允諾在翌年二二八前給予滿意答覆。
@@ -1132,6 +1423,10 @@
               <p>
                 1995年2月28日，臺北二二八紀念碑落成，李登輝以國家元首身分出席，代表政府向受難者家屬正式道歉——這是臺灣歷史上第一次由國家領導人公開為二二八事件的國家責任道歉。同年，依據《二二八事件處理及補償條例》，行政院設立「財團法人二二八事件紀念基金會」，開始受理補償申請，並負責推動紀念、研究與教育工作。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19870818抗議者與官員進行溝通.jpg" alt="1987年抗議者與官員進行溝通" loading="lazy" decoding="async" />
+                <figcaption>1987/08/18 抗議者與官員進行溝通（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">平反運動的意義</p>
               <p>
                 平反運動最深刻的成就，不只是政府的道歉或紀念碑的建立，而是它根本改變了臺灣社會談論二二八事件的方式。四十年的禁忌被打破，受難者的故事開始能在公共場合被說出；「叛亂分子」的污名逐步被「受難者」、「犧牲者」取代；事件的歷史地位從「動亂」轉向「國家暴力的受害者」。
@@ -1159,6 +1454,10 @@
               <p>
                 在平反運動持續推動、社會輿論逐漸積累的壓力下，國民政府終於承認無法繼續迴避二二八的歷史真相。1991年，行政院正式委託學者組成研究小組，系統性地調查與撰寫《「二二八事件」研究報告》。1992年2月，報告正式公布，成為臺灣官方首次以國家力量對二二八事件進行完整調查與記錄的歷史里程碑。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19920401 關於「二二八事件研究報告」之出版.jpg" alt="二二八事件研究報告出版公文" loading="lazy" decoding="async" />
+                <figcaption>1992/04/01 關於《二二八事件研究報告》之出版（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">研究報告的組成與方法</p>
               <p>
                 行政院委聘賴澤涵擔任總主筆，研究團隊包括吳文星、許雪姬、黃富三、黃秀政、陳寬政等學者，以分工負責地區的方式撰寫報告。各章節涵蓋：事件的歷史背景、事件的爆發與衝突擴大、政府的應對與事件平復、傷亡與受害情況、當時的救卹，以及各地事件的詳細記述。
@@ -1180,6 +1479,10 @@
               <p>
                 正因如此，後來的研究工作並未就此停步。二二八事件紀念基金會的真相研究小組於2006年進一步完成《二二八事件責任歸屬研究報告》，針對蔣中正、陳儀、柯遠芬、彭孟緝、劉雨卿等人在決策與執行層面的責任進行深入分析，將責任歸屬明確指向特定人物。兩份報告相互補充，共同構成迄今最完整的官方研究基礎。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg" alt="二二八事件紀念基金會第一次董監事會議公文" loading="lazy" decoding="async" />
+                <figcaption>1995/09/30 二二八事件紀念基金會第一次董監事會議事宜（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">從研究到制度：補償法的立法</p>
               <p>
                 1992年研究報告的發布，直接推動了後續立法。1995年，立法院三讀通過《二二八事件處理及補償條例》，正式建立補償申請制度，由二二八事件紀念基金會受理案件，提供受難者或其家屬金錢補償及名譽回復。截至2010年，基金會累計補償超過一萬件，其中死刑案件809件。
@@ -1207,6 +1510,10 @@
               <p>
                 1992年研究報告的出版與1995年補償條例的通過，是臺灣面對二二八歷史的重要起點，卻還不是終點。進入21世紀後，隨著民主深化與社會意識的提升，臺灣開始更系統性地推動「轉型正義」——一套以面對歷史暴力、修復社會創傷、保障不再重演為核心的制度工程。2017年至2018年間，《促進轉型正義條例》的立法與促進轉型正義委員會（促轉會）的成立，是這個工程的最重要制度化節點。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/20171205促進轉型正義條例.jpg" alt="促進轉型正義條例" loading="lazy" decoding="async" />
+                <figcaption>2017/12/05 促進轉型正義條例（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">《促進轉型正義條例》的立法</p>
               <p>
                 2017年12月5日，立法院三讀通過《促進轉型正義條例》，同年12月27日由總統公布施行。這是臺灣第一部專門針對威權統治時期歷史不法行為、建立系統性處理機制的法律。條例規定的「威權統治時期」定義為1945年8月15日至1992年11月6日，涵蓋二二八事件、戒嚴與白色恐怖等整段政治迫害時期。
@@ -1214,6 +1521,10 @@
               <p>
                 條例明確規範促轉會的四大任務：一、開放政治檔案；二、清除威權象徵、保存不義遺址；三、平復司法不法、還原歷史真相，並促進社會和解；四、處理不當黨產的運用。這四個面向共同構成轉型正義的完整框架，從檔案、空間、司法到教育，全面性地面對威權時代留下的遺產。
               </p>
+              <figure class="inline-figure">
+                <img src="assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg" alt="促轉會揭牌典禮" loading="lazy" decoding="async" />
+                <figcaption>2018/05/31 促進轉型正義委員會布達暨揭牌典禮（點擊圖片可放大）</figcaption>
+              </figure>
               <p class="subhead">促轉會的成立與工作</p>
               <p>
                 2018年5月31日，促進轉型正義委員會正式掛牌成立，作為行政院下設的獨立機關，負責統籌推動各項轉型正義工作。
@@ -1353,6 +1664,119 @@
         btn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        // ── 各章節對應的史料圖片 ──
+        const sectionImages = {
+          "sec-prelude": [
+            { src: "assets/1946.jpg", cap: "1946年《臺灣新生報》：戰後初期社會景況報導", doc: "doc-1947" },
+          ],
+          "sec-19470227": [
+            { src: "assets/19470228私煙擊斃市民.jpg", cap: "1947/02/28 報導：查緝私煙擊斃市民", doc: "doc-19470228" },
+            { src: "assets/1947.jpg", cap: "1947/02/28《民報》頭版", doc: "doc-1947" },
+          ],
+          "sec-19470228": [
+            { src: "assets/194702282.jpg", cap: "1947/02/28 陳儀廣播談話", doc: "doc-19470228" },
+            { src: "assets/194703012.png", cap: "1947/03/01 臺北市戒嚴佈告", doc: "doc-19470228" },
+            { src: "assets/19470301戒嚴解除.jpg", cap: "1947/03/01 戒嚴解除報導", doc: "doc-19470228" },
+          ],
+          "sec-19470303": [
+            { src: "assets/19470303處理委員會.jpg", cap: "1947/03/03 二二八事件處理委員會", doc: "doc-19470303" },
+            { src: "assets/二二八事件處理委員會名單.jpg", cap: "二二八事件處理委員會名單", doc: "doc-19470303" },
+            { src: "assets/19470306.jpg", cap: "1947/03/06《臺灣新生報》", doc: "doc-19470303" },
+          ],
+          "sec-19470310": [
+            { src: "assets/19470308.jpg", cap: "1947/03/08 軍隊登陸基隆", doc: "doc-19470310" },
+            { src: "assets/19470310.jpg", cap: "1947/03/10 軍隊進駐報導", doc: "doc-19470310" },
+            { src: "assets/19470310蔣中正深望.jpg", cap: "1947/03/10 蔣中正談話報導", doc: "doc-19470310" },
+          ],
+          "sec-19470314": [
+            { src: "assets/19470314湯德章.jpg", cap: "1947/03/14 湯德章相關報導", doc: "doc-19470314" },
+            { src: "assets/19470316總部開始清除叛徒.jpg", cap: "1947/03/16 「總部開始清除叛徒」", doc: "doc-19470314" },
+            { src: "assets/19470315國軍進入臺中.jpg", cap: "1947/03/15 國軍進入臺中", doc: "doc-19470314" },
+          ],
+          "sec-19470516": [
+            { src: "assets/19470511送別陳長官.jpg", cap: "1947/05/11 送別陳長官", doc: "doc-19470516" },
+            { src: "assets/19470515歡迎魏道明主席.jpg", cap: "1947/05/15 歡迎魏道明主席", doc: "doc-19470516" },
+          ],
+          "sec-1949": [
+            { src: "assets/19490519另臺灣省宣布戒嚴.jpg", cap: "1949/05/19 臺灣省宣布戒嚴", doc: "doc-1949" },
+            { src: "assets/1950對潛台匪諜活動之防制.jpg", cap: "1950 對潛台匪諜活動之防制", doc: "doc-1949" },
+          ],
+          "sec-1980s": [
+            { src: "assets/19870818抗議者與官員進行溝通.jpg", cap: "1987/08/18 抗議者與官員進行溝通", doc: "doc-1987" },
+            { src: "assets/19910307 總統李登輝宣告終止動員戡亂時期.jpg", cap: "1991/03/07 李登輝宣告終止動員戡亂時期", doc: "doc-1987" },
+            { src: "assets/19950930 關於「財團法人二二八事件紀念基金會」第一次董監事會議事宜.jpg", cap: "1995/09/30 二二八事件紀念基金會第一次董監事會", doc: "doc-1987" },
+          ],
+          "sec-199202": [
+            { src: "assets/19920401 關於「二二八事件研究報告」之出版.jpg", cap: "1992/04/01 《二二八事件研究報告》出版公文", doc: "doc-1992" },
+          ],
+          "sec-2017": [
+            { src: "assets/20171205促進轉型正義條例.jpg", cap: "2017/12/05 促進轉型正義條例", doc: "doc-2017" },
+            { src: "assets/20180531促進轉型正義委員會布達暨揭牌典禮.jpg", cap: "2018/05/31 促轉會揭牌典禮", doc: "doc-2018" },
+          ],
+        };
+
+        // 史料圖片已改為直接穿插於各章節內文（.inline-figure），不再於章節底部集中顯示。
+        void sectionImages;
+
+        // ── 燈箱 ──
+        const lb = document.createElement("dialog");
+        lb.className = "lightbox";
+        lb.innerHTML =
+          '<img alt="" /><div class="lb-cap"><span></span>' +
+          '<button class="lb-close" type="button" aria-label="關閉">×</button></div>';
+        document.body.appendChild(lb);
+        const lbImg = lb.querySelector("img");
+        const lbCap = lb.querySelector(".lb-cap span");
+        lb.querySelector(".lb-close").addEventListener("click", function () { lb.close(); });
+        lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+
+        // ── 段落插圖：加上開新分頁跳轉至相關文件頁說明的按鈕 ──
+        document.querySelectorAll(".inline-figure").forEach(function (fig) {
+          const img = fig.querySelector("img");
+          const cap = fig.querySelector("figcaption");
+          if (!img || !cap) return;
+          const link = document.createElement("a");
+          link.href = "documents.html#img=" + encodeURIComponent(img.getAttribute("src"));
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.textContent = "前往相關文件 ↗";
+          link.style.cssText = "display:inline-block;margin-left:8px;text-decoration:underline;white-space:nowrap;";
+          cap.appendChild(link);
+        });
+
+        document.querySelectorAll(".section-figures img, .inline-figure img").forEach(function (img) {
+          img.addEventListener("click", function () {
+            lbImg.src = img.src;
+            lbImg.alt = img.alt;
+            lbCap.textContent = img.alt;
+            if (typeof lb.showModal === "function") lb.showModal();
+          });
+        });
+
+        // ── 滾動淡入 ──
+        const targets = document.querySelectorAll("details.section, .page-hero, .toc");
+        targets.forEach(function (el) { el.classList.add("reveal"); });
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("revealed");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+          );
+          targets.forEach(function (el) { io.observe(el); });
+        } else {
+          targets.forEach(function (el) { el.classList.add("revealed"); });
+        }
       })();
     </script>
 
