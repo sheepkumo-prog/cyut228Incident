@@ -99,11 +99,12 @@
       }
 
       .brand h1 {
-        font-size: 15px;
+        font-size: 21px;
         line-height: 1.2;
         margin: 0;
-        letter-spacing: 0.04em;
-        font-family: var(--font-display);
+        letter-spacing: 0.06em;
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 700;
       }
 
       .brand p {
@@ -179,8 +180,8 @@
         border: 2px solid var(--accent); background: rgba(255,255,255,0.35);
       }
       .hero h2 {
-        margin: 10px 0 8px; font-family: var(--font-display); font-weight: 900;
-        letter-spacing: -0.01em; font-size: clamp(22px, 3vw, 32px); line-height: 1.1;
+        margin: 10px 0 8px; font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif; font-weight: 900;
+        letter-spacing: 0.02em; font-size: clamp(22px, 3vw, 32px); line-height: 1.1;
       }
       .hero-note {
         margin: 0;
@@ -197,7 +198,13 @@
       }
 
 
-      .panel-head h3,
+      .panel-head h3 {
+        margin: 0;
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
       .doc-card h4 {
         margin: 0;
         font-family: var(--font-display);
@@ -600,7 +607,7 @@
         .hamburger-btn { display: flex; }
         header nav[aria-label="網站導覽"] { display: none; }
         .wrap { padding: 0 12px; }
-        .brand h1 { font-size: 13px; }
+        .brand h1 { font-size: 17px; }
         .brand p { font-size: 11px; }
       }
 
@@ -630,6 +637,82 @@
       #back-to-top.visible { display: flex; opacity: 1; }
       #back-to-top:hover { background: rgba(255,255,255,0.7); }
 
+      /* ── 滾動淡入動畫 ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+      .reveal.revealed { opacity: 1; transform: translateY(0); }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
+      }
+
+      /* ── 標題可點開預覽 ── */
+      .doc-card h4 {
+        cursor: pointer;
+      }
+      .doc-card h4:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      /* ── 動態背景：漂移光影＋報紙風格浮水印 ── */
+      @keyframes bg-drift-a {
+        0%   { transform: translate(-6%, -5%) scale(1); }
+        50%  { transform: translate(6%, 6%) scale(1.1); }
+        100% { transform: translate(-6%, -5%) scale(1); }
+      }
+      @keyframes bg-drift-b {
+        0%   { transform: translate(5%, 6%) scale(1.08); }
+        50%  { transform: translate(-6%, -5%) scale(1); }
+        100% { transform: translate(5%, 6%) scale(1.08); }
+      }
+      @keyframes bg-pan {
+        from { transform: translate(0, 0); }
+        to   { transform: translate(-90px, -120px); }
+      }
+      html::before {
+        content: "";
+        position: fixed;
+        inset: -30%;
+        z-index: -2;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='1080'%3E%3Cdefs%3E%3Cpattern id='vt' width='9' height='160' patternUnits='userSpaceOnUse'%3E%3Cline x1='4.5' y1='0' x2='4.5' y2='160' stroke='%23000' stroke-width='1.6' stroke-dasharray='15 4 9 3 21 4 7 3 13 4'/%3E%3C/pattern%3E%3Cfilter id='gr'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0.7 0.7 0 0'/%3E%3C/filter%3E%3Cfilter id='bl' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='10'/%3E%3C/filter%3E%3CradialGradient id='vg' cx='50%25' cy='50%25' r='75%25'%3E%3Cstop offset='60%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='0.5'/%3E%3C/radialGradient%3E%3Cfilter id='sb' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeGaussianBlur stdDeviation='1.3'/%3E%3C/filter%3E%3C/defs%3E%3Cg opacity='0.055' filter='url(%23sb)' font-family='serif' fill='%23000' style='writing-mode:vertical-rl'%3E%3Crect x='22' y='22' width='716' height='1036' fill='none' stroke='%23000' stroke-width='2'/%3E%3Crect x='28' y='28' width='704' height='1024' fill='none' stroke='%23000' stroke-width='0.8'/%3E%3Ctext x='700' y='44' font-size='46' font-weight='bold'%3E臺灣新生報%3C/text%3E%3Ctext x='660' y='44' font-size='12'%3E中華民國三十六年三月一日　星期六　第一版　零售每份五元%3C/text%3E%3Cline x1='644' y1='36' x2='644' y2='1044' stroke='%23000' stroke-width='1.6'/%3E%3Cline x1='639' y1='36' x2='639' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='488' y1='36' x2='488' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='335' y1='36' x2='335' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='182' y1='36' x2='182' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='616' y='44' font-size='19' font-weight='bold'%3E查緝私煙肇禍%3C/text%3E%3Ctext x='594' y='44' font-size='12'%3E群眾包圍警察局%3C/text%3E%3Crect x='496' y='40' width='90' height='420' fill='url(%23vt)'/%3E%3Ctext x='616' y='486' font-size='17' font-weight='bold'%3E物價高生活苦%3C/text%3E%3Crect x='496' y='482' width='112' height='180' fill='url(%23vt)'/%3E%3Crect x='496' y='690' width='136' height='120' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3Ctext x='586' y='716' font-size='15'%3E安定民心%3C/text%3E%3Ctext x='556' y='716' font-size='15'%3E恢復秩序%3C/text%3E%3Crect x='496' y='836' width='136' height='200' fill='url(%23vt)'/%3E%3Ctext x='463' y='44' font-size='18' font-weight='bold'%3E處理委員會昨開會%3C/text%3E%3Ctext x='441' y='44' font-size='11'%3E各界代表二百餘人出席中山堂%3C/text%3E%3Crect x='343' y='40' width='90' height='380' fill='url(%23vt)'/%3E%3Crect x='343' y='440' width='138' height='110' fill='none' stroke='%23000'/%3E%3Cline x1='343' y1='440' x2='481' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='481' y1='440' x2='343' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='469' y='562' font-size='10'%3E中山堂開會情形%3C/text%3E%3Ctext x='463' y='660' font-size='17' font-weight='bold'%3E米荒問題待解決%3C/text%3E%3Crect x='343' y='656' width='112' height='280' fill='url(%23vt)'/%3E%3Crect x='343' y='950' width='138' height='86' fill='url(%23vt)'/%3E%3Ctext x='310' y='44' font-size='19' font-weight='bold'%3E戒嚴宣告解除%3C/text%3E%3Ctext x='288' y='44' font-size='11'%3E民意代表陳情　長官廣播談話%3C/text%3E%3Crect x='190' y='40' width='90' height='360' fill='url(%23vt)'/%3E%3Crect x='190' y='420' width='138' height='170' fill='none' stroke='%23000' stroke-width='2'/%3E%3Ctext x='292' y='450' font-size='16' font-weight='bold'%3E佈告%3C/text%3E%3Ctext x='262' y='446' font-size='12'%3E禁止集會遊行%3C/text%3E%3Ctext x='236' y='446' font-size='12'%3E限制夜間通行%3C/text%3E%3Ctext x='310' y='630' font-size='17' font-weight='bold'%3E交通逐步恢復%3C/text%3E%3Crect x='190' y='626' width='112' height='290' fill='url(%23vt)'/%3E%3Crect x='190' y='930' width='138' height='106' fill='url(%23vt)'/%3E%3Ctext x='157' y='44' font-size='18' font-weight='bold'%3E秩序恢復　交還武器%3C/text%3E%3Ctext x='135' y='44' font-size='12'%3E學生返校上課%3C/text%3E%3Crect x='36' y='40' width='92' height='400' fill='url(%23vt)'/%3E%3Ctext x='157' y='466' font-size='16' font-weight='bold'%3E旅滬臺人組團返臺%3C/text%3E%3Crect x='36' y='462' width='114' height='240' fill='url(%23vt)'/%3E%3Crect x='36' y='730' width='142' height='110' fill='none' stroke='%23000'/%3E%3Ctext x='124' y='756' font-size='14'%3E新生戲院%3C/text%3E%3Ctext x='96' y='760' font-size='11'%3E本日上映%3C/text%3E%3Crect x='36' y='866' width='142' height='170' fill='url(%23vt)'/%3E%3Cline x1='22' y1='540' x2='738' y2='540' stroke='%23000' stroke-width='2' stroke-opacity='0.5'/%3E%3C/g%3E%3Crect width='760' height='1080' filter='url(%23gr)' opacity='0.06'/%3E%3Cg filter='url(%23bl)' fill='%235c4419'%3E%3Cellipse cx='90' cy='120' rx='75' ry='50' opacity='0.16'/%3E%3Cellipse cx='680' cy='950' rx='95' ry='65' opacity='0.14'/%3E%3Cellipse cx='620' cy='90' rx='55' ry='38' opacity='0.12'/%3E%3Cellipse cx='140' cy='1000' rx='65' ry='42' opacity='0.12'/%3E%3Cellipse cx='380' cy='560' rx='100' ry='34' opacity='0.1'/%3E%3C/g%3E%3Crect width='760' height='1080' fill='url(%23vg)' opacity='0.3'/%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: bg-pan 80s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: -20%;
+        z-index: -1;
+        pointer-events: none;
+        will-change: transform;
+      }
+      body::before {
+        background:
+          radial-gradient(circle at 25% 20%, rgba(180, 0, 30, 0.09), transparent 44%),
+          radial-gradient(circle at 78% 68%, rgba(0, 0, 0, 0.09), transparent 50%);
+        animation: bg-drift-a 40s ease-in-out infinite;
+      }
+      body::after {
+        background:
+          radial-gradient(circle at 70% 18%, rgba(255, 255, 255, 0.6), transparent 46%),
+          radial-gradient(circle at 18% 78%, rgba(0, 0, 0, 0.07), transparent 50%);
+        animation: bg-drift-b 55s ease-in-out infinite;
+        mix-blend-mode: soft-light;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html::before,
+        body::before,
+        body::after { animation: none; }
+      }
     </style>
   </head>
   <body>
@@ -682,7 +765,7 @@
         <div class="kicker"><span class="dot" aria-hidden="true"></span> Documents · Archive Preview · Timeline</div>
         <h2>相關文件</h2>
         <p class="hero-note">
-          依首頁時間軸大標題作為分類索引；點擊後可查看大圖與後續補充的來源、說明欄位。
+          依首頁時間軸大標題作為分類索引；點擊圖片或文字可查看大圖與後續補充的來源、說明欄位。
         </p>
       </section>
   
@@ -758,6 +841,58 @@
               </div>
             </article>
             <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="19451025" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg/500px-1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg"
+                data-period="1945-1947｜背景" data-source="臺灣光復(wikipedia)"
+                data-source-url="https://zh.wikipedia.org/zh-tw/%E8%87%BA%E7%81%A3%E5%85%89%E5%BE%A9"
+                data-description="1945年10月25日，中華民國政府代表陳儀在臺北公會堂（今中山堂）接受日本駐臺軍隊投降，臺灣五十年的日本殖民統治宣告結束。對多數臺灣民眾而言，這是充滿期待的時刻，然而其後一年多的接收失序，使期待逐漸轉為失落與憤怒，埋下二二八事件的遠因。"
+                aria-label="開啟 19451025 文件圖預覽">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg/500px-1945-10-25_after_Surrender_Ceremony_of_Japan_in_Taiwan_Province%2C_China_Theater_%28cropped%29.jpg" alt="19451025 受降典禮縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>1945/10/25 臺北公會堂受降典禮</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="舊臺幣一萬圓" data-img="https://upload.wikimedia.org/wikipedia/commons/e/e8/Taiwan_%28Republic_of_China%29_1949_bank_note_-_10%2C000_old_Taiwan_dollars_%28front%29.jpg"
+                data-period="1945-1947｜背景" data-source="中央社「文化+」"
+                data-source-url="https://www.cna.com.tw/culture/article/20250519w003"
+                data-description="1949年發行的舊臺幣一萬圓紙鈔。戰後政府以遠低於市場的匯率收兌臺幣與法幣，加上中國內戰持續消耗，臺灣物價自1945年起連年飆漲，最終演變為惡性通膨；1949年6月幣制改革，以四萬元舊臺幣兌換一元新臺幣，足見當時幣值崩跌的程度。通貨膨脹正是二二八事件前民怨累積的核心因素之一。"
+                aria-label="開啟舊臺幣文件圖預覽">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Taiwan_%28Republic_of_China%29_1949_bank_note_-_10%2C000_old_Taiwan_dollars_%28front%29.jpg" alt="舊臺幣一萬圓紙鈔縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>1949 舊臺幣一萬圓紙鈔</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="專賣局大樓" data-img="https://upload.wikimedia.org/wikipedia/commons/7/73/Monopoly_Bureau_Building%2C_historic_view.jpg"
+                data-period="1945-1947｜背景" data-source="臺灣總督府專賣局(wikipedia)"
+                data-source-url="https://zh.wikipedia.org/wiki/%E8%87%BA%E7%81%A3%E7%B8%BD%E7%9D%A3%E5%BA%9C%E5%B0%88%E8%B3%A3%E5%B1%80"
+                data-description="臺灣省專賣局大樓歷史影像。專賣局接收並延續日治時期的公賣制度，壟斷菸、酒、樟腦等物資並大力取締私菸私酒；查緝人員執法粗暴卻鮮受追究，底層民眾賴以維生的空間遭擠壓，累積的不滿最終在1947年2月27日的圓環緝菸衝突中引爆。"
+                aria-label="開啟專賣局大樓文件圖預覽">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Monopoly_Bureau_Building%2C_historic_view.jpg" alt="專賣局大樓歷史影像縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>臺灣省專賣局大樓（歷史影像）</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
+              <button class="thumb-button" type="button" data-title="1946" data-img="assets/1946.jpg"
+                data-period="1945-1947｜背景" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews"
+                data-description="《臺灣新生報》為戰後初期由臺灣省行政長官公署宣傳委員會經營的官方報刊。本篇1946年報導反映戰後接收時期的社會景況：物價持續上漲、米糧供應吃緊、失業問題惡化，民眾生活日益艱難。這類報導呈現了二二八事件爆發前一年多間，臺灣社會不滿逐步累積的經濟與民生背景。"
+                aria-label="開啟 1946 文件圖預覽">
+                <img src="assets/1946.jpg" alt="1946 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1946 臺灣新生報</h4>
+              <div class="doc-meta">
+                <span>1945-1947｜背景</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-1947">
               <button class="thumb-button" type="button" data-title="1947" data-img="assets/1947.jpg"
                 data-period="1945-1947｜背景" data-source="konichiwawa"
                 data-source-url="https://www.twreporter.org/a/taiwan-economic-history-400-years-tsong-min-wu"
@@ -771,6 +906,19 @@
               </div>
             </article>
   
+            <article class="doc-card" id="doc-19470228">
+              <button class="thumb-button" type="button" data-title="天馬茶房" data-img="https://static.wixstatic.com/media/6665c9_035e2aa6c1fd4f6999adce4234875241~mv2.jpg"
+                data-period="1947/02/27｜導火線" data-source="二二八事件紀念基金會（遺址資料：天馬茶房）"
+                data-source-url="https://www.228.org.tw/courses-1/%E5%A4%A9%E9%A6%AC%E8%8C%B6%E6%88%BF?lang=tw"
+                data-description="天馬茶房歷史照片，門口合照者為臺北帝國大學醫學部學生。天馬茶房位於臺北市太平町（現址南京西路189號），為二二八事件爆發地。1947年2月27日，專賣局查緝員傅學通、葉德根等人獲報前往查緝私菸，菸販林江邁遭逮並被沒收錢財與全部香菸；林氏跪地哀求、民眾為其求情，爭吵拉扯間查緝員葉德根以槍管打傷林江邁頭部。群眾激憤追打查緝員，傅學通逃跑過程中開槍示威，誤殺路人陳文溪，事態進一步激化，遂演變為二二八事件。"
+                aria-label="開啟天馬茶房文件圖預覽">
+                <img src="https://static.wixstatic.com/media/6665c9_035e2aa6c1fd4f6999adce4234875241~mv2.jpg" alt="天馬茶房歷史照片縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>天馬茶房（二二八事件爆發地）</h4>
+              <div class="doc-meta">
+                <span>1947/02/27｜導火線</span>
+              </div>
+            </article>
             <article class="doc-card" id="doc-19470228">
               <button class="thumb-button" type="button" data-title="19470227" data-img="assets/19470228私煙擊斃市民.jpg" /*圖片*/
                 data-period="1947/02/28｜擴大" /*時間軸*/
@@ -797,6 +945,32 @@
                 <img src="assets/194702282.jpg" alt="19470228 文件圖縮圖" loading="lazy" decoding="async" />
               </button>
               <h4>1947/02/28 本市查緝私烟〔煙〕事件 長官廣播處理情形</h4>
+              <div class="doc-meta">
+                <span>1947/02/28｜擴大</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470228">
+              <button class="thumb-button" type="button" data-title="19470301" data-img="assets/194703012.png"
+                data-period="1947/02/28｜擴大" data-source="二二八事件數位典藏（DRNH）"
+                data-source-url="https://228.drnh.gov.tw/"
+                data-description="2月28日民眾請願遭長官公署衛兵開槍後，臺北情勢急遽升高，警備總司令部隨即於臺北市宣布臨時戒嚴。此份戒嚴佈告即為當時官方公告，禁止集會遊行、限制夜間通行，軍警得對「擾亂秩序者」採取武力處置，是事件初期官方以軍事手段應對民怨的直接見證。"
+                aria-label="開啟 19470301 文件圖預覽">
+                <img src="assets/194703012.png" alt="19470301 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/01 臺北市戒嚴佈告</h4>
+              <div class="doc-meta">
+                <span>1947/02/28｜擴大</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470228">
+              <button class="thumb-button" type="button" data-title="19470301" data-img="assets/19470301戒嚴解除.jpg"
+                data-period="1947/02/28｜擴大" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews"
+                data-description="3月1日，經省參議員、市參議員、國大代表與參政員等民意代表向陳儀陳情，官方宣布解除前一日發布的臨時戒嚴。報導同時提及官民將合組委員會處理事件善後，是處理委員會成立前夕官民交涉的重要紀錄。然而戒嚴的解除僅是表面緩和，陳儀此時已著手向南京請調援軍。"
+                aria-label="開啟 19470301 文件圖預覽">
+                <img src="assets/19470301戒嚴解除.jpg" alt="19470301 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/01 戒嚴解除</h4>
               <div class="doc-meta">
                 <span>1947/02/28｜擴大</span>
               </div>
@@ -842,6 +1016,45 @@
               <h4>1947/03/03 處理委員會 代表名單</h4>
               <div class="doc-meta">
                 <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470303">
+              <button class="thumb-button" type="button" data-title="中山堂" data-img="https://static.wixstatic.com/media/6665c9_9357df9e16b14048bc86782df51d38c4~mv2.jpg"
+                data-period="1947/03/03｜協商" data-source="二二八事件紀念基金會（遺址資料：中山堂）"
+                data-source-url="https://www.228.org.tw/courses-1/%E4%B8%AD%E5%B1%B1%E5%A0%82"
+                data-description="1940年臺北公會堂（今中山堂，現址臺北市延平南路98號，古蹟）。二二八事件爆發後，各界人士、代表、士紳、學生於此開會討論事件處理事宜：1947年3月1日臺北市參議會邀集民意代表組成「緝煙血案調查委員會」，3月2日在陳儀要求下改組為「二二八事件處理委員會」，3月6日完成改組並選出17位常務委員，3月7日大會通過三十二條處理大綱面交陳儀遭拒。3月8日國軍登陸基隆，當晚軍警衝入中山堂會場；3月10日陳儀下令解散處委會及一切「非法團體」，曾參與的重要幹部紛紛成為被捕殺與追緝的對象。"
+                aria-label="開啟中山堂文件圖預覽">
+                <img src="https://static.wixstatic.com/media/6665c9_9357df9e16b14048bc86782df51d38c4~mv2.jpg" alt="1940年臺北公會堂縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>中山堂（二二八事件處理委員會開會地點）</h4>
+              <div class="doc-meta">
+                <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470303">
+              <button class="thumb-button" type="button" data-title="19470306" data-img="assets/19470306.jpg"
+                data-period="1947/03/03｜協商" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews"
+                data-description="3月6日《臺灣新生報》報導二二八事件處理委員會運作情形。此時處委會已擴大納入各界代表，正積極彙整各方意見，研擬政治改革訴求，並於隔日（3月7日）提出三十二條處理大綱。本報導見證了事件協商階段民間訴求由善後處理逐步擴展至政治改革的過程。"
+                aria-label="開啟 19470306 文件圖預覽">
+                <img src="assets/19470306.jpg" alt="19470306 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/06 臺灣新生報</h4>
+              <div class="doc-meta">
+                <span>1947/03/03｜協商</span>
+              </div>
+            </article>
+            <article class="doc-card" id="doc-19470310">
+              <button class="thumb-button" type="button" data-title="19470308" data-img="assets/19470308.jpg"
+                data-period="1947/03/10｜鎮壓" data-source="二二八事件台灣本地新聞史料"
+                data-source-url="https://contentdm.lib.nccu.edu.tw/digital/collection/228twnews"
+                data-description="3月8日，國府整編第二十一師等增援部隊自基隆登陸，揭開全面軍事鎮壓的序幕。部隊登陸後隨即掃蕩港口周邊並向臺北推進，基隆出現大量死傷。此圖記錄軍隊登陸時刻，是事件由協商急轉為武力鎮壓的關鍵轉折點。"
+                aria-label="開啟 19470308 文件圖預覽">
+                <img src="assets/19470308.jpg" alt="19470308 文件圖縮圖" loading="lazy" decoding="async" />
+              </button>
+              <h4>1947/03/08 軍隊登陸基隆</h4>
+              <div class="doc-meta">
+                <span>1947/03/10｜鎮壓</span>
               </div>
             </article>
             <article class="doc-card" id="doc-19470310">
@@ -1156,6 +1369,19 @@
                 <span>1980年代後期｜社會倡議</span>
               </div>
             </article>
+            <article class="doc-card" id="doc-1987">
+              <button class="thumb-button" type="button" data-title="二二八和平紀念碑" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Taipei228PeaceMemorialPark.jpg/500px-Taipei228PeaceMemorialPark.jpg"
+                data-period="1980年代後期｜平反運動" data-source="二二八和平紀念公園(wikipedia)"
+                data-source-url="https://zh.wikipedia.org/zh-tw/%E4%BA%8C%E4%BA%8C%E5%85%AB%E5%92%8C%E5%B9%B3%E7%B4%80%E5%BF%B5%E5%85%AC%E5%9C%92"
+                data-description="臺北二二八和平紀念公園內的二二八紀念碑。1995年2月28日紀念碑落成，李登輝總統以國家元首身分正式向受難者與家屬道歉；原臺北新公園亦更名為二二八和平紀念公園，是平反運動推動公開紀念的具體成果。"
+                aria-label="開啟二二八和平紀念碑文件圖預覽">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Taipei228PeaceMemorialPark.jpg/500px-Taipei228PeaceMemorialPark.jpg" alt="二二八和平紀念碑縮圖" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              </button>
+              <h4>臺北二二八和平紀念公園・紀念碑</h4>
+              <div class="doc-meta">
+                <span>1980年代後期｜平反運動</span>
+              </div>
+            </article>
             <article class="doc-card" id="doc-2017">
               <button class="thumb-button" type="button" data-title="20171205" data-img="assets/20171205促進轉型正義條例.jpg"
                 data-period="2017-2018｜轉型正義" data-source="全國法規資料庫"
@@ -1191,7 +1417,7 @@
       <div class="wrap foot-grid">
         <div>
           <strong>使用說明</strong>
-          <p class="small">點擊任一文件縮圖可開啟大圖預覽；按 Esc 或右上角按鈕可關閉。</p>
+          <p class="small">點擊任一文件縮圖或文字可開啟大圖預覽；按 Esc 或右上角按鈕可關閉。</p>
         </div>
       </div>
     </footer>
@@ -1293,6 +1519,25 @@
         dialog?.addEventListener("click", (event) => {
           if (event.target === dialog) closePreview();
         });
+
+        // ── 深層連結：#img=<圖片路徑> 直接開啟對應文件的預覽 ──
+        function openFromHash() {
+          const hash = window.location.hash || "";
+          if (!hash.startsWith("#img=")) return;
+          const src = decodeURIComponent(hash.slice(5));
+          const button = Array.from(document.querySelectorAll(".thumb-button")).find(
+            (b) => (b.dataset.img || "") === src
+          );
+          if (!button) return;
+          button.closest(".doc-card")?.scrollIntoView({ block: "center" });
+          button.click();
+        }
+        window.addEventListener("hashchange", openFromHash);
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", openFromHash);
+        } else {
+          openFromHash();
+        }
       })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1318,6 +1563,43 @@
           btn.setAttribute('aria-expanded', toc.classList.contains('expanded'));
         });
       });
+    </script>
+
+    <script>
+      (function () {
+        // ── 點擊標題文字也可開啟預覽 ──
+        document.querySelectorAll(".doc-card h4").forEach(function (h) {
+          const btn = h.closest(".doc-card")?.querySelector(".thumb-button");
+          if (!btn) return;
+          h.setAttribute("role", "button");
+          h.setAttribute("tabindex", "0");
+          h.title = "點擊查看內容";
+          h.addEventListener("click", function () { btn.click(); });
+          h.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); btn.click(); }
+          });
+        });
+
+        // ── 滾動淡入（文件卡片逐張浮現）──
+        const targets = document.querySelectorAll(".hero, .documents-panel, .doc-card");
+        targets.forEach(function (el) { el.classList.add("reveal"); });
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("revealed");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+          );
+          targets.forEach(function (el) { io.observe(el); });
+        } else {
+          targets.forEach(function (el) { el.classList.add("revealed"); });
+        }
+      })();
     </script>
 
   </body>
