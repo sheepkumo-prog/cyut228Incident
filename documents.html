@@ -1582,8 +1582,15 @@
 
         // ── 滾動淡入（文件卡片逐張浮現）──
         const targets = document.querySelectorAll(".hero, .documents-panel, .doc-card");
-        targets.forEach(function (el) { el.classList.add("reveal"); });
-        if ("IntersectionObserver" in window) {
+        try {
+          if (!("IntersectionObserver" in window)) throw new Error("no IO");
+          targets.forEach(function (el) {
+            // 已在視窗內的元素直接顯示，不做隱藏，避免行動裝置上閃爍消失
+            const r = el.getBoundingClientRect();
+            const inView = r.top < window.innerHeight && r.bottom > 0;
+            el.classList.add("reveal");
+            if (inView) el.classList.add("revealed");
+          });
           const io = new IntersectionObserver(
             function (entries) {
               entries.forEach(function (entry) {
@@ -1593,10 +1600,14 @@
                 }
               });
             },
-            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+            { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
           );
           targets.forEach(function (el) { io.observe(el); });
-        } else {
+          // 保險機制：3 秒後仍未顯示的元素一律顯示
+          setTimeout(function () {
+            targets.forEach(function (el) { el.classList.add("revealed"); });
+          }, 3000);
+        } catch (e) {
           targets.forEach(function (el) { el.classList.add("revealed"); });
         }
       })();
