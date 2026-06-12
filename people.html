@@ -97,11 +97,12 @@
       }
 
       .brand h1 {
-        font-size: 15px;
+        font-size: 21px;
         line-height: 1.2;
         margin: 0;
-        letter-spacing: 0.04em;
-        font-family: var(--font-display);
+        letter-spacing: 0.06em;
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 700;
       }
 
       .brand p {
@@ -193,9 +194,9 @@
 
       .page-hero h2 {
         margin: 10px 0 8px;
-        font-family: var(--font-display);
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
         font-weight: 900;
-        letter-spacing: -0.01em;
+        letter-spacing: 0.02em;
         font-size: clamp(22px, 3vw, 32px);
         line-height: 1.1;
       }
@@ -417,8 +418,9 @@
 
       .section-head h3 {
         margin: 0;
-        font-size: 18px;
-        font-family: var(--font-display);
+        font-size: clamp(18px, 2.5vw, 24px);
+        font-family: "Noto Serif TC", "Songti TC", "PMingLiU", ui-serif, serif;
+        font-weight: 800;
         letter-spacing: 0.02em;
       }
 
@@ -611,7 +613,7 @@
         .hamburger-btn { display: flex; }
         header nav[aria-label="網站導覽"] { display: none; }
         .wrap { padding: 0 12px; }
-        .brand h1 { font-size: 13px; }
+        .brand h1 { font-size: 17px; }
         .brand p { font-size: 11px; }
       }
 
@@ -641,6 +643,142 @@
       #back-to-top.visible { display: flex; opacity: 1; }
       #back-to-top:hover { background: rgba(255,255,255,0.7); }
 
+      /* ── 人物頭像 ── */
+      .person.has-avatar {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      .person-avatar {
+        width: 84px;
+        height: 84px;
+        object-fit: cover;
+        object-position: top;
+        border: 2px solid var(--accent);
+        background: #fff;
+        display: block;
+        cursor: zoom-in;
+        transition: transform 180ms ease;
+      }
+      .person-avatar:hover { transform: scale(1.05); }
+      .person-main { min-width: 0; }
+
+      /* ── 頭像燈箱 ── */
+      dialog.lightbox {
+        border: 2px solid var(--accent);
+        background: var(--bg);
+        padding: 10px;
+        max-width: min(560px, calc(100vw - 32px));
+      }
+      dialog.lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+      }
+      dialog.lightbox img {
+        display: block;
+        max-width: 100%;
+        max-height: calc(100vh - 150px);
+        margin: 0 auto;
+        border: 1px solid var(--accent);
+        background: #fff;
+      }
+      dialog.lightbox .lb-cap {
+        margin: 10px 4px 4px;
+        font-size: 13px;
+        color: var(--muted);
+        font-family: var(--font-display);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      dialog.lightbox .lb-close {
+        border: 2px solid var(--accent);
+        background: transparent;
+        color: var(--text);
+        border-radius: 999px;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        flex-shrink: 0;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      /* ── 滾動淡入動畫 ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+      .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* ── 動態背景：漂移光影＋報紙風格浮水印 ── */
+      @keyframes bg-drift-a {
+        0%   { transform: translate(-6%, -5%) scale(1); }
+        50%  { transform: translate(6%, 6%) scale(1.1); }
+        100% { transform: translate(-6%, -5%) scale(1); }
+      }
+      @keyframes bg-drift-b {
+        0%   { transform: translate(5%, 6%) scale(1.08); }
+        50%  { transform: translate(-6%, -5%) scale(1); }
+        100% { transform: translate(5%, 6%) scale(1.08); }
+      }
+      @keyframes bg-pan {
+        from { transform: translate(0, 0); }
+        to   { transform: translate(-90px, -120px); }
+      }
+      html::before {
+        content: "";
+        position: fixed;
+        inset: -30%;
+        z-index: -2;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='760' height='1080'%3E%3Cdefs%3E%3Cpattern id='vt' width='9' height='160' patternUnits='userSpaceOnUse'%3E%3Cline x1='4.5' y1='0' x2='4.5' y2='160' stroke='%23000' stroke-width='1.6' stroke-dasharray='15 4 9 3 21 4 7 3 13 4'/%3E%3C/pattern%3E%3Cfilter id='gr'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0.7 0.7 0 0'/%3E%3C/filter%3E%3Cfilter id='bl' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='10'/%3E%3C/filter%3E%3CradialGradient id='vg' cx='50%25' cy='50%25' r='75%25'%3E%3Cstop offset='60%25' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='100%25' stop-color='%23000' stop-opacity='0.5'/%3E%3C/radialGradient%3E%3Cfilter id='sb' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeGaussianBlur stdDeviation='1.3'/%3E%3C/filter%3E%3C/defs%3E%3Cg opacity='0.055' filter='url(%23sb)' font-family='serif' fill='%23000' style='writing-mode:vertical-rl'%3E%3Crect x='22' y='22' width='716' height='1036' fill='none' stroke='%23000' stroke-width='2'/%3E%3Crect x='28' y='28' width='704' height='1024' fill='none' stroke='%23000' stroke-width='0.8'/%3E%3Ctext x='700' y='44' font-size='46' font-weight='bold'%3E臺灣新生報%3C/text%3E%3Ctext x='660' y='44' font-size='12'%3E中華民國三十六年三月一日　星期六　第一版　零售每份五元%3C/text%3E%3Cline x1='644' y1='36' x2='644' y2='1044' stroke='%23000' stroke-width='1.6'/%3E%3Cline x1='639' y1='36' x2='639' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='488' y1='36' x2='488' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='335' y1='36' x2='335' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='182' y1='36' x2='182' y2='1044' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='616' y='44' font-size='19' font-weight='bold'%3E查緝私煙肇禍%3C/text%3E%3Ctext x='594' y='44' font-size='12'%3E群眾包圍警察局%3C/text%3E%3Crect x='496' y='40' width='90' height='420' fill='url(%23vt)'/%3E%3Ctext x='616' y='486' font-size='17' font-weight='bold'%3E物價高生活苦%3C/text%3E%3Crect x='496' y='482' width='112' height='180' fill='url(%23vt)'/%3E%3Crect x='496' y='690' width='136' height='120' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3Ctext x='586' y='716' font-size='15'%3E安定民心%3C/text%3E%3Ctext x='556' y='716' font-size='15'%3E恢復秩序%3C/text%3E%3Crect x='496' y='836' width='136' height='200' fill='url(%23vt)'/%3E%3Ctext x='463' y='44' font-size='18' font-weight='bold'%3E處理委員會昨開會%3C/text%3E%3Ctext x='441' y='44' font-size='11'%3E各界代表二百餘人出席中山堂%3C/text%3E%3Crect x='343' y='40' width='90' height='380' fill='url(%23vt)'/%3E%3Crect x='343' y='440' width='138' height='110' fill='none' stroke='%23000'/%3E%3Cline x1='343' y1='440' x2='481' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Cline x1='481' y1='440' x2='343' y2='550' stroke='%23000' stroke-width='0.7'/%3E%3Ctext x='469' y='562' font-size='10'%3E中山堂開會情形%3C/text%3E%3Ctext x='463' y='660' font-size='17' font-weight='bold'%3E米荒問題待解決%3C/text%3E%3Crect x='343' y='656' width='112' height='280' fill='url(%23vt)'/%3E%3Crect x='343' y='950' width='138' height='86' fill='url(%23vt)'/%3E%3Ctext x='310' y='44' font-size='19' font-weight='bold'%3E戒嚴宣告解除%3C/text%3E%3Ctext x='288' y='44' font-size='11'%3E民意代表陳情　長官廣播談話%3C/text%3E%3Crect x='190' y='40' width='90' height='360' fill='url(%23vt)'/%3E%3Crect x='190' y='420' width='138' height='170' fill='none' stroke='%23000' stroke-width='2'/%3E%3Ctext x='292' y='450' font-size='16' font-weight='bold'%3E佈告%3C/text%3E%3Ctext x='262' y='446' font-size='12'%3E禁止集會遊行%3C/text%3E%3Ctext x='236' y='446' font-size='12'%3E限制夜間通行%3C/text%3E%3Ctext x='310' y='630' font-size='17' font-weight='bold'%3E交通逐步恢復%3C/text%3E%3Crect x='190' y='626' width='112' height='290' fill='url(%23vt)'/%3E%3Crect x='190' y='930' width='138' height='106' fill='url(%23vt)'/%3E%3Ctext x='157' y='44' font-size='18' font-weight='bold'%3E秩序恢復　交還武器%3C/text%3E%3Ctext x='135' y='44' font-size='12'%3E學生返校上課%3C/text%3E%3Crect x='36' y='40' width='92' height='400' fill='url(%23vt)'/%3E%3Ctext x='157' y='466' font-size='16' font-weight='bold'%3E旅滬臺人組團返臺%3C/text%3E%3Crect x='36' y='462' width='114' height='240' fill='url(%23vt)'/%3E%3Crect x='36' y='730' width='142' height='110' fill='none' stroke='%23000'/%3E%3Ctext x='124' y='756' font-size='14'%3E新生戲院%3C/text%3E%3Ctext x='96' y='760' font-size='11'%3E本日上映%3C/text%3E%3Crect x='36' y='866' width='142' height='170' fill='url(%23vt)'/%3E%3Cline x1='22' y1='540' x2='738' y2='540' stroke='%23000' stroke-width='2' stroke-opacity='0.5'/%3E%3C/g%3E%3Crect width='760' height='1080' filter='url(%23gr)' opacity='0.06'/%3E%3Cg filter='url(%23bl)' fill='%235c4419'%3E%3Cellipse cx='90' cy='120' rx='75' ry='50' opacity='0.16'/%3E%3Cellipse cx='680' cy='950' rx='95' ry='65' opacity='0.14'/%3E%3Cellipse cx='620' cy='90' rx='55' ry='38' opacity='0.12'/%3E%3Cellipse cx='140' cy='1000' rx='65' ry='42' opacity='0.12'/%3E%3Cellipse cx='380' cy='560' rx='100' ry='34' opacity='0.1'/%3E%3C/g%3E%3Crect width='760' height='1080' fill='url(%23vg)' opacity='0.3'/%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: bg-pan 80s ease-in-out infinite alternate;
+        will-change: transform;
+      }
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: -20%;
+        z-index: -1;
+        pointer-events: none;
+        will-change: transform;
+      }
+      body::before {
+        background:
+          radial-gradient(circle at 25% 20%, rgba(180, 0, 30, 0.09), transparent 44%),
+          radial-gradient(circle at 78% 68%, rgba(0, 0, 0, 0.09), transparent 50%);
+        animation: bg-drift-a 40s ease-in-out infinite;
+      }
+      body::after {
+        background:
+          radial-gradient(circle at 70% 18%, rgba(255, 255, 255, 0.6), transparent 46%),
+          radial-gradient(circle at 18% 78%, rgba(0, 0, 0, 0.07), transparent 50%);
+        animation: bg-drift-b 55s ease-in-out infinite;
+        mix-blend-mode: soft-light;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html::before,
+        body::before,
+        body::after { animation: none; }
+      }
     </style>
   </head>
   <body>
@@ -1420,13 +1558,13 @@
                   <li class="person" id="p-sec-199202-u9673u91cdu5149" data-search="陳重光 研究小組 召集人 1991 1992">
                     <div class="person-top">
                       <div class="person-name">陳重光</div>
-                      <div class="person-role">行政院「二二八事件研究小組」成員／召集人（之一）</div>
+                      <div class="person-role">行政院「二二八事件小組」召集人、「二二八建碑委員會」召集人</div>
                     </div>
                     <p class="person-bio">
-                      資深新聞人，曾任中央通訊社董事長，行政院「二二八事件研究小組」召集人之一。在官方首次正式調查的過程中扮演組織協調角色，促成1992年研究報告的完成與出版。
+                      1913年生於台北縣，早年赴日求學，返台後於迪化街經商，後赴中國平津、東北與上海發展，曾創設通華銀行等事業。1947年二二八事件爆發時人在上海，號召旅滬台灣人募集資金、組團返台聲援同胞。戰後返台曾任台灣省議員、台北市議員與國大代表，長年居間協調本省人與外省人、朝野兩黨乃至台日之間的溝通。1991年獲邀擔任行政院「二二八事件小組」召集人及「二二八建碑委員會」召集人，促成官方首次正式調查與紀念碑興建。1998年逝世，政府頒發褒揚令表彰其貢獻。
                     </p>
                     <p class="person-links">
-                      <a href="https://zh.wikipedia.org/zh-tw/%E9%99%B3%E9%87%8D%E5%85%89" target="_blank" rel="noreferrer">Wikipedia</a>
+                      <a href="https://www.cckfoundation.org/founder-bio" target="_blank" rel="noreferrer">陳重光文教基金會（創辦人簡介）</a>
                       <a href="https://www.228.org.tw/en/228-incident" target="_blank" rel="noreferrer">二二八基金會</a>
                     </p>
                   </li>
@@ -1537,6 +1675,7 @@
           <strong>資料來源</strong>
           <p class="small">
             本頁人物與時間點依本站「詳細介紹」章節整理，並參考二二八基金會資料、Wikipedia 等公開資料。若要補充更多人物，可沿用本頁格式新增卡片並附上來源連結。
+            人物歷史照片主要取自 <a href="https://commons.wikimedia.org/" target="_blank" rel="noreferrer">Wikimedia Commons</a>（公有領域或自由授權）；柯遠芬照片取自<a href="https://www.tgchen.net/2014/03/228.html" target="_blank" rel="noreferrer">南島觀點部落格</a>、葉明勳照片取自<a href="https://www.yehminghsun.com/info.html" target="_blank" rel="noreferrer">葉明勳先生紀念網站</a>、賴澤涵照片取自<a href="https://tw.news.yahoo.com/%E4%BA%8C%E4%BA%8C%E5%85%AB70%E5%91%A8%E5%B9%B4%E7%A0%94%E8%A8%8E%E6%9C%83-%E8%B3%B4%E6%BE%A4%E6%B6%B5%E5%9B%9E%E6%86%B6-%E8%AD%A6%E7%B8%BD%E4%B8%8D%E4%BA%A4%E6%AA%94%E6%A1%88-%E8%AA%AA%E5%8F%AA%E6%9C%891%E5%BC%B5%E7%B4%99-%E9%82%84%E6%90%9E%E4%B8%9F%E4%BA%86-144400591.html" target="_blank" rel="noreferrer">風傳媒新聞報導</a>。查無公開照片之人物不附圖片。
           </p>
           <p class="small">
             <a href="https://www.228.org.tw/" target="_blank" rel="noreferrer">二二八事件紀念基金會</a><br />
@@ -1617,6 +1756,109 @@
         btn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        // ── 人物真實歷史照片（Wikimedia Commons）。查無公開照片者不顯示圖片。──
+        const avatarMap = {
+          "陳儀":   "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/%E9%99%B3%E5%89%8D%E9%95%B7%E5%AE%98%E5%84%80%E8%82%96%E5%83%8F.jpg/500px-%E9%99%B3%E5%89%8D%E9%95%B7%E5%AE%98%E5%84%80%E8%82%96%E5%83%8F.jpg",
+          "蔣渭川": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/1951%E8%94%A3%E6%B8%AD%E5%B7%9D_restored.jpg/500px-1951%E8%94%A3%E6%B8%AD%E5%B7%9D_restored.jpg",
+          "王添燈": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Ong_Thiam-teng.jpg",
+          "謝雪紅": "https://upload.wikimedia.org/wikipedia/commons/1/1a/1952%E8%B0%A2%E9%9B%AA%E7%BA%A2.jpg",
+          "湯德章": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/%E6%B9%AF%E5%BE%B7%E7%AB%A0%E5%BE%8B%E5%B8%AB.jpg/500px-%E6%B9%AF%E5%BE%B7%E7%AB%A0%E5%BE%8B%E5%B8%AB.jpg",
+          "彭孟緝": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Peng_Mengji_%28cropped%29.jpg",
+          "陳澄波": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Chen_Chengpo_nd.jpg/500px-Chen_Chengpo_nd.jpg",
+          "魏道明": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Wei_Daoming4_1%28cropped%29.jpg",
+          "雷震":   "https://upload.wikimedia.org/wikipedia/commons/2/25/%E9%9B%B7%E9%9C%87.jpg",
+          "彭明敏": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/%E5%BD%AD%E6%98%8E%E6%95%8F%E5%87%BA%E5%B8%AD%E8%91%97%E4%BD%9C%E7%B0%BD%E6%9B%B8%E5%88%86%E4%BA%AB%E6%9C%83.jpg/500px-%E5%BD%AD%E6%98%8E%E6%95%8F%E5%87%BA%E5%B8%AD%E8%91%97%E4%BD%9C%E7%B0%BD%E6%9B%B8%E5%88%86%E4%BA%AB%E6%9C%83.jpg",
+          "江炳興": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Chiang_Ping-hsing_of_Taiyuan_Incident_in_Taiwan_%E8%87%BA%E4%B8%AD%E4%B8%80%E4%B8%AD%E6%99%82%E6%9C%9F%E7%9A%84%E6%B3%B0%E6%BA%90%E4%BA%8B%E4%BB%B6%E5%8F%97%E9%9B%A3%E8%80%85%E6%B1%9F%E7%82%B3%E8%88%88.jpg",
+          "蔣經國": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/%E8%94%A3%E7%B6%93%E5%9C%8B%E7%B8%BD%E7%B5%B1_1.jpg/500px-%E8%94%A3%E7%B6%93%E5%9C%8B%E7%B8%BD%E7%B5%B1_1.jpg",
+          "蔣中正": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/%E8%94%A3%E4%B8%AD%E6%AD%A3%E7%B8%BD%E7%B5%B1%E7%8E%89%E7%85%A7.png/500px-%E8%94%A3%E4%B8%AD%E6%AD%A3%E7%B8%BD%E7%B5%B1%E7%8E%89%E7%85%A7.png",
+          "李登輝": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/%E6%9D%8E%E7%B8%BD%E7%B5%B1%E7%99%BB%E8%BC%9D%E5%85%88%E7%94%9F%E7%8E%89%E7%85%A7_%28cropped%29.jpg/500px-%E6%9D%8E%E7%B8%BD%E7%B5%B1%E7%99%BB%E8%BC%9D%E5%85%88%E7%94%9F%E7%8E%89%E7%85%A7_%28cropped%29.jpg",
+          "柯遠芬": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEeL6i3DicC6agZtaDGY8KBvnyHgZkK1NOA5CFtTmm6KBRCiHw7vAzCm9PDeW2DNV-CHwt9-d0XkEdWmZfnxQyrJfzTy38kBCwG1DvBOnI7uykECc_6SaR-M-h-4kvcig6ykus0Q/s400/%25E6%259F%25AF%25E9%2581%25A0%25E8%258A%25AC.jpg",
+          "陳永興": "https://upload.wikimedia.org/wikipedia/commons/9/94/CHEN_YUN_SHIN.JPG",
+          "鄭南榕": "https://upload.wikimedia.org/wikipedia/zh/c/c9/%E8%87%BA%E7%81%A3%E6%96%B0%E8%81%9E%E8%87%AA%E7%94%B1%E8%88%87%E7%8D%A8%E7%AB%8B%E5%BB%BA%E5%9C%8B%E9%81%8B%E5%8B%95%E5%85%88%E9%A9%85%E9%84%AD%E5%8D%97%E6%A6%95_TAIWANESE_Pro-Liberal_Democracy_and_Taiwan_Independence_Activist_Cheng_Nan-jung_-_Deng_Nylon.jpg",
+          "張炎憲": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Chang_Yen-hsien.jpg/500px-Chang_Yen-hsien.jpg",
+          "蔡英文": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/%E8%94%A1%E8%8B%B1%E6%96%87%E5%AE%98%E6%96%B9%E5%85%83%E9%A6%96%E8%82%96%E5%83%8F%E7%85%A7.png/500px-%E8%94%A1%E8%8B%B1%E6%96%87%E5%AE%98%E6%96%B9%E5%85%83%E9%A6%96%E8%82%96%E5%83%8F%E7%85%A7.png",
+          "黃煌雄": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/%E6%9F%AF%E6%96%87%E5%93%B2%E5%87%BA%E5%B8%AD%E9%BB%83%E7%85%8C%E9%9B%84%E6%96%B0%E6%9B%B8%E7%99%BC%E8%A1%A8%E6%9C%83_04.jpg/500px-%E6%9F%AF%E6%96%87%E5%93%B2%E5%87%BA%E5%B8%AD%E9%BB%83%E7%85%8C%E9%9B%84%E6%96%B0%E6%9B%B8%E7%99%BC%E8%A1%A8%E6%9C%83_04.jpg",
+          "葉明勳": "https://www.yehminghsun.com/images/info.jpg",
+          "賴澤涵": "https://s.yimg.com/ny/api/res/1.2/w2iJOapL5QyyYE.4ZtygYg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTExNTI-/https://s.yimg.com/os/zh_hant_tw/News/stormmedia/20170224-023916_U6571_M250903_71ac.jpgitokR8Ms4zfR",
+        };
+        // 非 Wikimedia Commons 來源之照片
+        const sourceMap = {
+          "柯遠芬": "南島觀點部落格（tgchen.net）",
+          "鄭南榕": "維基百科（合理使用）",
+          "葉明勳": "葉明勳先生紀念網站（yehminghsun.com）",
+          "賴澤涵": "風傳媒／Yahoo奇摩新聞（盧逸峰攝）",
+        };
+
+        // ── 燈箱 ──
+        const lb = document.createElement("dialog");
+        lb.className = "lightbox";
+        lb.innerHTML =
+          '<img alt="" /><div class="lb-cap"><span></span>' +
+          '<button class="lb-close" type="button" aria-label="關閉">×</button></div>';
+        document.body.appendChild(lb);
+        const lbImg = lb.querySelector("img");
+        const lbCap = lb.querySelector(".lb-cap span");
+        lb.querySelector(".lb-close").addEventListener("click", function () { lb.close(); });
+        lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+
+        document.querySelectorAll(".person").forEach(function (card) {
+          const name = (card.querySelector(".person-name")?.textContent || "").trim();
+          const src = avatarMap[name];
+          if (!src) return;
+
+          const main = document.createElement("div");
+          main.className = "person-main";
+          while (card.firstChild) main.appendChild(card.firstChild);
+
+          const img = document.createElement("img");
+          img.className = "person-avatar";
+          img.src = src;
+          img.alt = name + " 歷史照片";
+          img.loading = "lazy";
+          img.decoding = "async";
+          img.referrerPolicy = "no-referrer";
+          img.title = "點擊放大";
+          img.addEventListener("click", function () {
+            lbImg.src = img.src;
+            lbImg.alt = img.alt;
+            lbCap.textContent = name + "（照片來源：" + (sourceMap[name] || "Wikimedia Commons") + "）";
+            if (typeof lb.showModal === "function") lb.showModal();
+          });
+          img.addEventListener("error", function () {
+            // 照片載入失敗 → 不顯示圖片
+            card.classList.remove("has-avatar");
+            img.remove();
+          });
+
+          card.classList.add("has-avatar");
+          card.appendChild(img);
+          card.appendChild(main);
+        });
+
+        // ── 滾動淡入 ──
+        const targets = document.querySelectorAll("details.section, .page-hero, .toc");
+        targets.forEach(function (el) { el.classList.add("reveal"); });
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("revealed");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+          );
+          targets.forEach(function (el) { io.observe(el); });
+        } else {
+          targets.forEach(function (el) { el.classList.add("revealed"); });
+        }
       })();
     </script>
 
