@@ -179,6 +179,17 @@
         padding: 24px;
       }
 
+      /* 主視覺區塊：由淺到深（上到下）的淡茶褐漸層，與時間軸區塊同做法（直接取代白底）*/
+      section.hero .card.hero-card {
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.15) 0%,
+          rgba(140, 105, 50, 0.008) 45%,
+          rgba(100, 72, 30, 0.018) 75%,
+          rgba(80, 55, 20, 0.03) 100%
+        ) !important;
+      }
+
       .hero-inner {
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
@@ -504,6 +515,31 @@
         font-size: 13px;
         line-height: 1.55;
       }
+
+      /* 時間軸區塊背景：由深到淺的淡漸層（比卡片更淡） */
+      #timeline {
+        background: linear-gradient(
+          to bottom,
+          rgba(80, 55, 20, 0.03) 0%,
+          rgba(100, 72, 30, 0.018) 35%,
+          rgba(140, 105, 50, 0.008) 65%,
+          rgba(255, 255, 255, 0.15) 100%
+        );
+      }
+
+      /* 時間軸節點卡片：顏色由深到淺逐格變化 */
+      .timeline .t-item:nth-child(1) .t-card { background: rgba(80, 55, 20, 0.055); }
+      .timeline .t-item:nth-child(2) .t-card { background: rgba(85, 60, 24, 0.048); }
+      .timeline .t-item:nth-child(3) .t-card { background: rgba(90, 64, 26, 0.042); }
+      .timeline .t-item:nth-child(4) .t-card { background: rgba(95, 68, 28, 0.036); }
+      .timeline .t-item:nth-child(5) .t-card { background: rgba(100, 72, 30, 0.03); }
+      .timeline .t-item:nth-child(6) .t-card { background: rgba(110, 80, 35, 0.025); }
+      .timeline .t-item:nth-child(7) .t-card { background: rgba(120, 88, 40, 0.02); }
+      .timeline .t-item:nth-child(8) .t-card { background: rgba(130, 95, 45, 0.014); }
+      .timeline .t-item:nth-child(9) .t-card { background: rgba(140, 105, 50, 0.008); }
+      .timeline .t-item:nth-child(10) .t-card { background: rgba(255, 255, 255, 0.07); }
+      .timeline .t-item:nth-child(11) .t-card { background: rgba(255, 255, 255, 0.13); }
+      .timeline .t-item:nth-child(12) .t-card { background: rgba(255, 255, 255, 0.2); }
 
       .timeline-head {
         margin-top: 18px;
@@ -1563,8 +1599,14 @@
 
         // ── 滾動淡入 ──
         const targets = document.querySelectorAll(".hero-card, #press-slides, #timeline, .t-item");
-        targets.forEach(function (el) { el.classList.add("reveal"); });
-        if ("IntersectionObserver" in window) {
+        try {
+          if (!("IntersectionObserver" in window)) throw new Error("no IO");
+          targets.forEach(function (el) {
+            const r = el.getBoundingClientRect();
+            const inView = r.top < window.innerHeight && r.bottom > 0;
+            el.classList.add("reveal");
+            if (inView) el.classList.add("revealed");
+          });
           const io = new IntersectionObserver(
             function (entries) {
               entries.forEach(function (entry) {
@@ -1574,10 +1616,13 @@
                 }
               });
             },
-            { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+            { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
           );
           targets.forEach(function (el) { io.observe(el); });
-        } else {
+          setTimeout(function () {
+            targets.forEach(function (el) { el.classList.add("revealed"); });
+          }, 3000);
+        } catch (e) {
           targets.forEach(function (el) { el.classList.add("revealed"); });
         }
       })();
