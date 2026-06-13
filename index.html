@@ -1426,7 +1426,7 @@
                 '<img src="' + encodedSrc + '" alt="' + item.title + '" loading="lazy" decoding="async" />' +
                 '<figcaption>' +
                   '<strong>' + item.title + '</strong>' +
-                  '<div><a href="documents.html#' + item.docId + '">查看文件</a></div>' +
+                  '<div><a href="documents.html#img=' + encodeURIComponent(item.src) + '" target="_blank">查看文件</a></div>' +
                 '</figcaption>' +
               '</figure>';
             track.appendChild(li);
